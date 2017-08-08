@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% block meta %}
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+    {% endblock meta %}
+
+    {% block title %}
+        <title>
+            Login
+        </title>
+    {% endblock title %}
+
+    {% block stylesheets %}{% endblock stylesheets %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+</head>
+<body>
+<form action="{{ path('login_check') }}" method="post">
+    <input type="text" name="_username" placeholder="Username" value="" />
+    <input type="password" name="_password" placeholder="Пароль" />
+    <input type="submit" name="signup_submit" value="Войти" />
+</form>
+
+{% block javascripts %}{% endblock javascripts %}
+</body>
+</html>

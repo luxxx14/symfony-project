@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ parent() }}
+    <h1 class="main-title">Регистрация</h1>
+    {{ form_start(form) }}
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    <input class="btn btn-primary" type="submit" value="Отправить" />
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock javascripts %}

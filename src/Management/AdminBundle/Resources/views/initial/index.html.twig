@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% block meta %}
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+    {% endblock meta %}
+
+    {% block title %}
+        <title>
+            Main
+        </title>
+    {% endblock title %}
+
+    {% block stylesheets %}{% endblock stylesheets %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+</head>
+<body>
+<a href="{{ path('admin_login') }}">Log In</a>
+<a href="{{ path('admin_registration') }}">Registration</a>
+
+{% block javascripts %}{% endblock javascripts %}
+</body>
+</html>

@@ -1,0 +1,351 @@
+{% extends 'base.html.twig' %}
+
+{% import _self as show_game_row_macro %}
+
+{% block pagecontent %}
+<div class="profile-top-info">
+    {% if user.profileImageName is not empty %}
+        <img class="user-avatar-mobile mobile-content"
+         src="{{ asset('uploads/images/user_profile/' ~ user.profileImageName) }}">
+    {% else %}
+        <span class="user-avatar-mobile mobile-content {{ usersColors[user.id % 5] }}">{{ user.firstName[:1]|upper ~ user.lastName[:1]|upper }}</span>
+    {% endif %}
+    <div class="user-name">{{ user.firstName }}<br>{{ user.lastName }}{% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.id == user.id %}<span> (я)</span>{% endif %}</div>
+    <div class="user-statistic">
+        <div class="rating">{{ user.rating }}</div>
+        <div class="other">
+            <div class="statistic-item">
+                <span>Мастерство:</span>
+                <span>
+                    {% set skillLevel = user.skillLevel is not empty ? user.skillLevel.rating : 'Не указано' %}
+                    {{ skillLevel }}
+                </span>
+            </div>
+            <div class="statistic-item">
+                <span>Игр:</span>
+                <span>
+                    {% set numberOfGames = user.numberOfGames is not null ? user.numberOfGames : 0 %}
+                    {{ numberOfGames }}
+                </span>
+            </div>
+            <div class="statistic-item">
+                <span>Очки:</span>
+                <span>
+                    {% set points = user.points is not null ? user.points : 0 %}
+                    {{ points }}
+                </span>
+            </div>
+            <div class="statistic-item">
+                <span>Побед:</span>
+                <span>
+                    {% set numberOfWins = user.numberOfWins is not null ? user.numberOfWins : 0 %}
+                    {% set numberOfGames = user.numberOfGames is not null ? user.numberOfGames : 0 %}
+                    {{ numberOfWins ~ ' (' }}
+                    {% if numberOfGames != 0 %}
+                        {{ (numberOfWins * 100 / numberOfGames) | round(0, 'ceil') ~ '%)' }}
+                    {% else %}
+                        {{ ' - )' }}
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="content-box">
+    <div class="profile-header{% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.id != user.id %} other-profile{% endif %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.id == user.id %} with-sub-info{% endif %}">
+        {% if user.profileImageName is not empty %}
+            <img class="user-avatar"
+             src="{{ asset('uploads/images/user_profile/' ~ user.profileImageName) }}"
+             height="130px"
+             width="130px">
+        {% else %}
+            <span class="user-avatar {{ usersColors[user.id % 5] }}">{{ user.firstName[:1]|upper ~ user.lastName[:1]|upper }}</span>
+        {% endif %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.id == user.id %}
+            <div class="user-email">
+                <span>E-mail</span>
+                <span>{{ user.email }}</span>
+            </div>
+            <div class="user-phone">
+                <span>Телефон</span>
+                <span>{{ user.phoneNumber }}</span>
+            </div>
+            <div class="user-city">
+                <span>Страна и город</span>
+                <span>
+                    {% set country = user.city is not null ? user.city.country.name : '' %}
+                    {{ country }},
+                    {% set city = user.city is not null ? user.city.name : '' %}
+                    {{ city }}</span>
+            </div>
+            <div class="clearfix"></div>
+        {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="send-invitation">
+                <span>Вы можете пригласить этого игрока на игру вне турнира,</br>
+                    отправив свои контактные данные ему на E-Mail</span>
+                <a class="btn-white" href="{{ path('send_invitation', { id: user.id }) }}">Отправить</a>
+                <div class="clearfix"></div>
+            </div>
+        {% endif %}
+    </div>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_ADMIN') == false and app.user.id == user.id %}
+        {% if date("NOW") < user.userSubscription.dateOfEnd %}
+            {#{% set subscriptionDuration = userSubscription.subscription.duration %}#}
+            <div class="subscription-info active">
+                <span>{{ 'Осталось ' ~ date('NOW').diff(user.userSubscription.dateOfEnd).days ~
+                ' д до окончания подписки' }}</span>
+                <a class="btn" href="{{ path('user_show_subscription_payment') }}">Продлить подписку</a>
+                <div class="clearfix"></div>
+            </div>
+        {% else %}
+            <div class="subscription-info not-active">
+                <span>Срок подписки истёк</span>
+                <a class="btn" href="{{ path('user_show_subscription_payment') }}">Продлить подписку</a>
+                <div class="clearfix"></div>
+            </div>
+        {% endif %}
+    {% endif %}
+    <div class="user-other-info">
+        <div class="left-column">
+            <div class="user-sex">
+                <span>Пол</span>
+                <span>{{ user.sex }}</span>
+            </div>
+            <div class="clearfix"></div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') == false or app.user.id != user.id %}
+                <div class="user-country">
+                    <span>Страна</span>
+                    <span>
+                        {% set country = user.city is not null ? user.city.country.name : '' %}
+                        {{ country }}
+                    </span>
+                </div>
+                <div class="clearfix"></div>
+                <div class="user-city">
+                    <span>Город</span>
+                    <span>
+                        {% set city = user.city is not null ? user.city.name : '' %}
+                        {{ city }}
+                    </span>
+                </div>
+                <div class="clearfix"></div>
+            {% endif %}
+            <div class="user-age">
+                <span>Возраст</span>
+                {% set count = "now"|date('Y') - user.dateOfBirth|date('Y') % 100 %}
+                {% if count >= 5 and count <= 20 %}
+                    {% set txt = 'лет' %}
+                {% else %}
+                    {% set count = count % 10 %}
+                    {% if count == 1 %}
+                        {% set txt = 'год' %}
+                    {% elseif count >= 2 and count <= 4 %}
+                        {% set txt = 'года' %}
+                    {% else %}
+                        {% set txt = 'лет' %}
+                    {% endif %}
+                {% endif %}
+                <span>{{ "now"|date('Y') - user.dateOfBirth|date('Y') }} {{ txt }}</span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="user-club">
+                <span>Теннисный клуб</span>
+                <span>{{ user.tennisClub }}</span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="user-experience">
+                <span>Игровой опыт</span>
+                {% set count = user.experience % 100 %}
+                {% if count >= 5 and count <= 20 %}
+                    {% set txt = 'лет' %}
+                {% else %}
+                    {% set count = count % 10 %}
+                    {% if count == 1 %}
+                        {% set txt = 'год' %}
+                    {% elseif count >= 2 and count <= 4 %}
+                        {% set txt = 'года' %}
+                    {% else %}
+                        {% set txt = 'лет' %}
+                    {% endif %}
+                {% endif %}
+                <span>{% set experience = user.experience is not null ? user.experience : '' %}
+                    {{ experience }} {{ txt }}</span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="user-availability">
+                <span>Доступность</span>
+                <span>{% if user.aWeekdaysFrom is not null and user.aWeekdaysFrom is not null %}
+                    {{ 'Будние с ' ~ user.aWeekdaysFrom|date('H:i') ~ ' до ' ~
+                    user.aWeekdaysTo|date('H:i') }}{% endif %}</span>
+                <div class="clearfix"></div>
+                <span>{% if user.aWeekendFrom is not null and user.aWeekendTo is not null %}
+                    {{ 'Выходные с ' ~ user.aWeekendFrom|date('H:i') ~ ' до ' ~
+                    user.aWeekendTo|date('H:i') }}{% endif %}</span>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="right-column">
+            <div class="user-about">
+                <span>О себе:</span>
+                <span>{{ user.briefInfo }}</span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.id == user.id %}
+            <a class="btn-white" href="{{ path('user_edit', { id: user.id }) }}">Редактировать профиль</a>
+        {% endif %}
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% if pagination|length != 0 %}
+    <h4 class="game-history">История игр</h4>
+    <div class="content-box history-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Турнир</th>
+                    <th>Круг</th>
+                    <th>Дата</th>
+                    <th class="mobile-hide-content">Соперник</th>
+                    <th class="mobile-hide-content">Счет</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for tournament in pagination %}
+                {% set matchLength = 0 %}
+                {% for game in tournament.games %}
+                    {% if user == game.participant1 or user == game.participant2 %}
+                        {% set matchLength = matchLength + 1 %}
+                    {% endif %}
+                {% endfor %}
+                {% set isFirstRow = true %}
+                {% for game in tournament.games if game.roundNumber == 1 %}
+                    {% if user == game.participant1 or user == game.participant2 %}
+                        {{ show_game_row_macro.show_game_row(game, user, matchLength, isFirstRow) }}
+                        {% if isFirstRow == true %}{% set isFirstRow = false %}{% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% for game in tournament.games if game.roundNumber == 2 %}
+                    {% if user == game.participant1 or user == game.participant2 %}
+                        {{ show_game_row_macro.show_game_row(game, user, matchLength, isFirstRow) }}
+                    {% endif %}
+                {% endfor %}
+                {% for game in tournament.games if game.roundNumber == 3 %}
+                    {% if user == game.participant1 or user == game.participant2 %}
+                        {{ show_game_row_macro.show_game_row(game, user, matchLength, isFirstRow) }}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation-white">
+            {{ knp_pagination_render(pagination, 'foundation_v6_pagination.html.twig') }}
+        </div>
+    </div>
+{% endif %}
+
+{% macro show_game_row(game, user, matchLength, isFirstRow) %}
+    <tr>
+        {% if isFirstRow %}
+        <td rowspan="{{ matchLength }}">
+            <a href="{{ path('tournament_show', { id: game.tournament.id }) }}">
+                {{ game.tournament.name }}
+            </a>
+        </td>
+        {% endif %}
+        <td>
+            <a href="{{ path('game_show', { id: game.id }) }}">
+                {{ game.roundNumber }}
+            </a>
+        </td>
+        <td>{{ game.actualDateOfBeginning|date('d.m.Y') }}</td>
+        <td class="mobile-hide-content">
+            {% if game.participant1 and game.participant2 %}
+                <a href="{{ path('user_show', { id: user == game.participant1 ?
+                    game.participant2.id : game.participant1.id }) }}">
+                    {{ user == game.participant1 ?
+                    game.participant2.firstName ~ ' ' ~ game.participant2.lastName :
+                    game.participant1.firstName ~ ' ' ~ game.participant1.lastName
+                    }}
+                    {% if (game.didParticipant2Refuse and user == game.participant1) or
+                    (game.didParticipant1Refuse and user == game.participant2) %}
+                        {{ ' (Rt)' }}
+                    {% endif %}
+                </a>
+            {% else %}{{ 'BYE' }}{% endif %}
+        </td>
+        <td class="mobile-hide-content">
+            {% set result = '' %}
+            {% if game.result.1.main.0 is empty and (game.didParticipant1Refuse or game.didParticipant2Refuse) %}
+                {% set resultPart1 = '-' %}
+            {% else %}
+                {% set resultPart1 = game.result.1.main.0 %}
+            {% endif %}
+            {% if game.result.1.main.1 is empty and (game.didParticipant1Refuse or game.didParticipant2Refuse) %}
+                {% set resultPart2 = '-' %}
+            {% else %}
+                {% set resultPart2 = game.result.1.main.1 %}
+            {% endif %}
+            {% set result = user == game.participant1 ? resultPart1 ~ ':' ~ resultPart2 : resultPart2 ~ ':' ~ resultPart1 %}
+
+            {% if game.result.2.main.0 is empty and (game.didParticipant1Refuse or game.didParticipant2Refuse) %}
+                {% set resultPart1 = '-' %}
+            {% else %}
+                {% set resultPart1 = game.result.2.main.0 %}
+            {% endif %}
+            {% if game.result.2.main.1 is empty and (game.didParticipant1Refuse or game.didParticipant2Refuse) %}
+                {% set resultPart2 = '-' %}
+            {% else %}
+                {% set resultPart2 = game.result.2.main.1 %}
+            {% endif %}
+            {% set result = user == game.participant1 ?
+            result ~ '; ' ~ resultPart1 ~ ':' ~ resultPart2 :
+            result ~ '; ' ~ resultPart2 ~ ':' ~ resultPart1 %}
+
+            {#{% if game.result.3.main != [null, null] %}#}
+            {% if game.result.3.main.0 is empty and (game.didParticipant1Refuse or game.didParticipant2Refuse) %}
+                {% set resultPart1 = '-' %}
+            {% else %}
+                {% set resultPart1 = game.result.3.main.0 %}
+            {% endif %}
+            {% if game.result.3.main.1 is empty and (game.didParticipant1Refuse or game.didParticipant2Refuse) %}
+                {% set resultPart2 = '-' %}
+            {% else %}
+                {% set resultPart2 = game.result.3.main.1 %}
+            {% endif %}
+            {% set result = user == game.participant1 ?
+            result ~ '; ' ~ resultPart1 ~ ':' ~ resultPart2 :
+            result ~ '; ' ~ resultPart2 ~ ':' ~ resultPart1 %}
+            {#{% endif %}#}
+
+            <a href="{{ path('game_show', { id: game.id }) }}">
+                <span>{{ result }} - </span>
+                {% if game.winner and user == game.winner %}
+                    <span class="win">победа</span>
+                {% elseif game.winner and user == game.loser %}
+                    <span class="lose">поражение</span>
+                {% endif %}
+            </a>
+        </td>
+    </tr>
+{% endmacro %}
+
+{{ form_start(delete_form) }}
+    <input type="submit" value="Delete">
+{{ form_end(delete_form) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .info-line {
+            min-height: 30px;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock javascripts %}

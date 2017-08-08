@@ -1,0 +1,342 @@
+{% extends 'base.html.twig' %}
+
+{% block pagecontent %}
+{{ form_start(edit_form) }}
+<div class="profile-top-info">
+    <img class="user-avatar-mobile mobile-content"
+         src="{% if user.profileImageName is not empty %}
+                  {{ asset('uploads/images/user_profile/' ~ user.profileImageName) }}
+                  {% else %}{{ 'http://placehold.it/150x150' }}{% endif %}">
+    <div class="user-name-edit">
+        <div class="first-name {% if form_errors(edit_form.firstName) %}invalid-field{% endif %}">
+            {{ form_label(edit_form.firstName) }}
+            {{ form_widget(edit_form.firstName) }}
+                <div class="clearfix"></div>
+                <span class="error">
+                    <span class="error-msg">
+                        {{ form_errors(edit_form.firstName) }}
+                    </span>
+                </span>
+        </div>
+        <div class="last-name {% if form_errors(edit_form.lastName) %}invalid-field{% endif %}">
+            {{ form_label(edit_form.lastName) }}
+            {{ form_widget(edit_form.lastName) }}
+                <div class="clearfix"></div>
+                <span class="error">
+                    <span class="error-msg">
+                        {{ form_errors(edit_form.lastName) }}
+                    </span>
+                </span>
+        </div>
+    </div>
+    <div class="user-statistic edit-profile">
+        <div class="rating">{{ user.rating }}</div>
+        <div class="other">
+            <div class="statistic-item">
+                <span>Мастерство:</span>
+            <span>
+                {% set skillLevel = user.skillLevel is not empty ? user.skillLevel.rating : 'Не указано' %}
+                {{ skillLevel }}
+            </span>
+            </div>
+            <div class="statistic-item">
+                <span>Игр:</span>
+            <span>
+                {% set numberOfGames = user.numberOfGames is not null ? user.numberOfGames : 0 %}
+                {{ numberOfGames }}
+            </span>
+            </div>
+            <div class="statistic-item">
+                <span>Очки:</span>
+            <span>
+                {% set points = user.points is not null ? user.points : 0 %}
+                {{ points }}
+            </span>
+            </div>
+            <div class="statistic-item">
+                <span>Побед:</span>
+            <span>
+                {% set numberOfWins = user.numberOfWins is not null ? user.numberOfWins : 0 %}
+                {% set numberOfGames = user.numberOfGames is not null ? user.numberOfGames : 0 %}
+                {{ numberOfWins ~ ' (' }}
+                {% if numberOfGames != 0 %}
+                    {{ (numberOfWins * 100 / numberOfGames) | round(0, 'ceil') ~ '%)' }}
+                {% else %}
+                    {{ ' - )' }}
+                {% endif %}
+            </span>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="content-box">
+    <div class="profile-header edit-profile">
+        <img class="user-avatar"
+             src="{% if user.profileImageName is not empty %}
+                      {{ asset('uploads/images/user_profile/' ~ user.profileImageName) }}
+                      {% else %}{{ 'http://placehold.it/130x130' }}{% endif %}">
+        <a id="image-change-button"></a>
+        <div style="display: none;">
+            {{ form_widget(edit_form.profileImageFile) }}
+        </div>
+        <div class="user-email edit-email">
+            <span>E-mail</span>
+            <span>{{ user.email }}</span>
+        </div>
+        <div class="user-phone edit-phone {% if form_errors(edit_form.phoneNumber) %}invalid-field{% endif %}">
+            <span>{{ form_label(edit_form.phoneNumber) }}</span>
+            <span>
+				{{ form_widget(edit_form.phoneNumber) }}
+                <div class="clearfix"></div>
+                <span class="error">
+                    <span class="error-msg">
+                        {{ form_errors(edit_form.phoneNumber) }}
+                    </span>
+                </span>
+			</span>
+        </div>
+        <span class="user-city edit-city {% if form_errors(edit_form.country) %}invalid-field{% endif %}">
+            <span>{{ form_label(edit_form.country) }}</span>
+            <span>
+				{{ form_widget(edit_form.country) }}
+                <div class="clearfix"></div>
+                <span class="error">
+                    <span class="error-msg">
+                        {{ form_errors(edit_form.country) }}
+                    </span>
+                </span>
+			</span>
+        </span>
+        <span class="user-city edit-city {% if form_errors(edit_form.city) %}invalid-field{% endif %}">
+            <span>{{ form_label(edit_form.city) }}</span>
+            <span>
+				{{ form_widget(edit_form.city) }}
+                <div class="clearfix"></div>
+                <span class="error">
+                    <span class="error-msg">
+                        {{ form_errors(edit_form.city) }}
+                    </span>
+                </span>
+			</span>
+            <span>{{ form_errors(edit_form.city) }}</span>
+        </span>
+        <div class="clearfix"></div>
+    </div>
+    <div class="user-other-info edit-profile">
+        <div class="left-column">
+            <div class="user-edit-field">
+                <span><label>Мастерство<span class="required">*</span></label></span>
+                <span class="skill-level {% if form_errors(edit_form.skillLevel) %}invalid-field{% endif %}">
+                    {{ form_widget(edit_form.skillLevel) }}
+                    <a class="small-i" data-open="modal"><img src="{{ asset('bundles/website/images/small_i.png') }}"></a>
+					<div class="clearfix"></div>
+					<span class="error with-margin">
+						<span class="error-msg">
+							{{ form_errors(edit_form.skillLevel) }}
+						</span>
+					</span>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="user-edit-field {% if form_errors(edit_form.sex) %}invalid-field{% endif %}">
+                <span>{{ form_label(edit_form.sex) }}</span>
+                <span>
+                    {{ form_widget(edit_form.sex) }}
+					<div class="clearfix"></div>
+					<span class="error with-margin">
+						<span class="error-msg">
+							{{ form_errors(edit_form.sex) }}
+						</span>
+					</span>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="user-edit-field {% if form_errors(edit_form.dateOfBirth) %}invalid-field{% endif %}">
+                <span>{{ form_label(edit_form.dateOfBirth) }}</span>
+                <span>
+                    {{ form_widget(edit_form.dateOfBirth) }}
+					<div class="clearfix"></div>
+					<span class="error with-margin">
+						<span class="error-msg">
+							{{ form_errors(edit_form.dateOfBirth) }}
+						</span>
+					</span>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="user-edit-field {% if form_errors(edit_form.tennisClub) %}invalid-field{% endif %}">
+                <span>{{ form_label(edit_form.tennisClub) }}</span>
+                <span>
+                    {{ form_widget(edit_form.tennisClub) }}
+					<div class="clearfix"></div>
+					<span class="error with-margin">
+						<span class="error-msg">
+							{{ form_errors(edit_form.tennisClub) }}
+						</span>
+					</span>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="user-edit-field {% if form_errors(edit_form.experience) %}invalid-field{% endif %}">
+                <span>{{ form_label(edit_form.experience) }}</span>
+                <span>
+                    {{ form_widget(edit_form.experience) }}
+					<div class="clearfix"></div>
+					<span class="error with-margin">
+						<span class="error-msg">
+							{{ form_errors(edit_form.experience) }}
+						</span>
+					</span>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="user-edit-field availability {% if form_errors(edit_form.aWeekdaysFrom) or form_errors(edit_form.aWeekdaysTo) %}invalid-field{% endif %}">
+                <span>Доступность в будни</span>
+                <span>
+                    {{ form_label(edit_form.aWeekdaysFrom) }}
+                    {{ form_widget(edit_form.aWeekdaysFrom) }}
+                    {{ form_label(edit_form.aWeekdaysTo) }}
+                    {{ form_widget(edit_form.aWeekdaysTo) }}
+                </span>
+            </div>
+            <div class="user-edit-field availability {% if form_errors(edit_form.aWeekendFrom) or form_errors(edit_form.aWeekendTo) %}invalid-field{% endif %}">
+                <span>Доступность в выходные</span>
+                <span>
+                    {{ form_label(edit_form.aWeekendFrom) }}
+                    {{ form_widget(edit_form.aWeekendFrom) }}
+                    {{ form_label(edit_form.aWeekendTo) }}
+                    {{ form_widget(edit_form.aWeekendTo) }}
+                </span>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="right-column">
+            <div class="user-about edit-field {% if form_errors(edit_form.briefInfo) %}invalid-field{% endif %}">
+                {{ form_label(edit_form.briefInfo) }}
+                <div class="clearfix"></div>
+                <span>
+                    {{ form_widget(edit_form.briefInfo) }}
+					<div class="clearfix"></div>
+					<span class="error">
+						<span class="error-msg">
+							{{ form_errors(edit_form.briefInfo) }}
+						</span>
+					</span>
+                </span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="user-edit-bottom">
+        <div class="change-password-main-block">
+            <div class="change-password-block" {% if error_message %}style="display: block;"{% endif %}>
+                <div class="pwd-block {% if form_errors(edit_form.currentPlainPassword) %}invalid-field{% endif %}">
+                    <span>{{ form_label(edit_form.currentPlainPassword) }}</span>
+                    <span>
+                        {{ form_widget(edit_form.currentPlainPassword) }}
+						<div class="clearfix"></div>
+						<span class="error">
+							<span class="error-msg">
+								{{ form_errors(edit_form.currentPlainPassword) }}
+							</span>
+						</span>
+                    </span>
+                    <span>
+                        {{ error_message }}
+                    </span>
+                </div>
+                <div class="pwd-block {% if form_errors(edit_form.plainPassword.first) %}invalid-field{% endif %}">
+                    <span>{{ form_label(edit_form.plainPassword.first) }}</span>
+                    <span>
+                        {{ form_widget(edit_form.plainPassword.first) }}
+						<div class="clearfix"></div>
+						<span class="error">
+							<span class="error-msg">
+								{{ form_errors(edit_form.plainPassword.first) }}
+							</span>
+						</span>
+                    </span>
+                </div>
+                <div class="pwd-block {% if form_errors(edit_form.plainPassword.second) %}invalid-field{% endif %}">
+                    <span>{{ form_label(edit_form.plainPassword.second) }}</span>
+                    <span>
+                        {{ form_widget(edit_form.plainPassword.second) }}
+						<div class="clearfix"></div>
+						<span class="error">
+							<span class="error-msg">
+								{{ form_errors(edit_form.plainPassword.second) }}
+							</span>
+						</span>
+                    </span>
+                </div>
+                {#<input class="button secondary" type="submit" value="Сохранить">#}
+            </div>
+            <span class="btn change-password-btn" {% if error_message %}style="display: none;"{% endif %}>Сменить пароль</span>
+        </div>
+        <a href="{{ path('user_show', { id: user.id }) }}" class="btn-white second cancel-edit">Отмена</a>
+        <input class="btn-white" type="submit" value="Сохранить">
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+{{ form_end(edit_form) }}
+
+<div class="large reveal" id="modal" data-reveal>
+    <h1>Уровень игрока</h1>
+    <div class="modal-content">
+        {% include '@SocialNetworkTournaments/skilllevel/plainInfo.html.twig' %}
+    </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+{{ form_start(delete_form) }}
+<input type="submit" value="Delete">
+{{ form_end(delete_form) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .info-line {
+            min-height: 30px;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(
+            function() {
+                $('#image-change-button').click(function () {
+                    let input = $('#management_adminbundle_user_profileImageFile_file');
+                    $(input).click();
+                    $(input).change(function() {
+                        readURL(this);
+                    });
+                });
+            }
+        );
+
+        $('.change-password-btn').click(function (event) {
+            $('.change-password-block').show();
+            $(event.currentTarget).hide();
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.user-avatar').attr('src', e.target.result);
+                    $('.user-avatar-mobile').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+{% endblock javascripts %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li><a href="">Статичные блоки</a>
+                <ul>
+                    <li><a href="">Общая информация</a></li>
+                    <li><a href="">Компоненты платформы</a></li>
+                    <li><a href="">Основные преимущества</a></li>
+                    <li><a href="">Кто использует</a></li>
+                </ul>
+            </li>
+            <li><a href="">Коды для Maven</a></li>
+            <li><a href="">Новости</a>
+                <ul>
+                    <li><a href="">Настройка источника RSS</a></li>
+                    <li><a href="">Модерация новостей</a></li>
+                </ul>
+            </li>
+            <li><a href="">Список подписчиков</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock javascripts %}
