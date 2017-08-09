@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link type="text/css" rel="stylesheet" href="{{ asset('bundles/website/css/axeta.css') }}" />
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -17,6 +19,9 @@
 
     {% block body %}{% endblock body %}
 
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('bundles/website/js/jquery-2.1.4.min.js') }}"></script>
+        <script src="{{ asset('bundles/website/js/axeta.js') }}"></script>
+    {% endblock %}
     </body>
 </html>

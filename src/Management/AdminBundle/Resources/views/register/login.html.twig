@@ -1,29 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     {% block meta %}
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta charset="UTF-8">
+        <meta name="MobileOptimized" content="320">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     {% endblock meta %}
-
-    {% block title %}
-        <title>
-            Login
-        </title>
-    {% endblock title %}
-
-    {% block stylesheets %}{% endblock stylesheets %}
-
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <title>{% block title %}Login{% endblock title %}</title>
+    {% block stylesheets %}
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/website/css/axeta.css') }}" />
+    {% endblock %}
 </head>
-<body>
-<form action="{{ path('login_check') }}" method="post">
-    <input type="text" name="_username" placeholder="Username" value="" />
-    <input type="password" name="_password" placeholder="Пароль" />
-    <input type="submit" name="signup_submit" value="Войти" />
-</form>
+<body style="background-color: #313131;">
+<div class="wrapper">
 
-{% block javascripts %}{% endblock javascripts %}
+    <div class="text-center fix-center">
+        <div class="inner">
+            <a href="" class="logo"></a>
+            <div class="login">
+                <h1 class="margin-bottom-lg">Войти в систему</h1>
+                <form class="form form-horizontal label-3 control-9" action="{{ path('login_check') }}" method="post">
+                    <div class="form-group">
+                        <label for="login" class="label">Логин:</label>
+                        <input type="text" name="_username" class="form-control" id="login">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="label">Пароль:</label>
+                        <input type="password" name="_password" class="form-control" id="password">
+                    </div>
+                    <div>
+                        <label class="label"></label>
+                        <label>
+                            <input type="checkbox"> Запомнить меня
+                        </label>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="label"></label>
+                        <a href="#">Забыли пароль?</a>
+                    </div>
+                    <div>
+                        <label class="label"></label>
+                        <input type="submit" class="btn" value="Войти">
+                        <input type="submit" class="btn" value="Отмена">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ./wrapper -->
+{% block javascripts %}
+    <script src="{{ asset('bundles/website/js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('bundles/website/js/axeta.js') }}"></script>
+{% endblock %}
 </body>
 </html>
