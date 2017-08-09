@@ -1,0 +1,24 @@
+.spoiler {
+  border: 1px solid #e8e8e8;
+  margin: 20px 0;
+}
+.spoiler-action {
+  display: block;
+  background-color: #f4f4f4;
+  color: #6391c4;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+.spoiler-action:after {
+  content: ' +';
+}
+.spoiler-action.active {
+  background-color: #fff;
+}
+.spoiler-action.active:after {
+  content: ' -';
+}
+.spoiler-body {
+  display: none;
+  padding: 5px 5px;
+}

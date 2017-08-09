@@ -1,0 +1,75 @@
+.icon {
+  background-image: url(../i/spritesheet.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.icon-add {
+  width: 28px;
+  height: 28px;
+  background-position: -5px -5px;
+}
+.icon-add-2x {
+  width: 56px;
+  height: 56px;
+  background-position: -43px -5px;
+}
+.icon-arrows {
+  width: 12px;
+  height: 11px;
+  background-position: -109px -5px;
+}
+.icon-arrows-2x {
+  width: 24px;
+  height: 22px;
+  background-position: -131px -5px;
+}
+.icon-docs {
+  width: 28px;
+  height: 28px;
+  background-position: -109px -37px;
+}
+.icon-docs-2x {
+  width: 56px;
+  height: 56px;
+  background-position: -5px -75px;
+}
+.icon-edit {
+  width: 28px;
+  height: 28px;
+  background-position: -147px -37px;
+}
+.icon-edit-2x {
+  width: 56px;
+  height: 56px;
+  background-position: -71px -75px;
+}
+.icon-edit-small {
+  width: 20px;
+  height: 20px;
+  background-position: -137px -75px;
+}
+.icon-edit-small-2x {
+  width: 40px;
+  height: 40px;
+  background-position: -137px -105px;
+}
+.icon-graph {
+  width: 28px;
+  height: 28px;
+  background-position: -185px -5px;
+}
+.icon-graph-2x {
+  width: 56px;
+  height: 56px;
+  background-position: -5px -155px;
+}
+.icon-statistics {
+  width: 28px;
+  height: 28px;
+  background-position: -185px -43px;
+}
+.icon-statistics-2x {
+  width: 56px;
+  height: 56px;
+  background-position: -71px -155px;
+}

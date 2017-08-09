@@ -1,0 +1,115 @@
+@font-face {
+  font-family: "HelveticaNeue-CondensedBold";
+  src: url("../fonts/HelveticaNeue-CondensedBold.ttf");
+}
+@font-face {
+  font-family: "HelveticaNeueBold";
+  src: url("../fonts/HelveticaNeue-Bold.ttf");
+}
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url("../fonts/HelveticaNeue.ttf");
+}
+@font-face {
+  font-family: "HelveticaNeueLight";
+  src: url("../fonts/HelveticaNeue-Light.ttf");
+}
+.font-default {
+  font-family: 'HelveticaNeue', Helvetica, Arial, sans-serif;
+}
+.font-bold {
+  font-family: 'HelveticaNeueBold', Helvetica, Arial, sans-serif;
+}
+.font-con-bold {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+}
+.font-light {
+  font-family: 'HelveticaNeueLight', Helvetica, Arial, sans-serif;
+}
+.clear:after {
+  display: table;
+  clear: both;
+  content: " ";
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px;
+  line-height: normal;
+}
+input[type="password"],
+input[type="text"],
+select {
+  height: 28px;
+}
+input[type="file"] {
+  display: block;
+}
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+.form {
+  margin: 10px auto;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group.error label {
+  color: #D0021B;
+}
+.form-group.error .error-msg {
+  color: #acaea9;
+  font-size: 12px;
+  line-height: 24px;
+}
+.form-group.error .form-control {
+  border: 1px solid #D0021B;
+  box-shadow: inset 0 1px 5px 0 rgba(0, 0, 0, 0.5);
+}
+.form-group.error .form-control:focus {
+  border: 1px solid #D0021B;
+  outline: 1px solid rgba(208, 4, 29, 0.5);
+  box-shadow: inset 0 1px 5px 0 rgba(0, 0, 0, 0.5);
+}
+.form-horizontal {
+  margin-bottom: 20px;
+}
+.form-horizontal label {
+  text-align: right;
+  font-weight: normal;
+}
+.form-horizontal .form-group {
+  padding: 0 10px;
+  min-height: 28px;
+}
+.form-control {
+  background-color: #FFFFFF;
+  border: 1px solid #979797;
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  padding-left: 8px;
+  line-height: 20px;
+  width: 100%;
+}
+.form-control:focus {
+  border: 1px solid #4A90E2;
+  box-shadow: inset 0 1px 5px 0 #4A90E2;
+}
+.input-field {
+  margin-bottom: 15px;
+}
+.login {
+  background: #fff;
+  text-align: left;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin-top: 40px;
+}
