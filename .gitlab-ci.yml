@@ -1,0 +1,3 @@
+build:
+  script:
+    - . /var/opt/gitlab-ci/curs/c-orchestra/deploy.sh
