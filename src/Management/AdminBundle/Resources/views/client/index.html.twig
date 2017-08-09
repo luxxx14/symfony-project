@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block body %}
     <h1>Кто использует</h1>
 
-    <table>
+    <table class="table table-striped table-staff">
         <thead>
             <tr>
                 <th>Id</th>
@@ -20,24 +20,22 @@
                 <td><img src="{{ asset('uploads/images/client_gray_scale/' ~ client.grayScaleImageName) }}"></td>
                 <td><img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}"></td>
                 <td>{{ client.title }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_client_show', { 'id': client.id }) }}">Просмотр</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_client_edit', { 'id': client.id }) }}">Изменение</a>
-                        </li>
-                    </ul>
-                </td>
+                <td><nav><ul class="navbar">
+                    <li>
+                        <a href="{{ path('admin_client_show', { 'id': client.id }) }}">
+                            <i class="fa fa-search fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_client_edit', { 'id': client.id }) }}">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a>
+                    </li>
+                </ul></nav></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_client_new') }}">Добавить клиента</a>
-        </li>
-    </ul>
+    <a class="btn" href="{{ path('admin_client_new') }}">Добавить клиента</a>
 {% endblock %}

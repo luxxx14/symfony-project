@@ -18,10 +18,22 @@ class AdvantageType extends AbstractType
         $builder
             ->add('imageFile', VichImageType::class, array(
                 'label' => 'Рисунок',
+                'label_attr' => [
+                    'class' => 'label'
+                ],
+//                'attr' => [
+//                    'class' => 'form-control'
+//                ],
                 'required' => false
             ))
             ->add('description', TextareaType::class, array(
                 'label' => 'Описание',
+                'label_attr' => [
+                    'class' => 'label'
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
                 'required' => false
             ))
         ;

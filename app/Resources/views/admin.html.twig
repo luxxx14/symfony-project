@@ -11,6 +11,8 @@
     <title>{% block title %}{% endblock title %}</title>
     {% block stylesheets %}
         <link type="text/css" rel="stylesheet" href="{{ asset('bundles/website/css/axeta.css') }}" />
+        <link type="text/css" rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -21,25 +23,27 @@
         <!-- Logo -->
         <a href="" class="logo"></a>
         <section class="sidebar">
-            <a href="#" class="menu-trigger"></a>
+            <a href="" class="menu-trigger"></a>
             <ul class="sidebar-menu">
-                <li class="header">Private</li>
-                <li><a href="">My profile</a></li>
-                <li><a href="">My salary</a></li>
+                <li class="header"><a>Статичные блоки</a></li>
+                <li><a href="">Общая информация</a></li>
+                <li><a href="{{ path('admin_component_index') }}">Компоненты платформы</a></li>
+                <li><a href="{{ path('admin_advantage_index') }}">Основные преимущества</a></li>
+                <li><a href="{{ path('admin_client_index') }}">Кто использует</a></li>
             </ul>
 
             <ul class="sidebar-menu">
-                <li class="header">Internal</li>
-                <li><a href="#">Axeta Systems</a></li>
-                <li><a href="">Staff</a></li>
-                <li><a href="">Company Structure</a></li>
+                <li class="header"><a>Коды для Maven</a></li>
             </ul>
 
             <ul class="sidebar-menu">
-                <li class="header">Other pages</li>
-                <li><a href="">Page</a></li>
-                <li><a href="">Axeta Web</a></li>
-                <li><a href="">Basic page</a></li>
+                <li class="header"><a>Новости</a></li>
+                <li><a href="">Настройка источника RSS</a></li>
+                <li><a href="">Модерация новостей</a></li>
+            </ul>
+
+            <ul class="sidebar-menu">
+                <li class="header"><a>Список подписчиков</a></li>
             </ul>
         </section>
     </aside>
