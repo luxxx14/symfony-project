@@ -67,3 +67,32 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+# VichUploaderBundle
+vich_uploader:
+    db_driver: orm
+    mappings:
+        advantage:
+            uri_prefix:         /uploads/images/advantage
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/advantage'
+            namer: ~
+            directory_namer: ~
+            delete_on_remove: true
+            delete_on_update: true
+            inject_on_load: true
+        client_gray_scale:
+            uri_prefix:         /uploads/images/client_gray_scale
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/client_gray_scale'
+            namer: ~
+            directory_namer: ~
+            delete_on_remove: true
+            delete_on_update: true
+            inject_on_load: true
+        client_color:
+            uri_prefix:         /uploads/images/client_color
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/client_color'
+            namer: ~
+            directory_namer: ~
+            delete_on_remove: true
+            delete_on_update: true
+            inject_on_load: true

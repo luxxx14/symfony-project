@@ -1,3 +1,15 @@
+management_admin_client:
+    resource: "@ManagementAdminBundle/Controller/ClientController.php"
+    type:     annotation
+
+management_admin_advantage:
+    resource: "@ManagementAdminBundle/Controller/AdvantageController.php"
+    type:     annotation
+
+management_admin_component:
+    resource: "@ManagementAdminBundle/Controller/ComponentController.php"
+    type:     annotation
+
 management_admin_security:
     resource: "@ManagementAdminBundle/Controller/SecurityController.php"
     type:     annotation

@@ -17,6 +17,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Frontend\ComponentsBundle\FrontendComponentsBundle(),
             new Management\AdminBundle\ManagementAdminBundle(),
+            /** Uploading of the photos and other features */
+            new Vich\UploaderBundle\VichUploaderBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
