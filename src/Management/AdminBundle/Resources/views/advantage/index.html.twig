@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Основные преимущества</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Рисунок</th>
+                <th>Описание</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for advantage in advantages %}
+            <tr>
+                <td><a href="{{ path('admin_advantage_show', { 'id': advantage.id }) }}">{{ advantage.id }}</a></td>
+                <td>{{ advantage.imageName }}</td>
+                <td>{{ advantage.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_advantage_show', { 'id': advantage.id }) }}">Просмотр</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_advantage_edit', { 'id': advantage.id }) }}">Изменение</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_advantage_new') }}">Добавить преимущество</a>
+        </li>
+    </ul>
+{% endblock %}

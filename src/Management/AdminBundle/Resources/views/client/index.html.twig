@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Кто использует</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Логотип (чёрно-белый)</th>
+                <th>Логотип (цветной)</th>
+                <th>Заголовок</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td><a href="{{ path('admin_client_show', { 'id': client.id }) }}">{{ client.id }}</a></td>
+                <td>{{ client.grayScaleImageName }}</td>
+                <td>{{ client.colorImageName }}</td>
+                <td>{{ client.title }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_client_show', { 'id': client.id }) }}">Просмотр</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_client_edit', { 'id': client.id }) }}">Изменение</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_client_new') }}">Добавить клиента</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,32 @@
+Management\AdminBundle\Entity\Client:
+
+    type: entity
+
+    table: client
+
+    repositoryClass: Management\AdminBundle\Repository\ClientRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        grayScaleImageName: { type: string, length: 255, nullable: true }
+        colorImageName:     { type: string, length: 255, nullable: true }
+        title:              { type: text, nullable: true }
+
+        dateOfCreation:     { type: datetime, nullable: false }
+        dateOfChange:       { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

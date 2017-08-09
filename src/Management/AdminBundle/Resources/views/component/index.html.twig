@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Компоненты платформы</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for component in components %}
+            <tr>
+                <td><a href="{{ path('admin_component_show', { 'id': component.id }) }}">{{ component.id }}</a></td>
+                <td>{{ component.name }}</td>
+                <td>{{ component.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_component_show', { 'id': component.id }) }}">Просмотр</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_component_edit', { 'id': component.id }) }}">Изменение</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_component_new') }}">Добавить компонент</a>
+        </li>
+    </ul>
+{% endblock %}
