@@ -16,7 +16,7 @@
         {% for advantage in advantages %}
             <tr>
                 <td><a href="{{ path('admin_advantage_show', { 'id': advantage.id }) }}">{{ advantage.id }}</a></td>
-                <td>{{ advantage.imageName }}</td>
+                <td><img src="{{ asset('uploads/images/advantage/' ~ advantage.imageName) }}"></td>
                 <td>{{ advantage.description }}</td>
                 <td>
                     <ul>

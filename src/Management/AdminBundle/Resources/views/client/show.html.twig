@@ -11,11 +11,15 @@
             </tr>
             <tr>
                 <th>Логотип (чёрно-белый)</th>
-                <td>{{ client.grayScaleImageName }}</td>
+                <td>
+                    <img src="{{ asset('uploads/images/client_gray_scale/' ~ client.grayScaleImageName) }}">
+                </td>
             </tr>
             <tr>
                 <th>Логотип (цветной)</th>
-                <td>{{ client.colorImageName }}</td>
+                <td>
+                    <img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}">
+                </td>
             </tr>
             <tr>
                 <th>Заголовок</th>

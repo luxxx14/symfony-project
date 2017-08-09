@@ -48,7 +48,7 @@ class ComponentController extends Controller
             $em->persist($component);
             $em->flush();
 
-            return $this->redirectToRoute('admin_component_show', array('id' => $component->getId()));
+            return $this->redirectToRoute('admin_component_index');
         }
 
         return $this->render('@ManagementAdmin/component/new.html.twig', array(
@@ -88,7 +88,7 @@ class ComponentController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_component_edit', array('id' => $component->getId()));
+            return $this->redirectToRoute('admin_component_index');
         }
 
         return $this->render('@ManagementAdmin/component/edit.html.twig', array(

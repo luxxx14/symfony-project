@@ -48,7 +48,7 @@ class ClientController extends Controller
             $em->persist($client);
             $em->flush();
 
-            return $this->redirectToRoute('admin_client_show', array('id' => $client->getId()));
+            return $this->redirectToRoute('admin_client_index');
         }
 
         return $this->render('@ManagementAdmin/client/new.html.twig', array(
@@ -88,7 +88,7 @@ class ClientController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_client_edit', array('id' => $client->getId()));
+            return $this->redirectToRoute('admin_client_index');
         }
 
         return $this->render('@ManagementAdmin/client/edit.html.twig', array(

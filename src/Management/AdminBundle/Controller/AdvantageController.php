@@ -48,7 +48,7 @@ class AdvantageController extends Controller
             $em->persist($advantage);
             $em->flush();
 
-            return $this->redirectToRoute('admin_advantage_show', array('id' => $advantage->getId()));
+            return $this->redirectToRoute('admin_advantage_index');
         }
 
         return $this->render('@ManagementAdmin/advantage/new.html.twig', array(
@@ -88,7 +88,7 @@ class AdvantageController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_advantage_edit', array('id' => $advantage->getId()));
+            return $this->redirectToRoute('admin_advantage_index');
         }
 
         return $this->render('@ManagementAdmin/advantage/edit.html.twig', array(
