@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block body %}
     <h1>Компоненты платформы</h1>
 
-    <table>
+    <table class="table table-striped table-staff">
         <thead>
             <tr>
                 <th>Id</th>
@@ -18,24 +18,22 @@
                 <td><a href="{{ path('admin_component_show', { 'id': component.id }) }}">{{ component.id }}</a></td>
                 <td>{{ component.name }}</td>
                 <td>{{ component.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_component_show', { 'id': component.id }) }}">Просмотр</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_component_edit', { 'id': component.id }) }}">Изменение</a>
-                        </li>
-                    </ul>
-                </td>
+                <td><nav><ul class="navbar">
+                    <li>
+                        <a href="{{ path('admin_component_show', { 'id': component.id }) }}">
+                            <i class="fa fa-search fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_component_edit', { 'id': component.id }) }}">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a>
+                    </li>
+                </ul></nav></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_component_new') }}">Добавить компонент</a>
-        </li>
-    </ul>
+    <a class="btn" href="{{ path('admin_component_new') }}">Добавить компонент</a>
 {% endblock %}

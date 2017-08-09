@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block body %}
     <h1>Основные преимущества</h1>
 
-    <table>
+    <table class="table table-striped table-staff">
         <thead>
             <tr>
                 <th>Id</th>
@@ -18,24 +18,22 @@
                 <td><a href="{{ path('admin_advantage_show', { 'id': advantage.id }) }}">{{ advantage.id }}</a></td>
                 <td><img src="{{ asset('uploads/images/advantage/' ~ advantage.imageName) }}"></td>
                 <td>{{ advantage.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_advantage_show', { 'id': advantage.id }) }}">Просмотр</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_advantage_edit', { 'id': advantage.id }) }}">Изменение</a>
-                        </li>
-                    </ul>
-                </td>
+                <td><nav><ul class="navbar">
+                    <li>
+                        <a href="{{ path('admin_advantage_show', { 'id': advantage.id }) }}">
+                            <i class="fa fa-search fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_advantage_edit', { 'id': advantage.id }) }}">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a>
+                    </li>
+                </ul></nav></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_advantage_new') }}">Добавить преимущество</a>
-        </li>
-    </ul>
+    <a class="btn" href="{{ path('admin_advantage_new') }}">Добавить преимущество</a>
 {% endblock %}

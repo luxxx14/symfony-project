@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block body %}
-    <h1>{{ 'Компонент' ~ component.name }}</h1>
+    <h1>{{ 'Компонент ' ~ component.name }}</h1>
 
-    <table>
+    <table class="table table-staff">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -20,17 +20,11 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_component_index') }}">К списку</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_component_edit', { 'id': component.id }) }}">Редактировать</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Удалить">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <a class="btn" href="{{ path('admin_component_edit', { 'id': component.id }) }}">Редактировать</a>
+
+    {{ form_start(delete_form) }}
+        <input class="btn" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
+    <a class="btn" href="{{ path('admin_component_index') }}">К списку</a>
 {% endblock %}

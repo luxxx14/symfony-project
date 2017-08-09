@@ -1,21 +1,36 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block body %}
     <h1>Редактирование преимущества</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Редактировать" />
-    {{ form_end(edit_form) }}
+    <div class="margin-bottom-lg border-bottom">
+        <div class="row">
+            <div class="col-lg-5 col-md-8">
+                {{ form_start(edit_form) }}
+                <div class="form-group">
+                    {{ form_label(edit_form.imageFile) }}
+                    <img id="color-image-preview"
+                         src=""
+                         width="200px" height="200px">
+                    {{ form_widget(edit_form.imageFile) }}
+                    {{ form_errors(edit_form.imageFile) }}
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_advantage_index') }}">К списку</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Удалить">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                <div class="form-group">
+                    {{ form_label(edit_form.description) }}
+                    {{ form_widget(edit_form.description) }}
+                    {{ form_errors(edit_form.description) }}
+                </div>
+
+                <input class="btn" type="submit" value="Редактировать" />
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+
+    {{ form_start(delete_form) }}
+        <input class="btn" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
+    <br><a class="btn" href="{{ path('admin_advantage_index') }}">К списку</a>
 {% endblock %}

@@ -18,10 +18,22 @@ class ComponentType extends AbstractType
         $builder
             ->add('name', TextType::class, array(
                 'label' => 'Название',
+                'label_attr' => [
+                    'class' => 'label'
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
                 'required' => false
             ))
             ->add('description', TextareaType::class, array(
                 'label' => 'Описание',
+                'label_attr' => [
+                    'class' => 'label'
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
                 'required' => false
             ))
         ;
