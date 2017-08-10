@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:300,400");
+body {
+  font-family: 'Roboto', sans-serif; }
+  body h1 {
+    font-family: 'Merriweather', serif; }
+  body header {
+    text-align: center;
+    height: 86px; }
+    body header .logo {
+      position: absolute;
+      top: 24px;
+      left: 41px; }
+    body header nav {
+      display: inline-block;
+      line-height: 86px; }
+      body header nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none; }
+        body header nav ul li {
+          display: inline-block;
+          font-size: 16px;
+          margin: 0 25px; }
+          body header nav ul li a {
+            text-decoration: none;
+            color: black;
+            letter-spacing: 0.2px; }
+            body header nav ul li a:hover {
+              color: #9558d1;
+              border-bottom: 1px solid #9558d1;
+              padding-bottom: 6px; }
+          body header nav ul li:last-of-type a {
+            color: #592e83;
+            border: solid 1px #592e83;
+            border-radius: 3px;
+            padding: 8px 16px; }
+            body header nav ul li:last-of-type a:hover {
+              color: white;
+              background-color: #592e83;
+              border-bottom: 1px solid #9558d1;
+              padding-bottom: 6px; }
+    body header #select-locale {
+      position: absolute;
+      top: 34px;
+      right: 50px;
+      display: inline-block;
+      cursor: pointer; }
+      body header #select-locale:after {
+        margin-left: 3px;
+        content: '\25BE'; }
+  body .main {
+    background: url(../img/group-10.jpg) center center no-repeat;
+    text-align: center;
+    color: white;
+    height: 520px; }
+    body .main h1 {
+      width: 720px;
+      margin: 0 auto;
+      padding-top: 112px;
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1.44;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(31, 30, 56, 0.8); }
+    body .main p {
+      width: 769px;
+      margin: 0 auto;
+      padding-top: 16px;
+      padding-bottom: 24px;
+      font-size: 16px;
+      line-height: 1.69;
+      letter-spacing: 0.2px;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(31, 30, 56, 0.8); }
+  body .info {
+    margin: 0 160px; }
+    body .info h1 {
+      padding-top: 96px;
+      padding-bottom: 64px;
+      margin: 0;
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #1f1f37; }
+    body .info .row:first-of-type {
+      border-bottom: 1px solid #d8dbe2; }
+    body .info .row div {
+      text-align: center;
+      border-left: 1px solid #d8dbe2; }
+      body .info .row div:first-of-type {
+        border-left: none; }
+      body .info .row div h2 {
+        font-family: Merriweather;
+        font-size: 20px;
+        line-height: 1.8;
+        letter-spacing: 0.3px;
+        color: #592e83;
+        display: inline-block;
+        border-bottom: 1px solid white;
+        font-weight: normal; }
+        body .info .row div h2:hover {
+          color: #9558d1;
+          border-bottom: 1px solid #9558d1;
+          box-sizing: border-box;
+          cursor: pointer; }
+      body .info .row div p {
+        font-family: Roboto;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.2px;
+        color: #333333; }
+  body .advantages {
+    padding: 0 160px;
+    margin-top: 100px;
+    background-color: rgba(216, 219, 226, 0.4); }
+    body .advantages h1 {
+      padding-top: 80px;
+      padding-bottom: 60px;
+      margin: 0;
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #1f1f37; }
+    body .advantages .row {
+      padding-bottom: 25px; }
+      body .advantages .row div {
+        text-align: center; }
+        body .advantages .row div p {
+          margin-top: 40px;
+          font-size: 16px;
+          line-height: 1.5;
+          letter-spacing: 0.2px;
+          text-align: center;
+          color: #333333; }
+      body .advantages .row:last-of-type {
+        padding-bottom: 50px; }
+  body .users {
+    padding: 0 160px; }
+    body .users h1 {
+      padding-top: 80px;
+      padding-bottom: 60px;
+      margin: 0;
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #1f1f37; }
+    body .users .row div {
+      text-align: center;
+      border-left: 1px solid #d8dbe2; }
+      body .users .row div img {
+        opacity: 0.4;
+        filter: grayscale(1);
+        max-width: 100%; }
+        body .users .row div img:hover {
+          opacity: 1;
+          filter: grayscale(0); }
+      body .users .row div:first-of-type {
+        border-left: none; }
+    body .users .row:first-of-type {
+      border-bottom: 1px solid #d8dbe2; }
+  body .download {
+    margin-top: 100px;
+    padding: 0 160px;
+    background-color: rgba(216, 219, 226, 0.4); }
+    body .download h1 {
+      padding-top: 80px;
+      padding-bottom: 10px;
+      margin: 0;
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #1f1f37; }
+    body .download h2 {
+      font-weight: normal;
+      font-family: Roboto;
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      text-align: center;
+      color: #333333;
+      margin: 0;
+      padding: 0; }
+    body .download nav {
+      text-align: center; }
+      body .download nav ul {
+        margin: 47px 0;
+        padding: 0;
+        list-style: none; }
+        body .download nav ul li {
+          display: inline-block;
+          font-family: Merriweather;
+          font-size: 20px;
+          line-height: 1.8;
+          letter-spacing: 0.3px;
+          text-align: center;
+          color: #592e83;
+          margin: 0 24px; }
+          body .download nav ul li a {
+            text-decoration: none;
+            border-bottom: 1px dashed #9558d1;
+            padding: 0 16px 6px; }
+            body .download nav ul li a:hover, body .download nav ul li a :active {
+              color: #333333;
+              border: none;
+              border-radius: 3px;
+              background-color: #d8dbe2;
+              padding: 8px 16px; }
+    body .download .stable-version h3 {
+      font-family: Merriweather;
+      font-size: 20px;
+      line-height: 1.8;
+      letter-spacing: 0.3px;
+      color: #333333; }
+    body .download .stable-version ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      body .download .stable-version ul li a {
+        text-decoration: none; }
+        body .download .stable-version ul li a span {
+          font-size: 16px;
+          line-height: 1.5;
+          letter-spacing: 0.2px;
+          text-align: left;
+          color: #b5bbc8; }
+
+/*# sourceMappingURL=main.css.map */
