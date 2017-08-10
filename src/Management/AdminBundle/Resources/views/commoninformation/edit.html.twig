@@ -1,21 +1,33 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
-    <h1>Commoninformation edit</h1>
+    <h1>Редактирование общей информации</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <div class="margin-bottom-lg border-bottom">
+        <div class="row">
+            <div class="col-lg-5 col-md-8">
+                {{ form_start(edit_form) }}
+                <div class="form-group">
+                    {{ form_label(edit_form.title) }}
+                    {{ form_widget(edit_form.title) }}
+                    {{ form_errors(edit_form.title) }}
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_common_information_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                <div class="form-group">
+                    {{ form_label(edit_form.description) }}
+                    {{ form_widget(edit_form.description) }}
+                    {{ form_errors(edit_form.description) }}
+                </div>
+
+                <input class="btn" type="submit" value="Редактировать" />
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+
+    {{ form_start(delete_form) }}
+        <input class="btn" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
+    <br><a class="btn" href="{{ path('admin_common_information_index') }}">К списку</a>
 {% endblock %}

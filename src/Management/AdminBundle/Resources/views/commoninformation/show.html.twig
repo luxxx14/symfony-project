@@ -1,44 +1,30 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
-    <h1>Commoninformation</h1>
+    <h1>Общая информация</h1>
 
-    <table>
+    <table class="table table-staff">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ commonInformation.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Заголовок</th>
                 <td>{{ commonInformation.title }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Описание</th>
                 <td>{{ commonInformation.description }}</td>
-            </tr>
-            <tr>
-                <th>Dateofcreation</th>
-                <td>{% if commonInformation.dateOfCreation %}{{ commonInformation.dateOfCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Dateofchange</th>
-                <td>{% if commonInformation.dateOfChange %}{{ commonInformation.dateOfChange|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_common_information_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_common_information_edit', { 'id': commonInformation.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <a class="btn" href="{{ path('admin_common_information_edit', { 'id': commonInformation.id }) }}">Редактировать</a>
+
+    {{ form_start(delete_form) }}
+        <input class="btn" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
+    <a class="btn" href="{{ path('admin_component_index') }}">Вернуться</a>
 {% endblock %}
