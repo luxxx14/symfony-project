@@ -1,0 +1,61 @@
+@import "_variables";
+@import "_functions";
+
+.tab-content{
+  z-index: 2;
+  opacity: 0;
+  text-align: left;
+  padding: 15px;
+  position: absolute;
+  box-sizing: border-box;
+  left: 0;
+}
+.tabs {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: -1px;
+  z-index: 3;
+  &:after {
+    display: table;
+    clear: both;
+    content: " ";
+  }
+  li {
+    background: #F2F2F2;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px 3px 0 0;
+    color: #4A90E2;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-size: 14px;
+    padding: 5px 20px;
+    margin-right: 10px;
+    .font-bold;
+    &:hover {
+      color: #000;
+    }
+    &.active {
+      background: #fff;
+      color: #000;
+      margin-bottom: -1px;
+      border-bottom-color: #fff;
+    }
+  }
+}
+
+.tab {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #e3e3e3;
+  z-index: 1;
+  margin-bottom: 20px;
+  li {
+    display: none;
+    padding: 18px;
+    &.active {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,157 @@
+@path: "components";
+
+@import "@{path}/reset.less";
+
+@import "@{path}/_variables.less";
+@import "@{path}/_functions.less";
+
+@import "@{path}/_screen.less";
+@import "@{path}/_sidebar.less";
+@import "@{path}/_tabs.less";
+@import "@{path}/_form.less";
+@import "@{path}/_grid.less";
+@import "@{path}/_typography.less";
+@import "@{path}/_icons.less";
+@import "@{path}/_table.less";
+@import "@{path}/_buttons.less";
+@import "@{path}/_tooltip.less";
+@import "@{path}/_spoiler.less";
+@import "@{path}/_animate.less";
+
+.margin-bottom-lg {
+  margin-bottom: 30px;
+}
+.border-bottom {
+  border-bottom: 2px solid @border-color;
+  padding-bottom: 5px;
+}
+
+.logo {
+  @w: 61px;
+  background: url(../i/logo.png) no-repeat -139px -5px;
+  width: 124px;
+  height: 61px;
+  display: block;
+  margin: 0 auto;
+  @speed: 2s;
+  -webkit-transition: background-image @speed ease-in-out;
+  -moz-transition:  background-image @speed ease-in-out;
+  -o-transition: background-image @speed ease-in-out;
+  transition: background-image @speed ease-in-out;
+  &:hover {
+    background-position: -5px -5px;
+  }
+}
+.origin {
+
+}
+.right {
+  float: right !important;
+}
+.left {
+  float: right !important;
+}
+.text-center {
+  text-align: center;
+}
+.fix:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.inner {
+  display:inline-block;
+  vertical-align:middle;
+}
+.content {
+  padding: 30px 20px;
+}
+.fix-center {
+  z-index: -1;
+}
+.content-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  .transition(.6s);
+}
+
+/*--------------------------
+*        HEADER
+*-------------------------*/
+.main-header {
+  position: relative;
+  background-color: #fff;
+  line-height: 55px;
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+.profile-bar {
+  float: right;
+
+  display: inline-block;
+}
+nav {
+  ul {
+    float: left;
+    list-style-type: none;
+    li {
+      float: left;
+      padding: 0 10px;
+      display: inline;
+    }
+
+  }
+}
+
+/*--------------------------
+*        CARD
+*-------------------------*/
+.card {
+  border-radius: 3px;
+  width: 100%;
+  min-height: 30px;
+  padding: 10px;
+  ul {
+    margin-left: 20px;
+    padding-bottom: 20px;
+    li.active {
+      a {
+        cursor: default;
+        color: #000000;
+        font-weight: bold;
+      }
+    }
+  }
+}
+/*--------------------------
+*        COLORS
+*-------------------------*/
+.gray {
+  background-color: @gray;
+}
+
+/*--------------------------
+*        AVA
+*-------------------------*/
+.circle {
+  border-radius: 50%;
+}
+.avatar {
+  padding: 5px;
+  .btn {
+    margin-top: 20px;
+  }
+}
+.avatar-image {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: 5px solid #fff;
+}
+.center {
+  display: block;
+  margin:0 auto;
+}

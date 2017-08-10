@@ -10,7 +10,7 @@
     {% endblock meta %}
     <title>{% block title %}{% endblock title %}</title>
     {% block stylesheets %}
-        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/website/css/axeta.css') }}" />
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/frontendcomponents/css/axeta.css') }}" />
         <link type="text/css" rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     {% endblock %}
@@ -71,8 +71,8 @@
 </div>
 <!-- ./wrapper -->
 {% block javascripts %}
-    <script src="{{ asset('bundles/website/js/jquery-2.1.4.min.js') }}"></script>
-    <script src="{{ asset('bundles/website/js/axeta.js') }}"></script>
+    <script src="{{ asset('bundles/frontendcomponents/js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontendcomponents/js/axeta.js') }}"></script>
 {% endblock %}
 </body>
 </html>

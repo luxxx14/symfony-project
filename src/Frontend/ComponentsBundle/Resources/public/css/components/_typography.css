@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "HelveticaNeue-CondensedBold";
+  src: url("../fonts/HelveticaNeue-CondensedBold.ttf");
+}
+@font-face {
+  font-family: "HelveticaNeueBold";
+  src: url("../fonts/HelveticaNeue-Bold.ttf");
+}
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url("../fonts/HelveticaNeue.ttf");
+}
+@font-face {
+  font-family: "HelveticaNeueLight";
+  src: url("../fonts/HelveticaNeue-Light.ttf");
+}
+.font-default {
+  font-family: 'HelveticaNeue', Helvetica, Arial, sans-serif;
+}
+.font-bold {
+  font-family: 'HelveticaNeueBold', Helvetica, Arial, sans-serif;
+}
+.font-con-bold {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+}
+.font-light {
+  font-family: 'HelveticaNeueLight', Helvetica, Arial, sans-serif;
+}
+a {
+  color: #4A90E2;
+  text-decoration: none;
+}
+a:hover {
+  color: #ed5c58;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  font-weight: inherit;
+}
+h1 {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 110%;
+  margin: 12px 0 9.6px 0;
+  color: #000;
+}
+h2 {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 110%;
+  margin: 10px 0 8px 0;
+  color: #000;
+}
+h3 {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 110%;
+  margin: 9px 0 7.2px 0;
+  color: #444;
+}
+h4 {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 110%;
+  margin: 8px 0 6.4px 0;
+  color: #444;
+}
+h5 {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 110%;
+  margin: 7px 0 5.6px 0;
+  color: #444;
+}
+h6 {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 110%;
+  margin: 7px 0 5.6px 0;
+  color: #444;
+}
+.annotation {
+  margin: 20px 0;
+}
+.title-annotation,
+.table th {
+  font-family: 'HelveticaNeue-CondensedBoldd', Helvetica, Arial, sans-serif;
+}
+.spoiler-action {
+  font-family: 'HelveticaNeueBold', Helvetica, Arial, sans-serif;
+}
+.title-annotation {
+  font-size: 14px;
+  color: #444;
+  line-height: 16px;
+  margin-bottom: 5px;
+}
+.body-annotation {
+  font-family: 'HelveticaNeueLight', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #999;
+  line-height: 18px;
+}
+body {
+  font-family: 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #444444;
+  line-height: 20px;
+}
