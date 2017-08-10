@@ -42,6 +42,15 @@ class CompanyInformation
      */
     private $dateOfChange;
 
+    /**
+     * CompanyInformation constructor
+     */
+    public function __construct()
+    {
+        $currentDate = new \DateTime('NOW');
+        $this->dateOfCreation = $currentDate;
+        $this->dateOfChange = $currentDate;
+    }
 
     /**
      * Get id
