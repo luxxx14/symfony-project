@@ -4,6 +4,19 @@ body {
   font-family: 'Roboto', sans-serif; }
   body h1 {
     font-family: 'Merriweather', serif; }
+  body a {
+    text-decoration: none; }
+  body ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  body .button {
+    border-radius: 3px;
+    border: solid 1px #592e83;
+    padding: 8px 16px; }
+    body .button:hover {
+      color: white;
+      background-color: #592e83; }
   body header {
     text-align: center;
     height: 86px; }
@@ -14,32 +27,27 @@ body {
     body header nav {
       display: inline-block;
       line-height: 86px; }
-      body header nav ul {
-        margin: 0;
-        padding: 0;
-        list-style: none; }
-        body header nav ul li {
-          display: inline-block;
-          font-size: 16px;
-          margin: 0 25px; }
-          body header nav ul li a {
-            text-decoration: none;
-            color: black;
-            letter-spacing: 0.2px; }
-            body header nav ul li a:hover {
-              color: #9558d1;
-              border-bottom: 1px solid #9558d1;
-              padding-bottom: 6px; }
-          body header nav ul li:last-of-type a {
-            color: #592e83;
-            border: solid 1px #592e83;
-            border-radius: 3px;
-            padding: 8px 16px; }
-            body header nav ul li:last-of-type a:hover {
-              color: white;
-              background-color: #592e83;
-              border-bottom: 1px solid #9558d1;
-              padding-bottom: 6px; }
+      body header nav ul li {
+        display: inline-block;
+        font-size: 16px;
+        margin: 0 25px; }
+        body header nav ul li a {
+          color: black;
+          letter-spacing: 0.2px; }
+          body header nav ul li a:hover {
+            color: #9558d1;
+            border-bottom: 1px solid #9558d1;
+            padding-bottom: 6px; }
+        body header nav ul li:last-of-type a {
+          color: #592e83;
+          border: solid 1px #592e83;
+          border-radius: 3px;
+          padding: 8px 16px; }
+          body header nav ul li:last-of-type a:hover {
+            color: white;
+            background-color: #592e83;
+            border-bottom: 1px solid #9558d1;
+            padding-bottom: 6px; }
     body header #select-locale {
       position: absolute;
       top: 34px;
@@ -161,6 +169,7 @@ body {
         filter: grayscale(1);
         max-width: 100%; }
         body .users .row div img:hover {
+          cursor: pointer;
           opacity: 1;
           filter: grayscale(0); }
       body .users .row div:first-of-type {
@@ -170,6 +179,7 @@ body {
   body .download {
     margin-top: 100px;
     padding: 0 160px;
+    padding-bottom: 100px;
     background-color: rgba(216, 219, 226, 0.4); }
     body .download h1 {
       padding-top: 80px;
@@ -194,9 +204,7 @@ body {
     body .download nav {
       text-align: center; }
       body .download nav ul {
-        margin: 47px 0;
-        padding: 0;
-        list-style: none; }
+        margin: 47px 0; }
         body .download nav ul li {
           display: inline-block;
           font-family: Merriweather;
@@ -207,7 +215,6 @@ body {
           color: #592e83;
           margin: 0 24px; }
           body .download nav ul li a {
-            text-decoration: none;
             border-bottom: 1px dashed #9558d1;
             padding: 0 16px 6px; }
             body .download nav ul li a:hover, body .download nav ul li a :active {
@@ -215,24 +222,185 @@ body {
               border: none;
               border-radius: 3px;
               background-color: #d8dbe2;
-              padding: 8px 16px; }
+              padding: 16px 16px; }
+    body .download .row .col-md-8 {
+      border-right: 1px solid #d8dbe2; }
+    body .download .stable-version .download-link {
+      background: url(../img/ic-download.png) left top no-repeat;
+      padding-left: 70px;
+      margin-bottom: 30px; }
+      body .download .stable-version .download-link a {
+        font-size: 18px;
+        line-height: 1.44;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #592e83; }
+        body .download .stable-version .download-link a:hover {
+          color: #9558d1; }
+      body .download .stable-version .download-link span {
+        display: block;
+        color: #333333;
+        line-height: 1.44; }
+      body .download .stable-version .download-link p {
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #b5bbc8; }
+    body .download .stable-version .code-example h3 {
+      margin-top: -7px;
+      padding: 0; }
+    body .download .stable-version .code-example .frame {
+      width: 356px;
+      height: 178px;
+      border-radius: 4px;
+      background-color: #ffffff;
+      box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
+      border: solid 1px #d8dbe2;
+      position: relative; }
+      body .download .stable-version .code-example .frame code {
+        line-height: 1.4;
+        letter-spacing: -0.2px;
+        color: #333333; }
+      body .download .stable-version .code-example .frame div {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 63px;
+        height: 24px;
+        border-radius: 3px;
+        background-color: rgba(216, 219, 226, 0.4);
+        border: solid 1px #d8dbe2;
+        font-size: 13px;
+        line-height: 21px;
+        letter-spacing: 0.2px;
+        text-align: center;
+        color: #7f5ea0; }
     body .download .stable-version h3 {
       font-family: Merriweather;
+      font-weight: normal;
       font-size: 20px;
       line-height: 1.8;
       letter-spacing: 0.3px;
-      color: #333333; }
-    body .download .stable-version ul {
-      list-style: none;
+      color: #333333;
       margin: 0;
-      padding: 0; }
+      margin-bottom: 10px; }
+    body .download .stable-version ul {
+      margin-bottom: 30px; }
       body .download .stable-version ul li a {
-        text-decoration: none; }
+        line-height: 2.25;
+        letter-spacing: 0.2px; }
         body .download .stable-version ul li a span {
           font-size: 16px;
           line-height: 1.5;
           letter-spacing: 0.2px;
           text-align: left;
           color: #b5bbc8; }
+        body .download .stable-version ul li a:hover {
+          color: #9558d1; }
+  body .news {
+    padding: 0 160px;
+    text-align: center;
+    margin-bottom: 130px;
+    margin-top: 60px; }
+    body .news .row .col-md-7 h1 {
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #1f1f37;
+      margin-bottom: 30px; }
+    body .news .row .col-md-7 ul {
+      margin-bottom: 60px; }
+      body .news .row .col-md-7 ul li {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.2px;
+        padding-bottom: 23px;
+        border-bottom: 1px solid #d8dbe2;
+        margin-bottom: 23px;
+        text-align: left; }
+        body .news .row .col-md-7 ul li .date {
+          width: 80px;
+          height: 24px;
+          border-radius: 3px;
+          background-color: #d8dbe2;
+          font-family: Merriweather;
+          font-size: 11px;
+          line-height: 24px;
+          letter-spacing: 0.1px;
+          text-align: center;
+          color: #333333;
+          margin-bottom: 9px; }
+        body .news .row .col-md-7 ul li a:hover {
+          color: #9558d1;
+          border-bottom: 1px solid #d8dbe2; }
+    body .news .row .col-md-5 form {
+      background-color: rgba(216, 219, 226, 0.4);
+      margin-top: 60px;
+      height: 406px;
+      padding-top: 10px; }
+      body .news .row .col-md-5 form h3 {
+        font-family: Merriweather;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 1.5;
+        letter-spacing: 0.4px;
+        text-align: center;
+        color: #1f1f37;
+        max-width: 269px;
+        margin: 30px auto; }
+      body .news .row .col-md-5 form p:first-of-type {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.2px;
+        text-align: center;
+        color: #333333;
+        padding: 0 90px; }
+      body .news .row .col-md-5 form input {
+        border-radius: 4px;
+        background-color: #ffffff;
+        box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
+        border: solid 1px #d8dbe2;
+        padding: 16px;
+        width: 384px;
+        max-width: 100%;
+        background: url(../img/ic-subscribe.png) center right 9px no-repeat;
+        background-color: white;
+        margin: 20px 0; }
+        body .news .row .col-md-5 form input:focus {
+          border-color: #9558d1;
+          outline: none; }
+      body .news .row .col-md-5 form p:last-of-type {
+        font-size: 14px;
+        line-height: 1.43;
+        letter-spacing: 0.2px;
+        text-align: center;
+        color: #c6c9d1; }
+        body .news .row .col-md-5 form p:last-of-type span {
+          display: block;
+          color: #9558d1; }
+  body footer {
+    background-color: #eff1f3;
+    height: 180px;
+    text-align: center;
+    padding-top: 24px; }
+    body footer p:first-of-type {
+      font-size: 14px;
+      line-height: 1.43;
+      letter-spacing: 0.2px;
+      text-align: center;
+      color: rgba(51, 51, 51, 0.4); }
+    body footer p:last-of-type {
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      text-align: center;
+      color: #333333; }
+      body footer p:last-of-type span {
+        color: #9558d1; }
 
 /*# sourceMappingURL=main.css.map */
