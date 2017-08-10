@@ -18,11 +18,11 @@
                 <td>{{ entry.title }}</td>
                 <td>{{ entry.description }}</td>
                 <td><nav><ul class="navbar">
-                    <li>
-                        <a href="{{ path('admin_common_information_show', { 'id': entry.id }) }}">
-                            <i class="fa fa-search fa-lg"></i>
-                        </a>
-                    </li>
+                    {#<li>#}
+                        {#<a href="{{ path('admin_common_information_show', { 'id': entry.id }) }}">#}
+                            {#<i class="fa fa-search fa-lg"></i>#}
+                        {#</a>#}
+                    {#</li>#}
                     <li>
                         <a href="{{ path('admin_common_information_edit', { 'id': entry.id }) }}">
                             <i class="fa fa-pencil fa-lg"></i>
