@@ -3,9 +3,9 @@
 namespace Management\AdminBundle\Entity;
 
 /**
- * Component
+ * CommonInformation
  */
-class Component
+class CommonInformation
 {
     /**
      * @var integer
@@ -15,7 +15,7 @@ class Component
     /**
      * @var string
      */
-    private $name;
+    private $title;
 
     /**
      * @var string
@@ -33,7 +33,7 @@ class Component
     private $dateOfChange;
 
     /**
-     * Component constructor
+     * CommonInformation constructor
      */
     public function __construct()
     {
@@ -53,27 +53,27 @@ class Component
     }
 
     /**
-     * Set name
+     * Set title
      *
-     * @param string $name
+     * @param string $title
      *
-     * @return Component
+     * @return CommonInformation
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get title
      *
      * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
@@ -81,7 +81,7 @@ class Component
      *
      * @param string $description
      *
-     * @return Component
+     * @return CommonInformation
      */
     public function setDescription($description)
     {
@@ -105,7 +105,7 @@ class Component
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return Component
+     * @return CommonInformation
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -129,7 +129,7 @@ class Component
      *
      * @param \DateTime $dateOfChange
      *
-     * @return Component
+     * @return CommonInformation
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -148,3 +148,4 @@ class Component
         return $this->dateOfChange;
     }
 }
+

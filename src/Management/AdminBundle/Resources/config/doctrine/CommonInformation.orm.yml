@@ -1,0 +1,31 @@
+Management\AdminBundle\Entity\CommonInformation:
+
+    type: entity
+
+    table: common_information
+
+    repositoryClass: Management\AdminBundle\Repository\CommonInformationRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        title:            { type: string, length: 1024, nullable: true }
+        description:      { type: text, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

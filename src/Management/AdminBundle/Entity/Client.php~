@@ -242,3 +242,4 @@ class Client
         return $this->dateOfChange;
     }
 }
+

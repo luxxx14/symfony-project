@@ -148,3 +148,4 @@ class Component
         return $this->dateOfChange;
     }
 }
+

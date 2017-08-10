@@ -6,11 +6,11 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Client
+ * Advantage
  *
  * @Vich\Uploadable
  */
-class Client
+class Advantage
 {
     /**
      * @var integer
@@ -20,29 +20,18 @@ class Client
     /**
      * @var string
      */
-    private $grayScaleImageName;
+    private $imageName;
 
     /**
-     * @Vich\UploadableField(mapping="client_gray_scale", fileNameProperty="grayScaleImageName")
+     * @Vich\UploadableField(mapping="advantage", fileNameProperty="imageName")
      * @var File
      */
-    private $grayScaleImageFile;
+    private $imageFile;
 
     /**
      * @var string
      */
-    private $colorImageName;
-
-    /**
-     * @Vich\UploadableField(mapping="client_color", fileNameProperty="colorImageName")
-     * @var File
-     */
-    private $colorImageFile;
-
-    /**
-     * @var string
-     */
-    private $title;
+    private $description;
 
     /**
      * @var \DateTime
@@ -55,7 +44,7 @@ class Client
     private $dateOfChange;
 
     /**
-     * Client constructor
+     * Advantage constructor
      */
     public function __construct()
     {
@@ -75,35 +64,35 @@ class Client
     }
 
     /**
-     * Set grayScaleImageName
+     * Set imageName
      *
-     * @param string $grayScaleImageName
+     * @param string $imageName
      *
-     * @return Client
+     * @return Advantage
      */
-    public function setGrayScaleImageName($grayScaleImageName)
+    public function setImageName($imageName)
     {
-        $this->grayScaleImageName = $grayScaleImageName;
+        $this->imageName = $imageName;
 
         return $this;
     }
 
     /**
-     * Get grayScaleImageName
+     * Get imageName
      *
      * @return string
      */
-    public function getGrayScaleImageName()
+    public function getImageName()
     {
-        return $this->grayScaleImageName;
+        return $this->imageName;
     }
 
     /**
      * @param File|null $image
      */
-    public function setGrayScaleImageFile(File $image = null)
+    public function setImageFile(File $image = null)
     {
-        $this->grayScaleImageFile = $image;
+        $this->imageFile = $image;
 
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
@@ -117,81 +106,33 @@ class Client
     /**
      * @return File
      */
-    public function getGrayScaleImageFile()
+    public function getImageFile()
     {
-        return $this->grayScaleImageFile;
+        return $this->imageFile;
     }
 
     /**
-     * Set colorImageName
+     * Set description
      *
-     * @param string $colorImageName
+     * @param string $description
      *
-     * @return Client
+     * @return Advantage
      */
-    public function setColorImageName($colorImageName)
+    public function setDescription($description)
     {
-        $this->colorImageName = $colorImageName;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * @param File|null $image
-     */
-    public function setColorImageFile(File $image = null)
-    {
-        $this->colorImageFile = $image;
-
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
-        if ($image) {
-            // if 'dateOfChange' is not defined in your entity, use another property
-            $this->dateOfChange = new \DateTime('now');
-        }
-    }
-
-    /**
-     * @return File
-     */
-    public function getColorImageFile()
-    {
-        return $this->colorImageFile;
-    }
-
-    /**
-     * Get colorImageName
+     * Get description
      *
      * @return string
      */
-    public function getColorImageName()
+    public function getDescription()
     {
-        return $this->colorImageName;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Client
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
+        return $this->description;
     }
 
     /**
@@ -199,7 +140,7 @@ class Client
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return Client
+     * @return Advantage
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -223,7 +164,7 @@ class Client
      *
      * @param \DateTime $dateOfChange
      *
-     * @return Client
+     * @return Advantage
      */
     public function setDateOfChange($dateOfChange)
     {

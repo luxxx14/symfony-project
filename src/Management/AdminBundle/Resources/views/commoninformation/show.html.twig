@@ -1,0 +1,44 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Commoninformation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commonInformation.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ commonInformation.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ commonInformation.description }}</td>
+            </tr>
+            <tr>
+                <th>Dateofcreation</th>
+                <td>{% if commonInformation.dateOfCreation %}{{ commonInformation.dateOfCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dateofchange</th>
+                <td>{% if commonInformation.dateOfChange %}{{ commonInformation.dateOfChange|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_common_information_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_common_information_edit', { 'id': commonInformation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
