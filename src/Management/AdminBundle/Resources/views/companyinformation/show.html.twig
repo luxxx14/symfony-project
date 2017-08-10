@@ -1,0 +1,34 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>О компании</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Описание</th>
+                <td>{{ companyInformation.description }}</td>
+            </tr>
+            <tr>
+                <th>Адрес</th>
+                <td>{{ companyInformation.address }}</td>
+            </tr>
+            <tr>
+                <th>E-Mail</th>
+                <td>{{ companyInformation.email }}</td>
+            </tr>
+            <tr>
+                <th>Телефон</th>
+                <td>{{ companyInformation.phoneNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('admin_company_information_edit', { 'id': companyInformation.id }) }}">Редактировать</a>
+
+    {{ form_start(delete_form) }}
+        <input class="btn" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
+    <a class="btn" href="{{ path('admin_company_information_index') }}">Вернуться</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+Management\AdminBundle\Entity\CompanyInformation:
+
+    type: entity
+
+    table: company_information
+
+    repositoryClass: Management\AdminBundle\Repository\CompanyInformationRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        description:      { type: text, nullable: true }
+        address:          { type: string, length: 512, nullable: true }
+        email:            { type: string, length: 128, nullable: true }
+        phoneNumber:      { type: string, length: 16, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

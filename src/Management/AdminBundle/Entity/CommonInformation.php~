@@ -148,3 +148,4 @@ class CommonInformation
         return $this->dateOfChange;
     }
 }
+

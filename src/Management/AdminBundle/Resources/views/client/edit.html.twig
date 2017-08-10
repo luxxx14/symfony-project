@@ -31,7 +31,7 @@
                     {{ form_errors(edit_form.title) }}
                 </div>
 
-                <input class="btn" type="submit" value="Редактировать" />
+                <input class="btn" type="submit" value="Сохранить" />
                 {{ form_end(edit_form) }}
             </div>
         </div>
@@ -41,5 +41,5 @@
         <input class="btn" type="submit" value="Удалить">
     {{ form_end(delete_form) }}
 
-    <br><a class="btn" href="{{ path('admin_client_index') }}">К списку</a>
+    <br><a class="btn" href="{{ path('admin_client_index') }}">Отмена</a>
 {% endblock %}
