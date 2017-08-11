@@ -92,31 +92,31 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready( function() {
-            $(function() {
-                $('input.datepicker').datepicker({
-                    setDate: new Date(),
-                    dateFormat: 'yy-mm-dd',
-                    changeMonth: true,
-                    changeYear: true,
-                    closeText: "Закрыть",
-                    prevText: "&#x3C;Пред",
-                    nextText: "След&#x3E;",
-                    currentText: "Сегодня",
-                    monthNames: [ "Январь","Февраль","Март","Апрель","Май","Июнь",
-                        "Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь" ],
-                    monthNamesShort: [ "Янв","Фев","Мар","Апр","Май","Июн",
-                        "Июл","Авг","Сен","Окт","Ноя","Дек" ],
-                    dayNames: [ "воскресенье","понедельник","вторник","среда","четверг","пятница","суббота" ],
-                    dayNamesShort: [ "вск","пнд","втр","срд","чтв","птн","сбт" ],
-                    dayNamesMin: [ "Вс","Пн","Вт","Ср","Чт","Пт","Сб" ],
-                    weekHeader: "Нед",
-                    firstDay: 1,
-                    isRTL: false,
-                    showMonthAfterYear: false,
-                    yearSuffix: "",
-                    yearRange: "1900:+nn"
-                });
+            $('input.datepicker').datepicker({
+                setDate: new Date(),
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+                closeText: "Закрыть",
+                prevText: "&#x3C;Пред",
+                nextText: "След&#x3E;",
+                currentText: "Сегодня",
+                monthNames: [ "Январь","Февраль","Март","Апрель","Май","Июнь",
+                    "Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь" ],
+                monthNamesShort: [ "Янв","Фев","Мар","Апр","Май","Июн",
+                    "Июл","Авг","Сен","Окт","Ноя","Дек" ],
+                dayNames: [ "воскресенье","понедельник","вторник","среда","четверг","пятница","суббота" ],
+                dayNamesShort: [ "вск","пнд","втр","срд","чтв","птн","сбт" ],
+                dayNamesMin: [ "Вс","Пн","Вт","Ср","Чт","Пт","Сб" ],
+                weekHeader: "Нед",
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: "",
+                yearRange: "1900:+nn"
             });
+
+            $('#management_adminbundle_feed_filter_status option:first-child').text('Все');
         });
     </script>
 {% endblock %}
