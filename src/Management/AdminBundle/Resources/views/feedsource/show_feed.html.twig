@@ -3,6 +3,37 @@
 {% block body %}
     <h1>Модерация новостей</h1>
 
+    <div class="row">
+        <div class="col-lg-4 col-md-4">
+            {{ form_start(form) }}
+            <div class="form-group">
+                <h3>Загрузить новости</h3>
+                {{ form_label(form.modifiedSince) }}
+                {{ form_widget(form.modifiedSince) }}
+            </div>
+
+            <input class="btn" type="submit" value="Загрузить" />
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-lg-8 col-md-8">
+            <h3>Фильтрация новостей</h3>
+            {{ form_start(filterForm) }}
+            <div class="form-group col-lg-6 col-md-6">
+                {{ form_label(filterForm.status) }}
+                {{ form_widget(filterForm.status) }}
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                {{ form_label(filterForm.lastModified) }}
+                {{ form_widget(filterForm.lastModified) }}
+            </div>
+
+            <input class="btn" type="submit" value="Применить" />
+            {{ form_end(filterForm) }}
+        </div>
+    </div>
+
     <table class="table table-striped table-staff">
         <thead>
             <tr>
@@ -49,4 +80,43 @@
         {% endfor %}
         </tbody>
     </table>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready( function() {
+            $(function() {
+                $('input.datepicker').datepicker({
+                    setDate: new Date(),
+                    dateFormat: 'yy-mm-dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    closeText: "Закрыть",
+                    prevText: "&#x3C;Пред",
+                    nextText: "След&#x3E;",
+                    currentText: "Сегодня",
+                    monthNames: [ "Январь","Февраль","Март","Апрель","Май","Июнь",
+                        "Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь" ],
+                    monthNamesShort: [ "Янв","Фев","Мар","Апр","Май","Июн",
+                        "Июл","Авг","Сен","Окт","Ноя","Дек" ],
+                    dayNames: [ "воскресенье","понедельник","вторник","среда","четверг","пятница","суббота" ],
+                    dayNamesShort: [ "вск","пнд","втр","срд","чтв","птн","сбт" ],
+                    dayNamesMin: [ "Вс","Пн","Вт","Ср","Чт","Пт","Сб" ],
+                    weekHeader: "Нед",
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: "",
+                    yearRange: "1900:+nn"
+                });
+            });
+        });
+    </script>
 {% endblock %}

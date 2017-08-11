@@ -75,7 +75,8 @@ class Feed
      * @param FeedSource $feedSource
      */
     public function __construct(
-        $publicId, $title, $description, $author, $lastModified, $link, FeedSource $feedSource, $status)
+        $publicId = null, $title = null, $description = null, $author = null,
+        $lastModified = null, $link = null, FeedSource $feedSource = null, $status = null)
     {
         $this->publicId         = $publicId;
         $this->title            = $title;

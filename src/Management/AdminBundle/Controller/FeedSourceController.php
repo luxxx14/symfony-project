@@ -6,7 +6,9 @@ use Management\AdminBundle\Entity\Feed;
 use Management\AdminBundle\Entity\FeedSource;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Feedsource controller
@@ -166,56 +168,107 @@ class FeedSourceController extends Controller
      *
      * @Route("/{id}/show_feed", name="admin_feed_source_show_feed")
      * @Method("GET")
+     *
+     * @param Request $request
+     * @param FeedSource $feedSource
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showFeedsAction(FeedSource $feedSource)
+    public function showFeedAction(Request $request, FeedSource $feedSource)
     {
-        $feedIo = $this->container->get('feedio');
+        $filterForm = $this->createForm('Management\AdminBundle\Form\FeedFilterType', new Feed());
+        $filterForm->handleRequest($request);
 
-        /** Now fetch its (fresh) content */
-        $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('2015-01-01'))->getFeed();
+        $qb = $this->getDoctrine()
+            ->getRepository('ManagementAdminBundle:Feed')->createQueryBuilder('f');
 
-        $em = $this->getDoctrine()->getManager();
-
-        foreach ($feed as $item) {
-            $publishedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['link' => $item->getLink()]);
-
-            if (!$publishedItem) {
-                $feed = new Feed(
-                    $item->getPublicId(),
-                    $item->getTitle(),
-                    $item->getDescription(),
-                    $item->getAuthor()->getName(),
-                    $item->getLastModified(),
-                    $item->getLink(),
-                    $feedSource,
-                    $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'На модерации'])
-                );
-
-                $em->persist($feed);
-                $em->flush();
+        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+            $feedStatus = $filterForm->get('status')->getData();
+            if ($feedStatus != '') {
+                $qb
+                    ->where('f.status = :status')
+                    ->setParameter('status', $feedStatus->getName());
             }
-
-//            $status = $publishedItem ? $publishedItem->getStatus() :
-//                $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'На модерации']);
-
-
-//            $handledFeed[] = [
-//                'id' => $publishedItem ? $publishedItem->getId() : NULL,
-//                'link' => $item->getLink(),
-//                'publicId' => $item->getPublicId(),
-//                'title' => $item->getTitle(),
-//                'text' => $item->getDescription(),
-//                'author' => $item->getAuthor(),
-//                'lastModified' => $item->getLastModified(),
-//                'status' => $status
-//            ];
+            $lastModified = $filterForm->get('lastModified')->getData();
+            if ($lastModified) {
+                $qb
+                    ->andWhere('f.lastModified >= :lastModified')
+                    ->setParameter('lastModified', $lastModified);
+            }
         }
 
-        $feed = $em->getRepository('ManagementAdminBundle:Feed')->findAll();
+        $qb
+            ->orderBy('f.status', 'ASC')
+            ->orderBy('f.lastModified', 'DESC')
+        ;
+
+        $query = $qb->getQuery();
+        $feed = $query->getResult();
+
+//        $paginator  = $this->get('knp_paginator');
+//        $feed = $paginator->paginate(/*$pagination = $paginator->paginate(*/
+//            $query, /* query NOT result */
+//            $request->query->getInt('page', 1)/*page number*/,
+//            30/*limit per page*/
+//        );
+
+//        $feed = $em->getRepository('ManagementAdminBundle:Feed')->findAll();
 
         return $this->render('@ManagementAdmin/feedsource/show_feed.html.twig', array(
-//            'handledFeed' => $handledFeed
-            'feed' => $feed
+            'filterForm' => $filterForm->createView(),
+            'feed' => $feed,
+            'form' => $this->createForm('Management\AdminBundle\Form\FeedDownloadType', $feedSource)
+            ->createView()
         ));
+    }
+
+    /**
+     * Download feed from feed source later than specified date
+     *
+     * @Route("/{id}/download_feed", name="admin_feed_source_download_feed")
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param FeedSource $feedSource
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function downloadFeedAction(Request $request, FeedSource $feedSource)
+    {
+        $form = $this->createForm('Management\AdminBundle\Form\FeedDownloadType', $feedSource);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $modifiedSince = $form->get('modifiedSince')->getData();
+
+            $feedIo = $this->container->get('feedio');
+
+            /** Now fetch its (fresh) content */
+            $feed = $feedIo->readSince($feedSource->getUrl(), $modifiedSince)->getFeed();
+
+            $em = $this->getDoctrine()->getManager();
+
+            foreach ($feed as $item) {
+                $loadedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['link' => $item->getLink()]);
+
+                if (!$loadedItem) {
+                    $feed = new Feed(
+                        $item->getPublicId(),
+                        $item->getTitle(),
+                        $item->getDescription(),
+                        $item->getAuthor()->getName(),
+                        $item->getLastModified(),
+                        $item->getLink(),
+                        $feedSource,
+                        $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'На модерации'])
+                    );
+
+                    $em->persist($feed);
+                    $em->flush();
+                }
+            }
+        }
+
+        return $this->redirectToRoute('admin_feed_source_show_feed', [
+            'id' => $feedSource->getId()
+        ]);
     }
 }
