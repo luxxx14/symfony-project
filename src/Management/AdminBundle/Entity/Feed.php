@@ -15,7 +15,7 @@ class Feed
     /**
      * @var string
      */
-    private $url;
+    private $link;
 
     /**
      * @var string
@@ -58,13 +58,37 @@ class Feed
     private $dateOfChange;
 
     /**
-     * Feed constructor
+     * @var \Management\AdminBundle\Entity\FeedSource
      */
-    public function __construct()
+    private $feedSource;
+
+    /**
+     * Feed constructor
+     *
+     * @param $publicId
+     * @param $title
+     * @param $description
+     * @param $author
+     * @param $lastModified
+     * @param $link
+     * @param $status
+     * @param FeedSource $feedSource
+     */
+    public function __construct(
+        $publicId, $title, $description, $author, $lastModified, $link, FeedSource $feedSource, $status)
     {
+        $this->publicId         = $publicId;
+        $this->title            = $title;
+        $this->text             = $description;
+        $this->author           = $author;
+        $this->lastModified     = $lastModified;
+        $this->link             = $link;
+        $this->feedSource       = $feedSource;
+        $this->status           = $status;
+
         $currentDate = new \DateTime('NOW');
-        $this->dateOfCreation = $currentDate;
-        $this->dateOfChange = $currentDate;
+        $this->dateOfCreation   = $currentDate;
+        $this->dateOfChange     = $currentDate;
     }
 
     /**
@@ -78,27 +102,27 @@ class Feed
     }
 
     /**
-     * Set url
+     * Set link
      *
-     * @param string $url
+     * @param string $link
      *
      * @return Feed
      */
-    public function setUrl($url)
+    public function setLink($link)
     {
-        $this->url = $url;
+        $this->link = $link;
 
         return $this;
     }
 
     /**
-     * Get url
+     * Get link
      *
      * @return string
      */
-    public function getUrl()
+    public function getLink()
     {
-        return $this->url;
+        return $this->link;
     }
 
     /**
@@ -315,5 +339,29 @@ class Feed
     public function getLastModified()
     {
         return $this->lastModified;
+    }
+
+    /**
+     * Set feedSource
+     *
+     * @param \Management\AdminBundle\Entity\FeedSource $feedSource
+     *
+     * @return Feed
+     */
+    public function setFeedSource(\Management\AdminBundle\Entity\FeedSource $feedSource = null)
+    {
+        $this->feedSource = $feedSource;
+
+        return $this;
+    }
+
+    /**
+     * Get feedSource
+     *
+     * @return \Management\AdminBundle\Entity\FeedSource
+     */
+    public function getFeedSource()
+    {
+        return $this->feedSource;
     }
 }

@@ -16,6 +16,7 @@ Management\AdminBundle\Entity\FeedSource:
     fields:
         url:            { type: string, length: 256, nullable: true }
         publicId:       { type: string, length: 256, nullable: true }
+        link:           { type: string, length: 256, nullable: true }
         title:          { type: string, length: 1024, nullable: true }
         description:    { type: text, nullable: true }
         lastModified:   { type: datetime, nullable: true }
@@ -27,7 +28,10 @@ Management\AdminBundle\Entity\FeedSource:
 
     oneToOne: { }
 
-    oneToMany: { }
+    oneToMany:
+        feedItems:
+            targetEntity: Management\AdminBundle\Entity\Feed
+            mappedBy: feedSource
 
     manyToMany: { }
 

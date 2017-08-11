@@ -26,7 +26,7 @@ class FeedController extends Controller
 
         $feeds = $em->getRepository('ManagementAdminBundle:Feed')->findAll();
 
-        return $this->render('feed/index.html.twig', array(
+        return $this->render('@ManagementAdmin/feed/index.html.twig', array(
             'feeds' => $feeds,
         ));
     }
@@ -51,7 +51,7 @@ class FeedController extends Controller
             return $this->redirectToRoute('admin_feed_show', array('id' => $feed->getId()));
         }
 
-        return $this->render('feed/new.html.twig', array(
+        return $this->render('@ManagementAdmin/feed/new.html.twig', array(
             'feed' => $feed,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class FeedController extends Controller
     {
         $deleteForm = $this->createDeleteForm($feed);
 
-        return $this->render('feed/show.html.twig', array(
+        return $this->render('@ManagementAdmin/feed/show.html.twig', array(
             'feed' => $feed,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class FeedController extends Controller
             return $this->redirectToRoute('admin_feed_edit', array('id' => $feed->getId()));
         }
 
-        return $this->render('feed/edit.html.twig', array(
+        return $this->render('@ManagementAdmin/feed/edit.html.twig', array(
             'feed' => $feed,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,5 +132,38 @@ class FeedController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Change status of feed entity
+     *
+     * @Route("/{id}/{action}", name="admin_feed_change",
+     *     requirements={"action" = "(publish|reject)"})
+     * @Method("GET")
+     *
+     * @param Feed $feed
+     * @param string $action
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function changeAction(Feed $feed, string $action)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if ($action == 'publish') {
+            $status = $em->getRepository('ManagementAdminBundle:FeedStatus')
+                ->findOneBy(['name' => 'Опубликована']);
+        }
+        else {
+            $status = $em->getRepository('ManagementAdminBundle:FeedStatus')
+                ->findOneBy(['name' => 'Отклонена']);
+        }
+
+        $feed->setStatus($status);
+        $em->persist($feed);
+        $em->flush();
+
+        return $this->redirectToRoute('admin_feed_source_show_feed', [
+            'id' => $feed->getFeedSource()->getId()
+        ]);
     }
 }

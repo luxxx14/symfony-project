@@ -2,6 +2,7 @@
 
 namespace Management\AdminBundle\Controller;
 
+use Management\AdminBundle\Entity\Feed;
 use Management\AdminBundle\Entity\FeedSource;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -52,6 +53,7 @@ class FeedSourceController extends Controller
             $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('NOW'))->getFeed();
 
             $feedSource->setPublicId($feed->getPublicId());
+            $feedSource->setLink($feed->getLink());
             $feedSource->setTitle($feed->getTitle());
             $feedSource->setDescription($feed->getDescription());
             $feedSource->setLastModified($feed->getLastModified());
@@ -105,6 +107,7 @@ class FeedSourceController extends Controller
             $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('NOW'))->getFeed();
 
             $feedSource->setPublicId($feed->getPublicId());
+            $feedSource->setLink($feed->getLink());
             $feedSource->setTitle($feed->getTitle());
             $feedSource->setDescription($feed->getDescription());
             $feedSource->setLastModified($feed->getLastModified());
@@ -112,7 +115,7 @@ class FeedSourceController extends Controller
             $em->persist($feedSource);
             $em->flush();
 
-            return $this->redirectToRoute('admin_feed_source_edit', array('id' => $feedSource->getId()));
+            return $this->redirectToRoute('admin_feed_source_show', array('id' => $feedSource->getId()));
         }
 
         return $this->render('@ManagementAdmin/feedsource/edit.html.twig', array(
@@ -173,27 +176,46 @@ class FeedSourceController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $handledFeed = [];
         foreach ($feed as $item) {
-            $publishedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['publicId' => $item->getPublicId()]);
-            $status = $publishedItem ? $publishedItem->getStatus() :
-                $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'На модерации']);
-            $handledFeed[] = [
-                'id' => $publishedItem ? $publishedItem->getId() : NULL,
-                'url' => $item->getLink(),
-                'publicId' => $item->getPublicId(),
-                'title' => $item->getTitle(),
-                'text' => $item->getDescription(),
-                'author' => $item->getAuthor(),
-                'lastModified' => $item->getLastModified(),
-                'status' => $status
-            ];
+            $publishedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['link' => $item->getLink()]);
+
+            if (!$publishedItem) {
+                $feed = new Feed(
+                    $item->getPublicId(),
+                    $item->getTitle(),
+                    $item->getDescription(),
+                    $item->getAuthor()->getName(),
+                    $item->getLastModified(),
+                    $item->getLink(),
+                    $feedSource,
+                    $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'На модерации'])
+                );
+
+                $em->persist($feed);
+                $em->flush();
+            }
+
+//            $status = $publishedItem ? $publishedItem->getStatus() :
+//                $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'На модерации']);
+
+
+//            $handledFeed[] = [
+//                'id' => $publishedItem ? $publishedItem->getId() : NULL,
+//                'link' => $item->getLink(),
+//                'publicId' => $item->getPublicId(),
+//                'title' => $item->getTitle(),
+//                'text' => $item->getDescription(),
+//                'author' => $item->getAuthor(),
+//                'lastModified' => $item->getLastModified(),
+//                'status' => $status
+//            ];
         }
 
-//        $publishedFeed = $em->getRepository('ManagementAdminBundle:Feed');
+        $feed = $em->getRepository('ManagementAdminBundle:Feed')->findAll();
 
         return $this->render('@ManagementAdmin/feedsource/show_feed.html.twig', array(
-            'handledFeed' => $handledFeed,
+//            'handledFeed' => $handledFeed
+            'feed' => $feed
         ));
     }
 }

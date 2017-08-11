@@ -48,6 +48,11 @@ class FeedSource
     private $dateOfChange;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $feedItems;
+
+    /**
      * FeedSource constructor
      */
     public function __construct()
@@ -234,5 +239,38 @@ class FeedSource
     {
         return $this->dateOfChange;
     }
-}
 
+    /**
+     * Add feedItem
+     *
+     * @param \Management\AdminBundle\Entity\Feed $feedItem
+     *
+     * @return FeedSource
+     */
+    public function addFeedItem(\Management\AdminBundle\Entity\Feed $feedItem)
+    {
+        $this->feedItems[] = $feedItem;
+
+        return $this;
+    }
+
+    /**
+     * Remove feedItem
+     *
+     * @param \Management\AdminBundle\Entity\Feed $feedItem
+     */
+    public function removeFeedItem(\Management\AdminBundle\Entity\Feed $feedItem)
+    {
+        $this->feedItems->removeElement($feedItem);
+    }
+
+    /**
+     * Get feedItems
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFeedItems()
+    {
+        return $this->feedItems;
+    }
+}

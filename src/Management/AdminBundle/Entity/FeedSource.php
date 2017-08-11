@@ -25,6 +25,11 @@ class FeedSource
     /**
      * @var string
      */
+    private $link;
+
+    /**
+     * @var string
+     */
     private $title;
 
     /**
@@ -46,6 +51,11 @@ class FeedSource
      * @var \DateTime
      */
     private $dateOfChange;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $feedItems;
 
     /**
      * FeedSource constructor
@@ -113,6 +123,30 @@ class FeedSource
     public function getPublicId()
     {
         return $this->publicId;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return FeedSource
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 
     /**
@@ -233,5 +267,39 @@ class FeedSource
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * Add feedItem
+     *
+     * @param \Management\AdminBundle\Entity\Feed $feedItem
+     *
+     * @return FeedSource
+     */
+    public function addFeedItem(\Management\AdminBundle\Entity\Feed $feedItem)
+    {
+        $this->feedItems[] = $feedItem;
+
+        return $this;
+    }
+
+    /**
+     * Remove feedItem
+     *
+     * @param \Management\AdminBundle\Entity\Feed $feedItem
+     */
+    public function removeFeedItem(\Management\AdminBundle\Entity\Feed $feedItem)
+    {
+        $this->feedItems->removeElement($feedItem);
+    }
+
+    /**
+     * Get feedItems
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFeedItems()
+    {
+        return $this->feedItems;
     }
 }

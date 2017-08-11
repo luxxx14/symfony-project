@@ -14,22 +14,36 @@
             </tr>
         </thead>
         <tbody>
-        {% for entry in handledFeed %}
+        {% for entry in feed %}
             <tr>
                 <td>{{ entry.title }}</td>
                 <td>{{ entry.text }}</td>
-                <td>{{ entry.author.name }}</td>
+                <td>{{ entry.author }}</td>
                 <td>{% if entry.lastModified %}{{ entry.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td><nav><ul class="navbar">
-                    <li>
-                        {% if entry.status == 'На модерации' %}
-                            <a class="btn" href="">Опубликовать</a>
-                        {% elseif entry.status == 'Опубликована' %}
-                            <a class="btn" href="">Снять с публикации</a>
-                        {% elseif entry.status == 'Отклонена' %}
-                            <a class="btn" href=""></a>
-                        {% endif %}
-                    </li>
+                    <p><span style="padding: 0 10px; font-weight: bolder;">{{ entry.status }}</span></p>
+                    <br>
+                    {% if entry.status == 'На модерации' %}
+                        <li>
+                            <a class="btn" href="{{ path('admin_feed_change',
+                            {id: entry.id, action: 'publish'}) }}">Опубликовать</a>
+                        </li>
+                        <br><br>
+                        <li>
+                            <a class="btn" href="{{ path('admin_feed_change',
+                            {id: entry.id, action: 'reject'}) }}">Отклонить</a>
+                        </li>
+                    {% elseif entry.status == 'Опубликована' %}
+                        <li>
+                            <a class="btn" href="{{ path('admin_feed_change',
+                            {id: entry.id, action: 'reject'}) }}">Отклонить</a>
+                        </li>
+                    {% elseif entry.status == 'Отклонена' %}
+                        <li>
+                            <a class="btn" href="{{ path('admin_feed_change',
+                            {id: entry.id, action: 'publish'}) }}">Опубликовать</a>
+                        </li>
+                    {% endif %}
                 </ul></nav></td>
             </tr>
         {% endfor %}

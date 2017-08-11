@@ -14,7 +14,7 @@ Management\AdminBundle\Entity\Feed:
                 strategy: AUTO
 
     fields:
-        url:            { type: string, length: 256, nullable: true }
+        link:           { type: string, length: 256, nullable: true }
         publicId:       { type: string, length: 256, nullable: true }
         title:          { type: string, length: 1024, nullable: true }
         text:           { type: text, nullable: true }
@@ -25,7 +25,13 @@ Management\AdminBundle\Entity\Feed:
         dateOfCreation: { type: datetime, nullable: false }
         dateOfChange:   { type: datetime, nullable: false }
 
-    manyToOne: { }
+    manyToOne:
+        feedSource:
+            targetEntity: Management\AdminBundle\Entity\FeedSource
+            inversedBy: feedItems
+            joinColumn:
+                name: feed_source_id
+                referencedColumnName: id
 
     oneToOne: { }
 
