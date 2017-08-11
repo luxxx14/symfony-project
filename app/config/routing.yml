@@ -1,3 +1,18 @@
+management_admin_feed_source:
+    resource: "@ManagementAdminBundle/Controller/FeedSourceController.php"
+    type:     annotation
+
+management_admin_feed:
+    resource: "@ManagementAdminBundle/Controller/FeedController.php"
+    type:     annotation
+
+management_admin_feeds:
+    resource: "@ManagementAdminBundle/Controller/FeedsController.php"
+    type:     annotation
+
+rssatom:
+    resource: "@DebrilRssAtomBundle/Resources/config/routing.yml"
+
 management_admin_company_information:
     resource: "@ManagementAdminBundle/Controller/CompanyInformationController.php"
     type:     annotation

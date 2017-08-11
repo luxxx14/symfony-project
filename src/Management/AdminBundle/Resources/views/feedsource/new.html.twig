@@ -1,0 +1,23 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Добавление источника новостей</h1>
+
+    <div class="margin-bottom-lg border-bottom">
+        <div class="row">
+            <div class="col-lg-5 col-md-8">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.url) }}
+                    {{ form_widget(form.url) }}
+                    {{ form_errors(form.url) }}
+                </div>
+
+                <input class="btn" type="submit" value="Добавить" />
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <a class="btn" href="{{ path('admin_feed_source_index') }}">К списку</a>
+{% endblock %}

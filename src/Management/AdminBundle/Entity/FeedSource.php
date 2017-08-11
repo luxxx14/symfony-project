@@ -3,9 +3,9 @@
 namespace Management\AdminBundle\Entity;
 
 /**
- * CompanyInformation
+ * FeedSource
  */
-class CompanyInformation
+class FeedSource
 {
     /**
      * @var integer
@@ -15,22 +15,27 @@ class CompanyInformation
     /**
      * @var string
      */
+    private $url;
+
+    /**
+     * @var string
+     */
+    private $publicId;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
     private $description;
 
     /**
-     * @var string
+     * @var \DateTime
      */
-    private $address;
-
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var string
-     */
-    private $phoneNumber;
+    private $lastModified;
 
     /**
      * @var \DateTime
@@ -43,7 +48,7 @@ class CompanyInformation
     private $dateOfChange;
 
     /**
-     * CompanyInformation constructor
+     * FeedSource constructor
      */
     public function __construct()
     {
@@ -63,11 +68,83 @@ class CompanyInformation
     }
 
     /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return FeedSource
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set publicId
+     *
+     * @param string $publicId
+     *
+     * @return FeedSource
+     */
+    public function setPublicId($publicId)
+    {
+        $this->publicId = $publicId;
+
+        return $this;
+    }
+
+    /**
+     * Get publicId
+     *
+     * @return string
+     */
+    public function getPublicId()
+    {
+        return $this->publicId;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return FeedSource
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
      *
-     * @return CompanyInformation
+     * @return FeedSource
      */
     public function setDescription($description)
     {
@@ -87,75 +164,27 @@ class CompanyInformation
     }
 
     /**
-     * Set address
+     * Set lastModified
      *
-     * @param string $address
+     * @param \DateTime $lastModified
      *
-     * @return CompanyInformation
+     * @return FeedSource
      */
-    public function setAddress($address)
+    public function setLastModified($lastModified)
     {
-        $this->address = $address;
+        $this->lastModified = $lastModified;
 
         return $this;
     }
 
     /**
-     * Get address
+     * Get lastModified
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getAddress()
+    public function getLastModified()
     {
-        return $this->address;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return CompanyInformation
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set phoneNumber
-     *
-     * @param string $phoneNumber
-     *
-     * @return CompanyInformation
-     */
-    public function setPhoneNumber($phoneNumber)
-    {
-        $this->phoneNumber = $phoneNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get phoneNumber
-     *
-     * @return string
-     */
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
+        return $this->lastModified;
     }
 
     /**
@@ -163,7 +192,7 @@ class CompanyInformation
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return CompanyInformation
+     * @return FeedSource
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -187,7 +216,7 @@ class CompanyInformation
      *
      * @param \DateTime $dateOfChange
      *
-     * @return CompanyInformation
+     * @return FeedSource
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -206,3 +235,4 @@ class CompanyInformation
         return $this->dateOfChange;
     }
 }
+

@@ -1,0 +1,36 @@
+Management\AdminBundle\Entity\Feed:
+
+    type: entity
+
+    table: feed
+
+    repositoryClass: Management\AdminBundle\Repository\FeedRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        url:            { type: string, length: 256, nullable: true }
+        publicId:       { type: string, length: 256, nullable: true }
+        title:          { type: string, length: 1024, nullable: true }
+        text:           { type: text, nullable: true }
+        author:         { type: string, length: 128, nullable: true }
+        lastModified:   { type: datetime, nullable: true }
+        status:         { type: string, nullable: true }
+
+        dateOfCreation: { type: datetime, nullable: false }
+        dateOfChange:   { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

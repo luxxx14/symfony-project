@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Feed</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ feed.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ feed.url }}</td>
+            </tr>
+            <tr>
+                <th>Publicid</th>
+                <td>{{ feed.publicId }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ feed.title }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ feed.text }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ feed.author }}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{% if feed.data %}{{ feed.data|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ feed.status }}</td>
+            </tr>
+            <tr>
+                <th>Dateofcreation</th>
+                <td>{% if feed.dateOfCreation %}{{ feed.dateOfCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dateofchange</th>
+                <td>{% if feed.dateOfChange %}{{ feed.dateOfChange|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_feed_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_feed_edit', { 'id': feed.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
