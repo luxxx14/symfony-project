@@ -1,0 +1,30 @@
+Management\AdminBundle\Entity\FeedStatus:
+
+    type: entity
+
+    table: feed_status
+
+    repositoryClass: Management\AdminBundle\Repository\FeedStatusRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:           { type: string, length: 32, nullable: true }
+
+        dateOfCreation: { type: datetime, nullable: false }
+        dateOfChange:   { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

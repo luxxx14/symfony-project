@@ -1,0 +1,27 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Редактирование статуса</h1>
+
+    <div class="margin-bottom-lg border-bottom">
+        <div class="row">
+            <div class="col-lg-5 col-md-8">
+                {{ form_start(edit_form) }}
+                <div class="form-group">
+                    {{ form_label(edit_form.name) }}
+                    {{ form_widget(edit_form.name) }}
+                    {{ form_errors(edit_form.name) }}
+                </div>
+
+                <input class="btn" type="submit" value="Сохранить" />
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+
+    {{ form_start(delete_form) }}
+        <input class="btn" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
+    <br><a class="btn" href="{{ path('admin_feed_status_index') }}">Отмена</a>
+{% endblock %}

@@ -235,3 +235,4 @@ class FeedSource
         return $this->dateOfChange;
     }
 }
+

@@ -20,7 +20,7 @@ class FeedsController extends Controller {
         $feedIo = $this->container->get('feedio');
 
         /** This date is used to fetch only the latest items */
-        $modifiedSince = new \DateTime('NOW');
+        $modifiedSince = new \DateTime('2011-01-01');
 
         /** The feed you want to read */
         $url = 'https://groups.google.com/forum/feed/curs-group/msgs/rss.xml';

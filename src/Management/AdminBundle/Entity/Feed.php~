@@ -58,7 +58,7 @@ class Feed
     private $dateOfChange;
 
     /**
-     * CompanyInformation constructor
+     * Feed constructor
      */
     public function __construct()
     {
@@ -292,5 +292,28 @@ class Feed
     {
         return $this->dateOfChange;
     }
-}
 
+    /**
+     * Set lastModified
+     *
+     * @param \DateTime $lastModified
+     *
+     * @return Feed
+     */
+    public function setLastModified($lastModified)
+    {
+        $this->lastModified = $lastModified;
+
+        return $this;
+    }
+
+    /**
+     * Get lastModified
+     *
+     * @return \DateTime
+     */
+    public function getLastModified()
+    {
+        return $this->lastModified;
+    }
+}

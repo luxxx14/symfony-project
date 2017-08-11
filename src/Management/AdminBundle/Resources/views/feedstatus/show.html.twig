@@ -1,0 +1,22 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'Статус новости ' ~ feedStatus.name }}</h1>
+
+    <table class="table table-staff">
+        <tbody>
+             <tr>
+                <th>Статус</th>
+                <td>{{ feedStatus.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('admin_feed_status_edit', { 'id': feedStatus.id }) }}">Редактировать</a>
+
+    {{ form_start(delete_form) }}
+        <input class="btn" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
+    <a class="btn" href="{{ path('admin_feed_status_index') }}">К списку</a>
+{% endblock %}

@@ -157,4 +157,43 @@ class FeedSourceController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Show all feed entities of source
+     *
+     * @Route("/{id}/show_feed", name="admin_feed_source_show_feed")
+     * @Method("GET")
+     */
+    public function showFeedsAction(FeedSource $feedSource)
+    {
+        $feedIo = $this->container->get('feedio');
+
+        /** Now fetch its (fresh) content */
+        $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('2015-01-01'))->getFeed();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $handledFeed = [];
+        foreach ($feed as $item) {
+            $publishedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['publicId' => $item->getPublicId()]);
+            $status = $publishedItem ? $publishedItem->getStatus() :
+                $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'На модерации']);
+            $handledFeed[] = [
+                'id' => $publishedItem ? $publishedItem->getId() : NULL,
+                'url' => $item->getLink(),
+                'publicId' => $item->getPublicId(),
+                'title' => $item->getTitle(),
+                'text' => $item->getDescription(),
+                'author' => $item->getAuthor(),
+                'lastModified' => $item->getLastModified(),
+                'status' => $status
+            ];
+        }
+
+//        $publishedFeed = $em->getRepository('ManagementAdminBundle:Feed');
+
+        return $this->render('@ManagementAdmin/feedsource/show_feed.html.twig', array(
+            'handledFeed' => $handledFeed,
+        ));
+    }
 }

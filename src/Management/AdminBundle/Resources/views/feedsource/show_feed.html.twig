@@ -1,0 +1,38 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Модерация новостей</h1>
+
+    <table class="table table-striped table-staff">
+        <thead>
+            <tr>
+                <th>Заголовок</th>
+                <th>Текст</th>
+                <th>Автор</th>
+                <th>Последнее обновление</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entry in handledFeed %}
+            <tr>
+                <td>{{ entry.title }}</td>
+                <td>{{ entry.text }}</td>
+                <td>{{ entry.author.name }}</td>
+                <td>{% if entry.lastModified %}{{ entry.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td><nav><ul class="navbar">
+                    <li>
+                        {% if entry.status == 'На модерации' %}
+                            <a class="btn" href="">Опубликовать</a>
+                        {% elseif entry.status == 'Опубликована' %}
+                            <a class="btn" href="">Снять с публикации</a>
+                        {% elseif entry.status == 'Отклонена' %}
+                            <a class="btn" href=""></a>
+                        {% endif %}
+                    </li>
+                </ul></nav></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
