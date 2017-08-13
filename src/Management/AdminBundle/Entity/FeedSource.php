@@ -43,6 +43,11 @@ class FeedSource
     private $lastModified;
 
     /**
+     * @var boolean
+     */
+    private $selected;
+
+    /**
      * @var \DateTime
      */
     private $dateOfCreation;
@@ -62,6 +67,7 @@ class FeedSource
      */
     public function __construct()
     {
+        $this->selected = FALSE;
         $currentDate = new \DateTime('NOW');
         $this->dateOfCreation = $currentDate;
         $this->dateOfChange = $currentDate;
@@ -219,6 +225,30 @@ class FeedSource
     public function getLastModified()
     {
         return $this->lastModified;
+    }
+
+    /**
+     * Set selected
+     *
+     * @param boolean $selected
+     *
+     * @return FeedSource
+     */
+    public function setSelected($selected)
+    {
+        $this->selected = $selected;
+
+        return $this;
+    }
+
+    /**
+     * Get selected
+     *
+     * @return boolean
+     */
+    public function getSelected()
+    {
+        return $this->selected;
     }
 
     /**

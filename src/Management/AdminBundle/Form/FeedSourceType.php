@@ -3,8 +3,7 @@
 namespace Management\AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -67,6 +66,20 @@ class FeedSourceType extends AbstractType
 //                ],
 //                'required' => false
 //            ))
+            ->add('selected', ChoiceType::class, array(
+                'label' => 'Выбран как основной источник?',
+                'label_attr' => [
+                    'class' => 'label'
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'choices'  => array(
+                    'Нет' => FALSE,
+                    'Да' => TRUE
+                ),
+                'required' => true
+            ))
         ;
     }
     

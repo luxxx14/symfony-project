@@ -60,6 +60,15 @@ class FeedSourceController extends Controller
             $feedSource->setDescription($feed->getDescription());
             $feedSource->setLastModified($feed->getLastModified());
 
+            if ($feedSource->getSelected()) {
+                $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+                    ->findOneBy(['selected' => TRUE]);
+                if ($selectedFeedSource) {
+                    $selectedFeedSource->setSelected(FALSE);
+                    $em->persist($selectedFeedSource);
+                }
+            }
+
             $em->persist($feedSource);
             $em->flush();
 
@@ -114,6 +123,15 @@ class FeedSourceController extends Controller
             $feedSource->setDescription($feed->getDescription());
             $feedSource->setLastModified($feed->getLastModified());
 
+            if ($feedSource->getSelected()) {
+                $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+                    ->findOneBy(['selected' => TRUE]);
+                if ($selectedFeedSource) {
+                    $selectedFeedSource->setSelected(FALSE);
+                    $em->persist($selectedFeedSource);
+                }
+            }
+
             $em->persist($feedSource);
             $em->flush();
 
@@ -161,6 +179,31 @@ class FeedSourceController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Redirect to some route related with selected feed source
+     *
+     * @Route("/redirect_for_selected_feed_source/{action}", name="admin_redirect_for_selected_feed_source",
+     *     requirements={"action" = "(show|show_feed)"})
+     * @Method("GET")
+     *
+     * @param string $action
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function redirectForSelectedFeedSourceAction(string $action) {
+        $em = $this->getDoctrine()->getManager();
+
+        $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+            ->findOneBy(['selected' => TRUE]);
+        $selectedFeedSourceId = $selectedFeedSource->getId();
+
+        if ($action == 'show') {
+            return $this->redirectToRoute('admin_feed_source_show', ['id' => $selectedFeedSourceId]);
+        }
+        else {
+            return $this->redirectToRoute('admin_feed_source_show_feed', ['id' => $selectedFeedSourceId]);
+        }
     }
 
     /**

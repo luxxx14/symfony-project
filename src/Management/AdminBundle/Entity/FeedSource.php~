@@ -25,6 +25,11 @@ class FeedSource
     /**
      * @var string
      */
+    private $link;
+
+    /**
+     * @var string
+     */
     private $title;
 
     /**
@@ -36,6 +41,11 @@ class FeedSource
      * @var \DateTime
      */
     private $lastModified;
+
+    /**
+     * @var boolean
+     */
+    private $selected;
 
     /**
      * @var \DateTime
@@ -57,6 +67,7 @@ class FeedSource
      */
     public function __construct()
     {
+        $this->selected = FALSE;
         $currentDate = new \DateTime('NOW');
         $this->dateOfCreation = $currentDate;
         $this->dateOfChange = $currentDate;
@@ -118,6 +129,30 @@ class FeedSource
     public function getPublicId()
     {
         return $this->publicId;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return FeedSource
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 
     /**
@@ -190,6 +225,30 @@ class FeedSource
     public function getLastModified()
     {
         return $this->lastModified;
+    }
+
+    /**
+     * Set selected
+     *
+     * @param boolean $selected
+     *
+     * @return FeedSource
+     */
+    public function setSelected($selected)
+    {
+        $this->selected = $selected;
+
+        return $this;
+    }
+
+    /**
+     * Get selected
+     *
+     * @return boolean
+     */
+    public function getSelected()
+    {
+        return $this->selected;
     }
 
     /**

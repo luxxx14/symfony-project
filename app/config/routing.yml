@@ -1,3 +1,11 @@
+management_admin_user:
+    resource: "@ManagementAdminBundle/Controller/UserController.php"
+    type:     annotation
+
+management_admin_generation:
+    resource: "@ManagementAdminBundle/Controller/GenerationController.php"
+    type:     annotation
+
 management_admin_feed_status:
     resource: "@ManagementAdminBundle/Controller/FeedStatusController.php"
     type:     annotation

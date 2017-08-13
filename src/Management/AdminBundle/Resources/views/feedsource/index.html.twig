@@ -12,6 +12,7 @@
                 <th>Заголовок</th>
                 <th>Описание</th>
                 <th>Последнее обновление</th>
+                <th>Основной?</th>
                 <th>Действия</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ feedSource.title }}</td>
                 <td>{{ feedSource.description }}</td>
                 <td>{% if feedSource.lastModified %}{{ feedSource.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ feedSource.selected ? '&#10004;'|raw : '&#10008;'|raw }}</td>
                 <td><nav><ul class="navbar">
                     <li>
                         <a href="{{ path('admin_feed_source_show', { 'id': feedSource.id }) }}">

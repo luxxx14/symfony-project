@@ -72,8 +72,11 @@ class Feed
      * @param $lastModified
      * @param $link
      * @param $status
+     * @param FeedSource $feedSource
      */
-    public function __construct($publicId, $title, $description, $author, $lastModified, $link, $status)
+    public function __construct(
+        $publicId = null, $title = null, $description = null, $author = null,
+        $lastModified = null, $link = null, FeedSource $feedSource = null, $status = null)
     {
         $this->publicId         = $publicId;
         $this->title            = $title;
@@ -81,6 +84,7 @@ class Feed
         $this->author           = $author;
         $this->lastModified     = $lastModified;
         $this->link             = $link;
+        $this->feedSource       = $feedSource;
         $this->status           = $status;
 
         $currentDate = new \DateTime('NOW');

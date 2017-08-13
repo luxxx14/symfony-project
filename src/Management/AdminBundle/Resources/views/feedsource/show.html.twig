@@ -33,6 +33,10 @@
                 <th>Последнее обновление</th>
                 <td>{% if feedSource.lastModified %}{{ feedSource.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
+            <tr>
+                <th>Основной источник?</th>
+                <td>{{ feedSource.selected ? '&#10004;'|raw : '&#10008;'|raw }}</td>
+            </tr>
         </tbody>
     </table>
 
