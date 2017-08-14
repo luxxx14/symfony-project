@@ -26,6 +26,7 @@ Management\AdminBundle\Entity\User:
         password:                   { type: string, length: 255, nullable: true }
         lastLogin:                  { type: datetime, nullable: true }
         roles:                      { type: array, nullable: true }
+        subscribedToFeed:           { type: boolean, nullable: true }
 
         dateOfCreation:             { type: datetime, nullable: false }
         dateOfChange:               { type: datetime, nullable: false }

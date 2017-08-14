@@ -87,6 +87,11 @@ class User implements UserInterface, GroupableInterface {
     private $roles;
 
     /**
+     * @var boolean
+     */
+    private $subscribedToFeed;
+
+    /**
      * @var \DateTime
      */
     private $dateOfCreation;
@@ -101,7 +106,12 @@ class User implements UserInterface, GroupableInterface {
      */
     public function __construct()
     {
-        $this->enabled = false;
+        $this->enabled = FALSE;
+        $this->subscribedToFeed = FALSE;
+
+        $currentDate = new \DateTime('NOW');
+        $this->dateOfCreation = $currentDate;
+        $this->dateOfChange = $currentDate;
     }
 
     /**
@@ -328,6 +338,30 @@ class User implements UserInterface, GroupableInterface {
     public function getLastLogin()
     {
         return $this->lastLogin;
+    }
+
+    /**
+     * Set subscribedToFeed
+     *
+     * @param boolean $subscribedToFeed
+     *
+     * @return User
+     */
+    public function setSubscribedToFeed($subscribedToFeed)
+    {
+        $this->subscribedToFeed = $subscribedToFeed;
+
+        return $this;
+    }
+
+    /**
+     * Get subscribedToFeed
+     *
+     * @return boolean
+     */
+    public function getSubscribedToFeed()
+    {
+        return $this->subscribedToFeed;
     }
 
     /**

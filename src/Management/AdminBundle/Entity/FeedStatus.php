@@ -3,9 +3,9 @@
 namespace Management\AdminBundle\Entity;
 
 /**
- * CommonInformation
+ * FeedStatus
  */
-class CommonInformation
+class FeedStatus
 {
     /**
      * @var integer
@@ -15,12 +15,7 @@ class CommonInformation
     /**
      * @var string
      */
-    private $title;
-
-    /**
-     * @var string
-     */
-    private $description;
+    private $name;
 
     /**
      * @var \DateTime
@@ -33,7 +28,7 @@ class CommonInformation
     private $dateOfChange;
 
     /**
-     * CommonInformation constructor
+     * FeedStatus constructor
      */
     public function __construct()
     {
@@ -53,51 +48,27 @@ class CommonInformation
     }
 
     /**
-     * Set title
+     * Set name
      *
-     * @param string $title
+     * @param string $name
      *
-     * @return CommonInformation
+     * @return FeedStatus
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get name
      *
      * @return string
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return CommonInformation
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
+        return $this->name;
     }
 
     /**
@@ -105,7 +76,7 @@ class CommonInformation
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return CommonInformation
+     * @return FeedStatus
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -129,7 +100,7 @@ class CommonInformation
      *
      * @param \DateTime $dateOfChange
      *
-     * @return CommonInformation
+     * @return FeedStatus
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -146,5 +117,13 @@ class CommonInformation
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

@@ -18,7 +18,9 @@ class AppKernel extends Kernel
             new Frontend\ComponentsBundle\FrontendComponentsBundle(),
             new Management\AdminBundle\ManagementAdminBundle(),
             /** Uploading of the photos and other features */
-            new Vich\UploaderBundle\VichUploaderBundle()
+            new Vich\UploaderBundle\VichUploaderBundle(),
+
+            new Debril\RssAtomBundle\DebrilRssAtomBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

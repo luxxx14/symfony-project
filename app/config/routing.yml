@@ -1,3 +1,30 @@
+management_admin_user:
+    resource: "@ManagementAdminBundle/Controller/UserController.php"
+    type:     annotation
+
+management_admin_generation:
+    resource: "@ManagementAdminBundle/Controller/GenerationController.php"
+    type:     annotation
+
+management_admin_feed_status:
+    resource: "@ManagementAdminBundle/Controller/FeedStatusController.php"
+    type:     annotation
+
+management_admin_feed_source:
+    resource: "@ManagementAdminBundle/Controller/FeedSourceController.php"
+    type:     annotation
+
+management_admin_feed:
+    resource: "@ManagementAdminBundle/Controller/FeedController.php"
+    type:     annotation
+
+management_admin_feeds:
+    resource: "@ManagementAdminBundle/Controller/FeedsController.php"
+    type:     annotation
+
+rssatom:
+    resource: "@DebrilRssAtomBundle/Resources/config/routing.yml"
+
 management_admin_company_information:
     resource: "@ManagementAdminBundle/Controller/CompanyInformationController.php"
     type:     annotation

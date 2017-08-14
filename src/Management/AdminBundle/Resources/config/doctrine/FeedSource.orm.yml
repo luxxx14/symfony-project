@@ -1,0 +1,39 @@
+Management\AdminBundle\Entity\FeedSource:
+
+    type: entity
+
+    table: feed_source
+
+    repositoryClass: Management\AdminBundle\Repository\FeedSourceRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        url:            { type: string, length: 256, nullable: true }
+        publicId:       { type: string, length: 256, nullable: true }
+        link:           { type: string, length: 256, nullable: true }
+        title:          { type: string, length: 1024, nullable: true }
+        description:    { type: text, nullable: true }
+        lastModified:   { type: datetime, nullable: true }
+        selected:       { type: boolean, nullable: true }
+
+        dateOfCreation: { type: datetime, nullable: false }
+        dateOfChange:   { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany:
+        feedItems:
+            targetEntity: Management\AdminBundle\Entity\Feed
+            mappedBy: feedSource
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

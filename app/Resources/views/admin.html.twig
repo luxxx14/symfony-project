@@ -39,8 +39,8 @@
 
             <ul class="sidebar-menu">
                 <li class="header"><a>Новости</a></li>
-                <li><a href="">Настройка источника RSS</a></li>
-                <li><a href="">Модерация новостей</a></li>
+                <li><a href="{{ path('admin_redirect_for_selected_feed_source', {action: 'show'}) }}">Настройка источника RSS</a></li>
+                <li><a href="{{ path('admin_redirect_for_selected_feed_source', {action: 'show_feed'}) }}">Модерация новостей</a></li>
             </ul>
 
             <ul class="sidebar-menu">

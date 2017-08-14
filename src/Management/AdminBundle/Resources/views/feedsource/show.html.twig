@@ -1,0 +1,51 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Источник новостей</h1>
+
+    <table class="table table-staff">
+        <tbody>
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ feedSource.id }}</td>#}
+            {#</tr>#}
+            <tr>
+                <th>URL</th>
+                <td>{{ feedSource.url }}</td>
+            </tr>
+            <tr>
+                <th>Public ID</th>
+                <td>{{ feedSource.publicId }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ feedSource.link }}</td>
+            </tr>
+            <tr>
+                <th>Заголовок</th>
+                <td>{{ feedSource.title }}</td>
+            </tr>
+            <tr>
+                <th>Описание</th>
+                <td>{{ feedSource.description }}</td>
+            </tr>
+            <tr>
+                <th>Последнее обновление</th>
+                <td>{% if feedSource.lastModified %}{{ feedSource.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Основной источник?</th>
+                <td>{{ feedSource.selected ? '&#10004;'|raw : '&#10008;'|raw }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('admin_feed_source_edit', { 'id': feedSource.id }) }}">Редактировать</a>
+
+    {#{{ form_start(delete_form) }}#}
+        {#<input class="btn" type="submit" value="Удалить">#}
+    {#{{ form_end(delete_form) }}#}
+
+    <br><br>
+    <a class="btn" href="{{ path('admin_feed_source_index') }}">К списку</a>
+{% endblock %}
