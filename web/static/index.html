@@ -7,33 +7,34 @@
 		<link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap-grid.min.css">
+		<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
   </head>
-  <body>
+  <body>		
    	<header>
 			<a href="/" class="logo" >
 				<img src="img/course-orchestra-logo.png" class="course-orchestra-logo" alt="logo"/>
 			</a>
-			<nav>
+			<nav class="nav">
 				<ul>
-					<li><a href="">Информация</a></li>
-					<li><a href="">Преимущества</a></li>
-					<li><a href="">Кто использует</a></li>
-					<li><a href="">Загрузить</a></li>
-					<li><a href="">Новости</a></li>
+					<li><a href="#info">Информация</a></li>
+					<li><a href="#advantages">Преимущества</a></li>
+					<li><a href="#users">Кто использует</a></li>
+					<li><a href="#download">Загрузить</a></li>
+					<li><a href="#news">Новости</a></li>
 					<li><a href="">Документация</a></li>
 				</ul>
 			</nav>
 			<div id="select-locale">Eng</div>
 		</header>
-		<section class="main">
+		<section id="main" class="main">
 			<h1>Открытая платформа <br/> для разработки бизнес-приложений с веб-интерфейсом</h1>
 			<p>Разработав бизнес-приложение, запускайте его на той СУБД, которую предпочитает ваш заказчик.<br/>
 				Визуально проектируйте таблицы базы данных на языке CelestaSQL.<br/>
 				Быстро создавайте экранные формы, связанные с данными таблицы.<br/>
 				Выводите отчёты в форматах Excel, PDF и напрямую на принтер</p>
-			<a href=""><img src="img/ic-scroll-down.png" alt="scroll down"/></a>
+			<a href="#info"><img src="img/ic-scroll-down.png" alt="scroll down"/></a>
 		</section>
-		<section class="info">
+		<section id="info" class="info">
 			<h1>Компоненты платформы</h1>
 			<div class="row">
 				<div class="col-md-4">
@@ -68,7 +69,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="advantages">
+		<section id="advantages" class="advantages">
 			<h1>Основные преимущества</h1>
 			<div class="row">
 				<div class="col-md-3">
@@ -107,7 +108,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="users">
+		<section id="users" class="users">
 			<h1>Кто использует</h1>
 			<div class="row">
 				<div class="col-md-4">
@@ -132,7 +133,7 @@
 				</div>				
 			</div>
 		</section>
-		<section class="download">
+		<section id="download" class="download">
 			<h1>Загрузить</h1>
 			<h2>Выберите подходящий вам способ загрузки и версию</h2>
 			<nav>
@@ -145,18 +146,20 @@
 			<div class="stable-version">
 				<div class="row">
 					<div class="col-md-8">
-						<div class="download-link">
-							<a href="">Дистрибутив самой последней стабильной версии платформы</a>
-							<span>(5.1-build518 2017-07-07)</span>
-							<p>Рекомендовано для установки на рабочих проектах</p>
+						<div class="border-div">
+							<div class="download-link">
+								<a href="">Дистрибутив самой последней стабильной версии платформы</a>
+								<span>(5.1-build518 2017-07-07)</span>
+								<p>Рекомендовано для установки на рабочих проектах</p>
+							</div>
+							<h3>История версий</h3>
+							<ul>
+								<li><a href="">Последняя сборка (5.1-build518), <span>17 дней назад</span></a></li>
+								<li><a href="">Последняя стабильная сборка (5.1-build518), <span>17 дней назад</span></a></li>
+								<li><a href="">Последняя успешная сборка (5.1-build518), <span>17 дней назад</span></a></li>
+							</ul>
+							<a class="button" href="">Полная история версий</a>
 						</div>
-						<h3>История версий</h3>
-						<ul>
-							<li><a href="">Последняя сборка (5.1-build518), <span>17 дней назад</span></a></li>
-							<li><a href="">Последняя стабильная сборка (5.1-build518), <span>17 дней назад</span></a></li>
-							<li><a href="">Последняя успешная сборка (5.1-build518), <span>17 дней назад</span></a></li>
-						</ul>
-						<a class="button" href="">Полная история версий</a>
 					</div>
 					<div class="col-md-4">
 						<div class="code-example">
@@ -174,10 +177,11 @@
 							</div>
 						</div>
 					</div>
+						
 				</div>
 			</div>
 		</section>
-		<section class="news">			
+		<section id="news" class="news">			
 			<div class="row">
 				<div class="col-md-7">
 					<h1>Последние новости</h1>
@@ -201,7 +205,7 @@
 						<h3>Хотите быть в курсе последних событий? </h3>
 						<p>Подпишитесь на нашу рассылку и получайте уведомления на свой почтовый адрес</p>
 						<input placeholder="Ваш email"/>
-						<p>Нажимая кнопку вы принимаете условия <span>пользовательского соглашения</span></p>
+						<p>Нажимая кнопку вы принимаете условия <a href="">пользовательского соглашения</a></p>
 					</form>
 				</div>
 			</div>
@@ -209,7 +213,25 @@
 		<footer>
 			<p>Компоненты платформы КУРС являются свободным программным обеспечением<br/>с открытым исходным кодом, распространяемым по лицензии GPL v. 3.</p>
 			<img src="img/gpl-license-logo.png" />
-			<p><span>КУРС</span> © 1998-2017</p>
+			<p><span id="address">КУРС</span> © 1998-2017</p>
 		</footer>
+		<a href="#" class="back-to-top"></a>
+		<div class="modal">			
+			<div class="modal-content">
+				<img class="kurs-logo" src="img/kurs-logo.png" alt="kurs logo" />
+				<span class="close"><img src="img/ic-close.png" alt="close btn" /></span>
+				<p>Группа компаний «КУРС» с 1998 года активно работает на российском рынке информационных и консультационных услуг, как в корпоративном, так и в государственном секторе.</p>
+				<div class="address">111020, Москва, Боровая ул., дом 7, корп. 2</div>
+				<div class="mail">info@curs.ru</div>
+				<div class="phone">+7 (495) 640-27-72</div>
+				<h3>Как нас найти</h3>
+				<div id="map"></div>
+			</div>
+		</div>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/jquery.scrollTo.min.js"></script>
+		<script src="js/jquery.localScroll.min.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/yandexMap.js"></script>
   </body>
 </html>
