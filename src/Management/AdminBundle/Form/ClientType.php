@@ -16,18 +16,19 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('grayScaleImageFile', VichImageType::class, array(
-                'label' => 'Логотип (чёрно-белый)',
-                'label_attr' => [
-                    'class' => 'label'
-                ],
-//                'attr' => [
-//                    'class' => 'form-control'
+//            ->add('grayScaleImageFile', VichImageType::class, array(
+//                'label' => 'Логотип (чёрно-белый)',
+//                'label_attr' => [
+//                    'class' => 'label'
 //                ],
-                'required' => false
-            ))
+////                'attr' => [
+////                    'class' => 'form-control'
+////                ],
+//                'required' => false
+//            ))
             ->add('colorImageFile', VichImageType::class, array(
-                'label' => 'Логотип (цветной)',
+//                'label' => 'Логотип (цветной)',
+                'label' => 'Логотип',
                 'label_attr' => [
                     'class' => 'label'
                 ],

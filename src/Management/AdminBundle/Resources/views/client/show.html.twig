@@ -9,14 +9,15 @@
                 <th>Id</th>
                 <td>{{ client.id }}</td>
             </tr>
-            <tr>
-                <th>Логотип (чёрно-белый)</th>
-                <td>
-                    <img src="{{ asset('uploads/images/client_gray_scale/' ~ client.grayScaleImageName) }}">
-                </td>
-            </tr>
+            {#<tr>#}
+                {#<th>Логотип (чёрно-белый)</th>#}
+                {#<td>#}
+                    {#<img src="{{ asset('uploads/images/client_gray_scale/' ~ client.grayScaleImageName) }}">#}
+                {#</td>#}
+            {#</tr>#}
             <tr>
                 <th>Логотип (цветной)</th>
+                <th>Логотип</th>
                 <td>
                     <img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}">
                 </td>

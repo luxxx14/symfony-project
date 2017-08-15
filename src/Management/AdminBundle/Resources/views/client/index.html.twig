@@ -7,8 +7,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Логотип (чёрно-белый)</th>
-                <th>Логотип (цветной)</th>
+                {#<th>Логотип (чёрно-белый)</th>#}
+                {#<th>Логотип (цветной)</th>#}
+                <th>Логотип</th>
                 <th>Заголовок</th>
                 <th>Действия</th>
             </tr>
@@ -17,7 +18,7 @@
         {% for client in clients %}
             <tr>
                 <td><a href="{{ path('admin_client_show', { 'id': client.id }) }}">{{ client.id }}</a></td>
-                <td><img src="{{ asset('uploads/images/client_gray_scale/' ~ client.grayScaleImageName) }}"></td>
+                {#<td><img src="{{ asset('uploads/images/client_gray_scale/' ~ client.grayScaleImageName) }}"></td>#}
                 <td><img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}"></td>
                 <td>{{ client.title }}</td>
                 <td><nav><ul class="navbar">

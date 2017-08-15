@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Orchestra</title>
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="{{ asset('bundles/frontendcomponents/styles/normalize.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/frontendcomponents/styles/main.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap-grid.min.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
 <header>
     <a href="/" class="logo" >
-        <img src="img/course-orchestra-logo.png" class="course-orchestra-logo" alt="logo"/>
+        <img src="{{ asset('bundles/frontendcomponents/img/course-orchestra-logo.png') }}" class="course-orchestra-logo" alt="logo"/>
     </a>
     <nav class="nav">
         <ul>
@@ -27,110 +27,58 @@
     <div id="select-locale">Eng</div>
 </header>
 <section id="main" class="main">
-    <h1>Открытая платформа <br/> для разработки бизнес-приложений с веб-интерфейсом</h1>
-    <p>Разработав бизнес-приложение, запускайте его на той СУБД, которую предпочитает ваш заказчик.<br/>
-        Визуально проектируйте таблицы базы данных на языке CelestaSQL.<br/>
-        Быстро создавайте экранные формы, связанные с данными таблицы.<br/>
-        Выводите отчёты в форматах Excel, PDF и напрямую на принтер</p>
-    <a href="#info"><img src="img/ic-scroll-down.png" alt="scroll down"/></a>
+    <h1>{{ commonInformation.title|raw}}</h1>
+    <p>{{ commonInformation.description|raw }}</p>
+    <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.png') }}" alt="scroll down"/></a>
 </section>
 <section id="info" class="info">
     <h1>Компоненты платформы</h1>
     <div class="row">
-        <div class="col-md-4">
-            <h2>Showcase</h2>
-            <p>Система разработки кросс-платформенных веб-решений в условиях постоянно меняющихся требований бизнеса</p>
+    {% set serialNumber = 0 %}
+    {% for component in components %}
+        {% set serialNumber = serialNumber + 1 %}
+        <div class="col-md-{{ serialNumber <= 3 ? 4 : 3 }}">
+            <h2>{{ component.name }}</h2>
+            <p>{{ component.description }}</p>
         </div>
-        <div class="col-md-4">
-            <h2>Celesta</h2>
-            <p>Платформа для быстрой разработки бизнес-приложений на языке Python, работающих на реляционных базах данных</p>
-        </div>
-        <div class="col-md-4">
-            <h2>Lyra</h2>
-            <p>Средство быстрой разработки форм пользовательского интерфейса, привязанных к курсорам Celesta</p>
-        </div>
+    {% if serialNumber == 3 %}
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <h2>Flute</h2>
-            <p>Система управления фоновым запуском в нескольких параллельно выполняемых процессах Celesta-скриптов</p>
-        </div>
-        <div class="col-md-3">
-            <h2>Mellophone</h2>
-            <p>Компонент платформы КУРС, специализированно решающий задачи аутентификации</p>
-        </div>
-        <div class="col-md-3">
-            <h2>Theremin</h2>
-            <p>Система вычисления расчётных показателей в аналитическом хранилище многомерных данных</p>
-        </div>
-        <div class="col-md-3">
-            <h2>Xylophone</h2>
-            <p>Система формирования сложноструктурированных отчётов </p>
-        </div>
+    {% endif %}
+    {% endfor %}
     </div>
 </section>
 <section id="advantages" class="advantages">
     <h1>Основные преимущества</h1>
     <div class="row">
+        {% set serialNumber = 0 %}
+        {% for advantage in advantages %}
+        {% set serialNumber = serialNumber + 1 %}
         <div class="col-md-3">
-            <img src="img/ic-01.png" alt="icon" />
-            <p>Прозрачна для разработчиков</p>
+            <img src="{{ asset('uploads/images/advantage/' ~ advantage.imageName) }}" alt="icon" />
+            <p>{{ advantage.description }}</p>
         </div>
-        <div class="col-md-3">
-            <img src="img/ic-02.png" alt="icon" />
-            <p>Поддерживает MS SQL Server, Oracle, Postgre SQL и H2</p>
-        </div>
-        <div class="col-md-3">
-            <img src="img/ic-03.png" alt="icon" />
-            <p>Эргономичный интерфейс конечного решения</p>
-        </div>
-        <div class="col-md-3">
-            <img src="img/ic-04.png" alt="icon" />
-            <p>Поддержка настройки рабочих процессов</p>
-        </div>
+    {% if serialNumber == 4 %}
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <img src="img/ic-05.png" alt="icon" />
-            <p>Обеспечивается возможность полного контроля над форматом выходного файла</p>
-        </div>
-        <div class="col-md-3">
-            <img src="img/ic-06.png" alt="icon" />
-            <p>Эффективный механизм аутентификации и распределения прав доступа</p>
-        </div>
-        <div class="col-md-3">
-            <img src="img/ic-07.png" alt="icon" />
-            <p>Поддержка сервис-ориентированной архитектуры</p>
-        </div>
-        <div class="col-md-3">
-            <img src="img/ic-08.png" alt="icon" />
-            <p>Масштабируемость</p>
-        </div>
+    {% endif %}
+    {% endfor %}
     </div>
 </section>
 <section id="users" class="users">
     <h1>Кто использует</h1>
     <div class="row">
+        {% set serialNumber = 0 %}
+        {% for client in clients %}
+        {% set serialNumber = serialNumber + 1 %}
         <div class="col-md-4">
-            <img src="img/kelvion-logo.png" alt="icon" />
+            <img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}" alt="icon" />
         </div>
-        <div class="col-md-4">
-            <img src="img/otkritiye-logo.png" alt="icon" />
-        </div>
-        <div class="col-md-4">
-            <img src="img/vtb-logo.png" alt="icon" />
-        </div>
+        {% if serialNumber == 3 %}
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <img src="img/rnimu-logo.png" alt="icon" />
-        </div>
-        <div class="col-md-4">
-            <img src="img/rostransnadzor-logo.png" alt="icon" />
-        </div>
-        <div class="col-md-4">
-            <img src="img/minzdrav-logo.png" alt="icon" />
-        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </section>
 <section id="download" class="download">
@@ -138,12 +86,12 @@
     <h2>Выберите подходящий вам способ загрузки и версию</h2>
     <nav>
         <ul>
-            <li><a href="">Стабильная версия</a></li>
-            <li><a href="">Новейшая версия</a></li>
-            <li><a href="">Исходный код</a></li>
+            <li><a href="stable" class="active">Стабильная версия</a></li>
+            <li><a href="newest-version">Новейшая версия</a></li>
+            <li><a href="source-code">Исходный код</a></li>
         </ul>
     </nav>
-    <div class="stable-version">
+    <div id="stable" class="stable-version">
         <div class="row">
             <div class="col-md-8">
                 <div class="border-div">
@@ -165,7 +113,7 @@
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div class="frame">
-                        <code>
+                        <code id="code">
                             <br/>
                             &nbsp;&nbsp;&lt;dependency><br/>
                             &nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>ru.curs&lt;/groupId><br/>
@@ -173,12 +121,40 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&lt;version>6.0&lt;/version><br/>
                             &nbsp;&nbsp;&lt;/dependency>
                         </code>
-                        <div>copy</div>
+                        <button class="copy" onclick="copyToClipboard()">copy</button>
                     </div>
                 </div>
             </div>
 
         </div>
+    </div>
+    <div id="source-code" class="source-code">
+        <p>Есть много источников, откуда вы можете скачать наши исходные коды. <br/>Свяжитесь с нами, если хотите участвовать в разработке: мы дадим вам доступ на запись</p>
+        <ul>
+            <li>
+                <h3>С сайта компании КУРС<span>Master SVN | user: reader | pwd: reader</span></h3>
+                <a href="">Сelesta</a>
+                <a href="">flute (включая XML2Spreadsheet)</a>
+                <a href="">grains (системная библиотека Celesta)</a>
+                <a href="">mellophone</a>
+                <a href="">showcase</a>
+            </li>
+            <li>
+                <h3>Lancelot-it.ru<span>Primary read-only copy | user: reader | pwd: platform</span></h3>
+                <a href="">Сelesta</a>
+                <a href="">flute (включая XML2Spreadsheet)</a>
+                <a href="">grains (системная библиотека Celesta)</a>
+                <a href="">mellophone</a>
+                <a href="">showcase</a>
+            </li>
+            <li>
+                <h3>code.sf.net<span>Secondary read-only copy (sourceforge.net, anonymous access)</span></h3>
+                <a href="">Сelesta</a>
+                <a href="">flute (включая XML2Spreadsheet)</a>
+                <a href="">grains (системная библиотека Celesta)</a>
+                <a href="">mellophone</a>
+            </li>
+        </ul>
     </div>
 </section>
 <section id="news" class="news">
@@ -212,14 +188,14 @@
 </section>
 <footer>
     <p>Компоненты платформы КУРС являются свободным программным обеспечением<br/>с открытым исходным кодом, распространяемым по лицензии GPL v. 3.</p>
-    <img src="img/gpl-license-logo.png" />
+    <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.png') }}" alt="licence"/>
     <p><span id="address">КУРС</span> © 1998-2017</p>
 </footer>
 <a href="#" class="back-to-top"></a>
 <div class="modal">
     <div class="modal-content">
-        <img class="kurs-logo" src="img/kurs-logo.png" alt="kurs logo" />
-        <span class="close"><img src="img/ic-close.png" alt="close btn" /></span>
+        <img class="kurs-logo" src="{{ asset('bundles/frontendcomponents/img/kurs-logo.png') }}" alt="kurs logo" />
+        <span class="close"><img src="{{ asset('bundles/frontendcomponents/img/ic-close.png') }}" alt="close btn" /></span>
         <p>Группа компаний «КУРС» с 1998 года активно работает на российском рынке информационных и консультационных услуг, как в корпоративном, так и в государственном секторе.</p>
         <div class="address">111020, Москва, Боровая ул., дом 7, корп. 2</div>
         <div class="mail">info@curs.ru</div>
@@ -228,10 +204,10 @@
         <div id="map"></div>
     </div>
 </div>
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/jquery.scrollTo.min.js"></script>
-<script src="js/jquery.localScroll.min.js"></script>
-<script src="js/index.js"></script>
-<script src="js/yandexMap.js"></script>
+<script href="{{ asset('bundles/frontendcomponents/js/jquery-3.2.1.min.js') }}"></script>
+<script href="{{ asset('bundles/frontendcomponents/js/jquery.scrollTo.min.js') }}"></script>
+<script href="{{ asset('bundles/frontendcomponents/js/jquery.localScroll.min.js') }}"></script>
+<script href="{{ asset('bundles/frontendcomponents/js/index.js') }}"></script>
+<script href="{{ asset('bundles/frontendcomponents/js/yandexMap.js') }}"></script>
 </body>
 </html>
