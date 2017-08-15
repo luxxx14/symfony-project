@@ -350,7 +350,20 @@ body {
 					a {						
 						border-bottom: 1px dashed #9558d1;						
 						padding: 0 16px 6px;
-						&:hover, :active {
+						font-family: Merriweather;
+						font-size: 20px;
+						line-height: 1.8;
+						letter-spacing: 0.3px;
+						text-align: center;
+						color: #592e83;
+						&:hover {
+							color: #333333;
+							border: none;
+							border-radius: 3px;
+  						background-color: #d8dbe2;
+							padding: 16px 16px;
+						}
+						&.active {
 							color: #333333;
 							border: none;
 							border-radius: 3px;
@@ -363,13 +376,13 @@ body {
 		}
 		.row {		
 			.col-md-8 {	
-				.x {
+				.border-div {
 					border-right: 1px solid #d8dbe2;
 					margin-right: 28px;
 				}							
 			}
 		}
-		.stable-version {
+		.stable-version {			
 			.download-link {
 				background: url(../img/ic-download.png) left top no-repeat;
 				padding-left: 70px;
@@ -419,7 +432,7 @@ body {
 						color: #333333;
 					}
 					
-					div {
+					button {
 						position: absolute;
 						bottom: 0;
 						right: 0;
@@ -433,6 +446,11 @@ body {
 						letter-spacing: 0.2px;
 						text-align: center;
 						color: #7f5ea0;
+						cursor: pointer;
+						&:active {							
+    					bottom: 1px;
+							outline-color:  #7f5ea0;
+						}						
 					}
 				}				
 			}
@@ -467,6 +485,60 @@ body {
 					
 				}
 			}			
+		}
+		.source-code {
+			display: none;
+			p {
+				font-size: 16px;
+				line-height: 1.5;
+				letter-spacing: 0.2px;
+				text-align: center;
+				color: #b5bbc8;
+				margin-bottom: 32px;
+			}
+			li {
+				border-bottom: 1px solid #d8dbe2;
+				padding-bottom: 24px;
+				
+				&:last-of-type {
+					border-bottom: none;
+					padding-bottom: 0;
+				}
+				h3 {
+					font-family: Merriweather;
+					font-size: 17px;
+					line-height: 2.12;
+					letter-spacing: 0.3px;
+					text-align: left;
+					color: #333333;
+
+					span {
+						font-family: Roboto;
+						font-size: 16px;
+						line-height: 1.5;
+						letter-spacing: 0.2px;
+						text-align: left;
+						color: #b5bbc8;
+						font-weight: normal;
+						margin-left: 16px;
+					}
+				}
+				a {
+					background: url('../img/ic-link.png') left center no-repeat;
+					padding-left: 24px;
+					margin-right: 36px;
+					font-size: 16px;
+					line-height: 2.25;
+					letter-spacing: 0.2px;
+					color: #592e83;
+					&:hover {
+						background: url('../img/ic-link-hover.png') left 2px no-repeat;
+						color: #9558d1;
+						border-bottom: 1px solid rgba(89, 46, 131, 0.6);
+						padding-bottom: 5px;
+					}
+				}
+			}
 		}
 	}
 	.news {

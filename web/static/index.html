@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -138,12 +138,12 @@
 			<h2>Выберите подходящий вам способ загрузки и версию</h2>
 			<nav>
 				<ul>
-					<li><a href="">Стабильная версия</a></li>
-					<li><a href="">Новейшая версия</a></li>
-					<li><a href="">Исходный код</a></li>
+					<li><a href="stable" class="active">Стабильная версия</a></li>
+					<li><a href="newest-version">Новейшая версия</a></li>
+					<li><a href="source-code">Исходный код</a></li>
 				</ul>
 			</nav>
-			<div class="stable-version">
+			<div id="stable" class="stable-version">
 				<div class="row">
 					<div class="col-md-8">
 						<div class="border-div">
@@ -165,7 +165,7 @@
 						<div class="code-example">
 							<h3>Maven dependency</h3>
 							<div class="frame">
-  							<code>
+  							<code id="code">
 									<br/>
 									&nbsp;&nbsp;&lt;dependency><br/>
 										&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>ru.curs&lt;/groupId><br/>
@@ -173,12 +173,40 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&lt;version>6.0&lt;/version><br/>
 									&nbsp;&nbsp;&lt;/dependency>
 								</code>
-								<div>copy</div>
+								<button class="copy" onclick="copyToClipboard()">copy</button>
 							</div>
 						</div>
 					</div>
 						
 				</div>
+			</div>
+			<div id="source-code" class="source-code">
+				<p>Есть много источников, откуда вы можете скачать наши исходные коды. <br/>Свяжитесь с нами, если хотите участвовать в разработке: мы дадим вам доступ на запись</p>
+				<ul>
+					<li>
+						<h3>С сайта компании КУРС<span>Master SVN | user: reader | pwd: reader</span></h3>
+						<a href="">Сelesta</a>
+						<a href="">flute (включая XML2Spreadsheet)</a>
+						<a href="">grains (системная библиотека Celesta)</a>
+						<a href="">mellophone</a>
+						<a href="">showcase</a>
+					</li>
+					<li>
+						<h3>Lancelot-it.ru<span>Primary read-only copy | user: reader | pwd: platform</span></h3>
+						<a href="">Сelesta</a>
+						<a href="">flute (включая XML2Spreadsheet)</a>
+						<a href="">grains (системная библиотека Celesta)</a>
+						<a href="">mellophone</a>
+						<a href="">showcase</a>
+					</li>
+					<li>
+						<h3>code.sf.net<span>Secondary read-only copy (sourceforge.net, anonymous access)</span></h3>
+						<a href="">Сelesta</a>
+						<a href="">flute (включая XML2Spreadsheet)</a>
+						<a href="">grains (системная библиотека Celesta)</a>
+						<a href="">mellophone</a>					
+					</li>
+				</ul>
 			</div>
 		</section>
 		<section id="news" class="news">			
@@ -212,7 +240,7 @@
 		</section>
 		<footer>
 			<p>Компоненты платформы КУРС являются свободным программным обеспечением<br/>с открытым исходным кодом, распространяемым по лицензии GPL v. 3.</p>
-			<img src="img/gpl-license-logo.png" />
+			<img src="img/gpl-license-logo.png" alt="licence"/>
 			<p><span id="address">КУРС</span> © 1998-2017</p>
 		</footer>
 		<a href="#" class="back-to-top"></a>
