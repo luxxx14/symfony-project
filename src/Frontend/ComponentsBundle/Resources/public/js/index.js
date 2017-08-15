@@ -23,8 +23,7 @@ $(document).ready(()=>{
 	});
 	scrollToTopBtn.on('click', ()=> {
 		$.scrollTo('0', 1000);
-	});	
-	
+	});		
 	
 	//modal window
 	const addressBtn = $('#address');
@@ -37,12 +36,34 @@ $(document).ready(()=>{
 	closeBtn.on('click', () => {
 			modal.hide();
 	});	
-	$(window).on('click', (event)=> {
-		console.log(modal);
-		console.log($(event.target));
+	$(window).on('click', (event)=> {		
 			if ($(event.target).hasClass('modal')) {				
 					modal.hide();
 			}
 	});
+	
+	//download navigatin
+	$('.download nav a').on('click', function(e){		
+		e.preventDefault();
+		const currentActiveMenu = '#' + $('.active').attr('href');
+		$(currentActiveMenu).hide();
+		$('.active').removeClass('active');       
+    $(this).addClass('active');
+		const menuToDisplayName = '#' + $(this).attr('href');
+		$(menuToDisplayName).show();
+		
+	});	
 });
 
+//copy text
+function copyToClipboard() {
+		var $temp = $("<textarea>");
+		$("body").append($temp);
+		$temp.val(`<dependency>
+  <groupId>ru.curs</groupId>
+  <artifactId>celesta</artifactId>
+  <version>6.0</version>
+</dependency>`).select();
+		document.execCommand("copy");
+		$temp.remove();
+	}
