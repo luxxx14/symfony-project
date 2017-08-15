@@ -12,7 +12,7 @@ $(document).ready(()=>{
 		
 		const height = $(this).height();		
 		const top = $(this).scrollTop();
-		size = 100 + 2*top/100+'%'
+		size = 100 + 2*top/100+'%';
 		image.css('background-size', size); 		
 		let calculatedHeight = height < 600 ? height : 600;
 		if(top > calculatedHeight) {			
