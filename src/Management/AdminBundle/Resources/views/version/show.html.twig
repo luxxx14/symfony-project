@@ -1,0 +1,34 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'Версия ' ~ version.name }}</h1>
+
+    <table class="table table-staff">
+        <tbody>
+            <tr>
+                <th>Тип</th>
+                <td>{{ version.type }}</td>
+            </tr>
+            <tr>
+                <th>Описание</th>
+                <td>{{ version.description }}</td>
+            </tr>
+            <tr>
+                <th>Версия</th>
+                <td>{{ version.name }}</td>
+            </tr>
+            <tr>
+                <th>Maven dependency</th>
+                <td>{{ version.mavenDependency }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('admin_version_edit', { 'id': version.id }) }}">Редактировать</a>
+
+    {{ form_start(delete_form) }}
+        <input class="btn" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
+    <a class="btn" href="{{ path('admin_version_index') }}">К списку</a>
+{% endblock %}

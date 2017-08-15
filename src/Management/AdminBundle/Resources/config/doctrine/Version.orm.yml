@@ -1,0 +1,33 @@
+Management\AdminBundle\Entity\Version:
+
+    type: entity
+
+    table: version
+
+    repositoryClass: Management\AdminBundle\Repository\VersionRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        type:             { type: string, length: 32, nullable: true }
+        description:      { type: string, length: 256, nullable: true }
+        name:             { type: string, length: 32, nullable: true }
+        mavenDependency:  { type: text, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

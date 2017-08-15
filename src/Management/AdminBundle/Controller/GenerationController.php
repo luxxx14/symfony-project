@@ -50,7 +50,7 @@ class GenerationController extends Controller {
             $em->flush();
         }
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('admin_user_index');
     }
 
     public function generateRandomString($maxLength = 15) {
