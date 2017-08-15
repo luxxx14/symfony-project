@@ -1,3 +1,7 @@
+management_admin_version:
+    resource: "@ManagementAdminBundle/Controller/VersionController.php"
+    type:     annotation
+
 management_admin_user:
     resource: "@ManagementAdminBundle/Controller/UserController.php"
     type:     annotation

@@ -102,7 +102,7 @@ class User implements UserInterface, GroupableInterface {
     private $dateOfChange;
 
     /**
-     * Constructor
+     * User constructor
      */
     public function __construct()
     {
