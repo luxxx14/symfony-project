@@ -27,12 +27,27 @@ class InitialController extends Controller {
 
         $clients = $em->getRepository('ManagementAdminBundle:Client')->findAll();
 
+        $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+            ->findOneBy(['selected' => TRUE]);
+        $feed = $em->getRepository('ManagementAdminBundle:Feed')
+            ->createQueryBuilder('f')
+            ->where('f.status = :status')
+            ->andWhere('f.feedSource = :feedSource')
+            ->setParameter('status', 'Опубликована')
+            ->setParameter('feedSource', $selectedFeedSource)
+            ->orderBy('f.status', 'ASC')
+            ->orderBy('f.lastModified', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+
 //        return $this->render('@ManagementAdmin/initial/index.html.twig');
         return $this->render('@FrontendComponents/base.html.twig', [
             'commonInformation' => $commonInformation,
             'components' => $components,
             'advantages' => $advantages,
-            'clients' => $clients
+            'clients' => $clients,
+            'feed' => $feed
         ]);
     }
 }
