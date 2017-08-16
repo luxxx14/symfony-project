@@ -42,7 +42,7 @@ $(document).ready(()=>{
 			}
 	});
 	
-	//download navigatin
+	//download navigatoin
 	$('.download nav a').on('click', function(e){		
 		e.preventDefault();
 		const currentActiveMenu = $('.active').attr('href');

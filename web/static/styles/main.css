@@ -251,18 +251,29 @@ body {
       letter-spacing: 0.5px;
       text-align: center;
       color: #1f1f37; }
-    body .users .row div {
+    body .users .row .col-md-4 {
       text-align: center;
       border-left: 1px solid #d8dbe2; }
-      body .users .row div img {
+      body .users .row .col-md-4 img {
         opacity: 0.4;
         filter: grayscale(1);
         max-width: 100%;
         transition: opacity 1s; }
-        body .users .row div img:hover {
-          opacity: 1;
-          filter: grayscale(0); }
-      body .users .row div:first-of-type {
+      body .users .row .col-md-4 p {
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        color: #888888;
+        letter-spacing: 1.5px;
+        position: relative;
+        bottom: 30px;
+        transition: opacity 0.5s; }
+      body .users .row .col-md-4:hover img {
+        opacity: 1;
+        filter: grayscale(0); }
+      body .users .row .col-md-4:hover p {
+        opacity: 1; }
+      body .users .row .col-md-4:first-of-type {
         border-left: none; }
     body .users .row:first-of-type {
       border-bottom: 1px solid #d8dbe2; }

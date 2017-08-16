@@ -300,18 +300,31 @@ body {
 			@include section-header;
 		}
 		.row {
-			div {
+			.col-md-4 {
 				text-align: center;
-				border-left: 1px solid #d8dbe2;
+				border-left: 1px solid #d8dbe2;				
 				img {
 					opacity: 0.4;    			
 					filter: grayscale(1);
 					max-width: 100%;
-					transition: opacity 1s;
-					&:hover {						
-						opacity: 1;    			
-						filter: grayscale(0);
-					}
+					transition: opacity 1s;					
+				}				
+				p {
+					margin: 0;
+					padding: 0;
+					opacity: 0;
+					color: #888888;
+					letter-spacing: 1.5px;
+					position: relative;
+					bottom: 30px;
+					transition: opacity 0.5s;					
+				}
+				&:hover img {						
+					opacity: 1;    			
+					filter: grayscale(0);
+				}
+				&:hover p {						
+					opacity: 1;					
 				}
 				&:first-of-type {
 					border-left: none;
