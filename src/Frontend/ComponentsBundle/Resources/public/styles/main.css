@@ -375,6 +375,8 @@ body {
         text-align: center;
         color: #7f5ea0;
         cursor: pointer; }
+        body .download .stable-version .code-example .frame button:hover {
+          transform: scale(1.02); }
         body .download .stable-version .code-example .frame button:active {
           bottom: 1px;
           outline-color: #7f5ea0; }
@@ -516,8 +518,10 @@ body {
         background: url(../img/ic-subscribe.png) center right 9px no-repeat;
         background-color: white;
         margin: 20px 0; }
+        body .news .row .col-md-5 form input:hover {
+          border-color: #9558d1; }
         body .news .row .col-md-5 form input:focus {
-          border-color: #9558d1;
+          border-color: #592e83;
           outline: none; }
       body .news .row .col-md-5 form p:last-of-type {
         font-size: 14px;
@@ -527,7 +531,9 @@ body {
         color: #c6c9d1; }
         body .news .row .col-md-5 form p:last-of-type a {
           display: block;
-          color: #9558d1; }
+          color: #592e83; }
+          body .news .row .col-md-5 form p:last-of-type a:hover {
+            color: #9558d1; }
   body footer {
     background-color: #eff1f3;
     height: 180px;
@@ -546,7 +552,9 @@ body {
       text-align: center;
       color: #333333; }
       body footer p:last-of-type span {
-        color: #9558d1;
+        color: #592e83;
         cursor: pointer; }
+        body footer p:last-of-type span:hover {
+          color: #9558d1; }
 
 /*# sourceMappingURL=main.css.map */

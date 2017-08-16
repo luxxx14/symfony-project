@@ -447,6 +447,9 @@ body {
 						text-align: center;
 						color: #7f5ea0;
 						cursor: pointer;
+						&:hover {
+							transform: scale(1.02);
+						}	
 						&:active {							
     					bottom: 1px;
 							outline-color:  #7f5ea0;
@@ -627,10 +630,13 @@ body {
 						background: url(../img/ic-subscribe.png) center right 9px no-repeat;
 						background-color: white;
 						margin: 20px 0;
-						&:focus {
-							border-color: #9558d1;
-							outline: none;
+						&:hover {
+							border-color: #9558d1;							
 						}
+						&:focus {
+							border-color: #592e83;
+							outline: none;
+						}						
 					}
 					p:last-of-type {
 						font-size: 14px;
@@ -641,7 +647,10 @@ body {
 
 						a {
 							display: block;
-							color: #9558d1;
+							color: #592e83;
+							&:hover {
+								color: #9558d1;
+							}
 						}
 					}
 				}
@@ -669,8 +678,11 @@ body {
 				color: #333333;
 				
 				span {
-					color: #9558d1;
+					color: #592e83;
 					cursor: pointer;
+					&:hover {
+						color: #9558d1;								
+					}
 				}
 			}
 		}	
