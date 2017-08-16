@@ -1,5 +1,6 @@
+console.log("index.js")
 $(document).ready(()=>{
-	
+	console.log("jquery")
 	//scroller
 	$('.nav').localScroll();
 	$('.main').localScroll();
