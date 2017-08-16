@@ -1,6 +1,7 @@
 /**
  * Created by Sergey on 08.10.2015.
  */
+console.log("axeta.js");
 $(document).ready(function() {
     var $siteBar = $('.main-sidebar'),
         $tabs = $("ul.tabs li"),
