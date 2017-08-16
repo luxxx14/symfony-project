@@ -15,6 +15,3 @@ function init(){
 
 		myMap.geoObjects.add(myPlacemark);
 }
-
-
-console.log("yandex");
