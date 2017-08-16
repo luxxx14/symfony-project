@@ -134,6 +134,7 @@ body {
 		nav {
 			display: inline-block;
 			line-height: 86px;
+			margin-left: 100px;
 			ul {								
 				li {
 					display: inline-block;
@@ -146,7 +147,7 @@ body {
 						
 						&:hover {
 							color: #9558d1;
-							border-bottom: 1px solid #9558d1;
+							border-bottom: 1px solid rgba(89, 46, 131, 0.6);
 							padding-bottom: 6px;
 						}						
 					}
@@ -181,7 +182,7 @@ body {
 	}
 	.main {
 		background: url(../img/group-10.jpg) center center no-repeat;
-		
+		background-size: cover;
 		text-align: center;
 		color: white;
 		height: 520px;
@@ -232,25 +233,33 @@ body {
 					h2 {				
 						font-family: Merriweather;
 						font-size: 20px;
-						line-height: 1.8;
+						line-height: 1.4;
 						letter-spacing: 0.3px;				
 						color: #592e83;
 						display: inline-block;
 						border-bottom: 1px solid white;
+						padding: 0;
+						margin-bottom: 0;
 						font-weight: normal;
 						&:hover {
 							color: #9558d1;
-							border-bottom: 1px solid #9558d1;
+							border-bottom: 1px solid rgba(89, 46, 131, 0.6);							
 							box-sizing: border-box;
 							cursor: pointer;
 						}
 					}
-					p {				
+					p {						
 						font-family: Roboto;
 						font-size: 16px;
 						line-height: 1.5;
 						letter-spacing: 0.2px;				
 						color: #333333;
+						padding-bottom: 20px;
+					}
+				}
+				&:nth-of-type(2) {
+					h2 {
+						padding-top: 40px;
 					}
 				}
 			}			
@@ -298,8 +307,8 @@ body {
 					opacity: 0.4;    			
 					filter: grayscale(1);
 					max-width: 100%;
-					&:hover {
-						cursor: pointer;
+					transition: opacity 1s;
+					&:hover {						
 						opacity: 1;    			
 						filter: grayscale(0);
 					}
@@ -395,6 +404,7 @@ body {
 					color: #592e83;	
 					&:hover {
 						color: #9558d1;
+						border-bottom: 1px solid rgba(89, 46, 131, 0.6);
 					}					
 				}
 				span {
@@ -417,42 +427,45 @@ body {
 					margin-top: -7px;
 					padding: 0;
 				}
-				.frame {
+				div {
+					position: relative;
 					width: 356px;
-					height: 178px;
-					border-radius: 4px;
-					background-color: #ffffff;
-					box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
-					border: solid 1px #d8dbe2;
-					position: relative;	
-					
-					code {
-						line-height: 1.4;
-						letter-spacing: -0.2px;
+					height: 178px;					
+					padding: 0;
+					.frame {
+						font-family: Roboto;
+						margin: 0;
+						width: 356px;
+						height: 178px;
+						border-radius: 4px;
+						background-color: #ffffff;
+						box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
+						border: solid 1px #d8dbe2;						
 						color: #333333;
+						line-height: 1.5;
+  					letter-spacing: 0.2px;
+						font-size: 16px;
+						font-weight: 400;
+						padding: 16px;
+						resize: none;												
 					}
-					
 					button {
-						position: absolute;
-						bottom: 0;
-						right: 0;
-						width: 63px;
-						height: 24px;
-						border-radius: 3px;
-						background-color: rgba(216, 219, 226, 0.4);
-						border: solid 1px #d8dbe2;
-						font-size: 13px;
-						line-height: 21px;
-						letter-spacing: 0.2px;
-						text-align: center;
-						color: #7f5ea0;
-						cursor: pointer;
-						&:active {							
-    					bottom: 1px;
-							outline-color:  #7f5ea0;
-						}						
-					}
-				}				
+							position: absolute;
+							bottom: 0px;
+							right: 0px;
+							width: 63px;
+							height: 24px;
+							border-radius: 3px;
+							background-color: rgba(216, 219, 226, 0.4);						
+							border: solid 1px #d8dbe2;							
+							font-size: 13px;
+							line-height: 20px;
+							letter-spacing: 0.2px;
+							text-align: center;
+							color: #7f5ea0;
+							cursor: pointer;											
+						}
+				}
 			}
 			h3 {
 				font-family: Merriweather;
@@ -480,6 +493,7 @@ body {
 						}
 						&:hover {
 							color: #9558d1;
+							border-bottom: 1px solid rgba(89, 46, 131, 0.6);
 						}
 					}
 					
@@ -583,7 +597,7 @@ body {
 						a {
 							&:hover {
 								color: #9558d1;
-								border-bottom: 1px solid #d8dbe2;
+								border-bottom: 1px solid rgba(89, 46, 131, 0.6);
 							}
 						}						
 					}					
@@ -627,10 +641,13 @@ body {
 						background: url(../img/ic-subscribe.png) center right 9px no-repeat;
 						background-color: white;
 						margin: 20px 0;
-						&:focus {
-							border-color: #9558d1;
-							outline: none;
+						&:hover {
+							border-color: #9558d1;							
 						}
+						&:focus {
+							border-color: #592e83;
+							outline: none;
+						}						
 					}
 					p:last-of-type {
 						font-size: 14px;
@@ -640,8 +657,12 @@ body {
 						color: #c6c9d1;
 
 						a {
-							display: block;
-							color: #9558d1;
+							display: inline-block;
+							color: #592e83;
+							&:hover {
+								color: #9558d1;
+								border-bottom: 1px solid rgba(89, 46, 131, 0.6);
+							}
 						}
 					}
 				}
@@ -669,8 +690,12 @@ body {
 				color: #333333;
 				
 				span {
-					color: #9558d1;
+					color: #592e83;
 					cursor: pointer;
+					&:hover {
+						color: #9558d1;	
+						border-bottom: 1px solid rgba(89, 46, 131, 0.6);
+					}
 				}
 			}
 		}	

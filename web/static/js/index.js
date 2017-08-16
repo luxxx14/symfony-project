@@ -45,14 +45,19 @@ $(document).ready(()=>{
 	//download navigatin
 	$('.download nav a').on('click', function(e){		
 		e.preventDefault();
-		const currentActiveMenu = '#' + $('.active').attr('href');
+		const currentActiveMenu = $('.active').attr('href');
 		$(currentActiveMenu).hide();
 		$('.active').removeClass('active');       
     $(this).addClass('active');
-		const menuToDisplayName = '#' + $(this).attr('href');
-		$(menuToDisplayName).show();
-		
+		const menuToDisplayName = $(this).attr('href');
+		$(menuToDisplayName).show();		
 	});	
+	
+	//highlight text in textarea
+	$('.frame').focus(function() {
+    var $this = $(this);
+    $this.select();    
+	});
 });
 
 //copy text
