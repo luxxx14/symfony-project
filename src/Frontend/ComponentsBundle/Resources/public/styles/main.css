@@ -252,7 +252,6 @@ body {
         filter: grayscale(1);
         max-width: 100%; }
         body .users .row div img:hover {
-          cursor: pointer;
           opacity: 1;
           filter: grayscale(0); }
       body .users .row div:first-of-type {
