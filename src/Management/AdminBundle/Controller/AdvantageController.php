@@ -5,10 +5,11 @@ namespace Management\AdminBundle\Controller;
 use Management\AdminBundle\Entity\Advantage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Advantage controller.
+ * Advantage controller
  *
  * @Route("admin/advantage")
  */

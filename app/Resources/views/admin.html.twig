@@ -25,7 +25,7 @@
         <section class="sidebar">
             <a href="" class="menu-trigger"></a>
             <ul class="sidebar-menu">
-                <li class="header"><a>Статичные блоки</a></li>
+                <li class="header">Статичные блоки</li>
                 <li><a href="{{ path('admin_common_information_index') }}">Общая информация</a></li>
                 <li><a href="{{ path('admin_component_index') }}">Компоненты платформы</a></li>
                 <li><a href="{{ path('admin_advantage_index') }}">Основные преимущества</a></li>
@@ -34,17 +34,18 @@
             </ul>
 
             <ul class="sidebar-menu">
-                <li class="header"><a>Коды для Maven</a></li>
+                <li class="header">Коды для Maven</li>
             </ul>
 
             <ul class="sidebar-menu">
-                <li class="header"><a>Новости</a></li>
+                <li class="header">Новости</li>
                 <li><a href="{{ path('admin_redirect_for_selected_feed_source', {action: 'show'}) }}">Настройка источника RSS</a></li>
                 <li><a href="{{ path('admin_redirect_for_selected_feed_source', {action: 'show_feed'}) }}">Модерация новостей</a></li>
             </ul>
 
             <ul class="sidebar-menu">
-                <li class="header"><a>Список подписчиков</a></li>
+                <li class="header">Список подписчиков</li>
+                <li><a href="{{ path('admin_subscriber_index') }}">Список подписчиков</a></li>
             </ul>
         </section>
     </aside>
