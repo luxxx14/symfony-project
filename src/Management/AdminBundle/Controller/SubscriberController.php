@@ -5,7 +5,9 @@ namespace Management\AdminBundle\Controller;
 use Management\AdminBundle\Entity\Subscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Subscriber controller
@@ -58,34 +60,59 @@ class SubscriberController extends Controller
     /**
      * Subscribe action
      *
-     * @Route("/subscribe", name="admin_subscriber_subscribe")
+     * @Route("/{email}/subscribe", name="admin_subscriber_subscribe")
      * @Method("POST")
      */
-    public function subscribeAction(Request $request) {
+    public function subscribeAction(string $email) {
         $em = $this->getDoctrine()->getManager();
 
-        $subscriberForm = $this
-            ->createForm('Management\AdminBundle\Form\SubscriberType', new Subscriber(), [
-                'method' => 'POST',
-                'action' => 'admin/subscriber/subscribe'
-            ]);
+        $existingSubscriber = $em->getRepository('ManagementAdminBundle:Subscriber')
+            ->findOneBy(['email' => $email]);
+        if (!$existingSubscriber) {
+            $subscriber = new Subscriber();
+            $subscriber->setEmail($email);
 
-        $subscriberForm->handleRequest($request);
-
-        if ($subscriberForm->isSubmitted() && $subscriberForm->isValid()) {
-            $email = $subscriberForm->get('email')->getData();
-
-            $existingSubscriber = $em->getRepository('ManagementAdminBundle:Subscriber')
-                ->findOneBy(['email' => $email]);
-            if (!$existingSubscriber) {
-                $subscriber = new Subscriber();
-                $subscriber->setEmail($email);
-
-                $em->persist($subscriber);
-                $em->flush();
-            }
+            $em->persist($subscriber);
+            $em->flush();
         }
 
         return $this->redirectToRoute('initial');
     }
+
+//    /**
+//     * Subscribe action
+//     *
+//     * @Route("/subscribe", name="admin_subscriber_subscribe")
+//     * @Method("POST")
+//     */
+//    public function subscribeAction(Request $request/*string $email*/) {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $subscriberForm = $this
+//            ->createForm('Management\AdminBundle\Form\SubscriberType', new Subscriber(), [
+//                'method' => 'POST',
+//                'action' => 'admin/subscriber/subscribe'
+//            ]);
+//
+//        $subscriberForm->handleRequest($request);
+//
+//        if ($subscriberForm->isSubmitted() && $subscriberForm->isValid()) {
+//            $email = $subscriberForm->get('email')->getData();
+//
+//            $existingSubscriber = $em->getRepository('ManagementAdminBundle:Subscriber')
+//                ->findOneBy(['email' => $email]);
+//            if (!$existingSubscriber) {
+//                $subscriber = new Subscriber();
+//                $subscriber->setEmail($email);
+//
+//                $em->persist($subscriber);
+//                $em->flush();
+//            }
+//        }
+//
+//        $response = new JsonResponse();
+//        $response->setData([]);
+//
+//        return $response;
+//    }
 }
