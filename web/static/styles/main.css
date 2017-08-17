@@ -423,12 +423,12 @@ body {
       body .download .stable-version ul li a {
         line-height: 2.25;
         letter-spacing: 0.2px; }
-        body .download .stable-version ul li a span {
-          font-size: 16px;
-          line-height: 1.5;
-          letter-spacing: 0.2px;
-          text-align: left;
-          color: #b5bbc8; }
+      body .download .stable-version ul li span {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #b5bbc8; }
     body .download .source-code {
       display: none; }
       body .download .source-code p {
