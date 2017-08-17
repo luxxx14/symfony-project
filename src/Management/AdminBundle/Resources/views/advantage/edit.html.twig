@@ -8,10 +8,19 @@
             <div class="col-lg-5 col-md-8">
                 {{ form_start(edit_form) }}
                 <div class="form-group">
+                    <label class="label">Рисунок</label>
+                    <br>
+                    <img id="image-preview"
+                         src="{% if advantage.imageName %}
+                            {{ asset('uploads/images/advantage/' ~ advantage.imageName) }}
+                            {% endif %}"
+                         width="100px" height="100px">
+                    <br><br>
+                    <a id="open-filesystem" class="btn">Обзор</a>
+                </div>
+
+                <div class="form-group" style="display: none;">
                     {{ form_label(edit_form.imageFile) }}
-                    <img id="color-image-preview"
-                         src=""
-                         width="200px" height="200px">
                     {{ form_widget(edit_form.imageFile) }}
                     {{ form_errors(edit_form.imageFile) }}
                 </div>
@@ -34,3 +43,29 @@
 
     <br><a class="btn" href="{{ path('admin_advantage_index') }}">Отмена</a>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(
+            function() {
+                document.getElementById("management_adminbundle_advantage_imageFile_file").onchange = function () {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        // get loaded data and render thumbnail.
+                        document.getElementById("image-preview").src = e.target.result;
+                    };
+
+                    // read the image file as a data URL.
+                    reader.readAsDataURL(this.files[0]);
+                };
+            });
+        $(document).ready(
+            function() {
+                $('#open-filesystem').click( function () {
+                    $('#management_adminbundle_advantage_imageFile_file').click();
+                })
+            });
+    </script>
+{% endblock javascripts %}

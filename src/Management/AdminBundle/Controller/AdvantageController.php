@@ -6,11 +6,10 @@ use Management\AdminBundle\Entity\Advantage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Advantage controller.
+ * Advantage controller
  *
  * @Route("admin/advantage")
  */
@@ -92,15 +91,7 @@ class AdvantageController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $fs = new Filesystem();
-
-            $path = $this->get('kernel')->getRootDir() . '/../web/uploads/images/advantage';
-
-            $fs->chmod($path, 0777);
-
             $this->getDoctrine()->getManager()->flush();
-
-            $fs->chmod($path, 0755);
 
             return $this->redirectToRoute('admin_advantage_index');
         }

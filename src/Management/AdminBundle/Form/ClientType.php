@@ -67,6 +67,4 @@ class ClientType extends AbstractType
     {
         return 'management_adminbundle_client';
     }
-
-
 }
