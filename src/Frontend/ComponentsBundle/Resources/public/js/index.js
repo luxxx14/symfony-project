@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	
+	var inputField =  $('#subscribe-form input');
+	var errorField = $('.error');
+	
 	//scroller
 	$('.nav').localScroll();
 	$('.main').localScroll();
@@ -57,6 +60,34 @@ $(document).ready(function(){
     var $this = $(this);
     $this.select();    
 	});
+	
+	inputField.on('keydown', function(){		
+		errorField.text('');
+		inputField.removeClass('input-error');
+	});
+	
+	//form submit	
+	$('#subscribe-form').on('submit', function(e){
+		var email = inputField.val();
+		e.preventDefault();		;
+		if (!validator.isEmail(email)) {
+			errorField.text('Ошибка: неправильный e-mail');
+			inputField.addClass('input-error');
+			return;
+		} else {
+			$.post('/admin/subscriber/' + email + '/subscribe', {})
+				.done(function(){  
+					console.log("Sucvcess");
+					inputField.val('');
+				})
+				.fail(function(xhr, status, error) {
+					console.log("error");
+					errorField.text('Ошибка: произошла ошибка');
+					inputField.addClass('input-error');
+				});			
+		}
+	});
+	
 });
 
 //copy text
