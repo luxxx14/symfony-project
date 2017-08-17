@@ -19,6 +19,12 @@
                     {{ form_errors(form.description) }}
                 </div>
 
+                <div class="form-group">
+                    {{ form_label(form.wikiUrl) }}
+                    {{ form_widget(form.wikiUrl) }}
+                    {{ form_errors(form.wikiUrl) }}
+                </div>
+
                 <input class="btn" type="submit" value="Добавить" />
                 {{ form_end(form) }}
             </div>

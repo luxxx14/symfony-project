@@ -36,6 +36,16 @@ class ComponentType extends AbstractType
                 ],
                 'required' => false
             ))
+            ->add('wikiUrl', TextType::class, array(
+                'label' => 'Ссылка на wiki страницу',
+                'label_attr' => [
+                    'class' => 'label'
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'required' => false
+            ))
         ;
     }
     

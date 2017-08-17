@@ -9,6 +9,7 @@
                 <th>Id</th>
                 <th>Название</th>
                 <th>Описание</th>
+                <th>Ссылка на wiki страницу</th>
                 <th>Действия</th>
             </tr>
         </thead>
@@ -18,6 +19,7 @@
                 <td><a href="{{ path('admin_component_show', { 'id': component.id }) }}">{{ component.id }}</a></td>
                 <td>{{ component.name }}</td>
                 <td>{{ component.description }}</td>
+                <td>{{ component.wikiUrl }}</td>
                 <td><nav><ul class="navbar">
                     <li>
                         <a href="{{ path('admin_component_show', { 'id': component.id }) }}">
