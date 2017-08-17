@@ -41,13 +41,20 @@ class InitialController extends Controller {
             ->getQuery()
             ->getResult();
 
+        $stable = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Стабильная']);
+        $newest = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Новейшая']);
+        $source = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Исходный код']);
+
+        $versions = compact('stable', 'newest', 'source');
+
 //        return $this->render('@ManagementAdmin/initial/index.html.twig');
         return $this->render('@FrontendComponents/base.html.twig', [
             'commonInformation' => $commonInformation,
             'components' => $components,
             'advantages' => $advantages,
             'clients' => $clients,
-            'feed' => $feed
+            'feed' => $feed,
+            'versions' => $versions
         ]);
     }
 }

@@ -73,6 +73,7 @@
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-md-4">
             <img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}" alt="icon" />
+            <p>{{ client.title }}</p>
         </div>
         {% if serialNumber == 3 %}
     </div>
@@ -97,8 +98,8 @@
                 <div class="border-div">
                     <div class="download-link">
                         <a href="">Дистрибутив самой последней стабильной версии платформы</a>
-                        <span>(5.1-build518 2017-07-07)</span>
-                        <p>Рекомендовано для установки на рабочих проектах</p>
+                        <span>{{ '(' ~ versions.stable.name ~ ')' }}</span>
+                        <p>{{ versions.stable.description }}</p>
                     </div>
                     <h3>История версий</h3>
                     <ul>
@@ -115,17 +116,17 @@
                     <div class="frame">
                         <code id="code">
                             <br/>
-                            &nbsp;&nbsp;&lt;dependency><br/>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>ru.curs&lt;/groupId><br/>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId>celesta&lt;/artifactId><br/>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;version>6.0&lt;/version><br/>
-                            &nbsp;&nbsp;&lt;/dependency>
+                            {#&nbsp;&nbsp;&lt;dependency><br/>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>ru.curs&lt;/groupId><br/>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId>celesta&lt;/artifactId><br/>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;&lt;version>6.0&lt;/version><br/>#}
+                            {#&nbsp;&nbsp;&lt;/dependency>#}
+                            {{ versions.stable.mavenDependency | raw }}
                         </code>
                         <button class="copy" onclick="copyToClipboard()">copy</button>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <div id="source-code" class="source-code">

@@ -48,7 +48,7 @@ class VersionController extends Controller
             $em->persist($version);
             $em->flush();
 
-            return $this->redirectToRoute('admin_version_show', array('id' => $version->getId()));
+            return $this->redirectToRoute('admin_version_index');
         }
 
         return $this->render('@ManagementAdmin/version/new.html.twig', array(
@@ -88,7 +88,7 @@ class VersionController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_version_edit', array('id' => $version->getId()));
+            return $this->redirectToRoute('admin_version_index');
         }
 
         return $this->render('@ManagementAdmin/version/edit.html.twig', array(
@@ -130,7 +130,6 @@ class VersionController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_version_delete', array('id' => $version->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

@@ -19,7 +19,7 @@
                 <td>{{ version.type }}</td>
                 <td>{{ version.description }}</td>
                 <td>{{ version.name }}</td>
-                <td>{{ version.mavenDependency|raw }}</td>
+                <td>{{ version.mavenDependency | raw }}</td>
                 <td><nav><ul class="navbar">
                     <li>
                         <a href="{{ path('admin_version_show', { 'id': version.id }) }}">
