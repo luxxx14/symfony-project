@@ -24,7 +24,11 @@ class ClientController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $clients = $em->getRepository('ManagementAdminBundle:Client')->findAll();
+        $clients = $em->getRepository('ManagementAdminBundle:Client')
+            ->createQueryBuilder('c')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/client/index.html.twig', array(
             'clients' => $clients,

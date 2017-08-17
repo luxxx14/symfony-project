@@ -24,7 +24,11 @@ class VersionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $versions = $em->getRepository('ManagementAdminBundle:Version')->findAll();
+        $versions = $em->getRepository('ManagementAdminBundle:Version')
+            ->createQueryBuilder('v')
+            ->orderBy('v.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/version/index.html.twig', array(
             'versions' => $versions,

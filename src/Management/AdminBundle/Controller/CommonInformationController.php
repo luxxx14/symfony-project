@@ -24,7 +24,11 @@ class CommonInformationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $commonInformation = $em->getRepository('ManagementAdminBundle:CommonInformation')->findAll();
+        $commonInformation = $em->getRepository('ManagementAdminBundle:CommonInformation')
+            ->createQueryBuilder('cI')
+            ->orderBy('cI.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/commoninformation/index.html.twig', array(
             'commonInformation' => $commonInformation,

@@ -21,11 +21,23 @@ class InitialController extends Controller {
 
         $commonInformation = $em->getRepository('ManagementAdminBundle:CommonInformation')->find(1);
 
-        $components = $em->getRepository('ManagementAdminBundle:Component')->findAll();
+        $components = $em->getRepository('ManagementAdminBundle:Component')
+            ->createQueryBuilder('c')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
-        $advantages = $em->getRepository('ManagementAdminBundle:Advantage')->findAll();
+        $advantages = $em->getRepository('ManagementAdminBundle:Advantage')
+            ->createQueryBuilder('a')
+            ->orderBy('a.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
-        $clients = $em->getRepository('ManagementAdminBundle:Client')->findAll();
+        $clients = $em->getRepository('ManagementAdminBundle:Client')
+            ->createQueryBuilder('c')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
             ->findOneBy(['selected' => TRUE]);

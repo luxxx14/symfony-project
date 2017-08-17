@@ -24,7 +24,11 @@ class FeedController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $feeds = $em->getRepository('ManagementAdminBundle:Feed')->findAll();
+        $feeds = $em->getRepository('ManagementAdminBundle:Feed')
+            ->createQueryBuilder('f')
+            ->orderBy('f.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/feed/index.html.twig', array(
             'feeds' => $feeds,

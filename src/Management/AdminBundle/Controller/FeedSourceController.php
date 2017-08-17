@@ -27,7 +27,11 @@ class FeedSourceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $feedSources = $em->getRepository('ManagementAdminBundle:FeedSource')->findAll();
+        $feedSources = $em->getRepository('ManagementAdminBundle:FeedSource')
+            ->createQueryBuilder('fS')
+            ->orderBy('fS.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/feedsource/index.html.twig', array(
             'feedSources' => $feedSources,

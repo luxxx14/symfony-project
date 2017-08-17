@@ -24,7 +24,11 @@ class FeedStatusController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $feedStatuses = $em->getRepository('ManagementAdminBundle:FeedStatus')->findAll();
+        $feedStatuses = $em->getRepository('ManagementAdminBundle:FeedStatus')
+            ->createQueryBuilder('fS')
+            ->orderBy('fS.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/feedstatus/index.html.twig', array(
             'feedStatuses' => $feedStatuses,

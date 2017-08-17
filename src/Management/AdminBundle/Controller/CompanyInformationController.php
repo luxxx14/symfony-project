@@ -24,7 +24,11 @@ class CompanyInformationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $companyInformation = $em->getRepository('ManagementAdminBundle:CompanyInformation')->findAll();
+        $companyInformation = $em->getRepository('ManagementAdminBundle:CompanyInformation')
+            ->createQueryBuilder('cI')
+            ->orderBy('cI.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/companyinformation/index.html.twig', array(
             'companyInformation' => $companyInformation,

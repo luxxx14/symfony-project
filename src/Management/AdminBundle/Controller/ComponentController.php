@@ -24,7 +24,11 @@ class ComponentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $components = $em->getRepository('ManagementAdminBundle:Component')->findAll();
+        $components = $em->getRepository('ManagementAdminBundle:Component')
+            ->createQueryBuilder('c')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/component/index.html.twig', array(
             'components' => $components,

@@ -24,7 +24,11 @@ class AdvantageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $advantages = $em->getRepository('ManagementAdminBundle:Advantage')->findAll();
+        $advantages = $em->getRepository('ManagementAdminBundle:Advantage')
+            ->createQueryBuilder('a')
+            ->orderBy('a.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('@ManagementAdmin/advantage/index.html.twig', array(
             'advantages' => $advantages,
