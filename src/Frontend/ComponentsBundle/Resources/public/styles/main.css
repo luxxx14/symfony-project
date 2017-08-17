@@ -79,7 +79,11 @@ body {
   body h1 {
     font-family: 'Merriweather', serif; }
   body a {
-    text-decoration: none; }
+    text-decoration: none;
+    color: #592e83; }
+    body a:hover {
+      color: #9558d1;
+      border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
   body ul {
     list-style: none;
     margin: 0;
@@ -99,6 +103,8 @@ body {
     width: 40px;
     height: 40px;
     background: url(../img/ic-scroll-up.png) center center no-repeat; }
+    body .back-to-top:hover {
+      border: none; }
   body header {
     text-align: center;
     height: 86px; }
@@ -106,6 +112,8 @@ body {
       position: absolute;
       top: 24px;
       left: 41px; }
+      body header .logo:hover {
+        border: none; }
     body header nav {
       display: inline-block;
       line-height: 86px;
@@ -209,6 +217,8 @@ body {
         letter-spacing: 0.2px;
         color: #333333;
         padding-bottom: 20px; }
+      body .info .row div a:hover {
+        border: none; }
     body .info .row:nth-of-type(2) h2 {
       padding-top: 40px; }
   body .advantages {
@@ -347,11 +357,7 @@ body {
         font-size: 18px;
         line-height: 1.44;
         letter-spacing: 0.2px;
-        text-align: left;
-        color: #592e83; }
-        body .download .stable-version .download-link a:hover {
-          color: #9558d1;
-          border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
+        text-align: left; }
       body .download .stable-version .download-link span {
         display: block;
         color: #333333;
@@ -423,9 +429,6 @@ body {
           letter-spacing: 0.2px;
           text-align: left;
           color: #b5bbc8; }
-        body .download .stable-version ul li a:hover {
-          color: #9558d1;
-          border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
     body .download .source-code {
       display: none; }
       body .download .source-code p {
@@ -467,8 +470,6 @@ body {
           color: #592e83; }
           body .download .source-code li a:hover {
             background: url("../img/ic-link-hover.png") left 2px no-repeat;
-            color: #9558d1;
-            border-bottom: 1px solid rgba(89, 46, 131, 0.6);
             padding-bottom: 5px; }
   body .news {
     padding: 0 160px;
@@ -505,9 +506,6 @@ body {
           text-align: center;
           color: #333333;
           margin-bottom: 9px; }
-        body .news .row .col-md-7 ul li a:hover {
-          color: #9558d1;
-          border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
     body .news .row .col-md-5 form {
       background-color: rgba(216, 219, 226, 0.4);
       margin-top: 60px;
@@ -554,11 +552,7 @@ body {
         text-align: center;
         color: #c6c9d1; }
         body .news .row .col-md-5 form p:last-of-type a {
-          display: inline-block;
-          color: #592e83; }
-          body .news .row .col-md-5 form p:last-of-type a:hover {
-            color: #9558d1;
-            border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
+          display: inline-block; }
   body footer {
     background-color: #eff1f3;
     height: 180px;

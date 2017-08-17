@@ -1,55 +1,54 @@
-$(document).ready(()=>{
+$(document).ready(function(){
 	
 	//scroller
 	$('.nav').localScroll();
 	$('.main').localScroll();
 	
 	//scroll to top	
-	const scrollToTopBtn = $('.back-to-top');
-	const image = $('.main');
-	let size = 100;
-	$(window).on('scroll', ()=> {		
+	var scrollToTopBtn = $('.back-to-top');
+	var image = $('.main');
+	var size = 100;
+	$(window).on('scroll', function(){		
 		
-		const height = $(this).height();		
-		const top = $(this).scrollTop();
+		var height = $(this).height();		
+		var top = $(this).scrollTop();
 		size = 100 + 2*top/100+'%'
 		image.css('background-size', size); 		
-		let calculatedHeight = height < 600 ? height : 600;
+		var calculatedHeight = height < 600 ? height : 600;
 		if(top > calculatedHeight) {			
 			scrollToTopBtn.show();
 		} else {
 			scrollToTopBtn.hide();
 		}		
 	});
-	scrollToTopBtn.on('click', ()=> {
+	scrollToTopBtn.on('click', function(){
 		$.scrollTo('0', 1000);
 	});		
 	
 	//modal window
-	const addressBtn = $('#address');
-	const modal = $('.modal');
-	const closeBtn = $('.close');
-	addressBtn.on('click', () => {
-		console.log("hi")
+	var addressBtn = $('#address');
+	var modal = $('.modal');
+	var closeBtn = $('.close');
+	addressBtn.on('click', function(){		
     modal.show();
 	});
-	closeBtn.on('click', () => {
+	closeBtn.on('click', function(){
 			modal.hide();
 	});	
-	$(window).on('click', (event)=> {		
+	$(window).on('click', function(event) {		
 			if ($(event.target).hasClass('modal')) {				
 					modal.hide();
 			}
 	});
 	
-	//download navigatoin
+	//download navigation
 	$('.download nav a').on('click', function(e){		
 		e.preventDefault();
-		const currentActiveMenu = $('.active').attr('href');
+		var currentActiveMenu = $('.active').attr('href');
 		$(currentActiveMenu).hide();
 		$('.active').removeClass('active');       
     $(this).addClass('active');
-		const menuToDisplayName = $(this).attr('href');
+		var menuToDisplayName = $(this).attr('href');
 		$(menuToDisplayName).show();		
 	});	
 	
@@ -61,14 +60,10 @@ $(document).ready(()=>{
 });
 
 //copy text
-function copyToClipboard() {
+function copyToClipboard(element) {
 		var $temp = $("<textarea>");
 		$("body").append($temp);
-		$temp.val(`<dependency>
-  <groupId>ru.curs</groupId>
-  <artifactId>celesta</artifactId>
-  <version>6.0</version>
-</dependency>`).select();
+		$temp.val($(element).text()).select();
 		document.execCommand("copy");
 		$temp.remove();
 	}

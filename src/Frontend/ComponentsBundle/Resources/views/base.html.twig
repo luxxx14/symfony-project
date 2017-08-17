@@ -2,12 +2,15 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Orchestra</title>
     <link rel="stylesheet" href="{{ asset('bundles/frontendcomponents/styles/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/frontendcomponents/styles/main.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/frontendcomponents/styles/bootstrap-grid.css') }}">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<!--[if IE]>		  
+		<script src="https://cdn.jsdelivr.net/g/html5shiv@3.7.3,respond@1.4.2"></script>
+	<![endif]-->
 </head>
 <body>
 <header>
@@ -122,7 +125,7 @@
                             {#</dependency>#}
                             {{ versions.stable.mavenDependency | raw }}
                         </textarea>
-                        <button class="copy" onclick="copyToClipboard()">copy</button>
+                        <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
                     </div>
                 </div>
             </div>

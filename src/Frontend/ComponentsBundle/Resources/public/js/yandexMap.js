@@ -1,6 +1,6 @@
 ymaps.ready(init);
-let myMap, 
-		myPlacemark;
+var myMap; 
+var myPlacemark;
 
 function init(){ 
 		myMap = new ymaps.Map("map", {
