@@ -429,6 +429,8 @@ body {
         letter-spacing: 0.2px;
         text-align: left;
         color: #b5bbc8; }
+    body .download .newest-version {
+      display: none; }
     body .download .source-code {
       display: none; }
       body .download .source-code p {
@@ -529,28 +531,53 @@ body {
         text-align: center;
         color: #333333;
         padding: 0 90px; }
-      body .news .row .col-md-5 form input {
-        border-radius: 4px;
-        background-color: #ffffff;
-        box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
-        border: solid 1px #d8dbe2;
-        padding: 16px;
+      body .news .row .col-md-5 form div {
+        position: relative;
+        margin-top: 20px; }
+        body .news .row .col-md-5 form div input {
+          border-radius: 4px;
+          background-color: #ffffff;
+          box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
+          border: solid 1px #d8dbe2;
+          padding: 16px;
+          width: 384px;
+          max-width: 100%;
+          background-color: white; }
+          body .news .row .col-md-5 form div input:hover {
+            border-color: #9558d1; }
+          body .news .row .col-md-5 form div input:focus {
+            border-color: #592e83;
+            outline: none; }
+        body .news .row .col-md-5 form div .input-error {
+          box-shadow: inset 0px 0px 4px 0 #d13c46; }
+        body .news .row .col-md-5 form div button {
+          cursor: pointer;
+          position: absolute;
+          right: 40px;
+          bottom: 6px;
+          width: 38px;
+          height: 38px;
+          border: none;
+          outline: none;
+          background: url(../img/ic-subscribe.png) center center no-repeat; }
+      body .news .row .col-md-5 form .error {
+        display: none;
+        color: #d13c46;
+        font-size: 13px;
+        line-height: 1.43;
+        letter-spacing: 0.2px;
+        display: inline-block;
         width: 384px;
-        max-width: 100%;
-        background: url(../img/ic-subscribe.png) center right 9px no-repeat;
-        background-color: white;
-        margin: 20px 0; }
-        body .news .row .col-md-5 form input:hover {
-          border-color: #9558d1; }
-        body .news .row .col-md-5 form input:focus {
-          border-color: #592e83;
-          outline: none; }
+        text-align: left;
+        margin-top: 6px; }
       body .news .row .col-md-5 form p:last-of-type {
         font-size: 14px;
         line-height: 1.43;
         letter-spacing: 0.2px;
         text-align: center;
-        color: #c6c9d1; }
+        color: #c6c9d1;
+        padding-top: 20px;
+        margin: 0; }
         body .news .row .col-md-5 form p:last-of-type a {
           display: inline-block; }
   body footer {

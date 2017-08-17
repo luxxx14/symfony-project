@@ -2,6 +2,10 @@
 
 namespace Management\AdminBundle\Controller;
 
+use Management\AdminBundle\Entity\Subscriber;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,6 +22,18 @@ class InitialController extends Controller {
      */
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
+
+        $fs = new Filesystem();
+
+        $finder = new Finder();
+        $buildsPath = $this->get('kernel')->getRootDir() . '/../web/download/builds/';
+        $builds = ['stable' => NULL, 'newest' => NULL];
+
+        $subscriberForm = $this
+            ->createForm('Management\AdminBundle\Form\SubscriberType', new Subscriber(), [
+                'method' => 'POST',
+                'action' => 'admin/subscriber/subscribe'
+            ]);
 
         $commonInformation = $em->getRepository('ManagementAdminBundle:CommonInformation')->find(1);
 
@@ -59,6 +75,44 @@ class InitialController extends Controller {
 
         $versions = compact('stable', 'newest', 'source');
 
+        /** Stable builds */
+        $finder->files()->in($buildsPath . 'stable');
+        $finder->sortByName();
+
+        $count = $finder->count();
+        $current = 0;
+        foreach ($finder as $file) {
+            $current++;
+
+            if ($count - $current <= 3) {
+                $builds['stable'][] = [
+                    'name' => $file->getFilename(),
+                    'path' => $file->getRealPath(),
+                    'date' => (new \DateTime())->setTimestamp($file->getATime())
+                ];
+            }
+        }
+        rsort($builds['stable']);
+
+        /** Newest builds */
+        $finder->files()->in($buildsPath . 'trunk');
+        $finder->sortByName();
+
+        $count = $finder->count();
+        $current = 0;
+        foreach ($finder as $file) {
+            $current++;
+
+            if ($count - $current <= 3) {
+                $builds['newest'][] = [
+                    'name' => $file->getFilename(),
+                    'path' => $file->getRealPath(),
+                    'date' => (new \DateTime())->setTimestamp($file->getATime())
+                ];
+            }
+        }
+        rsort($builds['newest']);
+
 //        return $this->render('@ManagementAdmin/initial/index.html.twig');
         return $this->render('@FrontendComponents/base.html.twig', [
             'commonInformation' => $commonInformation,
@@ -66,7 +120,26 @@ class InitialController extends Controller {
             'advantages' => $advantages,
             'clients' => $clients,
             'feed' => $feed,
-            'versions' => $versions
+            'versions' => $versions,
+            'builds' => $builds,
+            'subscriberForm' => $subscriberForm->createView()
         ]);
     }
+
+//    /**
+//     * @Route("/", name="initial")
+//     */
+//    public function downloadAction() {
+//        $path = $this->get('kernel')->getRootDir(). "/../web/download/builds/";
+//        $content = file_get_contents($path . 'stable/5.1_build518');
+//
+//        $response = new Response();
+//
+//        //set headers
+//        $response->headers->set('Content-Type', 'mime/type');
+//        $response->headers->set('Content-Disposition', 'attachment;filename="'.$filename);
+//
+//        $response->setContent($content);
+//        return $response;
+//    }
 }

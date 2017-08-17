@@ -206,4 +206,3 @@ class Version
         return $this->dateOfChange;
     }
 }
-

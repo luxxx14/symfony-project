@@ -183,8 +183,41 @@
 								<button class="copy" onclick="copyToClipboard('.frame')">copy</button>
 							</div>							
 						</div>
+					</div>						
+				</div>
+			</div>
+			<div id="newest-version" class="stable-version newest-version">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="border-div">
+							<div class="download-link">
+								<a href="">Дистрибутив новейшей версии платформы</a>
+								<span>(5.1-build518 2017-07-07)</span>
+								<p>Рекомендовано для установки на рабочих проектах</p>
+							</div>
+							<h3>История версий</h3>
+							<ul>
+								<li><a href="">Последняя сборка (5.1-build518),</a><span> 17 дней назад</span></li>
+								<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>
+								<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>
+							</ul>
+							<a class="button" href="">Полная история версий</a>
+						</div>
 					</div>
-						
+					<div class="col-md-4">
+						<div class="code-example">
+							<h3>Maven dependency</h3>
+							<div>
+								<textarea class="frame">
+<dependency>
+&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
+&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
+&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>
+</dependency></textarea>
+								<button class="copy" onclick="copyToClipboard('.frame')">copy</button>
+							</div>							
+						</div>
+					</div>						
 				</div>
 			</div>
 			<div id="source-code" class="source-code">
@@ -236,10 +269,14 @@
 					<a class="button" href="">Перейти в группу новостей</a>
 				</div>
 				<div class="col-md-5">
-					<form>
+					<form id="subscribe-form">
 						<h3>Хотите быть в курсе последних событий? </h3>
 						<p>Подпишитесь на нашу рассылку и получайте уведомления на свой почтовый адрес</p>
-						<input placeholder="Ваш email"/>
+						<div>
+							<input placeholder="Ваш email"/>
+							<button></button>
+						</div>
+						<span class="error"></span>
 						<p>Нажимая кнопку вы принимаете условия <a href="">пользовательского соглашения</a></p>
 					</form>
 				</div>
@@ -266,7 +303,8 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/jquery.scrollTo.min.js"></script>
 		<script src="js/jquery.localScroll.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/validator/8.0.0/validator.min.js"></script>
 		<script src="js/index.js"></script>
-		<script src="js/yandexMap.js"></script>		
+		<script src="js/yandexMap.js"></script>	
   </body>
 </html>

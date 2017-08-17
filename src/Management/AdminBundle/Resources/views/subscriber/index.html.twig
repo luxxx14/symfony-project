@@ -1,0 +1,44 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Подписчики платформы</h1>
+
+    <table class="table table-striped table-staff">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>E-Mail</th>
+                <th>Подписка на новости</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subscriber in subscribers %}
+            <tr>
+                <td>{{ subscriber.id }}</td>
+                <td>{{ subscriber.email }}</td>
+                <td>
+                {% if subscriber.subscribedToFeed == TRUE %}
+                    <i class="fa fa-check fa-lg"></i>
+                {% else %}
+                    <i class="fa fa-minus fa-lg"></i>
+                {% endif %}
+                </td>
+                <td><nav><ul class="navbar">
+                    <li>
+                        {% if subscriber.subscribedToFeed == TRUE %}
+                            <a href="{{ path('admin_subscriber_change_subscription_status', {id: subscriber.id, action: 'unsubscribe'}) }}">
+                                <i class="fa fa-close fa-lg"></i>
+                            </a>
+                        {% else %}
+                            <a href="{{ path('admin_subscriber_change_subscription_status', {id: subscriber.id, action: 'subscribe'}) }}">
+                                <i class="fa fa-feed fa-lg"></i>
+                            </a>
+                        {% endif %}
+                    </li>
+                </ul></nav></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -3,9 +3,9 @@
 namespace Management\AdminBundle\Entity;
 
 /**
- * Component
+ * Subscriber
  */
-class Component
+class Subscriber
 {
     /**
      * @var integer
@@ -15,17 +15,12 @@ class Component
     /**
      * @var string
      */
-    private $name;
+    private $email;
 
     /**
-     * @var string
+     * @var boolean
      */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $wikiUrl;
+    private $subscribedToFeed;
 
     /**
      * @var \DateTime
@@ -38,10 +33,12 @@ class Component
     private $dateOfChange;
 
     /**
-     * Component constructor
+     * FeedSource constructor
      */
     public function __construct()
     {
+        $this->subscribedToFeed = TRUE;
+
         $currentDate = new \DateTime('NOW');
         $this->dateOfCreation = $currentDate;
         $this->dateOfChange = $currentDate;
@@ -58,75 +55,51 @@ class Component
     }
 
     /**
-     * Set name
+     * Set email
      *
-     * @param string $name
+     * @param string $email
      *
-     * @return Component
+     * @return Subscriber
      */
-    public function setName($name)
+    public function setEmail($email)
     {
-        $this->name = $name;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get email
      *
      * @return string
      */
-    public function getName()
+    public function getEmail()
     {
-        return $this->name;
+        return $this->email;
     }
 
     /**
-     * Set description
+     * Set subscribedToFeed
      *
-     * @param string $description
+     * @param boolean $subscribedToFeed
      *
-     * @return Component
+     * @return Subscriber
      */
-    public function setDescription($description)
+    public function setSubscribedToFeed($subscribedToFeed)
     {
-        $this->description = $description;
+        $this->subscribedToFeed = $subscribedToFeed;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get subscribedToFeed
      *
-     * @return string
+     * @return boolean
      */
-    public function getDescription()
+    public function getSubscribedToFeed()
     {
-        return $this->description;
-    }
-
-    /**
-     * Set wikiUrl
-     *
-     * @param string $wikiUrl
-     *
-     * @return Component
-     */
-    public function setWikiUrl($wikiUrl)
-    {
-        $this->wikiUrl = $wikiUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get wikiUrl
-     *
-     * @return string
-     */
-    public function getWikiUrl()
-    {
-        return $this->wikiUrl;
+        return $this->subscribedToFeed;
     }
 
     /**
@@ -134,7 +107,7 @@ class Component
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return Component
+     * @return Subscriber
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -158,7 +131,7 @@ class Component
      *
      * @param \DateTime $dateOfChange
      *
-     * @return Component
+     * @return Subscriber
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -177,3 +150,4 @@ class Component
         return $this->dateOfChange;
     }
 }
+

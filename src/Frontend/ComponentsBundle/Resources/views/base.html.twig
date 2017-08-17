@@ -100,15 +100,22 @@
             <div class="col-md-8">
                 <div class="border-div">
                     <div class="download-link">
-                        <a href="">Дистрибутив самой последней стабильной версии платформы</a>
+                        <a href="{{ builds.stable.0.path }}">Дистрибутив самой последней стабильной версии платформы</a>
                         <span>{{ '(' ~ versions.stable.name ~ ')' }}</span>
                         <p>{{ versions.stable.description }}</p>
                     </div>
                     <h3>История версий</h3>
                     <ul>
-                        <li><a href="">Последняя сборка (5.1-build518),</a><span> 17 дней назад</span></li>
-						<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>
-						<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>
+                    {% for key, value in builds.stable if key != 0 %}
+                        <li>
+                            <a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}
+                                <span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                        {#<li><a href="">Последняя сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
+                        {#<li><a href="">Последняя стабильная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
+                        {#<li><a href="">Последняя успешная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
                     </ul>
                     <a class="button" href="">Полная история версий</a>
                 </div>
@@ -209,17 +216,14 @@
             <a class="button" href="">Перейти в группу новостей</a>
         </div>
         <div class="col-md-5">
-			<form id="subscribe-form">
-				<h3>Хотите быть в курсе последних событий? </h3>
-				<p>Подпишитесь на нашу рассылку и получайте уведомления на свой почтовый адрес</p>
-				<div>
-					<input placeholder="Ваш email"/>
-					<button></button>
-				</div>
-				<span class="error"></span>
-				<p>Нажимая кнопку вы принимаете условия <a href="">пользовательского соглашения</a></p>
-			</form>
-		</div>
+            {{ form_start(subscriberForm) }}
+                <h3>Хотите быть в курсе последних событий? </h3>
+                <p>Подпишитесь на нашу рассылку и получайте уведомления на свой почтовый адрес</p>
+                {#<input placeholder="Ваш email"/>#}
+                {{ form_widget(subscriberForm) }}
+                <p>Нажимая кнопку вы принимаете условия <a href="">пользовательского соглашения</a></p>
+            {{ form_end(subscriberForm) }}
+        </div>
     </div>
 </section>
 <footer>
