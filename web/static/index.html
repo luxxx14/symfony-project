@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">    
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Orchestra</title>
 		<link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/main.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap-grid.min.css">
+		<link rel="stylesheet" href="styles/bootstrap-grid.css">
+    <link rel="stylesheet" href="styles/main.css">		
 		<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+		<!--[if IE]>		  
+		  <script src="https://cdn.jsdelivr.net/g/html5shiv@3.7.3,respond@1.4.2"></script>
+		<![endif]-->
   </head>
   <body>		
    	<header>
@@ -160,9 +163,9 @@
 							</div>
 							<h3>История версий</h3>
 							<ul>
-								<li><a href="">Последняя сборка (5.1-build518), <span>17 дней назад</span></a></li>
-								<li><a href="">Последняя стабильная сборка (5.1-build518), <span>17 дней назад</span></a></li>
-								<li><a href="">Последняя успешная сборка (5.1-build518), <span>17 дней назад</span></a></li>
+								<li><a href="">Последняя сборка (5.1-build518),</a><span> 17 дней назад</span></li>
+								<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>
+								<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>
 							</ul>
 							<a class="button" href="">Полная история версий</a>
 						</div>
@@ -177,7 +180,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
 &nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>
 </dependency></textarea>
-								<button class="copy" onclick="copyToClipboard()">copy</button>
+								<button class="copy" onclick="copyToClipboard('.frame')">copy</button>
 							</div>							
 						</div>
 					</div>
@@ -264,6 +267,6 @@
 		<script src="js/jquery.scrollTo.min.js"></script>
 		<script src="js/jquery.localScroll.min.js"></script>
 		<script src="js/index.js"></script>
-		<script src="js/yandexMap.js"></script>
+		<script src="js/yandexMap.js"></script>		
   </body>
 </html>
