@@ -92,15 +92,15 @@ class AdvantageController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $fs = new Filesystem();
-
-            $path = $this->get('kernel')->getRootDir() . '/../web/uploads/images/advantage';
-
-            $fs->chmod($path, 0777);
+//            $fs = new Filesystem();
+//
+//            $path = $this->get('kernel')->getRootDir() . '/../web/uploads/images/advantage';
+//
+//            $fs->chmod($path, 0777);
 
             $this->getDoctrine()->getManager()->flush();
 
-            $fs->chmod($path, 0755);
+//            $fs->chmod($path, 0755);
 
             return $this->redirectToRoute('admin_advantage_index');
         }
