@@ -22,12 +22,13 @@ class CompanyInformationType extends AbstractType
                     'class' => 'label'
                 ],
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'style' => 'min-height: 100px;'
                 ],
                 'required' => false
             ))
             ->add('address', TextType::class, array(
-                'label' => 'Заголовок',
+                'label' => 'Адрес',
                 'label_attr' => [
                     'class' => 'label'
                 ],
@@ -37,7 +38,7 @@ class CompanyInformationType extends AbstractType
                 'required' => false
             ))
             ->add('email', TextType::class, array(
-                'label' => 'Заголовок',
+                'label' => 'E-Mail',
                 'label_attr' => [
                     'class' => 'label'
                 ],
@@ -47,7 +48,7 @@ class CompanyInformationType extends AbstractType
                 'required' => false
             ))
             ->add('phoneNumber', TextType::class, array(
-                'label' => 'Заголовок',
+                'label' => 'Телефон',
                 'label_attr' => [
                     'class' => 'label'
                 ],

@@ -37,6 +37,8 @@ class InitialController extends Controller {
 
         $commonInformation = $em->getRepository('ManagementAdminBundle:CommonInformation')->find(1);
 
+        $companyInformation = $em->getRepository('ManagementAdminBundle:CompanyInformation')->find(1);
+
         $components = $em->getRepository('ManagementAdminBundle:Component')
             ->createQueryBuilder('c')
             ->orderBy('c.id', 'ASC')
@@ -116,6 +118,7 @@ class InitialController extends Controller {
 //        return $this->render('@ManagementAdmin/initial/index.html.twig');
         return $this->render('@FrontendComponents/base.html.twig', [
             'commonInformation' => $commonInformation,
+            'companyInformation' => $companyInformation,
             'components' => $components,
             'advantages' => $advantages,
             'clients' => $clients,

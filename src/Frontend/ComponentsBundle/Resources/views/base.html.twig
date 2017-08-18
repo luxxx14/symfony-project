@@ -252,10 +252,10 @@
     <div class="modal-content">
         <img class="kurs-logo" src="{{ asset('bundles/frontendcomponents/img/kurs-logo.png') }}" alt="kurs logo" />
         <span class="close"><img src="{{ asset('bundles/frontendcomponents/img/ic-close.png') }}" alt="close btn" /></span>
-        <p>Группа компаний «КУРС» с 1998 года активно работает на российском рынке информационных и консультационных услуг, как в корпоративном, так и в государственном секторе.</p>
-        <div class="address">111020, Москва, Боровая ул., дом 7, корп. 2</div>
-        <div class="mail">info@curs.ru</div>
-        <div class="phone">+7 (495) 640-27-72</div>
+        <p>{{ companyInformation.description }}</p>
+        <div class="address">{{ companyInformation.address }}</div>
+        <div class="mail">{{ companyInformation.email }}</div>
+        <div class="phone">{{ companyInformation.phoneNumber }}</div>
         <h3>Как нас найти</h3>
         <div id="map"></div>
     </div>
