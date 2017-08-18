@@ -32,7 +32,8 @@ class CommonInformationType extends AbstractType
                     'class' => 'label'
                 ],
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'style' => 'min-height: 200px;'
                 ],
                 'required' => false
             ))
