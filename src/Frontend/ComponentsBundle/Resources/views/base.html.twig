@@ -41,7 +41,7 @@
     {% for component in components %}
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-md-{{ serialNumber <= 3 ? 4 : 3 }}">
-            <h2>{{ component.name }}</h2>
+            <h2><a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">{{ component.name }}</a></h2>
             <p>{{ component.description }}</p>
         </div>
     {% if serialNumber == 3 %}
