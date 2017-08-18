@@ -634,7 +634,7 @@ body {
 						margin: 30px auto;
 
 					}
-					p:first-of-type {
+					p {
 						font-size: 16px;
 						line-height: 1.5;
 						letter-spacing: 0.2px;
@@ -642,39 +642,52 @@ body {
 						color: #333333;
 						padding: 0 90px;
 					}
-					div {
-						position: relative;
-						margin-top: 20px;
-						input {
-							border-radius: 4px;
-							background-color: #ffffff;
-							box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
-							border: solid 1px #d8dbe2;
-							padding: 16px;
-							width: 384px;
-							max-width: 100%;					
-							background-color: white;							
-							&:hover {
-								border-color: #9558d1;
+					.input-block {						
+						div {
+							position: relative;
+							margin-top: 20px;
+							input {
+								border-radius: 4px;
+								background-color: #ffffff;
+								box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
+								border: solid 1px #d8dbe2;
+								padding: 16px;
+								width: 384px;
+								max-width: 100%;					
+								background-color: white;							
+								&:hover {
+									border-color: #9558d1;
+								}
+								&:focus {
+									border-color: #592e83;
+									outline: none;
+								}						
 							}
-							&:focus {
-								border-color: #592e83;
+							.input-error {
+								box-shadow: inset 0px 0px 4px 0 #d13c46;
+							}
+							button {
+								cursor: pointer;
+								position: absolute;
+								right: 40px;
+								bottom: 6px;
+								width: 38px;
+								height: 38px;
+								border: none;
 								outline: none;
-							}						
+								background: url(../img/ic-subscribe.png) center center no-repeat;
+							}
 						}
-						.input-error {
-							box-shadow: inset 0px 0px 4px 0 #d13c46;
-						}
-						button {
-							cursor: pointer;
-							position: absolute;
-							right: 40px;
-							bottom: 6px;
-							width: 38px;
-							height: 38px;
-							border: none;
-							outline: none;
-							background: url(../img/ic-subscribe.png) center center no-repeat;
+					}
+					.success-message {
+						display: none;
+						margin: 50px 0 42px 0;
+						span {
+							display: block;
+							margin: 0 auto;
+							width: 42px;
+							height: 42px;						
+							background: url(../img/circle.png) center center no-repeat;
 						}
 					}
 					.error {
@@ -688,14 +701,15 @@ body {
 						text-align: left;
 						margin-top: 6px;						
 					}
-					p:last-of-type {
+					.policy {
 						font-size: 14px;
 						line-height: 1.43;
 						letter-spacing: 0.2px;
 						text-align: center;
 						color: #c6c9d1;
+						padding: 0;
 						padding-top: 20px;
-						margin: 0;
+						margin: 0;						
 						a {
 							display: inline-block;							
 						}

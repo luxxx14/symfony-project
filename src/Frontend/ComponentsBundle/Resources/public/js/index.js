@@ -69,24 +69,29 @@ $(document).ready(function(){
 	//form submit	
 	$('#subscribe-form').on('submit', function(e){
 		var email = inputField.val();
-		e.preventDefault();		;
+		e.preventDefault();		
 		if (!validator.isEmail(email)) {
 			errorField.text('Ошибка: неправильный e-mail');
 			inputField.addClass('input-error');
 			return;
 		} else {
 			$.post('/admin/subscriber/' + email + '/subscribe', {})
-				.done(function(){  
-					console.log("Sucvcess");
+				.done(function(){					
 					inputField.val('');
+					toogleForm();
+					setTimeout(toogleForm, 3000);
 				})
-				.fail(function(xhr, status, error) {
-					console.log("error");
+				.fail(function(xhr, status, error) {					
 					errorField.text('Ошибка: произошла ошибка');
 					inputField.addClass('input-error');
 				});			
 		}
 	});
+	
+	function toogleForm() {
+		$('.input-block').toggle();
+		$('.success-message').toggle();
+	}
 	
 });
 
