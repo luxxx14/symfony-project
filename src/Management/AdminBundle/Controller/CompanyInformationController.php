@@ -92,7 +92,7 @@ class CompanyInformationController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_company_information_edit', array('id' => $companyInformation->getId()));
+            return $this->redirectToRoute('admin_company_information_index');
         }
 
         return $this->render('@ManagementAdmin/companyinformation/edit.html.twig', array(
