@@ -22,9 +22,9 @@
 
     <a class="btn" href="{{ path('admin_advantage_edit', { 'id': advantage.id }) }}">Редактировать</a>
 
-    {{ form_start(delete_form) }}
-        <input class="btn" type="submit" value="Удалить">
-    {{ form_end(delete_form) }}
+    {#{{ form_start(delete_form) }}#}
+        {#<input class="btn" type="submit" value="Удалить">#}
+    {#{{ form_end(delete_form) }}#}
 
     <a class="btn" href="{{ path('admin_advantage_index') }}">К списку</a>
 {% endblock %}

@@ -42,16 +42,16 @@ class VersionType extends AbstractType
                 ],
                 'required' => false
             ))
-            ->add('name', TextType::class, array(
-                'label' => 'Версия',
-                'label_attr' => [
-                    'class' => 'label'
-                ],
-                'attr' => [
-                    'class' => 'form-control'
-                ],
-                'required' => false
-            ))
+//            ->add('name', TextType::class, array(
+//                'label' => 'Версия',
+//                'label_attr' => [
+//                    'class' => 'label'
+//                ],
+//                'attr' => [
+//                    'class' => 'form-control'
+//                ],
+//                'required' => false
+//            ))
             ->add('mavenDependency', TextareaType::class, array(
                 'label' => 'Maven dependency',
                 'label_attr' => [

@@ -8,7 +8,7 @@
             <tr>
                 <th>Тип</th>
                 <th>Описание</th>
-                <th>Версия</th>
+                {#<th>Версия</th>#}
                 <th style="min-width: 300px !important;">Maven dependency</th>
                 <th>Действия</th>
             </tr>
@@ -18,7 +18,7 @@
             <tr>
                 <td>{{ version.type }}</td>
                 <td>{{ version.description }}</td>
-                <td>{{ version.name }}</td>
+                {#<td>{{ version.name }}</td>#}
                 <td>
                     <textarea style="min-width: 300px; min-height: 73px;">{{ version.mavenDependency }}</textarea>
                 </td>
