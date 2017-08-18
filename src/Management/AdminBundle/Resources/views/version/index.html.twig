@@ -9,7 +9,7 @@
                 <th>Тип</th>
                 <th>Описание</th>
                 <th>Версия</th>
-                <th>Maven dependency</th>
+                <th style="min-width: 300px !important;">Maven dependency</th>
                 <th>Действия</th>
             </tr>
         </thead>
@@ -19,7 +19,9 @@
                 <td>{{ version.type }}</td>
                 <td>{{ version.description }}</td>
                 <td>{{ version.name }}</td>
-                <td>{{ version.mavenDependency | raw }}</td>
+                <td>
+                    <textarea style="min-width: 300px; min-height: 73px;">{{ version.mavenDependency }}</textarea>
+                </td>
                 <td><nav><ul class="navbar">
                     <li>
                         <a href="{{ path('admin_version_show', { 'id': version.id }) }}">
