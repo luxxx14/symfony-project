@@ -217,15 +217,21 @@
         </div>
         <div class="col-md-5">
             <form id="subscribe-form">
-                <h3>Хотите быть в курсе последних событий? </h3>
-                <p>Подпишитесь на нашу рассылку и получайте уведомления на свой почтовый адрес</p>
-                <div>
-                    <input placeholder="Ваш email"/>
-                    <button></button>
-                </div>
-                <span class="error"></span>
-                <p>Нажимая кнопку вы принимаете условия <a href="">пользовательского соглашения</a></p>
-            </form>
+				<h3>Хотите быть в курсе последних событий? </h3>						
+				<div class="input-block">							
+					<p>Подпишитесь на нашу рассылку и получайте уведомления на свой почтовый адрес</p>
+					<div>
+						<input placeholder="Ваш email"/>
+						<button></button>
+					</div>
+				</div>
+				<div class="success-message">
+					<span></span>
+					<p>Подписка оформлена!</p>
+				</div>
+				<span class="error"></span>
+				<p class="policy">Нажимая кнопку вы принимаете условия <a href="">пользовательского соглашения</a></p>
+			</form>
             {#{{ form_start(subscriberForm) }}#}
                 {#<h3>Хотите быть в курсе последних событий? </h3>#}
                 {#<p>Подпишитесь на нашу рассылку и получайте уведомления на свой почтовый адрес</p>#}
@@ -257,6 +263,7 @@
 <script src="{{ asset('bundles/frontendcomponents/js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('bundles/frontendcomponents/js/jquery.scrollTo.min.js') }}"></script>
 <script src="{{ asset('bundles/frontendcomponents/js/jquery.localScroll.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/validator/8.0.0/validator.min.js"></script>
 <script src="{{ asset('bundles/frontendcomponents/js/index.js') }}"></script>
 <script src="{{ asset('bundles/frontendcomponents/js/yandexMap.js') }}"></script>
 </body>
