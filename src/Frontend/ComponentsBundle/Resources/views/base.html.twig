@@ -100,7 +100,7 @@
             <div class="col-md-8">
                 <div class="border-div">
                     <div class="download-link">
-                        <a href="{{ builds.stable.0.path }}">Дистрибутив самой последней стабильной версии платформы</a>
+                        <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}">Дистрибутив самой последней стабильной версии платформы</a>
                         <span>{{ '(' ~ versions.stable.name ~ ')' }}</span>
                         <p>{{ versions.stable.description }}</p>
                     </div>
@@ -125,12 +125,12 @@
                     <h3>Maven dependency</h3>
                     <div>
                         <textarea class="frame">
-{#<dependency>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>#}
-{#</dependency>#}
-{{ versions.stable.mavenDependency | raw }}</textarea>
+                            {#<dependency>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>#}
+                            {#</dependency>#}
+                            {{ versions.stable.mavenDependency | raw }}</textarea>
                         <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
                     </div>
                 </div>
@@ -142,15 +142,22 @@
             <div class="col-md-8">
                 <div class="border-div">
                     <div class="download-link">
-                        <a href="">Дистрибутив новейшей версии платформы</a>
-                        <span>{{ '(' ~ versions.stable.name ~ ')' }}</span>
-                        <p>{{ versions.stable.description }}</p>
+                        <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}">Дистрибутив новейшей версии платформы</a>
+                        <span>{{ '(' ~ versions.newest.name ~ ')' }}</span>
+                        <p>{{ versions.newest.description }}</p>
                     </div>
                     <h3>История версий</h3>
                     <ul>
-                        <li><a href="">Последняя сборка (5.1-build518),</a><span> 17 дней назад</span></li>
-						<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>
-						<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>
+                    {% for key, value in builds.newest if key != 0 %}
+                        <li>
+                            <a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}
+                                <span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                        {#<li><a href="">Последняя сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
+						{#<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
+						{#<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
                     </ul>
                     <a class="button" href="">Полная история версий</a>
                 </div>
@@ -160,12 +167,12 @@
                     <h3>Maven dependency</h3>
                     <div>
                         <textarea class="frame">
-{#<dependency>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>#}
-{#</dependency>#}
-{{ versions.stable.mavenDependency | raw }}</textarea>
+                            {#<dependency>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
+                            {#&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>#}
+                            {#</dependency>#}
+                            {{ versions.newest.mavenDependency | raw }}</textarea>
                         <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
                     </div>
                 </div>

@@ -77,45 +77,47 @@ class InitialController extends Controller {
 
         $versions = compact('stable', 'newest', 'source');
 
-        /** Stable builds */
-        $finder->files()->in($buildsPath . 'stable');
-        $finder->sortByName();
+        if ($fs->exists($buildsPath . 'stable')) {
+            /** Stable builds */
+            $finder->files()->in($buildsPath . 'stable');
+            $finder->sortByName();
 
-        $count = $finder->count();
-        $current = 0;
-        foreach ($finder as $file) {
-            $current++;
+            $count = $finder->count();
+            $current = 0;
+            foreach ($finder as $file) {
+                $current++;
 
-            if ($count - $current <= 3) {
-                $builds['stable'][] = [
-                    'name' => $file->getFilename(),
-                    'path' => $file->getRealPath(),
-                    'date' => (new \DateTime())->setTimestamp($file->getATime())
-                ];
+                if ($count - $current <= 3) {
+                    $builds['stable'][] = [
+                        'name' => $file->getFilename(),
+                        'path' => $file->getRealPath(),
+                        'date' => (new \DateTime())->setTimestamp($file->getATime())
+                    ];
+                }
             }
+            rsort($builds['stable']);
         }
-        rsort($builds['stable']);
+        if ($fs->exists($buildsPath . 'trunk')) {
+            /** Newest builds */
+            $finder->files()->in($buildsPath . 'trunk');
+            $finder->sortByName();
 
-        /** Newest builds */
-        $finder->files()->in($buildsPath . 'trunk');
-        $finder->sortByName();
+            $count = $finder->count();
+            $current = 0;
+            foreach ($finder as $file) {
+                $current++;
 
-        $count = $finder->count();
-        $current = 0;
-        foreach ($finder as $file) {
-            $current++;
-
-            if ($count - $current <= 3) {
-                $builds['newest'][] = [
-                    'name' => $file->getFilename(),
-                    'path' => $file->getRealPath(),
-                    'date' => (new \DateTime())->setTimestamp($file->getATime())
-                ];
+                if ($count - $current <= 3) {
+                    $builds['newest'][] = [
+                        'name' => $file->getFilename(),
+                        'path' => $file->getRealPath(),
+                        'date' => (new \DateTime())->setTimestamp($file->getATime())
+                    ];
+                }
             }
+            rsort($builds['newest']);
         }
-        rsort($builds['newest']);
 
-//        return $this->render('@ManagementAdmin/initial/index.html.twig');
         return $this->render('@FrontendComponents/base.html.twig', [
             'commonInformation' => $commonInformation,
             'companyInformation' => $companyInformation,
