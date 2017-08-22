@@ -40,7 +40,7 @@
     {% set serialNumber = 0 %}
     {% for component in components %}
         {% set serialNumber = serialNumber + 1 %}
-        <div class="col-md-{{ serialNumber <= 3 ? 4 : 3 }}">
+        <div class="col-xs-{{ serialNumber <= 3 ? 4 : 3 }}">
             <h2><a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">{{ component.name }}</a></h2>
             <p>{{ component.description }}</p>
         </div>
@@ -57,7 +57,7 @@
         {% set serialNumber = 0 %}
         {% for advantage in advantages %}
         {% set serialNumber = serialNumber + 1 %}
-        <div class="col-md-3">
+        <div class="col-xs-3">
             <img src="{{ asset('uploads/images/advantage/' ~ advantage.imageName) }}" alt="icon" />
             <p>{{ advantage.description }}</p>
         </div>
@@ -74,7 +74,7 @@
         {% set serialNumber = 0 %}
         {% for client in clients %}
         {% set serialNumber = serialNumber + 1 %}
-        <div class="col-md-4">
+        <div class="col-xs-4">
             <img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}" alt="icon" />
             <p>{{ client.title }}</p>
         </div>
@@ -97,7 +97,7 @@
     </nav>
     <div id="stable" class="stable-version">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-xs-8">
                 <div class="border-div">
                     <div class="download-link">
                         <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}">Дистрибутив самой последней стабильной версии платформы</a>
@@ -120,7 +120,7 @@
                     <a class="button" href="">Полная история версий</a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-4">
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div>
@@ -139,7 +139,7 @@
     </div>
 	<div id="newest-version" class="stable-version newest-version">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-xs-8">
                 <div class="border-div">
                     <div class="download-link">
                         <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}">Дистрибутив новейшей версии платформы</a>
@@ -162,7 +162,7 @@
                     <a class="button" href="">Полная история версий</a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-4">
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div>
@@ -210,7 +210,7 @@
 </section>
 <section id="news" class="news">
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-xs-7">
             <h1>Последние новости</h1>
             <ul>
             {% for item in feed %}
@@ -222,7 +222,7 @@
             </ul>
             <a class="button" href="">Перейти в группу новостей</a>
         </div>
-        <div class="col-md-5">
+        <div class="col-xs-5">
             <form id="subscribe-form">
 				<h3>Хотите быть в курсе последних событий? </h3>						
 				<div class="input-block">							

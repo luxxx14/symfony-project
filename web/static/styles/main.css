@@ -261,15 +261,15 @@ body {
       letter-spacing: 0.5px;
       text-align: center;
       color: #1f1f37; }
-    body .users .row .col-md-4 {
+    body .users .row .col-xs-4 {
       text-align: center;
-      border-left: 1px solid #d8dbe2; }
-      body .users .row .col-md-4 img {
+      border-right: 1px solid #d8dbe2; }
+      body .users .row .col-xs-4 img {
         opacity: 0.4;
         filter: grayscale(1);
         max-width: 100%;
         transition: opacity 1s; }
-      body .users .row .col-md-4 p {
+      body .users .row .col-xs-4 p {
         margin: 0;
         padding: 0;
         opacity: 0;
@@ -278,15 +278,15 @@ body {
         position: relative;
         bottom: 30px;
         transition: opacity 0.5s; }
-      body .users .row .col-md-4:hover img {
+      body .users .row .col-xs-4:hover img {
         opacity: 1;
         filter: grayscale(0); }
-      body .users .row .col-md-4:hover p {
+      body .users .row .col-xs-4:hover p {
         opacity: 1; }
-      body .users .row .col-md-4:first-of-type {
-        border-left: none; }
-    body .users .row:first-of-type {
-      border-bottom: 1px solid #d8dbe2; }
+      body .users .row .col-xs-4:nth-child(3) {
+        border-right: none; }
+    body .users .row:not(:first-of-type) {
+      border-top: 1px solid #d8dbe2; }
   body .download {
     margin-top: 100px;
     padding: 0 160px;
@@ -346,7 +346,7 @@ body {
               border-radius: 3px;
               background-color: #d8dbe2;
               padding: 16px 16px; }
-    body .download .row .col-md-8 .border-div {
+    body .download .row .col-xs-8 .border-div {
       border-right: 1px solid #d8dbe2;
       margin-right: 28px; }
     body .download .stable-version .download-link {
@@ -478,7 +478,7 @@ body {
     text-align: center;
     margin-bottom: 130px;
     margin-top: 60px; }
-    body .news .row .col-md-7 h1 {
+    body .news .row .col-xs-7 h1 {
       font-size: 32px;
       font-weight: 300;
       line-height: 1.5;
@@ -486,9 +486,9 @@ body {
       text-align: center;
       color: #1f1f37;
       margin-bottom: 30px; }
-    body .news .row .col-md-7 ul {
+    body .news .row .col-xs-7 ul {
       margin-bottom: 60px; }
-      body .news .row .col-md-7 ul li {
+      body .news .row .col-xs-7 ul li {
         font-size: 16px;
         line-height: 1.5;
         letter-spacing: 0.2px;
@@ -496,7 +496,7 @@ body {
         border-bottom: 1px solid #d8dbe2;
         margin-bottom: 23px;
         text-align: left; }
-        body .news .row .col-md-7 ul li .date {
+        body .news .row .col-xs-7 ul li .date {
           width: 80px;
           height: 24px;
           border-radius: 3px;
@@ -508,13 +508,13 @@ body {
           text-align: center;
           color: #333333;
           margin-bottom: 9px; }
-    body .news .row .col-md-5 form {
+    body .news .row .col-xs-5 form {
       background-color: rgba(216, 219, 226, 0.4);
       margin-top: 60px;
       height: 406px;
       padding-top: 10px;
       border-radius: 4px; }
-      body .news .row .col-md-5 form h3 {
+      body .news .row .col-xs-5 form h3 {
         font-family: Merriweather;
         font-size: 24px;
         font-weight: 300;
@@ -524,17 +524,20 @@ body {
         color: #1f1f37;
         max-width: 269px;
         margin: 30px auto; }
-      body .news .row .col-md-5 form p {
+      body .news .row .col-xs-5 form p {
         font-size: 16px;
         line-height: 1.5;
         letter-spacing: 0.2px;
         text-align: center;
         color: #333333;
         padding: 0 90px; }
-      body .news .row .col-md-5 form .input-block div {
+      body .news .row .col-xs-5 form .input-block div {
         position: relative;
-        margin-top: 20px; }
-        body .news .row .col-md-5 form .input-block div input {
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 384px;
+        max-width: 100%; }
+        body .news .row .col-xs-5 form .input-block div input {
           border-radius: 4px;
           background-color: #ffffff;
           box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
@@ -543,33 +546,33 @@ body {
           width: 384px;
           max-width: 100%;
           background-color: white; }
-          body .news .row .col-md-5 form .input-block div input:hover {
+          body .news .row .col-xs-5 form .input-block div input:hover {
             border-color: #9558d1; }
-          body .news .row .col-md-5 form .input-block div input:focus {
+          body .news .row .col-xs-5 form .input-block div input:focus {
             border-color: #592e83;
             outline: none; }
-        body .news .row .col-md-5 form .input-block div .input-error {
+        body .news .row .col-xs-5 form .input-block div .input-error {
           box-shadow: inset 0px 0px 4px 0 #d13c46; }
-        body .news .row .col-md-5 form .input-block div button {
+        body .news .row .col-xs-5 form .input-block div button {
           cursor: pointer;
           position: absolute;
-          right: 40px;
+          right: 10px;
           bottom: 6px;
           width: 38px;
           height: 38px;
           border: none;
           outline: none;
           background: url(../img/ic-subscribe.png) center center no-repeat; }
-      body .news .row .col-md-5 form .success-message {
+      body .news .row .col-xs-5 form .success-message {
         display: none;
         margin: 50px 0 42px 0; }
-        body .news .row .col-md-5 form .success-message span {
+        body .news .row .col-xs-5 form .success-message span {
           display: block;
           margin: 0 auto;
           width: 42px;
           height: 42px;
           background: url(../img/circle.png) center center no-repeat; }
-      body .news .row .col-md-5 form .error {
+      body .news .row .col-xs-5 form .error {
         display: none;
         color: #d13c46;
         font-size: 13px;
@@ -579,7 +582,7 @@ body {
         width: 384px;
         text-align: left;
         margin-top: 6px; }
-      body .news .row .col-md-5 form .policy {
+      body .news .row .col-xs-5 form .policy {
         font-size: 14px;
         line-height: 1.43;
         letter-spacing: 0.2px;
@@ -588,7 +591,7 @@ body {
         padding: 0;
         padding-top: 20px;
         margin: 0; }
-        body .news .row .col-md-5 form .policy a {
+        body .news .row .col-xs-5 form .policy a {
           display: inline-block; }
   body footer {
     background-color: #eff1f3;
