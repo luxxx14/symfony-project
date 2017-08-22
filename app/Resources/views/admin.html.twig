@@ -21,33 +21,38 @@
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar origin" id="sidebar">
         <!-- Logo -->
-        <a href="" class="logo"></a>
+        {#<a href="{{ path('admin_index') }}" class="logo"></a>#}
         <section class="sidebar">
-            <a href="" class="menu-trigger"></a>
-            <ul class="sidebar-menu">
-                <li class="header">Статичные блоки</li>
-                <li><a href="{{ path('admin_common_information_index') }}">Общая информация</a></li>
-                <li><a href="{{ path('admin_component_index') }}">Компоненты платформы</a></li>
-                <li><a href="{{ path('admin_advantage_index') }}">Основные преимущества</a></li>
-                <li><a href="{{ path('admin_client_index') }}">Кто использует</a></li>
-                <li><a href="{{ path('admin_company_information_index') }}">О компании</a></li>
-            </ul>
+            {#<a href="" class="menu-trigger"></a>#}
+            {#<ul class="sidebar-menu">#}
+                {#<li class="header">Статичные блоки</li>#}
+                {#<li><a href="{{ path('admin_common_information_index') }}">Общая информация</a></li>#}
+                {#<li><a href="{{ path('admin_component_index') }}">Компоненты платформы</a></li>#}
+                {#<li><a href="{{ path('admin_advantage_index') }}">Основные преимущества</a></li>#}
+                {#<li><a href="{{ path('admin_client_index') }}">Кто использует</a></li>#}
+                {#<li><a href="{{ path('admin_company_information_index') }}">О компании</a></li>#}
+            {#</ul>#}
 
-            <ul class="sidebar-menu">
-                <li class="header">Коды для Maven</li>
-                <li><a href="{{ path('admin_version_index') }}">Коды для Maven</a></li>
-            </ul>
+            {#<ul class="sidebar-menu">#}
+                {#<li class="header">Коды для Maven</li>#}
+                {#<li><a href="{{ path('admin_version_index') }}">Коды для Maven</a></li>#}
+            {#</ul>#}
 
-            <ul class="sidebar-menu">
-                <li class="header">Новости</li>
-                <li><a href="{{ path('admin_redirect_for_selected_feed_source', {action: 'show'}) }}">Настройка источника RSS</a></li>
-                <li><a href="{{ path('admin_redirect_for_selected_feed_source', {action: 'show_feed'}) }}">Модерация новостей</a></li>
-            </ul>
+            {#<ul class="sidebar-menu">#}
+                {#<li class="header">Новости</li>#}
+                {#<li><a href="{{ path('admin_redirect_for_selected_feed_source', {action: 'show'}) }}">Настройка источника RSS</a></li>#}
+                {#<li><a href="{{ path('admin_redirect_for_selected_feed_source', {action: 'show_feed'}) }}">Модерация новостей</a></li>#}
+            {#</ul>#}
 
-            <ul class="sidebar-menu">
-                <li class="header">Список подписчиков</li>
-                <li><a href="{{ path('admin_subscriber_index') }}">Список подписчиков</a></li>
-            </ul>
+            {#<ul class="sidebar-menu">#}
+                {#<li class="header">Список подписчиков</li>#}
+                {#<li><a href="{{ path('admin_subscriber_index') }}">Список подписчиков</a></li>#}
+            {#</ul>#}
+            <a href="#" class="menu-trigger"></a>
+            {{ knp_menu_render('ManagementAdminBundle:Builder:mainMenu', {
+                'class': 'sidebar-menu',
+                'currentClass': 'active'
+            }) }}
         </section>
     </aside>
     <!-- Content Wrapper. Contains page content -->
@@ -59,7 +64,7 @@
             <div class="profile-bar right">
                 <nav>
                     <ul class="navbar">
-                        <li>Hello, <a href="">Username</a></li>
+                        <li>Здравствуйте, <strong>{{ app.user.username }}</strong></li>
                         <li><a href="{{ path('logout') }}">Выход</a></li>
                     </ul>
                 </nav>
