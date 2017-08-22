@@ -92,7 +92,7 @@ class CommonInformationController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_common_information_edit', array('id' => $commonInformation->getId()));
+            return $this->redirectToRoute('admin_common_information_index');
         }
 
         return $this->render('@ManagementAdmin/commoninformation/edit.html.twig', array(
