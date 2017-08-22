@@ -6,26 +6,30 @@
     <table class="table table-striped table-staff">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Название</th>
-                <th>Описание</th>
-                <th>Ссылка на wiki страницу</th>
-                <th>Действия</th>
+                <th style="width: 5% !important;">ID</th>
+                <th style="width: 15% !important;">Название</th>
+                <th style="width: 40% !important;">Описание</th>
+                <th style="width: 30% !important;">Ссылка на wiki страницу</th>
+                <th style="width: 10% !important;">Действия</th>
             </tr>
         </thead>
         <tbody>
         {% for component in components %}
             <tr>
-                <td><a href="{{ path('admin_component_show', { 'id': component.id }) }}">{{ component.id }}</a></td>
+                <td>
+                    {#<a href="{{ path('admin_component_show', { 'id': component.id }) }}">#}
+                        {{ component.id }}
+                    {#</a>#}
+                </td>
                 <td>{{ component.name }}</td>
                 <td>{{ component.description }}</td>
                 <td>{{ component.wikiUrl }}</td>
                 <td><nav><ul class="navbar">
-                    <li>
-                        <a href="{{ path('admin_component_show', { 'id': component.id }) }}">
-                            <i class="fa fa-search fa-lg"></i>
-                        </a>
-                    </li>
+                    {#<li>#}
+                        {#<a href="{{ path('admin_component_show', { 'id': component.id }) }}">#}
+                            {#<i class="fa fa-search fa-lg"></i>#}
+                        {#</a>#}
+                    {#</li>#}
                     <li>
                         <a href="{{ path('admin_component_edit', { 'id': component.id }) }}">
                             <i class="fa fa-pencil fa-lg"></i>

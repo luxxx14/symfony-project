@@ -5,7 +5,7 @@
 
     <div class="margin-bottom-lg border-bottom">
         <div class="row">
-            <div class="col-lg-5 col-md-8">
+            <div class="col-lg-8 col-md-8">
                 {{ form_start(form) }}
                 {#<div class="form-group">#}
                     {#{{ form_label(form.grayScaleImageFile) }}#}
@@ -17,10 +17,22 @@
                 {#</div>#}
 
                 <div class="form-group">
+                    <label class="label">Рисунок</label>
+                    <br>
+                    <img id="color-image-preview"
+                         src="{% if client.colorImageName %}
+                            {{ asset('uploads/images/client_color/' ~ client.colorImageName) }}
+                            {% endif %}"
+                         width="352px" height="200px">
+                    <br><br>
+                    <a id="open-filesystem" class="btn">Обзор</a>
+                </div>
+
+                <div class="form-group" style="display: none;">
                     {{ form_label(form.colorImageFile) }}
                     <img id="color-image-preview"
                          src=""
-                         width="200px" height="200px">
+                         width="352px" height="200px">
                     {{ form_widget(form.colorImageFile) }}
                     {{ form_errors(form.colorImageFile) }}
                 </div>
@@ -37,5 +49,31 @@
         </div>
     </div>
 
-    <a class="btn" href="{{ path('admin_client_index') }}">К списку</a>
+    <a class="btn" href="{{ path('admin_client_index') }}">Отмена</a>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(
+            function() {
+                document.getElementById("management_adminbundle_client_colorImageFile_file").onchange = function () {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        // get loaded data and render thumbnail.
+                        document.getElementById("color-image-preview").src = e.target.result;
+                    };
+
+                    // read the image file as a data URL.
+                    reader.readAsDataURL(this.files[0]);
+                };
+            });
+        $(document).ready(
+            function() {
+                $('#open-filesystem').click( function () {
+                    $('#management_adminbundle_client_colorImageFile_file').click();
+                })
+            });
+    </script>
+{% endblock javascripts %}

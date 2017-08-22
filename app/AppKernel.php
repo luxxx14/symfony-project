@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new Management\AdminBundle\ManagementAdminBundle(),
             /** Uploading of the photos and other features */
             new Vich\UploaderBundle\VichUploaderBundle(),
+            /** KNPMenuBundle */
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
             new Debril\RssAtomBundle\DebrilRssAtomBundle(),
         ];

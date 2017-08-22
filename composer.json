@@ -33,6 +33,7 @@
         "symfony/symfony": "3.3.*",
         "twig/twig": "^1.0||^2.0",
         "vich/uploader-bundle": "^1.5.3",
+        "knplabs/knp-menu-bundle": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.5.4"
     },
     "require-dev": {
