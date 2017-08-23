@@ -95,7 +95,7 @@ class InitialController extends Controller {
                     ];
                 }
             }
-            if (array_key_exists('stable', $builds)) {
+            if (array_key_exists('stable', $builds) and !$builds['stable']) {
                 rsort($builds['stable']);
             }
         }
@@ -117,7 +117,7 @@ class InitialController extends Controller {
                     ];
                 }
             }
-            if (array_key_exists('newest', $builds)) {
+            if (array_key_exists('newest', $builds) and !$builds['newest']) {
                 rsort($builds['newest']);
             }
         }
