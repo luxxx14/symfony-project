@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Orchestra</title>
+	<link rel="icon" href="{{ asset('bundles/frontendcomponents/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('bundles/frontendcomponents/styles/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/frontendcomponents/styles/main.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/frontendcomponents/styles/bootstrap-grid.css') }}">
@@ -58,7 +59,9 @@
         {% for advantage in advantages %}
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-xs-3">
-            <img src="{{ asset('uploads/images/advantage/' ~ advantage.imageName) }}" alt="icon" />
+			<div>
+				<img src="{{ asset('uploads/images/advantage/' ~ advantage.imageName) }}" alt="icon" />
+			</div>
             <p>{{ advantage.description }}</p>
         </div>
     {% if serialNumber == 4 %}
@@ -124,8 +127,7 @@
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div>
-                        <textarea class="frame">
-                            {#<dependency>#}
+                        <textarea class="frame" readonly>{#<dependency>#}
                             {#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
                             {#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
                             {#&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>#}
@@ -166,8 +168,7 @@
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div>
-                        <textarea class="frame">
-                            {#<dependency>#}
+                        <textarea class="frame" readonly>{#<dependency>#}
                             {#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
                             {#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
                             {#&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>#}
