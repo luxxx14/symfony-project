@@ -37,6 +37,11 @@
                             <i class="fa fa-pencil fa-lg"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ path('admin_client_delete', { 'id': client.id }) }}">
+                            <i class="fa fa-trash fa-lg"></i>
+                        </a>
+                    </li>
                 </ul></nav></td>
             </tr>
         {% endfor %}

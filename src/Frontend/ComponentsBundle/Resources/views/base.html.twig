@@ -78,7 +78,7 @@
         {% for client in clients %}
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-xs-4">
-            <img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}" alt="icon" />
+            <img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}" width="352" height="200" alt="icon">
             <p>{{ client.title }}</p>
         </div>
         {% if serialNumber == 3 %}

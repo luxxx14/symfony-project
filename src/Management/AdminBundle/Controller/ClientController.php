@@ -102,22 +102,51 @@ class ClientController extends Controller
         ));
     }
 
+//    /**
+//     * Redirect to route for deleting client entity.
+//     *
+//     * @Route("/{id}/edit", name="admin_client_redirect_to_delete")
+//     * @Method("GET")
+//     */
+//    public function redirectToDeleteAction(Request $request, Client $client)
+//    {
+//        $deleteForm = $this->createDeleteForm($client);
+//        $editForm = $this->createForm('Management\AdminBundle\Form\ClientType', $client);
+//        $editForm->handleRequest($request);
+//
+//        if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            $this->getDoctrine()->getManager()->flush();
+//
+//            return $this->redirectToRoute('admin_client_index');
+//        }
+//
+//        return $this->render('@ManagementAdmin/client/edit.html.twig', array(
+//            'client' => $client,
+//            'edit_form' => $editForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
+//        ));
+//    }
+
     /**
      * Deletes a client entity.
      *
-     * @Route("/{id}", name="admin_client_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="admin_client_delete")
+     * Method({"GET", "DELETE"})
+     * @Method("GET")
      */
     public function deleteAction(Request $request, Client $client)
     {
-        $form = $this->createDeleteForm($client);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($client);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($client);
+        $em->flush();
+//        $form = $this->createDeleteForm($client);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->remove($client);
+//            $em->flush();
+//        }
 
         return $this->redirectToRoute('admin_client_index');
     }
