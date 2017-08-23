@@ -101,8 +101,9 @@
                 <div class="border-div">
                     <div class="download-link">
                         <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}">Дистрибутив самой последней стабильной версии платформы</a>
-                        <span>{{ '(' ~ versions.stable.name ~ ')' }}</span>
-                        <p>{{ versions.stable.description }}</p>
+                        <span>{{ builds.stable != null ? '(' ~ builds.stable.0.name ~ ')' : '' }}</span>
+                        {#<p>{{ versions.stable.description }}</p>#}
+                        <p>Рекомендовано для установки на рабочих проектах</p>
                     </div>
                     <h3>История версий</h3>
                     <ul>
@@ -125,12 +126,13 @@
                     <h3>Maven dependency</h3>
                     <div>
                         <textarea class="frame">
-                            {#<dependency>#}
-                            {#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
-                            {#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
-                            {#&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>#}
-                            {#</dependency>#}
-                            {{ versions.stable.mavenDependency | raw }}</textarea>
+<dependency>
+&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
+&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
+&nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.stable.version }}</version>
+</dependency>
+                            {#{{ versions.stable.mavenDependency | raw }}#}
+                        </textarea>
                         <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
                     </div>
                 </div>
@@ -143,8 +145,9 @@
                 <div class="border-div">
                     <div class="download-link">
                         <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}">Дистрибутив новейшей версии платформы</a>
-                        <span>{{ '(' ~ versions.newest.name ~ ')' }}</span>
-                        <p>{{ versions.newest.description }}</p>
+                        <span>{{ builds.newest != null ? '(' ~ builds.newest.0.name ~ ')' : '' }}</span>
+                        {#<p>{{ versions.newest.description }}</p>#}
+                        <p>Рекомендовано для установки на рабочих проектах</p>
                     </div>
                     <h3>История версий</h3>
                     <ul>
@@ -167,12 +170,12 @@
                     <h3>Maven dependency</h3>
                     <div>
                         <textarea class="frame">
-                            {#<dependency>#}
-                            {#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
-                            {#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
-                            {#&nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>#}
-                            {#</dependency>#}
-                            {{ versions.newest.mavenDependency | raw }}</textarea>
+<dependency>
+&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
+&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
+&nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.newest.version }}</version>
+</dependency>
+                            {#{{ versions.newest.mavenDependency | raw }}</textarea>#}
                         <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
                     </div>
                 </div>
