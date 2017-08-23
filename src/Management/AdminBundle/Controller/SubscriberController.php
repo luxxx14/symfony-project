@@ -115,4 +115,26 @@ class SubscriberController extends Controller
 //
 //        return $response;
 //    }
+
+    /**
+     * Export list of all subscriber entities.
+     *
+     * @Route("/export", name="admin_subscriber_export")
+     * @Method("GET")
+     */
+    public function exportAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $subscribers = $em->getRepository('ManagementAdminBundle:Subscriber')
+            ->createQueryBuilder('s')
+            ->orderBy('s.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        $response = $this->render('@ManagementAdmin/subscriber/export.html.twig', ['subscribers' => $subscribers]);
+
+        $response->headers->set('Content-Disposition', 'attachment; filename=subscribers.txt');
+
+        return $response;
+    }
 }
