@@ -238,9 +238,23 @@ body {
       color: #1f1f37; }
     body .advantages .row {
       padding-bottom: 25px; }
-      body .advantages .row div {
+      body .advantages .row .col-xs-3 {
         text-align: center; }
-        body .advantages .row div p {
+        body .advantages .row .col-xs-3 div {
+          height: 70px;
+          width: 70px;
+          margin: 0 auto;
+          position: relative; }
+          body .advantages .row .col-xs-3 div img {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-height: 70px;
+            max-width: 70px; }
+        body .advantages .row .col-xs-3 p {
           margin-top: 40px;
           font-size: 16px;
           line-height: 1.5;
