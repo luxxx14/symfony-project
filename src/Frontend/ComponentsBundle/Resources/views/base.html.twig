@@ -81,7 +81,7 @@
             <img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}" width="352" height="200" alt="icon">
             <p>{{ client.title }}</p>
         </div>
-        {% if serialNumber == 3 %}
+        {% if serialNumber % 3 == 0 %}
     </div>
     <div class="row">
         {% endif %}
