@@ -95,7 +95,9 @@ class InitialController extends Controller {
                     ];
                 }
             }
-            rsort($builds['stable']);
+            if (array_key_exists('stable', $builds)) {
+                rsort($builds['stable']);
+            }
         }
         if ($fs->exists($buildsPath . 'trunk')) {
             /** Newest builds */
@@ -115,7 +117,9 @@ class InitialController extends Controller {
                     ];
                 }
             }
-            rsort($builds['newest']);
+            if (array_key_exists('newest', $builds)) {
+                rsort($builds['newest']);
+            }
         }
 
         return $this->render('@FrontendComponents/base.html.twig', [
