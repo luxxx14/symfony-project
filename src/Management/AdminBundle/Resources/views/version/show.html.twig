@@ -26,9 +26,9 @@
 
     <a class="btn" href="{{ path('admin_version_edit', { 'id': version.id }) }}">Редактировать</a>
 
-    {{ form_start(delete_form) }}
-        <input class="btn" type="submit" value="Удалить">
-    {{ form_end(delete_form) }}
+    {#{{ form_start(delete_form) }}#}
+        {#<input class="btn" type="submit" value="Удалить">#}
+    {#{{ form_end(delete_form) }}#}
 
     <a class="btn" href="{{ path('admin_version_index') }}">К списку</a>
 {% endblock %}

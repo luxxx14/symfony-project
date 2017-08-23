@@ -25,11 +25,6 @@ class Version
     /**
      * @var string
      */
-    private $name;
-
-    /**
-     * @var string
-     */
     private $mavenDependency;
 
     /**
@@ -108,30 +103,6 @@ class Version
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Version
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

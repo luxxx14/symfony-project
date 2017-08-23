@@ -3,9 +3,9 @@
 namespace Management\AdminBundle\Entity;
 
 /**
- * Version
+ * Subscriber
  */
-class Version
+class Subscriber
 {
     /**
      * @var integer
@@ -15,22 +15,12 @@ class Version
     /**
      * @var string
      */
-    private $type;
+    private $email;
 
     /**
-     * @var string
+     * @var boolean
      */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $version;
-
-    /**
-     * @var string
-     */
-    private $mavenDependency;
+    private $subscribedToFeed;
 
     /**
      * @var \DateTime
@@ -43,10 +33,12 @@ class Version
     private $dateOfChange;
 
     /**
-     * Version constructor
+     * FeedSource constructor
      */
     public function __construct()
     {
+        $this->subscribedToFeed = TRUE;
+
         $currentDate = new \DateTime('NOW');
         $this->dateOfCreation = $currentDate;
         $this->dateOfChange = $currentDate;
@@ -63,99 +55,51 @@ class Version
     }
 
     /**
-     * Set type
+     * Set email
      *
-     * @param string $type
+     * @param string $email
      *
-     * @return Version
+     * @return Subscriber
      */
-    public function setType($type)
+    public function setEmail($email)
     {
-        $this->type = $type;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get email
      *
      * @return string
      */
-    public function getType()
+    public function getEmail()
     {
-        return $this->type;
+        return $this->email;
     }
 
     /**
-     * Set description
+     * Set subscribedToFeed
      *
-     * @param string $description
+     * @param boolean $subscribedToFeed
      *
-     * @return Version
+     * @return Subscriber
      */
-    public function setDescription($description)
+    public function setSubscribedToFeed($subscribedToFeed)
     {
-        $this->description = $description;
+        $this->subscribedToFeed = $subscribedToFeed;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get subscribedToFeed
      *
-     * @return string
+     * @return boolean
      */
-    public function getDescription()
+    public function getSubscribedToFeed()
     {
-        return $this->description;
-    }
-
-    /**
-     * Set version
-     *
-     * @param string $version
-     *
-     * @return Version
-     */
-    public function setVersion($version)
-    {
-        $this->version = $version;
-
-        return $this;
-    }
-
-    /**
-     * Get version
-     *
-     * @return string
-     */
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    /**
-     * Set mavenDependency
-     *
-     * @param string $mavenDependency
-     *
-     * @return Version
-     */
-    public function setMavenDependency($mavenDependency)
-    {
-        $this->mavenDependency = $mavenDependency;
-
-        return $this;
-    }
-
-    /**
-     * Get mavenDependency
-     *
-     * @return string
-     */
-    public function getMavenDependency()
-    {
-        return $this->mavenDependency;
+        return $this->subscribedToFeed;
     }
 
     /**
@@ -163,7 +107,7 @@ class Version
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return Version
+     * @return Subscriber
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -187,7 +131,7 @@ class Version
      *
      * @param \DateTime $dateOfChange
      *
-     * @return Version
+     * @return Subscriber
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -206,3 +150,4 @@ class Version
         return $this->dateOfChange;
     }
 }
+

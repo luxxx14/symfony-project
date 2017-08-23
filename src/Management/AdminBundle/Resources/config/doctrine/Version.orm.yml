@@ -15,9 +15,9 @@ Management\AdminBundle\Entity\Version:
 
     fields:
         type:             { type: string, length: 32, nullable: true }
-        description:      { type: string, length: 256, nullable: true }
-#        name:             { type: string, length: 32, nullable: true }
-        mavenDependency:  { type: text, nullable: true }
+#        description:      { type: string, length: 256, nullable: true }
+        version:          { type: string, length: 64, nullable: true }
+#        mavenDependency:  { type: text, nullable: true }
 
         dateOfCreation:   { type: datetime, nullable: false }
         dateOfChange:     { type: datetime, nullable: false }

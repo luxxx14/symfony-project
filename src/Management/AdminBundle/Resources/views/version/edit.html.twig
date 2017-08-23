@@ -13,11 +13,11 @@
                     {{ form_errors(edit_form.type) }}
                 </div>
 
-                <div class="form-group">
-                    {{ form_label(edit_form.description) }}
-                    {{ form_widget(edit_form.description) }}
-                    {{ form_errors(edit_form.description) }}
-                </div>
+                {#<div class="form-group">#}
+                    {#{{ form_label(edit_form.description) }}#}
+                    {#{{ form_widget(edit_form.description) }}#}
+                    {#{{ form_errors(edit_form.description) }}#}
+                {#</div>#}
 
                 {#<div class="form-group">#}
                     {#{{ form_label(edit_form.name) }}#}
@@ -26,10 +26,20 @@
                 {#</div>#}
 
                 <div class="form-group">
-                    {{ form_label(edit_form.mavenDependency) }}
-                    {{ form_widget(edit_form.mavenDependency) }}
-                    {{ form_errors(edit_form.mavenDependency) }}
+                    {{ form_label(edit_form.version) }}
+                    <p>&lt;dependency&gt;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;ru.curs&lt;/groupId&gt;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;celesta&lt;/artifactId&gt;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;{{ form_widget(edit_form.version) }}&lt;/version&gt;</p>
+                    <p>&lt;/dependency&gt;</p>
+                    {{ form_errors(edit_form.version) }}
                 </div>
+
+                {#<div class="form-group" {{ version.type == 'Исходный код' ? 'style="display: none;"' : '' }}>#}
+                    {#{{ form_label(edit_form.mavenDependency) }}#}
+                    {#{{ form_widget(edit_form.mavenDependency) }}#}
+                    {#{{ form_errors(edit_form.mavenDependency) }}#}
+                {#</div>#}
 
                 <input class="btn" type="submit" value="Сохранить" />
                 {{ form_end(edit_form) }}
@@ -37,9 +47,9 @@
         </div>
     </div>
 
-    {{ form_start(delete_form) }}
-        <input class="btn" type="submit" value="Удалить">
-    {{ form_end(delete_form) }}
+    {#{{ form_start(delete_form) }}#}
+        {#<input class="btn" type="submit" value="Удалить">#}
+    {#{{ form_end(delete_form) }}#}
 
     <br><a class="btn" href="{{ path('admin_version_index') }}">Отмена</a>
 {% endblock %}

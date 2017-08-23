@@ -150,4 +150,3 @@ class Subscriber
         return $this->dateOfChange;
     }
 }
-

@@ -28,22 +28,12 @@ class VersionType extends AbstractType
                 'choices'  => array(
                     'Стабильная' => 'Стабильная',
                     'Новейшая' => 'Новейшая',
-                    'Исходный код' => 'Исходный код'
+//                    'Исходный код' => 'Исходный код'
                 ),
                 'required' => true
             ))
-            ->add('description', TextareaType::class, array(
-                'label' => 'Описание',
-                'label_attr' => [
-                    'class' => 'label'
-                ],
-                'attr' => [
-                    'class' => 'form-control'
-                ],
-                'required' => false
-            ))
-//            ->add('name', TextType::class, array(
-//                'label' => 'Версия',
+//            ->add('description', TextareaType::class, array(
+//                'label' => 'Описание',
 //                'label_attr' => [
 //                    'class' => 'label'
 //                ],
@@ -52,16 +42,27 @@ class VersionType extends AbstractType
 //                ],
 //                'required' => false
 //            ))
-            ->add('mavenDependency', TextareaType::class, array(
-                'label' => 'Maven dependency',
+            ->add('version', TextType::class, array(
+                'label' => 'Версия',
                 'label_attr' => [
                     'class' => 'label'
                 ],
                 'attr' => [
-                    'class' => 'form-control'
+//                    'class' => 'form-control'
+                    'style' => 'width: 50px;'
                 ],
                 'required' => false
             ))
+//            ->add('mavenDependency', TextareaType::class, array(
+//                'label' => 'Maven dependency',
+//                'label_attr' => [
+//                    'class' => 'label'
+//                ],
+//                'attr' => [
+//                    'class' => 'form-control'
+//                ],
+//                'required' => false
+//            ))
         ;
     }
     

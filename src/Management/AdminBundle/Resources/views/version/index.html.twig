@@ -1,15 +1,15 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
-    <h1>Версии</h1>
+    <h1>Коды для Maven</h1>
 
     <table class="table table-striped table-staff">
         <thead>
             <tr>
                 <th>Тип</th>
-                <th>Описание</th>
-                {#<th>Версия</th>#}
+                {#<th>Описание</th>#}
                 <th style="min-width: 300px !important;">Maven dependency</th>
+                {#<th style="min-width: 300px !important;">Maven dependency</th>#}
                 <th>Действия</th>
             </tr>
         </thead>
@@ -17,17 +17,16 @@
         {% for version in versions %}
             <tr>
                 <td>{{ version.type }}</td>
-                <td>{{ version.description }}</td>
-                {#<td>{{ version.name }}</td>#}
+                {#<td>{{ version.description }}</td>#}
                 <td>
-                    <textarea style="min-width: 300px; min-height: 73px;">{{ version.mavenDependency }}</textarea>
+                    <p>&lt;dependency&gt;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;ru.curs&lt;/groupId&gt;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;celesta&lt;/artifactId&gt;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;{{ version.version }}&lt;/version&gt;</p>
+                    <p>&lt;/dependency&gt;</p>
                 </td>
+                {#<td><textarea style="min-width: 300px; min-height: 73px;">{{ version.mavenDependency }}</textarea></td>#}
                 <td><nav><ul class="navbar">
-                    <li>
-                        <a href="{{ path('admin_version_show', { 'id': version.id }) }}">
-                            <i class="fa fa-search fa-lg"></i>
-                        </a>
-                    </li>
                     <li>
                         <a href="{{ path('admin_version_edit', { 'id': version.id }) }}">
                             <i class="fa fa-pencil fa-lg"></i>
