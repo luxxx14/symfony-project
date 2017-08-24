@@ -11,7 +11,7 @@
             {#</tr>#}
             <tr>
                 <th>URL</th>
-                <td>{{ feedSource.url }}</td>
+                <td><a href="{{ feedSource.url }}" target="_blank">{{ feedSource.url }}</a></td>
             </tr>
             <tr>
                 <th>Public ID</th>
@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <th>Link</th>
-                <td>{{ feedSource.link }}</td>
+                <td><a href="{{ feedSource.link }}" target="_blank">{{ feedSource.link }}</a></td>
             </tr>
             <tr>
                 <th>Заголовок</th>
@@ -29,10 +29,10 @@
                 <th>Описание</th>
                 <td>{{ feedSource.description }}</td>
             </tr>
-            <tr>
-                <th>Последнее обновление</th>
-                <td>{% if feedSource.lastModified %}{{ feedSource.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
+            {#<tr>#}
+                {#<th>Последнее обновление</th>#}
+                {#<td>{% if feedSource.lastModified %}{{ feedSource.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+            {#</tr>#}
             <tr>
                 <th>Основной источник?</th>
                 <td>{{ feedSource.selected ? '&#10004;'|raw : '&#10008;'|raw }}</td>

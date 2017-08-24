@@ -225,7 +225,7 @@
             {% for item in feed %}
                 <li>
                     <div class="date">{{ item.lastModified|date('d.m.Y') }}</div>
-                    <a href="">{{ item.title }}</a>
+                    <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
                 </li>
             {% endfor %}
             </ul>

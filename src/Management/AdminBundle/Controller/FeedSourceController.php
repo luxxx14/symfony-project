@@ -152,19 +152,23 @@ class FeedSourceController extends Controller
     /**
      * Deletes a feedSource entity
      *
-     * @Route("/{id}", name="admin_feed_source_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="admin_feed_source_delete")
+     * Method("DELETE")
+     * @Method("GET")
      */
     public function deleteAction(Request $request, FeedSource $feedSource)
     {
-        $form = $this->createDeleteForm($feedSource);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($feedSource);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($feedSource);
+        $em->flush();
+//        $form = $this->createDeleteForm($feedSource);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->remove($feedSource);
+//            $em->flush();
+//        }
 
         return $this->redirectToRoute('admin_feed_source_index');
     }
@@ -230,7 +234,7 @@ class FeedSourceController extends Controller
 
         if ($filterForm->isSubmitted() && $filterForm->isValid()) {
             $feedStatus = $filterForm->get('status')->getData();
-            if ($feedStatus != '') {
+            if ($feedStatus) {
                 $qb
                     ->where('f.status = :status')
                     ->setParameter('status', $feedStatus->getName());
@@ -260,12 +264,12 @@ class FeedSourceController extends Controller
 
 //        $feed = $em->getRepository('ManagementAdminBundle:Feed')->findAll();
 
-        return $this->render('@ManagementAdmin/feedsource/show_feed.html.twig', array(
+        return $this->render('@ManagementAdmin/feedsource/show_feed.html.twig', [
             'filterForm' => $filterForm->createView(),
             'feed' => $feed,
-            'form' => $this->createForm('Management\AdminBundle\Form\FeedDownloadType', $feedSource)
-            ->createView()
-        ));
+//            'form' => $this->createForm('Management\AdminBundle\Form\FeedDownloadType', $feedSource)
+//            ->createView()
+        ]);
     }
 
     /**
