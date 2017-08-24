@@ -37,11 +37,11 @@
     <table class="table table-striped table-staff">
         <thead>
             <tr>
-                <th>Заголовок</th>
-                <th>Текст</th>
-                <th>Автор</th>
-                <th>Последнее обновление</th>
-                <th>Действия</th>
+                <th style="width: 20% !important;">Заголовок</th>
+                <th style="width: 37% !important;">Текст</th>
+                <th style="width: 15% !important;">Автор</th>
+                <th style="width: 10% !important;">Последнее обновление</th>
+                <th style="width: 18% !important;">Действия</th>
             </tr>
         </thead>
         <tbody>
@@ -85,6 +85,11 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        td {
+            word-break: normal;
+        }
+    </style>
 {% endblock %}
 
 {% block javascripts %}
@@ -115,6 +120,8 @@
                 yearSuffix: "",
                 yearRange: "1900:+nn"
             });
+
+            $('input.datepicker').datepicker("setDate", "-7");
 
             $('#management_adminbundle_feed_filter_status option:first-child').text('Все');
         });

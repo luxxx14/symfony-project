@@ -285,6 +285,7 @@ class FeedSourceController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $modifiedSince = $form->get('modifiedSince')->getData();
+            $modifiedSince = empty($modifiedSince) ? new \DateTime('NOW') : $modifiedSince;
 
             $feedIo = $this->container->get('feedio');
 
