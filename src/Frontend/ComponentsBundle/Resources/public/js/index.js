@@ -93,6 +93,10 @@ $(document).ready(function(){
 		$('.success-message').toggle();
 	}
 	
+	//show dropdown lists
+	$('.show-components').on('click', function(){
+		$(this).next().toggle();
+	});	
 });
 
 //copy text

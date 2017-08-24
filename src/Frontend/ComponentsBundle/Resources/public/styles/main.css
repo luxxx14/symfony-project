@@ -341,6 +341,17 @@ body {
       color: #333333;
       margin: 0;
       padding: 0; }
+    body .download span {
+      margin-top: 10px;
+      display: inline-block;
+      color: #592e83;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      border-bottom: 1px dashed #9558d1; }
+      body .download span:before {
+        content: '\25BE';
+        margin-right: 5px; }
     body .download nav {
       text-align: center; }
       body .download nav ul {
@@ -375,89 +386,155 @@ body {
               border-radius: 3px;
               background-color: #d8dbe2;
               padding: 16px 16px; }
-    body .download .row .col-xs-8 .border-div {
-      border-right: 1px solid #d8dbe2;
-      margin-right: 28px; }
-    body .download .stable-version .download-link {
-      background: url(../img/ic-download.png) left top no-repeat;
-      padding-left: 70px;
-      margin-bottom: 30px; }
-      body .download .stable-version .download-link a {
-        font-size: 18px;
-        line-height: 1.44;
-        letter-spacing: 0.2px;
-        text-align: left; }
-      body .download .stable-version .download-link span {
-        display: block;
-        color: #333333;
-        line-height: 1.44; }
-      body .download .stable-version .download-link p {
+    body .download .stable-version {
+      position: relative; }
+      body .download .stable-version p {
         padding: 0;
         margin: 0;
         font-size: 16px;
         line-height: 1.5;
         letter-spacing: 0.2px;
-        text-align: left;
-        color: #b5bbc8; }
-    body .download .stable-version .code-example h3 {
-      margin-top: -7px;
-      padding: 0; }
-    body .download .stable-version .code-example div {
-      position: relative;
-      width: 356px;
-      height: 178px;
-      padding: 0; }
-      body .download .stable-version .code-example div .frame {
-        font-family: Roboto;
-        margin: 0;
-        width: 356px;
-        height: 178px;
-        border-radius: 4px;
-        background-color: #ffffff;
-        box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
-        border: solid 1px #d8dbe2;
-        color: #333333;
-        line-height: 1.5;
-        letter-spacing: 0.2px;
-        font-size: 16px;
-        font-weight: 400;
-        padding: 16px;
-        resize: none; }
-      body .download .stable-version .code-example div button {
-        position: absolute;
-        bottom: 0px;
-        right: 0px;
-        width: 63px;
-        height: 24px;
-        border-radius: 3px;
-        background-color: rgba(216, 219, 226, 0.4);
-        border: solid 1px #d8dbe2;
-        font-size: 13px;
-        line-height: 20px;
-        letter-spacing: 0.2px;
         text-align: center;
-        color: #7f5ea0;
-        cursor: pointer; }
-    body .download .stable-version h3 {
-      font-family: Merriweather;
-      font-weight: normal;
-      font-size: 20px;
-      line-height: 1.8;
-      letter-spacing: 0.3px;
-      color: #333333;
-      margin: 0;
-      margin-bottom: 10px; }
-    body .download .stable-version ul {
-      margin-bottom: 30px; }
-      body .download .stable-version ul li a {
-        line-height: 2.25;
-        letter-spacing: 0.2px; }
-      body .download .stable-version ul li span {
-        font-size: 16px;
-        line-height: 1.5;
-        letter-spacing: 0.2px;
-        text-align: left;
         color: #b5bbc8; }
+      body .download .stable-version .download-link {
+        background: url(../img/ic-download.png) left top no-repeat;
+        padding-left: 70px;
+        margin-top: 40px;
+        min-height: 56px; }
+        body .download .stable-version .download-link a {
+          font-size: 18px;
+          line-height: 1.44;
+          letter-spacing: 0.2px;
+          text-align: left;
+          display: inline-block;
+          border-bottom: 1px dashed transparent; }
+          body .download .stable-version .download-link a:hover {
+            color: #9558d1;
+            border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
+      body .download .stable-version .code-example {
+        margin-top: 40px; }
+        body .download .stable-version .code-example h3 {
+          font-family: Merriweather;
+          font-weight: normal;
+          font-size: 20px;
+          line-height: 1.8;
+          letter-spacing: 0.3px;
+          color: #333333;
+          margin: 0;
+          margin-bottom: 10px; }
+        body .download .stable-version .code-example div {
+          position: relative;
+          width: 356px;
+          height: 178px;
+          padding: 0; }
+          body .download .stable-version .code-example div .frame {
+            font-family: Roboto;
+            margin: 0;
+            width: 356px;
+            height: 178px;
+            border-radius: 4px;
+            background-color: #ffffff;
+            box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
+            border: solid 1px #d8dbe2;
+            color: #333333;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 16px;
+            resize: none; }
+          body .download .stable-version .code-example div button {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 63px;
+            height: 24px;
+            border-radius: 3px;
+            background-color: rgba(216, 219, 226, 0.4);
+            border: solid 1px #d8dbe2;
+            font-size: 13px;
+            line-height: 20px;
+            letter-spacing: 0.2px;
+            text-align: center;
+            color: #7f5ea0;
+            cursor: pointer; }
+      body .download .stable-version .components {
+        display: none; }
+        body .download .stable-version .components li {
+          position: relative;
+          padding-left: 20px;
+          margin-left: 3px; }
+          body .download .stable-version .components li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            border-top: 2px dotted #d8dbe2;
+            top: 9px;
+            width: 18px;
+            height: 0; }
+          body .download .stable-version .components li:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            border-left: 2px dotted #d8dbe2;
+            height: 100%;
+            width: 0px;
+            top: 2px; }
+          body .download .stable-version .components li:first-of-type:after {
+            height: 120%; }
+          body .download .stable-version .components li:last-of-type:after {
+            height: 0; }
+        body .download .stable-version .components a {
+          background: url("../img/ic-link.png") left 0px no-repeat;
+          padding-left: 24px;
+          margin-right: 36px;
+          font-size: 13px;
+          line-height: 1.85;
+          letter-spacing: 0.2px;
+          text-align: left;
+          color: #592e83; }
+          body .download .stable-version .components a:hover {
+            background: url("../img/ic-link-hover.png") left 0px no-repeat;
+            padding-bottom: 5px; }
+      body .download .stable-version .col-xs-4 {
+        position: relative; }
+        body .download .stable-version .col-xs-4 .show-components {
+          position: absolute;
+          top: -40px;
+          left: 70px; }
+        body .download .stable-version .col-xs-4 .components {
+          margin-left: 55px; }
+      body .download .stable-version .col-xs-8 {
+        margin-top: 40px; }
+        body .download .stable-version .col-xs-8 div {
+          margin: 0 50px;
+          margin-bottom: 10px; }
+          body .download .stable-version .col-xs-8 div h3 {
+            font-family: Merriweather;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+            color: #333333;
+            margin: 0;
+            display: inline-block; }
+          body .download .stable-version .col-xs-8 div .history-link {
+            margin-top: 10px;
+            float: right;
+            padding-right: 20px;
+            position: relative; }
+            body .download .stable-version .col-xs-8 div .history-link:after {
+              position: absolute;
+              top: -2px;
+              right: 0;
+              content: '\2192'; }
+          body .download .stable-version .col-xs-8 div ul.list {
+            border-top: 1px solid #d8dbe2;
+            margin-bottom: 30px; }
+            body .download .stable-version .col-xs-8 div ul.list li.in-list {
+              margin-top: 16px; }
+              body .download .stable-version .col-xs-8 div ul.list li.in-list .components {
+                margin-top: 10px; }
     body .download .newest-version {
       display: none; }
     body .download .source-code {
@@ -490,7 +567,11 @@ body {
             text-align: left;
             color: #b5bbc8;
             font-weight: normal;
-            margin-left: 16px; }
+            margin-left: 16px;
+            border: none; }
+            body .download .source-code li h3 span:before {
+              content: '';
+              margin: 0; }
         body .download .source-code li a {
           background: url("../img/ic-link.png") left center no-repeat;
           padding-left: 24px;
