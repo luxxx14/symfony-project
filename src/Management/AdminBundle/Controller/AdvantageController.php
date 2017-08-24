@@ -91,6 +91,7 @@ class AdvantageController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            var_dump($advantage->getImageFile()->getFilename());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('admin_advantage_index');

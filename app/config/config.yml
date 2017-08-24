@@ -75,7 +75,7 @@ vich_uploader:
         advantage:
             uri_prefix:         /uploads/images/advantage
             upload_destination: '%kernel.root_dir%/../web/uploads/images/advantage'
-            namer: ~
+            namer:              vich_uploader.namer_uniqid
             directory_namer: ~
             delete_on_remove: true
             delete_on_update: true
@@ -83,7 +83,7 @@ vich_uploader:
         client_gray_scale:
             uri_prefix:         /uploads/images/client_gray_scale
             upload_destination: '%kernel.root_dir%/../web/uploads/images/client_gray_scale'
-            namer: ~
+            namer:              vich_uploader.namer_uniqid
             directory_namer: ~
             delete_on_remove: true
             delete_on_update: true
@@ -91,7 +91,7 @@ vich_uploader:
         client_color:
             uri_prefix:         /uploads/images/client_color
             upload_destination: '%kernel.root_dir%/../web/uploads/images/client_color'
-            namer: ~
+            namer:              vich_uploader.namer_uniqid
             directory_namer: ~
             delete_on_remove: true
             delete_on_update: true

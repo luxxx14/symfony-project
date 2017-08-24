@@ -2,6 +2,7 @@
 
 namespace Management\AdminBundle\Form;
 
+use Management\AdminBundle\Entity\Advantage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,6 +25,9 @@ class AdvantageType extends AbstractType
 //                'attr' => [
 //                    'class' => 'form-control'
 //                ],
+//                'download_label' => function (Advantage $advantage) {
+//                    return $advantage->getId();
+//                },
                 'required' => false
             ))
             ->add('description', TextareaType::class, array(

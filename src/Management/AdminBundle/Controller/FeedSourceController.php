@@ -230,7 +230,7 @@ class FeedSourceController extends Controller
 
         if ($filterForm->isSubmitted() && $filterForm->isValid()) {
             $feedStatus = $filterForm->get('status')->getData();
-            if ($feedStatus != '') {
+            if ($feedStatus) {
                 $qb
                     ->where('f.status = :status')
                     ->setParameter('status', $feedStatus->getName());
@@ -260,12 +260,12 @@ class FeedSourceController extends Controller
 
 //        $feed = $em->getRepository('ManagementAdminBundle:Feed')->findAll();
 
-        return $this->render('@ManagementAdmin/feedsource/show_feed.html.twig', array(
+        return $this->render('@ManagementAdmin/feedsource/show_feed.html.twig', [
             'filterForm' => $filterForm->createView(),
             'feed' => $feed,
-            'form' => $this->createForm('Management\AdminBundle\Form\FeedDownloadType', $feedSource)
-            ->createView()
-        ));
+//            'form' => $this->createForm('Management\AdminBundle\Form\FeedDownloadType', $feedSource)
+//            ->createView()
+        ]);
     }
 
     /**
