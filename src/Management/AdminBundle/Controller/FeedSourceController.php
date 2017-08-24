@@ -4,6 +4,7 @@ namespace Management\AdminBundle\Controller;
 
 use Management\AdminBundle\Entity\Feed;
 use Management\AdminBundle\Entity\FeedSource;
+use SimplePie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -52,6 +53,20 @@ class FeedSourceController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            /** Проверяем, корректный ли URI */
+            $feed = new SimplePie();
+            $feed->set_feed_url($feedSource->getUrl());
+            $feed->init();
+            $feed->handle_content_type();
+
+            if ($feed->error())
+            {
+                var_dump($feed->error());
+            }
+//            $xml = http_get_contents($feedSource->getUrl());
+//            var_dump();
+            $em->sdvsdv();
 
             $feedIo = $this->container->get('feedio');
 
