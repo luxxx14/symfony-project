@@ -238,9 +238,23 @@ body {
       color: #1f1f37; }
     body .advantages .row {
       padding-bottom: 25px; }
-      body .advantages .row div {
+      body .advantages .row .col-xs-3 {
         text-align: center; }
-        body .advantages .row div p {
+        body .advantages .row .col-xs-3 div {
+          height: 70px;
+          width: 70px;
+          margin: 0 auto;
+          position: relative; }
+          body .advantages .row .col-xs-3 div img {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-height: 70px;
+            max-width: 70px; }
+        body .advantages .row .col-xs-3 p {
           margin-top: 40px;
           font-size: 16px;
           line-height: 1.5;
@@ -264,6 +278,20 @@ body {
     body .users .row .col-xs-4 {
       text-align: center;
       border-right: 1px solid #d8dbe2; }
+      body .users .row .col-xs-4 .img-wrapper {
+        height: 200px;
+        width: 352px;
+        margin: 0 auto;
+        position: relative; }
+        body .users .row .col-xs-4 .img-wrapper img {
+          position: absolute;
+          margin: auto;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          max-height: 200px;
+          max-width: 352px; }
       body .users .row .col-xs-4 img {
         opacity: 0.4;
         filter: grayscale(1);
@@ -271,13 +299,12 @@ body {
         transition: opacity 1s; }
       body .users .row .col-xs-4 p {
         margin: 0;
+        margin-bottom: 30px;
         padding: 0;
         opacity: 0;
         color: #888888;
         letter-spacing: 1.5px;
-        position: relative;
-        bottom: 30px;
-        transition: opacity 0.5s; }
+        position: relative; }
       body .users .row .col-xs-4:hover img {
         opacity: 1;
         filter: grayscale(0); }
@@ -285,6 +312,8 @@ body {
         opacity: 1; }
       body .users .row .col-xs-4:nth-child(3) {
         border-right: none; }
+    body .users .row:not(:first-of-type) {
+      border-top: 1px solid #d8dbe2; }
     body .users .row:not(:first-of-type) {
       border-top: 1px solid #d8dbe2; }
   body .download {

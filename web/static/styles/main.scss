@@ -284,6 +284,7 @@ body {
 		margin-top: 100px;		
 		padding-bottom: 50px;		
 		background-color: rgba(216, 219, 226, 0.4);
+		
 		h1 {
 			padding-top: 80px;
 			padding-bottom: 60px;
@@ -291,8 +292,24 @@ body {
 		}
 		.row {
 			padding-bottom: 25px;
-			div {
-				text-align: center;				
+			.col-xs-3 {
+				text-align: center;	
+				div {					
+					height: 70px;
+					width: 70px;
+					margin: 0 auto;
+					position: relative;
+					img {
+						position: absolute;
+						margin: auto;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						max-height: 70px;
+						max-width: 70px;
+					}
+				}
 				p {
 					margin-top: 40px;
 					font-size: 16px;
@@ -317,7 +334,24 @@ body {
 		.row {
 			.col-xs-4 {
 				text-align: center;
-				border-right: 1px solid #d8dbe2;				
+				border-right: 1px solid #d8dbe2;
+				.img-wrapper {
+					height: 200px;
+					width: 352px;
+					margin: 0 auto;
+					position: relative;
+					
+					img {
+						position: absolute;
+						margin: auto;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						max-height: 200px;
+					  max-width: 352px;
+					}
+				}
 				img {
 					opacity: 0.4;    			
 					filter: grayscale(1);
@@ -326,13 +360,13 @@ body {
 				}				
 				p {
 					margin: 0;
+					margin-bottom: 30px;
 					padding: 0;
 					opacity: 0;
 					color: #888888;
 					letter-spacing: 1.5px;
 					position: relative;
-					bottom: 30px;
-					transition: opacity 0.5s;					
+								
 				}
 				&:hover img {						
 					opacity: 1;    			
@@ -344,6 +378,9 @@ body {
 				&:nth-child(3) {
 					border-right: none;
 				}
+			}	
+			&:not(:first-of-type) {
+				border-top: 1px solid #d8dbe2;
 			}	
 			&:not(:first-of-type) {
 				border-top: 1px solid #d8dbe2;
