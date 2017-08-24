@@ -2,13 +2,12 @@
 
 namespace Management\AdminBundle\Controller;
 
+use FeedIo\Reader\ReadErrorException;
 use Management\AdminBundle\Entity\Feed;
 use Management\AdminBundle\Entity\FeedSource;
-use SimplePie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -54,42 +53,33 @@ class FeedSourceController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            /** Проверяем, корректный ли URI */
-            $feed = new SimplePie();
-            $feed->set_feed_url($feedSource->getUrl());
-            $feed->init();
-            $feed->handle_content_type();
+            try {
+                $feedIo = $this->container->get('feedio');
 
-            if ($feed->error())
-            {
-                var_dump($feed->error());
-            }
-//            $xml = http_get_contents($feedSource->getUrl());
-//            var_dump();
-            $em->sdvsdv();
+                /** Now fetch its (fresh) content */
+                $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('NOW'))->getFeed();
 
-            $feedIo = $this->container->get('feedio');
+                $feedSource->setPublicId($feed->getPublicId());
+                $feedSource->setLink($feed->getLink());
+                $feedSource->setTitle($feed->getTitle());
+                $feedSource->setDescription($feed->getDescription());
+                $feedSource->setLastModified($feed->getLastModified());
 
-            /** Now fetch its (fresh) content */
-            $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('NOW'))->getFeed();
-
-            $feedSource->setPublicId($feed->getPublicId());
-            $feedSource->setLink($feed->getLink());
-            $feedSource->setTitle($feed->getTitle());
-            $feedSource->setDescription($feed->getDescription());
-            $feedSource->setLastModified($feed->getLastModified());
-
-            if ($feedSource->getSelected()) {
-                $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
-                    ->findOneBy(['selected' => TRUE]);
-                if ($selectedFeedSource) {
-                    $selectedFeedSource->setSelected(FALSE);
-                    $em->persist($selectedFeedSource);
+                if ($feedSource->getSelected()) {
+                    $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+                        ->findOneBy(['selected' => TRUE]);
+                    if ($selectedFeedSource) {
+                        $selectedFeedSource->setSelected(FALSE);
+                        $em->persist($selectedFeedSource);
+                    }
                 }
-            }
 
-            $em->persist($feedSource);
-            $em->flush();
+                $em->persist($feedSource);
+                $em->flush();
+            }
+            catch (ReadErrorException $exception) {
+                return $this->render('@ManagementAdmin/feedsource/error.html.twig');
+            }
 
             return $this->redirectToRoute('admin_feed_source_show', array('id' => $feedSource->getId()));
         }
