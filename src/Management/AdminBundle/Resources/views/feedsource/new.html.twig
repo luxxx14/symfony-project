@@ -19,11 +19,11 @@
                     {{ form_errors(form.selected) }}
                 </div>
 
-                <input class="btn" type="submit" value="Добавить" />
+                <input class="btn" type="submit" value="Сохранить" />
                 {{ form_end(form) }}
             </div>
         </div>
     </div>
 
-    <a class="btn" href="{{ path('admin_feed_source_index') }}">К списку</a>
+    <a class="btn" href="{{ path('admin_feed_source_index') }}">Отмена</a>
 {% endblock %}
