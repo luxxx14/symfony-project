@@ -133,6 +133,7 @@ class SubscriberController extends Controller
 
         $response = $this->render('@ManagementAdmin/subscriber/export.html.twig', ['subscribers' => $subscribers]);
 
+        $response->headers->set('Content-Type', 'text/plain;charset=UTF-8');
         $response->headers->set('Content-Disposition', 'attachment; filename=subscribers.txt');
 
         return $response;
