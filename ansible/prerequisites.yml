@@ -1,0 +1,10 @@
+- hosts: website
+  gather_facts: False
+  vars:
+    ansible_ssh_user: root
+  tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    
+    - name: install monitoring
+      raw: curl -sSL https://agent.digitalocean.com/install.sh | sh

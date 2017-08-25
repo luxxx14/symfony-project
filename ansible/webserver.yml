@@ -1,0 +1,15 @@
+- name: configure platfrom website server
+  hosts: website
+  vars:
+    siteurl: "test.corchestra.ru"
+  vars_files:
+    - vars/webserver.yml
+  roles:
+    - role: jdauphant.nginx
+    - role: letsencrypt
+    - role: sftp
+    - role: geerlingguy.php
+    - role: geerlingguy.composer
+    - role: geerlingguy.mysql
+    - role: geerlingguy.postgresql
+    - role: mediawiki
