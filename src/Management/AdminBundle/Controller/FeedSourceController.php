@@ -2,12 +2,12 @@
 
 namespace Management\AdminBundle\Controller;
 
+use FeedIo\Reader\ReadErrorException;
 use Management\AdminBundle\Entity\Feed;
 use Management\AdminBundle\Entity\FeedSource;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -53,30 +53,35 @@ class FeedSourceController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $feedIo = $this->container->get('feedio');
+            try {
+                $feedIo = $this->container->get('feedio');
 
-            /** Now fetch its (fresh) content */
-            $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('NOW'))->getFeed();
+                /** Now fetch its (fresh) content */
+                $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('NOW'))->getFeed();
 
-            $feedSource->setPublicId($feed->getPublicId());
-            $feedSource->setLink($feed->getLink());
-            $feedSource->setTitle($feed->getTitle());
-            $feedSource->setDescription($feed->getDescription());
-            $feedSource->setLastModified($feed->getLastModified());
+                $feedSource->setPublicId($feed->getPublicId());
+                $feedSource->setLink($feed->getLink());
+                $feedSource->setTitle($feed->getTitle());
+                $feedSource->setDescription($feed->getDescription());
+                $feedSource->setLastModified($feed->getLastModified());
 
-            if ($feedSource->getSelected()) {
-                $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
-                    ->findOneBy(['selected' => TRUE]);
-                if ($selectedFeedSource) {
-                    $selectedFeedSource->setSelected(FALSE);
-                    $em->persist($selectedFeedSource);
+                if ($feedSource->getSelected()) {
+                    $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+                        ->findOneBy(['selected' => TRUE]);
+                    if ($selectedFeedSource) {
+                        $selectedFeedSource->setSelected(FALSE);
+                        $em->persist($selectedFeedSource);
+                    }
                 }
+
+                $em->persist($feedSource);
+                $em->flush();
+            }
+            catch (ReadErrorException $exception) {
+                return $this->render('@ManagementAdmin/feedsource/error.html.twig');
             }
 
-            $em->persist($feedSource);
-            $em->flush();
-
-            return $this->redirectToRoute('admin_feed_source_show', array('id' => $feedSource->getId()));
+            return $this->redirectToRoute('admin_feed_source_index');
         }
 
         return $this->render('@ManagementAdmin/feedsource/new.html.twig', array(
@@ -139,7 +144,7 @@ class FeedSourceController extends Controller
             $em->persist($feedSource);
             $em->flush();
 
-            return $this->redirectToRoute('admin_feed_source_show', array('id' => $feedSource->getId()));
+            return $this->redirectToRoute('admin_feed_source_index');
         }
 
         return $this->render('@ManagementAdmin/feedsource/edit.html.twig', array(

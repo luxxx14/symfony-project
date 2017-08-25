@@ -102,31 +102,20 @@
     </nav>
     <div id="stable" class="stable-version">
         <div class="row">
-            <div class="col-xs-8">
-                <div class="border-div">
-                    <div class="download-link">
-                        <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}">Дистрибутив самой последней стабильной версии платформы</a>
-                        <span>{{ builds.stable != null ? '(' ~ builds.stable.0.name ~ ')' : '' }}</span>
-                        {#<p>{{ versions.stable.description }}</p>#}
-                        <p>Рекомендовано для установки на рабочих проектах</p>
-                    </div>
-                    <h3>История версий</h3>
-                    <ul>
-                    {% for key, value in builds.stable if key != 0 %}
-                        <li>
-                            <a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}
-                                <span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>
-                            </a>
-                        </li>
-                    {% endfor %}
-                        {#<li><a href="">Последняя сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
-                        {#<li><a href="">Последняя стабильная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
-                        {#<li><a href="">Последняя успешная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
-                    </ul>
-                    <a class="button" href="">Полная история версий</a>
-                </div>
+            <p>Рекомендовано для установки на рабочих проектах</p>
+            <div class="download-link">
+                <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}">
+                    Дистрибутив последней стабильной версии 6.0-build519 2017-08-19 (ZIP)</a>
             </div>
             <div class="col-xs-4">
+                <span class="show-components">Показать компоненты сборки</span>
+                <ul class="components">
+                    <li><a href="">lalalalaalalalal</a></li>
+                    <li><a href="">lalalalaalalalal</a></li>
+                    <li><a href="">lalalalaalalalal</a></li>
+                    <li><a href="">lalalalaalalalal</a></li>
+                    <li><a href="">lalalalaalalalal</a></li>
+                </ul>
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div>
@@ -135,42 +124,64 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
 &nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.stable.version }}</version>
-</dependency>
-                            {#{{ versions.stable.mavenDependency | raw }}#}
-                        </textarea>
+</dependency></textarea>
                         <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-	<div id="newest-version" class="stable-version newest-version">
-        <div class="row">
             <div class="col-xs-8">
-                <div class="border-div">
-                    <div class="download-link">
-                        <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}">Дистрибутив новейшей версии платформы</a>
-                        <span>{{ builds.newest != null ? '(' ~ builds.newest.0.name ~ ')' : '' }}</span>
-                        {#<p>{{ versions.newest.description }}</p>#}
-                        <p>Рекомендовано для установки на рабочих проектах</p>
-                    </div>
-                    <h3>История версий</h3>
-                    <ul>
-                    {% for key, value in builds.newest if key != 0 %}
-                        <li>
-                            <a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}
-                                <span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>
-                            </a>
+                <div>
+                    <h3>История версий</h3><a class="history-link" href="">Полная история версий</a>
+                    <ul class="list">
+                        <li class="in-list">
+                            <span class="show-components">6.0-build519 2017-08-19</span>
+                            <ul class="components">
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                            </ul>
                         </li>
-                    {% endfor %}
-                        {#<li><a href="">Последняя сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
-						{#<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
-						{#<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
+                        <li class="in-list">
+                            <span class="show-components">6.0-build519 2017-08-19</span>
+                            <ul class="components">
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                            </ul>
+                        </li>
+                        <li class="in-list">
+                            <span class="show-components">6.0-build519 2017-08-19</span>
+                            <ul class="components">
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                    <a class="button" href="">Полная история версий</a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="newest-version" class="stable-version newest-version">
+        <div class="row">
+            <p>Рекомендовано для установки на рабочих проектах</p>
+            <div class="download-link">
+                <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}">
+                    Дистрибутив последней новейшей версии 6.0-build519 2017-08-19 (ZIP)
+                </a>
+            </div>
             <div class="col-xs-4">
+                <span class="show-components">Показать компоненты сборки</span>
+                <ul class="components">
+                    <li><a href="">lalalalaalalalal</a></li>
+                    <li><a href="">lalalalaalalalal</a></li>
+                    <li><a href="">lalalalaalalalal</a></li>
+                </ul>
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div>
@@ -179,11 +190,44 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
 &nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.newest.version }}</version>
-</dependency>
-                            {#{{ versions.newest.mavenDependency | raw }}#}
-                        </textarea>
+</dependency></textarea>
                         <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
                     </div>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <div>
+                    <h3>История версий</h3><a class="history-link" href="">Полная история версий</a>
+                    <ul class="list">
+                        <li class="in-list">
+                            <span class="show-components">6.0-build519 2017-08-19</span>
+                            <ul class="components">
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                            </ul>
+                        </li>
+                        <li class="in-list">
+                            <span class="show-components">6.0-build519 2017-08-19</span>
+                            <ul class="components">
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                            </ul>
+                        </li>
+                        <li class="in-list">
+                            <span class="show-components">6.0-build519 2017-08-19</span>
+                            <ul class="components">
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                                <li><a href="">lalalalaalalalal</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -191,32 +235,134 @@
     <div id="source-code" class="source-code">
         <p>Есть много источников, откуда вы можете скачать наши исходные коды. <br/>Свяжитесь с нами, если хотите участвовать в разработке: мы дадим вам доступ на запись</p>
         <ul>
+            {% for source in sources %}
             <li>
-                <h3>С сайта компании КУРС<span>Master SVN | user: reader | pwd: reader</span></h3>
-                <a href="">Сelesta</a>
-                <a href="">flute (включая XML2Spreadsheet)</a>
-                <a href="">grains (системная библиотека Celesta)</a>
-                <a href="">mellophone</a>
-                <a href="">showcase</a>
+                <h3>{{ source.title }}<span>{{ source.subtitle }}</span></h3>
+                {% for link in source.sourceLinks %}
+                    <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
+                {% endfor %}
             </li>
-            <li>
-                <h3>Lancelot-it.ru<span>Primary read-only copy | user: reader | pwd: platform</span></h3>
-                <a href="">Сelesta</a>
-                <a href="">flute (включая XML2Spreadsheet)</a>
-                <a href="">grains (системная библиотека Celesta)</a>
-                <a href="">mellophone</a>
-                <a href="">showcase</a>
-            </li>
-            <li>
-                <h3>code.sf.net<span>Secondary read-only copy (sourceforge.net, anonymous access)</span></h3>
-                <a href="">Сelesta</a>
-                <a href="">flute (включая XML2Spreadsheet)</a>
-                <a href="">grains (системная библиотека Celesta)</a>
-                <a href="">mellophone</a>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 </section>
+    {#<div id="stable" class="stable-version">#}
+        {#<div class="row">#}
+            {#<div class="col-xs-8">#}
+                {#<div class="border-div">#}
+                    {#<div class="download-link">#}
+                        {#<a href="{{ builds.stable != null ? builds.stable.0.path : '' }}">Дистрибутив самой последней стабильной версии платформы</a>#}
+                        {#<span>{{ builds.stable != null ? '(' ~ builds.stable.0.name ~ ')' : '' }}</span>#}
+                        {#<p>{{ versions.stable.description }}</p>#}
+                        {#<p>Рекомендовано для установки на рабочих проектах</p>#}
+                    {#</div>#}
+                    {#<h3>История версий</h3>#}
+                    {#<ul>#}
+                    {#{% for key, value in builds.stable if key != 0 %}#}
+                        {#<li>#}
+                            {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
+                                {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
+                            {#</a>#}
+                        {#</li>#}
+                    {#{% endfor %}#}
+                        {#<li><a href="">Последняя сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
+                        {#<li><a href="">Последняя стабильная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
+                        {#<li><a href="">Последняя успешная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
+                    {#</ul>#}
+                    {#<a class="button" href="">Полная история версий</a>#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="col-xs-4">#}
+                {#<div class="code-example">#}
+                    {#<h3>Maven dependency</h3>#}
+                    {#<div>#}
+                        {#<textarea class="frame" readonly>#}
+{#<dependency>#}
+{#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
+{#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
+{#&nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.stable.version }}</version>#}
+{#</dependency>#}
+                            {#{{ versions.stable.mavenDependency | raw }}#}
+                        {#</textarea>#}
+                        {#<button class="copy" onclick="copyToClipboard('.frame')">copy</button>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+	{#<div id="newest-version" class="stable-version newest-version">#}
+        {#<div class="row">#}
+            {#<div class="col-xs-8">#}
+                {#<div class="border-div">#}
+                    {#<div class="download-link">#}
+                        {#<a href="{{ builds.newest != null ? builds.newest.0.path : '' }}">Дистрибутив новейшей версии платформы</a>#}
+                        {#<span>{{ builds.newest != null ? '(' ~ builds.newest.0.name ~ ')' : '' }}</span>#}
+                        {#<p>{{ versions.newest.description }}</p>#}
+                        {#<p>Рекомендовано для установки на рабочих проектах</p>#}
+                    {#</div>#}
+                    {#<h3>История версий</h3>#}
+                    {#<ul>#}
+                    {#{% for key, value in builds.newest if key != 0 %}#}
+                        {#<li>#}
+                            {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
+                                {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
+                            {#</a>#}
+                        {#</li>#}
+                    {#{% endfor %}#}
+                        {#<li><a href="">Последняя сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
+						{#<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
+						{#<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
+                    {#</ul>#}
+                    {#<a class="button" href="">Полная история версий</a>#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="col-xs-4">#}
+                {#<div class="code-example">#}
+                    {#<h3>Maven dependency</h3>#}
+                    {#<div>#}
+                        {#<textarea class="frame" readonly>#}
+{#<dependency>#}
+{#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
+{#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
+{#&nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.newest.version }}</version>#}
+{#</dependency>#}
+                            {#{{ versions.newest.mavenDependency | raw }}#}
+                        {#</textarea>#}
+                        {#<button class="copy" onclick="copyToClipboard('.frame')">copy</button>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+    {#<div id="source-code" class="source-code">#}
+        {#<p>Есть много источников, откуда вы можете скачать наши исходные коды. <br/>Свяжитесь с нами, если хотите участвовать в разработке: мы дадим вам доступ на запись</p>#}
+        {#<ul>#}
+            {#<li>#}
+                {#<h3>С сайта компании КУРС<span>Master SVN | user: reader | pwd: reader</span></h3>#}
+                {#<a href="">Сelesta</a>#}
+                {#<a href="">flute (включая XML2Spreadsheet)</a>#}
+                {#<a href="">grains (системная библиотека Celesta)</a>#}
+                {#<a href="">mellophone</a>#}
+                {#<a href="">showcase</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<h3>Lancelot-it.ru<span>Primary read-only copy | user: reader | pwd: platform</span></h3>#}
+                {#<a href="">Сelesta</a>#}
+                {#<a href="">flute (включая XML2Spreadsheet)</a>#}
+                {#<a href="">grains (системная библиотека Celesta)</a>#}
+                {#<a href="">mellophone</a>#}
+                {#<a href="">showcase</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<h3>code.sf.net<span>Secondary read-only copy (sourceforge.net, anonymous access)</span></h3>#}
+                {#<a href="">Сelesta</a>#}
+                {#<a href="">flute (включая XML2Spreadsheet)</a>#}
+                {#<a href="">grains (системная библиотека Celesta)</a>#}
+                {#<a href="">mellophone</a>#}
+            {#</li>#}
+        {#</ul>#}
+    {#</div>#}
+{#</section>#}
 <section id="news" class="news">
     <div class="row">
         <div class="col-xs-7">
@@ -229,7 +375,7 @@
                 </li>
             {% endfor %}
             </ul>
-            <a class="button" href="">Перейти в группу новостей</a>
+            <a class="button" href="{{ selectedFeedSource.link }}" target="_blank">Перейти в группу новостей</a>
         </div>
         <div class="col-xs-5">
             <form id="subscribe-form">

@@ -1,0 +1,37 @@
+Management\AdminBundle\Entity\SourceLink:
+
+    type: entity
+
+    table: source_link
+
+    repositoryClass: Management\AdminBundle\Repository\SourceLinkRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:             { type: string, length: 64, nullable: true }
+        url:              { type: string, length: 1024, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne:
+        source:
+            targetEntity: Management\AdminBundle\Entity\Source
+            inversedBy: sourceLinks
+            joinColumn:
+                name: source_id
+                referencedColumnName: id
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

@@ -3,9 +3,9 @@
 namespace Management\AdminBundle\Entity;
 
 /**
- * Version
+ * SourceLink
  */
-class Version
+class SourceLink
 {
     /**
      * @var integer
@@ -15,22 +15,12 @@ class Version
     /**
      * @var string
      */
-    private $type;
+    private $name;
 
     /**
      * @var string
      */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $version;
-
-    /**
-     * @var string
-     */
-    private $mavenDependency;
+    private $url;
 
     /**
      * @var \DateTime
@@ -43,7 +33,12 @@ class Version
     private $dateOfChange;
 
     /**
-     * Version constructor
+     * @var \Management\AdminBundle\Entity\Source
+     */
+    private $source;
+
+    /**
+     * Constructor
      */
     public function __construct()
     {
@@ -63,99 +58,51 @@ class Version
     }
 
     /**
-     * Set type
+     * Set name
      *
-     * @param string $type
+     * @param string $name
      *
-     * @return Version
+     * @return SourceLink
      */
-    public function setType($type)
+    public function setName($name)
     {
-        $this->type = $type;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get name
      *
      * @return string
      */
-    public function getType()
+    public function getName()
     {
-        return $this->type;
+        return $this->name;
     }
 
     /**
-     * Set description
+     * Set url
      *
-     * @param string $description
+     * @param string $url
      *
-     * @return Version
+     * @return SourceLink
      */
-    public function setDescription($description)
+    public function setUrl($url)
     {
-        $this->description = $description;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get url
      *
      * @return string
      */
-    public function getDescription()
+    public function getUrl()
     {
-        return $this->description;
-    }
-
-    /**
-     * Set version
-     *
-     * @param string $version
-     *
-     * @return Version
-     */
-    public function setVersion($version)
-    {
-        $this->version = $version;
-
-        return $this;
-    }
-
-    /**
-     * Get version
-     *
-     * @return string
-     */
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    /**
-     * Set mavenDependency
-     *
-     * @param string $mavenDependency
-     *
-     * @return Version
-     */
-    public function setMavenDependency($mavenDependency)
-    {
-        $this->mavenDependency = $mavenDependency;
-
-        return $this;
-    }
-
-    /**
-     * Get mavenDependency
-     *
-     * @return string
-     */
-    public function getMavenDependency()
-    {
-        return $this->mavenDependency;
+        return $this->url;
     }
 
     /**
@@ -163,7 +110,7 @@ class Version
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return Version
+     * @return SourceLink
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -187,7 +134,7 @@ class Version
      *
      * @param \DateTime $dateOfChange
      *
-     * @return Version
+     * @return SourceLink
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -204,5 +151,29 @@ class Version
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * Set source
+     *
+     * @param \Management\AdminBundle\Entity\Source $source
+     *
+     * @return SourceLink
+     */
+    public function setSource(\Management\AdminBundle\Entity\Source $source = null)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @return \Management\AdminBundle\Entity\Source
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }

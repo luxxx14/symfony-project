@@ -3,9 +3,9 @@
 namespace Management\AdminBundle\Entity;
 
 /**
- * Subscriber
+ * Source
  */
-class Subscriber
+class Source
 {
     /**
      * @var integer
@@ -15,12 +15,12 @@ class Subscriber
     /**
      * @var string
      */
-    private $email;
+    private $title;
 
     /**
-     * @var boolean
+     * @var string
      */
-    private $subscribedToFeed;
+    private $subtitle;
 
     /**
      * @var \DateTime
@@ -33,12 +33,16 @@ class Subscriber
     private $dateOfChange;
 
     /**
-     * FeedSource constructor
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $sourceLinks;
+
+    /**
+     * Constructor
      */
     public function __construct()
     {
-        $this->subscribedToFeed = TRUE;
-
+        $this->sourceLinks = new \Doctrine\Common\Collections\ArrayCollection();
         $currentDate = new \DateTime('NOW');
         $this->dateOfCreation = $currentDate;
         $this->dateOfChange = $currentDate;
@@ -55,51 +59,51 @@ class Subscriber
     }
 
     /**
-     * Set email
+     * Set title
      *
-     * @param string $email
+     * @param string $title
      *
-     * @return Subscriber
+     * @return Source
      */
-    public function setEmail($email)
+    public function setTitle($title)
     {
-        $this->email = $email;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get title
      *
      * @return string
      */
-    public function getEmail()
+    public function getTitle()
     {
-        return $this->email;
+        return $this->title;
     }
 
     /**
-     * Set subscribedToFeed
+     * Set subtitle
      *
-     * @param boolean $subscribedToFeed
+     * @param string $subtitle
      *
-     * @return Subscriber
+     * @return Source
      */
-    public function setSubscribedToFeed($subscribedToFeed)
+    public function setSubtitle($subtitle)
     {
-        $this->subscribedToFeed = $subscribedToFeed;
+        $this->subtitle = $subtitle;
 
         return $this;
     }
 
     /**
-     * Get subscribedToFeed
+     * Get subtitle
      *
-     * @return boolean
+     * @return string
      */
-    public function getSubscribedToFeed()
+    public function getSubtitle()
     {
-        return $this->subscribedToFeed;
+        return $this->subtitle;
     }
 
     /**
@@ -107,7 +111,7 @@ class Subscriber
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return Subscriber
+     * @return Source
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -131,7 +135,7 @@ class Subscriber
      *
      * @param \DateTime $dateOfChange
      *
-     * @return Subscriber
+     * @return Source
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -148,5 +152,41 @@ class Subscriber
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * Add sourceLink
+     *
+     * @param \Management\AdminBundle\Entity\SourceLink $sourceLink
+     *
+     * @return Source
+     */
+    public function addSourceLink(\Management\AdminBundle\Entity\SourceLink $sourceLink)
+    {
+        $this->sourceLinks[] = $sourceLink;
+
+        $sourceLink->setSource($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove sourceLink
+     *
+     * @param \Management\AdminBundle\Entity\SourceLink $sourceLink
+     */
+    public function removeSourceLink(\Management\AdminBundle\Entity\SourceLink $sourceLink)
+    {
+        $this->sourceLinks->removeElement($sourceLink);
+    }
+
+    /**
+     * Get sourceLinks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSourceLinks()
+    {
+        return $this->sourceLinks;
     }
 }
