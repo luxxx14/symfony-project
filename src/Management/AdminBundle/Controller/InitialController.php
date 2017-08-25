@@ -128,6 +128,7 @@ class InitialController extends Controller {
             'components' => $components,
             'advantages' => $advantages,
             'clients' => $clients,
+            'selectedFeedSource' => $selectedFeedSource,
             'feed' => $feed,
             'versions' => $versions,
             'builds' => $builds,

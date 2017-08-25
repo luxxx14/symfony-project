@@ -1,0 +1,35 @@
+Management\AdminBundle\Entity\Source:
+
+    type: entity
+
+    table: source
+
+    repositoryClass: Management\AdminBundle\Repository\SourceRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        title:            { type: string, length: 64, nullable: true }
+        subtitle:         { type: string, length: 128, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany:
+        sourceLinks:
+            targetEntity: Management\AdminBundle\Entity\SourceLink
+            mappedBy: source
+            cascade: ["persist", "remove"]
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

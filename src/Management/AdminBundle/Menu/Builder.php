@@ -21,8 +21,9 @@ class Builder implements ContainerAwareInterface
         $menu->addChild('Кто использует', ['route' => 'admin_client_index']);
         $menu->addChild('О компании', ['route' => 'admin_company_information_index']);
 
-        $menu->addChild('Maven', ['attributes' => ['class' => 'header']]);
+        $menu->addChild('Загрузки', ['attributes' => ['class' => 'header']]);
         $menu->addChild('Коды для Maven', ['route' => 'admin_version_index']);
+        $menu->addChild('Исходный код', ['route' => 'admin_source_index']);
 
         $menu->addChild('Новости', ['attributes' => ['class' => 'header']]);
         $menu->addChild('Настройка источника RSS', ['route' => 'admin_feed_source_index']);

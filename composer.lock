@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc46ff107c402ebdb9a0b11f28420b31",
+    "content-hash": "a58464f01812d939ce223c335e800890",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1502,7 +1502,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -1714,6 +1714,39 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
+        },
+        {
+            "name": "ninsuo/symfony-collection",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ninsuo/symfony-collection.git",
+                "reference": "94b30e69e501f85791bb786163e5bcf1241fe5e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ninsuo/symfony-collection/zipball/94b30e69e501f85791bb786163e5bcf1241fe5e3",
+                "reference": "94b30e69e501f85791bb786163e5bcf1241fe5e3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "ScriptHandler.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alain Tiemblo",
+                    "email": "ninsuo@gmail.com"
+                }
+            ],
+            "description": "A jQuery plugin that manages adding, deleting and moving elements from a Symfony collection",
+            "time": "2017-08-23 04:51:35"
         },
         {
             "name": "paragonie/random_compat",
@@ -3155,7 +3188,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "vich/uploader-bundle": 20
+        "vich/uploader-bundle": 20,
+        "ninsuo/symfony-collection": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
