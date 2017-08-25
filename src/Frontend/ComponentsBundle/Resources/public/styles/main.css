@@ -500,10 +500,11 @@ body {
         position: relative; }
         body .download .stable-version .col-xs-4 .show-components {
           position: absolute;
-          top: -40px;
+          top: -30px;
           left: 70px; }
         body .download .stable-version .col-xs-4 .components {
-          margin-left: 55px; }
+          margin-left: 55px;
+          margin-top: 10px; }
       body .download .stable-version .col-xs-8 {
         margin-top: 40px; }
         body .download .stable-version .col-xs-8 div {
@@ -726,5 +727,12 @@ body {
         body footer p:last-of-type span:hover {
           color: #9558d1;
           border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
+
+/* small screens */
+@media (max-width: 1120px) {
+  body .download, body .news, body .users, body .advantages {
+    padding: 0 40px; }
+  body .info {
+    margin: 0 40px; } }
 
 /*# sourceMappingURL=main.css.map */
