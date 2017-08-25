@@ -25,14 +25,11 @@ class Builder implements ContainerAwareInterface
         $menu->addChild('Коды для Maven', ['route' => 'admin_version_index']);
 
         $menu->addChild('Новости', ['attributes' => ['class' => 'header']]);
-        $menu->addChild('Настройка источника RSS', array(
+        $menu->addChild('Настройка источника RSS', ['route' => 'admin_feed_source_index']);
+        $menu->addChild('Модерация новостей', [
             'route' => 'admin_redirect_for_selected_feed_source',
-            'routeParameters' => array('action' => 'show')
-        ));
-        $menu->addChild('Модерация новостей', array(
-            'route' => 'admin_redirect_for_selected_feed_source',
-            'routeParameters' => array('action' => 'show_feed')
-        ));
+            'routeParameters' => ['action' => 'show_feed']
+        ]);
 
         $menu->addChild('Подписчики', ['attributes' => ['class' => 'header']]);
         $menu->addChild('Список подписчиков', ['route' => 'admin_subscriber_index']);

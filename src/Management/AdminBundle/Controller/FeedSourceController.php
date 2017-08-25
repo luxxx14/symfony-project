@@ -81,7 +81,7 @@ class FeedSourceController extends Controller
                 return $this->render('@ManagementAdmin/feedsource/error.html.twig');
             }
 
-            return $this->redirectToRoute('admin_feed_source_show', array('id' => $feedSource->getId()));
+            return $this->redirectToRoute('admin_feed_source_index');
         }
 
         return $this->render('@ManagementAdmin/feedsource/new.html.twig', array(
@@ -144,7 +144,7 @@ class FeedSourceController extends Controller
             $em->persist($feedSource);
             $em->flush();
 
-            return $this->redirectToRoute('admin_feed_source_show', array('id' => $feedSource->getId()));
+            return $this->redirectToRoute('admin_feed_source_index');
         }
 
         return $this->render('@ManagementAdmin/feedsource/edit.html.twig', array(
