@@ -56,7 +56,7 @@ class SourceController extends Controller
             $em->persist($source);
             $em->flush();
 
-            return $this->redirectToRoute('admin_source_show', array('id' => $source->getId()));
+            return $this->redirectToRoute('admin_source_index');
         }
 
         return $this->render('@ManagementAdmin/source/new.html.twig', array(
@@ -96,7 +96,7 @@ class SourceController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_source_edit', array('id' => $source->getId()));
+            return $this->redirectToRoute('admin_source_index');
         }
 
         return $this->render('@ManagementAdmin/source/edit.html.twig', array(
