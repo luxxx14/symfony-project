@@ -235,29 +235,14 @@
     <div id="source-code" class="source-code">
         <p>Есть много источников, откуда вы можете скачать наши исходные коды. <br/>Свяжитесь с нами, если хотите участвовать в разработке: мы дадим вам доступ на запись</p>
         <ul>
+            {% for source in sources %}
             <li>
-                <h3>С сайта компании КУРС<span>Master SVN | user: reader | pwd: reader</span></h3>
-                <a href="">Сelesta</a>
-                <a href="">flute (включая XML2Spreadsheet)</a>
-                <a href="">grains (системная библиотека Celesta)</a>
-                <a href="">mellophone</a>
-                <a href="">showcase</a>
+                <h3>{{ source.title }}<span>{{ source.subtitle }}</span></h3>
+                {% for link in source.sourceLinks %}
+                    <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
+                {% endfor %}
             </li>
-            <li>
-                <h3>Lancelot-it.ru<span>Primary read-only copy | user: reader | pwd: platform</span></h3>
-                <a href="">Сelesta</a>
-                <a href="">flute (включая XML2Spreadsheet)</a>
-                <a href="">grains (системная библиотека Celesta)</a>
-                <a href="">mellophone</a>
-                <a href="">showcase</a>
-            </li>
-            <li>
-                <h3>code.sf.net<span>Secondary read-only copy (sourceforge.net, anonymous access)</span></h3>
-                <a href="">Сelesta</a>
-                <a href="">flute (включая XML2Spreadsheet)</a>
-                <a href="">grains (системная библиотека Celesta)</a>
-                <a href="">mellophone</a>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 </section>

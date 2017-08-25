@@ -71,6 +71,14 @@ class InitialController extends Controller {
             ->getQuery()
             ->getResult();
 
+        $sources = $em->getRepository('ManagementAdminBundle:Source')
+            ->createQueryBuilder('s')
+            ->leftJoin('s.sourceLinks', 'sL')
+            ->orderBy('s.id', 'ASC')
+            ->orderBy('sL.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+
         $stable = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Стабильная']);
         $newest = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Новейшая']);
         $source = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Исходный код']);
@@ -132,6 +140,7 @@ class InitialController extends Controller {
             'feed' => $feed,
             'versions' => $versions,
             'builds' => $builds,
+            'sources' => $sources,
             'subscriberForm' => $subscriberForm->createView()
         ]);
     }
