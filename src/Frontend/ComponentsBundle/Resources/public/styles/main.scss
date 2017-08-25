@@ -184,9 +184,27 @@ body {
 			right: 50px;
 			display: inline-block;
 			cursor: pointer;
-			&:after {
+			text-align: center;
+			width: 50px;
+			span:after {
 				margin-left: 3px;
 				content: '\25BE';
+				
+			}
+			ul {
+				display: none;
+				background: white;
+				border: 1px solid #9558d1;
+				border-radius: 2px;
+				padding: 0;
+				margin: 0;
+				
+				li {					
+					padding: 10px;
+					&:hover {
+						background-color: rgba(31, 30, 56, 0.2);;
+					}
+				}
 			}
 		}
 	}
@@ -851,10 +869,14 @@ body {
 						color: #c6c9d1;
 						padding: 0;
 						padding-top: 20px;
-						margin: 0;						
-						a {
-							display: inline-block;							
-						}
+						margin: 0;
+					}
+					a {
+						font-size: 14px;
+						line-height: 1.43;
+						letter-spacing: 0.2px;
+						text-align: center;
+						display: inline-block;							
 					}
 				}
 			}
