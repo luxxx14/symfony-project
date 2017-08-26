@@ -28,7 +28,13 @@
             <li><a href="http://wiki.staging.corchestra.ru/index.php?title=Заглавная_страница" target="_blank">Документация</a></li>
         </ul>
     </nav>
-    <div id="select-locale">Eng</div>
+    <div id="select-locale">
+		<span>Ru</span>
+		<ul>
+			<li>Ru</li>
+		  <li>Eng</li>
+		</ul>
+	</div>
 </header>
 <section id="main" class="main">
     <h1>{{ commonInformation.title|raw}}</h1>
@@ -392,7 +398,8 @@
 					<p>Подписка оформлена!</p>
 				</div>
 				<span class="error"></span>
-				<p class="policy">Нажимая кнопку вы принимаете условия <a href="">пользовательского соглашения</a></p>
+				<p class="policy">Нажимая кнопку вы принимаете условия</p>
+				<a href="">пользовательского соглашения</a>
 			</form>
             {#{{ form_start(subscriberForm) }}#}
                 {#<h3>Хотите быть в курсе последних событий? </h3>#}

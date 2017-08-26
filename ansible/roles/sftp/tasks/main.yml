@@ -1,0 +1,50 @@
+#SFTP USER
+- name: create sftponly group
+  group:
+    name: sftponly
+
+- name: create user group
+  group:
+    name: "{{ sftpuser }}"
+
+- name: create jenkins user
+  user: 
+    name: "{{ sftpuser }}"
+    shell: /usr/lib/sftp-server
+    home: /home/{{ sftpuser }}
+    createhome: no
+    groups: [sftponly, "{{ sftpuser }}"]
+
+- name: set jenkins password
+  shell: "(echo '{{ sftppass }}'; echo '{{ sftppass }}') | passwd {{ sftpuser }}"
+  
+- name: create directories 
+  file:
+    dest: "{{ item }}"
+    state: directory 
+    mode: "0775"
+    group: jenkins
+    owner: jenkins
+  with_items:
+    - /home/{{ sftpuser }}/.ssh
+    - /var/software/builds/meta-information
+    - /var/www/corchestra/web/download/builds
+
+- name: ssh_config
+  template:
+    src: templates/sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    mode: "0644"
+  register: ssh_config_upload
+
+- name: reload sshd
+  service: 
+    name: sshd 
+    state: reloaded
+  when: ssh_config_upload.changed
+  
+- name: add sftp to shells
+  lineinfile:
+    path: /etc/shells
+    state: present
+    line: /usr/lib/sftp-server

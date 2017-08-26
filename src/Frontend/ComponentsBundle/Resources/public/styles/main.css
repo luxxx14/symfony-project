@@ -144,10 +144,23 @@ body {
       top: 34px;
       right: 50px;
       display: inline-block;
-      cursor: pointer; }
-      body header #select-locale:after {
+      cursor: pointer;
+      text-align: center;
+      width: 50px; }
+      body header #select-locale span:after {
         margin-left: 3px;
         content: '\25BE'; }
+      body header #select-locale ul {
+        display: none;
+        background: white;
+        border: 1px solid #9558d1;
+        border-radius: 2px;
+        padding: 0;
+        margin: 0; }
+        body header #select-locale ul li {
+          padding: 10px; }
+          body header #select-locale ul li:hover {
+            background-color: rgba(31, 30, 56, 0.2); }
   body .main {
     background: url(../img/group-10.jpg) center center no-repeat;
     background-size: cover;
@@ -500,10 +513,11 @@ body {
         position: relative; }
         body .download .stable-version .col-xs-4 .show-components {
           position: absolute;
-          top: -40px;
+          top: -30px;
           left: 70px; }
         body .download .stable-version .col-xs-4 .components {
-          margin-left: 55px; }
+          margin-left: 55px;
+          margin-top: 10px; }
       body .download .stable-version .col-xs-8 {
         margin-top: 40px; }
         body .download .stable-version .col-xs-8 div {
@@ -701,8 +715,12 @@ body {
         padding: 0;
         padding-top: 20px;
         margin: 0; }
-        body .news .row .col-xs-5 form .policy a {
-          display: inline-block; }
+      body .news .row .col-xs-5 form a {
+        font-size: 14px;
+        line-height: 1.43;
+        letter-spacing: 0.2px;
+        text-align: center;
+        display: inline-block; }
   body footer {
     background-color: #eff1f3;
     height: 180px;
@@ -726,5 +744,12 @@ body {
         body footer p:last-of-type span:hover {
           color: #9558d1;
           border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
+
+/* small screens */
+@media (max-width: 1120px) {
+  body .download, body .news, body .users, body .advantages {
+    padding: 0 40px; }
+  body .info {
+    margin: 0 40px; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,13 @@
+ansible_ssh_user: root
+
+sftpuser: "{{ vault_sftpuser }}"
+sftppass: "{{ vault_sftpass }}"
+
+gitpwd: "{{ vault_gitpwd }}"
+gituser: "{{ vault_gituser }}"
+
+postgreuser: "{{ vault_postgreuser }}"
+postgrespwd: "{{ vault_postgrespwd }}"
+
+mysqluser: "{{ vault_mysqluser }}"
+mysqlpwd: "{{ vault_mysqlpwd }}"
