@@ -75,23 +75,27 @@
                     <br>
                     {% if entry.status == 'На модерации' %}
                         <li>
-                            <a class="btn" href="{{ path('admin_feed_change',
-                            {id: entry.id, action: 'publish'}) }}">Опубликовать</a>
+                            <a class="btn btn-action" data-id="{{ entry.id }}" data-action="publish"
+                               href="{# path('admin_feed_change',
+                            {id: entry.id, action: 'publish'}) #}">Опубликовать</a>
                         </li>
                         <br><br>
                         <li>
-                            <a class="btn" href="{{ path('admin_feed_change',
-                            {id: entry.id, action: 'reject'}) }}">Отклонить</a>
+                            <a class="btn btn-action" data-id="{{ entry.id }}" data-action="reject"
+                               href="{# path('admin_feed_change',
+                            {id: entry.id, action: 'reject'}) #}">Отклонить</a>
                         </li>
                     {% elseif entry.status == 'Опубликована' %}
                         <li>
-                            <a class="btn" href="{{ path('admin_feed_change',
-                            {id: entry.id, action: 'reject'}) }}">Отклонить</a>
+                            <a class="btn btn-action" data-id="{{ entry.id }}" data-action="reject"
+                               href="{# path('admin_feed_change',
+                            {id: entry.id, action: 'reject'}) #}">Отклонить</a>
                         </li>
                     {% elseif entry.status == 'Отклонена' %}
                         <li>
-                            <a class="btn" href="{{ path('admin_feed_change',
-                            {id: entry.id, action: 'publish'}) }}">Опубликовать</a>
+                            <a class="btn btn-action" data-id="{{ entry.id }}" data-action="publish"
+                               href="{# path('admin_feed_change',
+                            {id: entry.id, action: 'publish'}) #}">Опубликовать</a>
                         </li>
                     {% endif %}
                 </ul></nav></td>
@@ -140,9 +144,34 @@
                 yearRange: "1900:+nn"
             });
 
-//            $('input.datepicker').datepicker("setDate", "-7");
-
             $('#management_adminbundle_feed_filter_status option:first-child').text('Все');
+        });
+    </script>
+    <script>
+        $(document).ready( function() {
+            $('.btn-action').each(function () {
+                var clickedElement = $(this);
+                $(this).on('click', function (e) {
+                    var elementId = $(this).data('id');
+                    var elementAction = $(this).data('action');
+
+                    var url = '/admin/feed/' + elementId + '/' + elementAction;
+
+                    $.post(
+                        url, {
+                            id: elementId,
+                            action: elementAction
+                        }, function( data ) {
+                            clickedElement.data('action', data.action);
+                            clickedElement.text(data.text);
+                        }
+                    )
+                    .done(function() {})
+                    .fail(function(xhr, status, error) {});
+
+                    e.preventDefault();
+                })
+            });
         });
     </script>
 {% endblock %}
