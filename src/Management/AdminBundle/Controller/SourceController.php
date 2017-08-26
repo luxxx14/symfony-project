@@ -26,13 +26,13 @@ class SourceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $sources = $em->getRepository('ManagementAdminBundle:Source')//->findAll();
-            ->createQueryBuilder('s')
-            ->leftJoin('s.sourceLinks', 'sL')
-//            ->orderBy('s.id', 'ASC')
-            ->orderBy('sL.id', 'ASC')
-            ->getQuery()
-            ->getResult();
+        $sources = $em->getRepository('ManagementAdminBundle:Source')->findAll();
+//            ->createQueryBuilder('s')
+//            ->leftJoin('s.sourceLinks', 'sL')
+////            ->orderBy('s.id', 'ASC')
+//            ->orderBy('sL.id', 'ASC')
+//            ->getQuery()
+//            ->getResult();
 
         return $this->render('@ManagementAdmin/source/index.html.twig', array(
             'sources' => $sources,
@@ -94,7 +94,17 @@ class SourceController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+
+            $currentSourceLinks = $em->getRepository('ManagementAdminBundle:SourceLink')
+                ->findBy(['source' => $source]);
+            foreach ($currentSourceLinks as $currentSourceLink) {
+                if (!$source->getSourceLinks()->contains($currentSourceLink)){
+                    $em->remove($currentSourceLink);
+                }
+            }
+
+            $em->flush();
 
             return $this->redirectToRoute('admin_source_index');
         }
