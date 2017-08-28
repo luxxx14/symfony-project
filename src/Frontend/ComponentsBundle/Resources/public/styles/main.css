@@ -141,23 +141,27 @@ body {
             border-bottom: 1px solid #9558d1;
             padding-bottom: 6px; }
     body header #select-locale {
-      position: absolute;
-      top: 34px;
-      right: 50px;
+      float: right;
+      line-height: 86px;
+      margin-right: 50px;
       display: inline-block;
       cursor: pointer;
       text-align: center;
-      width: 50px; }
+      width: 50px;
+      position: relative; }
       body header #select-locale span:after {
         margin-left: 3px;
         content: '\25BE'; }
       body header #select-locale ul {
+        position: absolute;
+        top: 60px;
         display: none;
         background: white;
         border: 1px solid #9558d1;
         border-radius: 2px;
         padding: 0;
-        margin: 0; }
+        margin: 0;
+        line-height: 24px; }
         body header #select-locale ul li {
           padding: 10px; }
           body header #select-locale ul li:hover {
