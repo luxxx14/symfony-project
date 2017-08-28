@@ -103,7 +103,7 @@
             </div>
 			<p>{{ client.title }}</p>
         </div>
-        {% if serialNumber % 3 == 0 %}
+        {% if serialNumber % 3 == 0 and serialNumber != clients|length %}
     </div>
     <div class="row">
         {% endif %}
