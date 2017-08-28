@@ -1,5 +1,7 @@
 {% extends 'admin.html.twig' %}
 
+{% import _self as widget_prototype_macro %}
+
 {% block body %}
     <h1>Редактирование источника</h1>
 
@@ -20,6 +22,18 @@
                     {{ form_errors(edit_form.subtitle) }}
                 </div>
 
+                <h3>Ссылки</h3>
+                <table>
+                    <tbody class="links" data-prototype="{{ widget_prototype_macro.widget_prototype(edit_form.sourceLinks.vars.prototype)|e }}">
+                    {% for link in edit_form.sourceLinks %}
+                        <tr>
+                            <td style="padding: 10px;">{{ form_row(link.name) }}</td>
+                            <td style="padding: 10px;">{{ form_row(link.url) }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
                 <input class="btn" type="submit" value="Сохранить" />
                 {{ form_end(edit_form) }}
             </div>
@@ -32,3 +46,88 @@
 
     <br><a class="btn" href="{{ path('admin_source_index') }}">Отмена</a>
 {% endblock %}
+
+{% macro widget_prototype(widget) %}
+    <td style="padding: 10px;">
+        {{ form_row(widget.name) }}
+    </td>
+    <td style="padding: 10px;">
+        {{ form_row(widget.url) }}
+    </td>
+{% endmacro %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var $collectionHolder;
+
+        // setup an "add a tag" link
+        var $addLink = $('<a class="btn" style="display: inline-block;" href="#" class="add_tag_link">Добавить ссылку</a>');
+        var $newLinkTr = $('<tr class="for-adding"></tr>').append($addLink);
+
+        jQuery(document).ready(function() {
+            // Get the ul that holds the collection of tags
+            $collectionHolder = $('.links');
+
+            // add the "add a tag" anchor and li to the tags ul
+            $collectionHolder.append($newLinkTr);
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+            $addLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addForm($collectionHolder, $newLinkTr);
+            });
+
+            // add a delete link to all of the existing tag form li elements
+            $collectionHolder.find('tr').each(function() {
+                if (!$(this).hasClass('for-adding')) {
+                    addFormDeleteLink($(this));
+                }
+            });
+        });
+
+        function addForm($collectionHolder, $newLinkTr) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            console.log(prototype);
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormTr = $('<tr></tr>').append(newForm);
+            $newLinkTr.before($newFormTr);
+
+            // add a delete link to the new form
+            addFormDeleteLink($newFormTr);
+        }
+
+        function addFormDeleteLink($formTr) {
+            var $removeFormA = $('<a class="btn" style="display: inline-block; margin-top: 30px;" href="#"><i class="fa fa-trash fa-lg"></i></a>');
+            var $removeFormTd = $('<td></td>').append($removeFormA);
+            $formTr.append($removeFormTd);
+
+            $removeFormA.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // remove the li for the tag form
+                $formTr.remove();
+            });
+        }
+    </script>
+{% endblock javascripts %}

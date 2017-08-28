@@ -1,0 +1,41 @@
+- set_fact:
+    wikiver: "1.29.1"
+    
+- name: mkdir
+  file: 
+    dest: /opt/mediawiki 
+    state: directory 
+    mode: "0777"
+    
+- name: download and unarchive mediawiki
+  unarchive:
+    src: https://releases.wikimedia.org/mediawiki/1.29/mediawiki-{{ wikiver }}.tar.gz
+    dest: /opt/mediawiki
+    remote_src: True
+    creates: /opt/mediawiki/mediawiki-{{ wikiver }}
+    
+- name: create symlink to mediawiki
+  file:
+    dest: /var/www/wiki
+    src: /opt/mediawiki/mediawiki-{{ wikiver }}
+    state: link
+  
+- name: site config template
+  template:
+    src: templates/mediawiki.conf.j2
+    dest: /etc/nginx/sites-available/mediawiki.conf
+    mode: "0644"
+  notify: restart nginx
+
+- name:  create symlink to mediawiki conf
+  file:
+    src: /etc/nginx/sites-available/mediawiki.conf
+    dest: /etc/nginx/sites-enabled/mediawiki.conf
+    state: link
+  notify: restart nginx
+  
+- name: mediawiki config template
+  template:
+    src: templates/LocalSettings.php.j2
+    dest: /var/www/wiki/LocalSettings.php
+    mode: "0644"

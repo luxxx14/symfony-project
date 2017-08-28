@@ -1,0 +1,2 @@
+s1 ansible_ssh_host=185.148.37.38 ansible_ssh_user=root
+s2 ansible_ssh_host=185.148.37.58 ansible_ssh_user=root
