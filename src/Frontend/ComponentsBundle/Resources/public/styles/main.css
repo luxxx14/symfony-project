@@ -75,7 +75,8 @@
     padding: 0; }
 
 body {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  min-width: 1280px; }
   body h1 {
     font-family: 'Merriweather', serif; }
   body a {
@@ -508,7 +509,7 @@ body {
           color: #592e83; }
           body .download .stable-version .components a:hover {
             background: url("../img/ic-link-hover.png") left 0px no-repeat;
-            padding-bottom: 5px; }
+            padding-bottom: 2px; }
       body .download .stable-version .col-xs-4 {
         position: relative; }
         body .download .stable-version .col-xs-4 .show-components {
@@ -582,7 +583,8 @@ body {
             color: #b5bbc8;
             font-weight: normal;
             margin-left: 16px;
-            border: none; }
+            border: none;
+            cursor: default; }
             body .download .source-code li h3 span:before {
               content: '';
               margin: 0; }
@@ -744,12 +746,5 @@ body {
         body footer p:last-of-type span:hover {
           color: #9558d1;
           border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
-
-/* small screens */
-@media (max-width: 1120px) {
-  body .download, body .news, body .users, body .advantages {
-    padding: 0 40px; }
-  body .info {
-    margin: 0 40px; } }
 
 /*# sourceMappingURL=main.css.map */

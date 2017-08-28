@@ -24,7 +24,8 @@ $(document).ready(function(){
 			scrollToTopBtn.hide();
 		}		
 	});
-	scrollToTopBtn.on('click', function(){
+	scrollToTopBtn.on('click', function(e){
+		e.preventDefault();
 		$.scrollTo('0', 1000);
 	});		
 	
@@ -59,6 +60,11 @@ $(document).ready(function(){
 	$('.frame').focus(function() {
     var $this = $(this);
     $this.select();    
+	});
+	
+	//fix safari issue
+	$('.frame').mouseup(function(e) {
+     e.preventDefault();
 	});
 	
 	inputField.on('keydown', function(){		
@@ -100,11 +106,10 @@ $(document).ready(function(){
 		
 	});
 	
-	$('#select-locale li').on('click', function() {		
-		$('#select-locale span').text($(this).text());
-		$('#select-locale ul').toggle();
-		
-	});
+//	$('#select-locale li').on('click', function() {		
+//		$('#select-locale span').text($(this).text());
+//		$('#select-locale ul').toggle();		
+//	});
 	
 	//show dropdown lists
 	$('.show-components').on('click', function(){

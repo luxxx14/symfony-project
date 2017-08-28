@@ -275,14 +275,14 @@
                         {#<li><a href="">Последняя стабильная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
                         {#<li><a href="">Последняя успешная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
                     {#</ul>#}
-                    {#<a class="button" href="">Полная история версий</a>#}
+                    {#<a class="button" href="http://staging.corchestra.ru/downloads/builds">Полная история версий</a>#}
                 {#</div>#}
             {#</div>#}
             {#<div class="col-xs-4">#}
                 {#<div class="code-example">#}
                     {#<h3>Maven dependency</h3>#}
                     {#<div>#}
-                        {#<textarea class="frame" readonly>#}
+                        {#<textarea class="frame" id="stable-code" readonly>#}
 {#<dependency>#}
 {#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
 {#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
@@ -290,7 +290,7 @@
 {#</dependency>#}
                             {#{{ versions.stable.mavenDependency | raw }}#}
                         {#</textarea>#}
-                        {#<button class="copy" onclick="copyToClipboard('.frame')">copy</button>#}
+                        {#<button class="copy" onclick="copyToClipboard('#stable-code')">copy</button>#}
                     {#</div>#}
                 {#</div>#}
             {#</div>#}
@@ -319,14 +319,14 @@
 						{#<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
 						{#<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
                     {#</ul>#}
-                    {#<a class="button" href="">Полная история версий</a>#}
+                    {#<a class="button" href="http://staging.corchestra.ru/downloads/builds">Полная история версий</a>#}
                 {#</div>#}
             {#</div>#}
             {#<div class="col-xs-4">#}
                 {#<div class="code-example">#}
                     {#<h3>Maven dependency</h3>#}
                     {#<div>#}
-                        {#<textarea class="frame" readonly>#}
+                        {#<textarea class="frame" id="newest-code" readonly>#}
 {#<dependency>#}
 {#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
 {#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
@@ -334,7 +334,7 @@
 {#</dependency>#}
                             {#{{ versions.newest.mavenDependency | raw }}#}
                         {#</textarea>#}
-                        {#<button class="copy" onclick="copyToClipboard('.frame')">copy</button>#}
+                        {#<button class="copy" onclick="copyToClipboard('#newest-code')">copy</button>#}
                     {#</div>#}
                 {#</div>#}
             {#</div>#}

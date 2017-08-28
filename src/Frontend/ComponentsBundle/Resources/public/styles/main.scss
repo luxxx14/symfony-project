@@ -92,6 +92,7 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
+	min-width: 1280px;
 	h1 {
 		font-family: 'Merriweather', serif;
 	}
@@ -610,7 +611,7 @@ body {
 					color: #592e83;
 					&:hover {
 						background: url('../img/ic-link-hover.png') left 0px no-repeat;						
-						padding-bottom: 5px;
+						padding-bottom: 2px;
 					}
 				}
 			}
@@ -707,6 +708,7 @@ body {
 						font-weight: normal;
 						margin-left: 16px;
 						border: none;
+						cursor: default;
 						
 						&:before {
 							content: '';
@@ -915,15 +917,15 @@ body {
 	}
 }
 
-/* small screens */
-
-@media (max-width: 1120px) {
-	body {
-		.download, .news, .users, .advantages {
-			padding: 0 40px;
-		}
-		.info {
-			margin: 0 40px;
-		}
-	}
-}
+///* small screens */
+//
+//@media (max-width: 1120px) {
+//	body {
+//		.download, .news, .users, .advantages {
+//			padding: 0 40px;
+//		}
+//		.info {
+//			margin: 0 40px;
+//		}
+//	}
+//}
