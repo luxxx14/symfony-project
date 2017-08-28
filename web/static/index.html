@@ -28,7 +28,13 @@
 					<li><a href="">Документация</a></li>
 				</ul>
 			</nav>
-			<div id="select-locale">Eng</div>
+			<div id="select-locale">
+				<span>Ru</span>
+				<ul>
+					<li>Ru</li>
+				  <li>Eng</li>
+				</ul>
+			</div>
 		</header>
 		<section id="main" class="main">
 			<h1>Открытая платформа <br/> для разработки бизнес-приложений с веб-интерфейсом</h1>
@@ -50,27 +56,20 @@
 					<p>Платформа для быстрой разработки бизнес&#8209;приложений на языке Python, работающих на реляционных базах данных</p>
 				</div>
 				<div class="col-xs-4">
-					<h2>Lyra</h2>
-					<p>Средство быстрой разработки форм пользовательского интерфейса, привязанных к курсорам Celesta</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-3">
 					<h2>Flute</h2>
 					<p>Система управления фоновым запуском в нескольких параллельно выполняемых процессах Celesta-скриптов</p>
 				</div>
-				<div class="col-xs-3">
+			</div>
+			<div class="row">				
+				<div class="col-xs-4 col-xs-offset-2">
 					<h2>Mellophone</h2>
 					<p>Компонент платформы КУРС, специализированно решающий задачи аутентификации</p>
 				</div>
-				<div class="col-xs-3">
-					<h2>Theremin</h2>
-					<p>Система вычисления расчётных показателей в аналитическом хранилище многомерных данных</p>
-				</div>
-				<div class="col-xs-3">
+				<div class="col-xs-4">
 					<h2>Xylophone</h2>
 					<p>Система формирования сложноструктурированных отчётов </p>
 				</div>
+				
 			</div>
 		</section>
 		<section id="advantages" class="advantages">
@@ -229,19 +228,19 @@
 						<div class="code-example">
 							<h3>Maven dependency</h3>
 							<div>
-								<textarea class="frame" readonly>
+								<textarea class="frame" id="stable-code" readonly>
 <dependency>
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
 &nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>
 </dependency></textarea>
-								<button class="copy" onclick="copyToClipboard('.frame')">copy</button>
+								<button class="copy" onclick="copyToClipboard('#stable-code')">copy</button>
 							</div>							
 						</div>
 					</div>	
 					<div class="col-xs-8">
 						<div>
-							<h3>История версий</h3><a class="history-link" href="">Полная история версий</a>
+							<h3>История версий</h3><a class="history-link" href="http://staging.corchestra.ru/downloads/builds">Полная история версий</a>
 							<ul class="list">
 								<li class="in-list">
 									<span class="show-components">6.0-build519 2017-08-19</span>
@@ -336,19 +335,19 @@
 						<div class="code-example">
 							<h3>Maven dependency</h3>
 							<div>
-								<textarea class="frame" readonly>
+								<textarea class="frame" id="newest-code" readonly>
 <dependency>
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
 &nbsp;&nbsp;&nbsp;&nbsp;<version>6.0</version>
 </dependency></textarea>
-								<button class="copy" onclick="copyToClipboard('.frame')">copy</button>
+								<button class="copy" onclick="copyToClipboard('#newest-code')">copy</button>
 							</div>							
 						</div>
 					</div>	
 					<div class="col-xs-8">
 						<div>
-							<h3>История версий</h3><a class="history-link" href="">Полная история версий</a>
+							<h3>История версий</h3><a class="history-link" href="http://staging.corchestra.ru/downloads/builds">Полная история версий</a>
 							<ul class="list">
 								<li class="in-list">
 									<span class="show-components">6.0-build519 2017-08-19</span>
@@ -478,7 +477,8 @@
 							<p>Подписка оформлена!</p>
 						</div>
 						<span class="error"></span>
-						<p class="policy">Нажимая кнопку вы принимаете условия <a href="">пользовательского соглашения</a></p>
+						<p class="policy">Нажимая кнопку вы принимаете условия</p>
+						<a href="">пользовательского соглашения</a>
 					</form>
 				</div>
 			</div>

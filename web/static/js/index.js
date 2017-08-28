@@ -24,7 +24,8 @@ $(document).ready(function(){
 			scrollToTopBtn.hide();
 		}		
 	});
-	scrollToTopBtn.on('click', function(){
+	scrollToTopBtn.on('click', function(e){
+		e.preventDefault();
 		$.scrollTo('0', 1000);
 	});		
 	
@@ -61,6 +62,11 @@ $(document).ready(function(){
     $this.select();    
 	});
 	
+	//fix safari issue
+	$('.frame').mouseup(function(e) {
+     e.preventDefault();
+	});
+	
 	inputField.on('keydown', function(){		
 		errorField.text('');
 		inputField.removeClass('input-error');
@@ -92,6 +98,18 @@ $(document).ready(function(){
 		$('.input-block').toggle();
 		$('.success-message').toggle();
 	}
+	
+	//select locale
+	
+	$('#select-locale span').on('click', function() {		
+		$('#select-locale ul').toggle();
+		
+	});
+	
+//	$('#select-locale li').on('click', function() {		
+//		$('#select-locale span').text($(this).text());
+//		$('#select-locale ul').toggle();		
+//	});
 	
 	//show dropdown lists
 	$('.show-components').on('click', function(){
