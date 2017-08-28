@@ -101,15 +101,16 @@ $(document).ready(function(){
 	
 	//select locale
 	
+	/*
 	$('#select-locale span').on('click', function() {		
-		$('#select-locale ul').toggle();
-		
+		$('#select-locale ul').toggle();		
 	});
 	
-//	$('#select-locale li').on('click', function() {		
-//		$('#select-locale span').text($(this).text());
-//		$('#select-locale ul').toggle();		
-//	});
+	$('#select-locale li').on('click', function() {		
+		$('#select-locale span').text($(this).text());
+		$('#select-locale ul').toggle();		
+	});
+	*/
 	
 	//show dropdown lists
 	$('.show-components').on('click', function(){
