@@ -109,7 +109,7 @@ class InitialController extends Controller {
                         foreach ($componentsFinder as $componentFile) {
                             $buildComponents[] = [
                                 'name' => $componentFile->getFilename(),
-                                'path' => $componentFile->getRealPath(),
+                                'path' => $componentFile->getPath(),//$componentFile->getRealPath(),
                                 'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
                             ];
                         }
@@ -119,7 +119,7 @@ class InitialController extends Controller {
 
                     $builds['stable'][] = [
                         'name' => $file->getFilename(),
-                        'path' => $file->getRealPath(),
+                        'path' => $file->getPath(),//$file->getRealPath(),
                         'date' => (new \DateTime())->setTimestamp($file->getATime()),
                         'components' => $buildComponents
                     ];
@@ -155,7 +155,7 @@ class InitialController extends Controller {
                         foreach ($componentsFinder as $componentFile) {
                             $buildComponents[] = [
                                 'name' => $componentFile->getFilename(),
-                                'path' => $componentFile->getRealPath(),
+                                'path' => $componentFile->getPath(),//$componentFile->getRealPath(),
                                 'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
                             ];
                         }
@@ -165,7 +165,7 @@ class InitialController extends Controller {
 
                     $builds['newest'][] = [
                         'name' => $file->getFilename(),
-                        'path' => $file->getRealPath(),
+                        'path' => $file->getPath(),//$file->getRealPath(),
                         'date' => (new \DateTime())->setTimestamp($file->getATime()),
                         'components' => $buildComponents
                     ];
