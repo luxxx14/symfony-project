@@ -126,14 +126,15 @@
             <div class="download-link">
                 <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}" target="_blank">
                     {{ 'Дистрибутив последней стабильной версии ' ~
-                    builds.stable.0.name ~ ' ' ~ builds.stable.0.date|date('Y-m-d') ~ '(ZIP)' }}
+                    builds.stable.0.name ~ ' ' ~ builds.stable.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
             </div>
             <div class="col-xs-4">
                 <span class="show-components">Показать компоненты сборки</span>
                 <ul class="components">
-                    <li><a href="">lalalalaalalalal</a></li>
-                    <li><a href="">lalalalaalalalal</a></li>
+                    {% for component in builds.stable.0.components %}
+                    <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                    {% endfor %}
                 </ul>
                 <div class="code-example">
                     <h3>Maven dependency</h3>
@@ -158,8 +159,9 @@
                         <li class="in-list">
                             <span class="show-components">{{ value.name ~ ' ' ~ value.date|date('Y-m-d') }}</span>
                             <ul class="components">
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
+                                {% for component in value.components %}
+                                <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
                         {% endfor %}
@@ -174,14 +176,15 @@
             <div class="download-link">
                 <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}" target="_blank">
                     {{ 'Дистрибутив последней новейшей версии ' ~
-                    builds.newest.0.name ~ ' ' ~ builds.newest.0.date|date('Y-m-d') ~ '(ZIP)' }}
+                    builds.newest.0.name ~ ' ' ~ builds.newest.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
             </div>
             <div class="col-xs-4">
                 <span class="show-components">Показать компоненты сборки</span>
                 <ul class="components">
-                    <li><a href="">lalalalaalalalal</a></li>
-                    <li><a href="">lalalalaalalalal</a></li>
+                    {% for component in builds.newest.0.components %}
+                    <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                    {% endfor %}
                 </ul>
                 <div class="code-example">
                     <h3>Maven dependency</h3>
@@ -206,8 +209,9 @@
                         <li class="in-list">
                             <span class="show-components">{{ value.name ~ ' ' ~ value.date|date('Y-m-d') }}</span>
                             <ul class="components">
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
+                                {% for component in value.components %}
+                                <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
                         {% endfor %}

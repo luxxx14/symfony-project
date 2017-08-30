@@ -96,11 +96,35 @@ class InitialController extends Controller {
                 $current++;
 
                 if ($count - $current <= 3) {
+                    $buildComponents = [];
+
+                    $componentsFinder = new Finder();
+
+                    $componentsPath = substr($file->getFilename(), 33, strlen($file->getFilename()) - 33 - 4);
+                    $componentsPath = str_replace('-', '_', $componentsPath);
+                    if ($fs->exists($buildsPath . 'stable/' . $componentsPath)) {
+                        $componentsFinder->files()->in($buildsPath . 'stable/' . $componentsPath);
+                        $componentsFinder->sortByName();
+
+                        foreach ($componentsFinder as $componentFile) {
+                            $buildComponents[] = [
+                                'name' => $componentFile->getFilename(),
+                                'path' => $componentFile->getRealPath(),
+                                'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
+                            ];
+                        }
+                    }
+
+                    unset($componentsFinder);
+
                     $builds['stable'][] = [
                         'name' => $file->getFilename(),
                         'path' => $file->getRealPath(),
-                        'date' => (new \DateTime())->setTimestamp($file->getATime())
+                        'date' => (new \DateTime())->setTimestamp($file->getATime()),
+                        'components' => $buildComponents
                     ];
+
+                    unset($buildComponents);
                 }
             }
             if (array_key_exists('stable', $builds) and $builds['stable']) {
@@ -118,10 +142,32 @@ class InitialController extends Controller {
                 $current++;
 
                 if ($count - $current <= 3) {
+                    $buildComponents = [];
+
+                    $componentsFinder = new Finder();
+
+                    $componentsPath = substr($file->getFilename(), 33, strlen($file->getFilename()) - 33 - 4);
+                    $componentsPath = str_replace('-', '_', $componentsPath);
+                    if ($fs->exists($buildsPath . 'trunk/' . $componentsPath)) {
+                        $componentsFinder->files()->in($buildsPath . 'trunk/' . $componentsPath);
+                        $componentsFinder->sortByName();
+
+                        foreach ($componentsFinder as $componentFile) {
+                            $buildComponents[] = [
+                                'name' => $componentFile->getFilename(),
+                                'path' => $componentFile->getRealPath(),
+                                'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
+                            ];
+                        }
+                    }
+
+                    unset($componentsFinder);
+
                     $builds['newest'][] = [
                         'name' => $file->getFilename(),
                         'path' => $file->getRealPath(),
-                        'date' => (new \DateTime())->setTimestamp($file->getATime())
+                        'date' => (new \DateTime())->setTimestamp($file->getATime()),
+                        'components' => $buildComponents
                     ];
                 }
             }
@@ -161,4 +207,26 @@ class InitialController extends Controller {
 //        $response->setContent($content);
 //        return $response;
 //    }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @return bool
+     */
+    public function startsWith($haystack, $needle)
+    {
+        $length = strlen($needle);
+        return (substr($haystack, 0, $length) === $needle);
+    }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @return bool
+     */
+    function endsWith($haystack, $needle)
+    {
+        $length = strlen($needle);
+        return $length === 0 || (substr($haystack, -$length) === $needle);
+    }
 }
