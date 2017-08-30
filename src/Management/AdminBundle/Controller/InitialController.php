@@ -103,7 +103,7 @@ class InitialController extends Controller {
                     $componentsFinder = new Finder();
 
                     $componentsPath = substr($file->getFilename(), 33, strlen($file->getFilename()) - 33 - 4);
-                    $componentsPath = str_replace('-', '_', $componentsPath);
+//                    $componentsPath = str_replace('-', '_', $componentsPath);
                     if ($fs->exists($buildsPath . 'stable/' . $componentsPath)) {
                         $componentsFinder->files()->in($buildsPath . 'stable/' . $componentsPath);
                         $componentsFinder->sortByName();
@@ -163,7 +163,7 @@ class InitialController extends Controller {
                     $componentsFinder = new Finder();
 
                     $componentsPath = substr($file->getFilename(), 33, strlen($file->getFilename()) - 33 - 4);
-                    $componentsPath = str_replace('-', '_', $componentsPath);
+//                    $componentsPath = str_replace('-', '_', $componentsPath);
                     if ($fs->exists($buildsPath . 'trunk/' . $componentsPath)) {
                         $componentsFinder->files()->in($buildsPath . 'trunk/' . $componentsPath);
                         $componentsFinder->sortByName();
