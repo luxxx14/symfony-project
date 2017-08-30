@@ -125,7 +125,7 @@
             <p>Рекомендовано для установки на рабочих проектах</p>
             <div class="download-link">
                 <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}" target="_blank">
-                    {{ 'Дистрибутив последней стабильной версии ' ~
+                    {{ 'Дистрибутив последней стабильной версии платформы ' ~
                     builds.stable.0.name ~ ' ' ~ builds.stable.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
             </div>
@@ -175,7 +175,7 @@
             <p>Рекомендовано для установки на рабочих проектах</p>
             <div class="download-link">
                 <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}" target="_blank">
-                    {{ 'Дистрибутив последней новейшей версии ' ~
+                    {{ 'Дистрибутив последней новейшей версии платформы ' ~
                     builds.newest.0.name ~ ' ' ~ builds.newest.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
             </div>
@@ -234,11 +234,6 @@
         </ul>
     </div>
 </section>
-{#<section>#}
-    {#<div class="row">#}
-        {#{{ dump(builds) }}#}
-    {#</div>#}
-{#</section>#}
 <section id="news" class="news">
     <div class="row">
         <div class="col-xs-7">

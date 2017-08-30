@@ -98,6 +98,8 @@ class InitialController extends Controller {
                 if ($count - $current <= 3) {
                     $buildComponents = [];
 
+                    $buildName = '';
+
                     $componentsFinder = new Finder();
 
                     $componentsPath = substr($file->getFilename(), 33, strlen($file->getFilename()) - 33 - 4);
@@ -110,18 +112,28 @@ class InitialController extends Controller {
                             $buildComponents[] = [
                                 'name' => $componentFile->getFilename(),
                                 'path' => '/download/builds/stable/' . $componentsPath . '/' . $componentFile->getFilename(),
-//                                'path' => $componentFile->getRealPath(),
                                 'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
                             ];
+
+                            if ($componentFile->getFilename() == 'platformversion.info') {
+                                $platformVersionInfo = explode(PHP_EOL, $componentFile->getContents());
+//                                $platformVersionInfo = file_get_contents($componentFile);
+//                                $platformVersionInfo = preg_replace('/\s+/', '', $platformVersionInfo);
+//                                $arr = json_decode($platformVersionInfo, true);
+
+                                $versionNumber = substr($platformVersionInfo[2], 9, strlen($platformVersionInfo[2]) - 9);
+                                $buildNumber = substr($platformVersionInfo[4], 14, strlen($platformVersionInfo[4]) - 14);
+
+                                $buildName = 'Course Orchestra v' . $versionNumber . ' Build ' . $buildNumber;
+                            }
                         }
                     }
 
                     unset($componentsFinder);
 
                     $builds['stable'][] = [
-                        'name' => $file->getFilename(),
+                        'name' => $buildName,
                         'path' => '/download/builds/stable/' . $file->getFilename(),
-//                        'path' => $file->getRealPath(),
                         'date' => (new \DateTime())->setTimestamp($file->getATime()),
                         'components' => $buildComponents
                     ];
@@ -146,6 +158,8 @@ class InitialController extends Controller {
                 if ($count - $current <= 3) {
                     $buildComponents = [];
 
+                    $buildName = '';
+
                     $componentsFinder = new Finder();
 
                     $componentsPath = substr($file->getFilename(), 33, strlen($file->getFilename()) - 33 - 4);
@@ -157,23 +171,31 @@ class InitialController extends Controller {
                         foreach ($componentsFinder as $componentFile) {
                             $buildComponents[] = [
                                 'name' => $componentFile->getFilename(),
-//                                'path' => $componentFile->getRealPath(),
                                 'path' => '/download/builds/trunk/' . $componentsPath . '/' . $componentFile->getFilename(),
-                                'date' => (new \DateTime())->setTimestamp($componentFile->getATime()),
-                                'info' => $componentFile->getFileInfo()
+                                'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
                             ];
+
+                            if ($componentFile->getFilename() == 'platformversion.info') {
+                                $platformVersionInfo = explode(PHP_EOL, $componentFile->getContents());
+//                                $platformVersionInfo = file_get_contents($componentFile);
+//                                $platformVersionInfo = preg_replace('/\s+/', '', $platformVersionInfo);
+//                                $arr = json_decode($platformVersionInfo, true);
+
+                                $versionNumber = substr($platformVersionInfo[2], 9, strlen($platformVersionInfo[2]) - 9);
+                                $buildNumber = substr($platformVersionInfo[4], 14, strlen($platformVersionInfo[4]) - 14);
+
+                                $buildName = 'Course Orchestra v' . $versionNumber . ' Build ' . $buildNumber;
+                            }
                         }
                     }
 
                     unset($componentsFinder);
 
                     $builds['newest'][] = [
-                        'name' => $file->getFilename(),
+                        'name' => $buildName,
                         'path' => '/download/builds/trunk/' . $file->getFilename(),
-//                        'path' => $file->getRealPath(),
                         'date' => (new \DateTime())->setTimestamp($file->getATime()),
-                        'components' => $buildComponents,
-                        'info' => $file->getFileInfo()
+                        'components' => $buildComponents
                     ];
                 }
             }
