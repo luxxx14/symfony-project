@@ -109,7 +109,7 @@ class InitialController extends Controller {
                         foreach ($componentsFinder as $componentFile) {
                             $buildComponents[] = [
                                 'name' => $componentFile->getFilename(),
-                                'path' => $buildsPath . 'stable/' . $componentsPath . '/' . $componentFile->getFilename(),
+                                'path' => '/download/builds/stable/' . $componentsPath . '/' . $componentFile->getFilename(),
 //                                'path' => $componentFile->getRealPath(),
                                 'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
                             ];
@@ -120,7 +120,7 @@ class InitialController extends Controller {
 
                     $builds['stable'][] = [
                         'name' => $file->getFilename(),
-                        'path' => $buildsPath . 'stable/' . $file->getFilename(),
+                        'path' => '/download/builds/stable/' . $file->getFilename(),
 //                        'path' => $file->getRealPath(),
                         'date' => (new \DateTime())->setTimestamp($file->getATime()),
                         'components' => $buildComponents
@@ -158,7 +158,7 @@ class InitialController extends Controller {
                             $buildComponents[] = [
                                 'name' => $componentFile->getFilename(),
 //                                'path' => $componentFile->getRealPath(),
-                                'path' => $buildsPath . 'trunk/' . $componentsPath . '/' . $componentFile->getFilename(),
+                                'path' => '/download/builds/trunk/' . $componentsPath . '/' . $componentFile->getFilename(),
                                 'date' => (new \DateTime())->setTimestamp($componentFile->getATime()),
                                 'info' => $componentFile->getFileInfo()
                             ];
@@ -169,7 +169,7 @@ class InitialController extends Controller {
 
                     $builds['newest'][] = [
                         'name' => $file->getFilename(),
-                        'path' => $buildsPath . 'trunk/' . $file->getFilename(),
+                        'path' => '/download/builds/trunk/' . $file->getFilename(),
 //                        'path' => $file->getRealPath(),
                         'date' => (new \DateTime())->setTimestamp($file->getATime()),
                         'components' => $buildComponents,
