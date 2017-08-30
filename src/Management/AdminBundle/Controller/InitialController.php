@@ -109,7 +109,8 @@ class InitialController extends Controller {
                         foreach ($componentsFinder as $componentFile) {
                             $buildComponents[] = [
                                 'name' => $componentFile->getFilename(),
-                                'path' => $componentFile->getPath(),//$componentFile->getRealPath(),
+                                'path' => $buildsPath . 'stable/' . $componentsPath . '/' . $componentFile->getFilename(),
+//                                'path' => $componentFile->getRealPath(),
                                 'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
                             ];
                         }
@@ -119,7 +120,8 @@ class InitialController extends Controller {
 
                     $builds['stable'][] = [
                         'name' => $file->getFilename(),
-                        'path' => $file->getPath(),//$file->getRealPath(),
+                        'path' => $buildsPath . 'stable/' . $file->getFilename(),
+//                        'path' => $file->getRealPath(),
                         'date' => (new \DateTime())->setTimestamp($file->getATime()),
                         'components' => $buildComponents
                     ];
@@ -155,8 +157,10 @@ class InitialController extends Controller {
                         foreach ($componentsFinder as $componentFile) {
                             $buildComponents[] = [
                                 'name' => $componentFile->getFilename(),
-                                'path' => $componentFile->getPath(),//$componentFile->getRealPath(),
-                                'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
+//                                'path' => $componentFile->getRealPath(),
+                                'path' => $buildsPath . 'trunk/' . $componentsPath . '/' . $componentFile->getFilename(),
+                                'date' => (new \DateTime())->setTimestamp($componentFile->getATime()),
+                                'info' => $componentFile->getFileInfo()
                             ];
                         }
                     }
@@ -165,9 +169,11 @@ class InitialController extends Controller {
 
                     $builds['newest'][] = [
                         'name' => $file->getFilename(),
-                        'path' => $file->getPath(),//$file->getRealPath(),
+                        'path' => $buildsPath . 'trunk/' . $file->getFilename(),
+//                        'path' => $file->getRealPath(),
                         'date' => (new \DateTime())->setTimestamp($file->getATime()),
-                        'components' => $buildComponents
+                        'components' => $buildComponents,
+                        'info' => $file->getFileInfo()
                     ];
                 }
             }
