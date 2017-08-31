@@ -16,5 +16,5 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-/app/Resources/views/jquery.collection.html.twig
-/web/js/jquery.collection.js
+/web/download/builds/
+/web/uploads/
