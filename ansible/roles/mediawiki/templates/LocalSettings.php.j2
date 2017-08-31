@@ -58,7 +58,7 @@ $wgDBuser = "{{ mysqluser }}";
 $wgDBpassword = "{{ mysqlpwd }}";
 
 # MySQL specific settings
-$wgDBprefix = "";
+$wgDBprefix = "kur";
 
 # MySQL table options to use during installation or update
 $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
@@ -72,7 +72,7 @@ $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgEnableUploads = false;
+$wgEnableUploads = true;
 #$wgUseImageMagick = true;
 #$wgImageMagickConvertCommand = "/usr/bin/convert";
 
@@ -82,7 +82,7 @@ $wgUseInstantCommons = false;
 # Periodically send a pingback to https://www.mediawiki.org/ with basic data
 # about this MediaWiki instance. The Wikimedia Foundation shares this data
 # with MediaWiki developers to help guide future development efforts.
-$wgPingback = false;
+$wgPingback = true;
 
 ## If you use ImageMagick (or any other shell command) on a
 ## Linux server, this will need to be set to the name of an
@@ -95,24 +95,24 @@ $wgShellLocale = "en_US.utf8";
 #$wgCacheDirectory = "$IP/cache";
 
 # Site language code, should be one of the list in ./languages/data/Names.php
-$wgLanguageCode = "en";
+$wgLanguageCode = "ru";
 
-$wgSecretKey = "756cd1871553eea43f0f79ea968b24b1775f02ecccfa61123b7941964e1a58d9";
+$wgSecretKey = "e7be84a527da93dda92e3fc1bd8d72cee1956ef8045c8851d8569fd9fdab98a1";
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
-$wgUpgradeKey = "265038374566bf16";
+$wgUpgradeKey = "6e9bbb334a5cfaa4";
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.
 $wgRightsPage = ""; # Set to the title of a wiki page that describes your license/copyright
-$wgRightsUrl = "https://www.gnu.org/copyleft/fdl.html";
-$wgRightsText = "GNU Free Documentation License 1.3 or later";
-$wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/gnu-fdl.png";
+$wgRightsUrl = "";
+$wgRightsText = "";
+$wgRightsIcon = "";
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = "/usr/bin/diff3";
@@ -130,6 +130,13 @@ wfLoadSkin( 'CologneBlue' );
 wfLoadSkin( 'Modern' );
 wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Vector' );
+
+
+# Enabled extensions. Most of the extensions are enabled by adding
+# wfLoadExtensions('ExtensionName');
+# to LocalSettings.php. Check specific extension documentation for more details.
+# The following extensions were automatically enabled:
+wfLoadExtension( 'SyntaxHighlight_GeSHi' );
 
 
 # End of automatically generated settings.

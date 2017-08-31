@@ -1,6 +1,6 @@
 - set_fact:
     wikiver: "1.29.1"
-    
+
 - name: mkdir
   file: 
     dest: /opt/mediawiki 
@@ -20,22 +20,42 @@
     src: /opt/mediawiki/mediawiki-{{ wikiver }}
     state: link
   
-- name: site config template
-  template:
-    src: templates/mediawiki.conf.j2
-    dest: /etc/nginx/sites-available/mediawiki.conf
-    mode: "0644"
-  notify: restart nginx
+#NB: nginx rules are in main site config
+#- name: site config template
+#  template:
+#    src: templates/mediawiki.conf.j2
+#    dest: /etc/nginx/sites-available/mediawiki.conf
+#    mode: "0644"
+#  notify: restart nginx
 
-- name:  create symlink to mediawiki conf
-  file:
-    src: /etc/nginx/sites-available/mediawiki.conf
-    dest: /etc/nginx/sites-enabled/mediawiki.conf
-    state: link
-  notify: restart nginx
+#- name:  create symlink to mediawiki conf
+#  file:
+#    src: /etc/nginx/sites-available/mediawiki.conf
+#    dest: /etc/nginx/sites-enabled/mediawiki.conf
+#    state: link
+#  notify: restart nginx
   
 - name: mediawiki config template
   template:
     src: templates/LocalSettings.php.j2
     dest: /var/www/wiki/LocalSettings.php
     mode: "0644"
+    
+- name: Copy wiki database dump file
+  copy:
+    src: files/dump_1_29_0.sql.bz2
+    dest: /tmp
+  register: copy_file
+  
+- name: Restore database
+  mysql_db:
+    name: wikidb
+    state: import
+    target: /tmp/dump_1_29_0.sql.bz2
+  when: copy_file.changed
+
+# NB: file is too large
+#- unarchive:
+#    src: files/images.tar.bz2
+#    dest: /var/www/wiki/images
+  
