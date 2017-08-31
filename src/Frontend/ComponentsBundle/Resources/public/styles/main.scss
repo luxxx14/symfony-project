@@ -145,7 +145,7 @@ body {
 		nav {
 			display: inline-block;
 			line-height: 86px;
-			margin-left: 100px;
+			margin-left: 160px;
 			ul {								
 				li {
 					display: inline-block;
@@ -293,8 +293,7 @@ body {
 						text-align: center;
 						color: #333333;
 						padding: 0 24px;
-						padding-bottom: 20px;
-						max-width: 352px;
+						padding-bottom: 20px;						
 					}
 					a {
 						&:hover {
@@ -411,10 +410,7 @@ body {
 			}	
 			&:not(:first-of-type) {
 				border-top: 1px solid #d8dbe2;
-			}	
-			&:not(:first-of-type) {
-				border-top: 1px solid #d8dbe2;
-			}
+			}			
 		}
 		
 	}
