@@ -1,5 +1,7 @@
 {% extends 'admin.html.twig' %}
 
+{% import _self as widget_prototype_macro %}
+
 {% block body %}
     <h1>Добавление источника</h1>
 
@@ -21,12 +23,21 @@
                 </div>
 
                 <h3>Ссылки</h3>
-                <ul class="links" data-prototype="{{ form_widget(form.sourceLinks.vars.prototype)|e('html_attr') }}">
+                {#<ul class="links" data-prototype="{{ form_widget(form.sourceLinks.vars.prototype)|e('html_attr') }}">#}
+                    {#{% for link in form.sourceLinks %}#}
+                        {#<li style="width: 30% !important;">{{ form_row(link.name) }}</li>#}
+                        {#<li style="width: 30% !important;">{{ form_row(link.url) }}</li>#}
+                    {#{% endfor %}#}
+                {#</ul>#}
+
+                <table>
+                    <tbody class="links" data-prototype="{{ widget_prototype_macro.widget_prototype(form.sourceLinks.vars.prototype)|e }}">
                     {% for link in form.sourceLinks %}
-                        <li style="width: 30% !important;">{{ form_row(link.name) }}</li>
-                        <li style="width: 30% !important;">{{ form_row(link.url) }}</li>
+                        <td style="width: 30% !important;">{{ form_row(link.name) }}</td>
+                        <td style="width: 30% !important;">{{ form_row(link.url) }}</td>
                     {% endfor %}
-                </ul>
+                    </tbody>
+                </table>
 
                 <input class="btn" type="submit" value="Сохранить" />
                 {{ form_end(form) }}
@@ -37,21 +48,30 @@
     <a class="btn" href="{{ path('admin_source_index') }}">Отмена</a>
 {% endblock %}
 
+{% macro widget_prototype(widget) %}
+    <td style="padding: 10px;">
+        {{ form_row(widget.name) }}
+    </td>
+    <td style="padding: 10px;">
+        {{ form_row(widget.url) }}
+    </td>
+{% endmacro %}
+
 {% block javascripts %}
     {{ parent() }}
     <script>
         var $collectionHolder;
 
         // setup an "add a tag" link
-        var $addLink = $('<a class="btn" style="display: inline-block; margin: 15px 0;" href="#" class="add_tag_link">Добавить ссылку</a>');
-        var $newLinkLi = $('<li></li>').append($addLink);
+        var $addLink = $('<a class="btn" style="display: inline-block;" href="#" class="add_tag_link">Добавить ссылку</a>');
+        var $newLinkTr = $('<tr class="for-adding"></tr>').append($addLink);
 
         jQuery(document).ready(function() {
             // Get the ul that holds the collection of tags
-            $collectionHolder = $('ul.links');
+            $collectionHolder = $('.links');
 
             // add the "add a tag" anchor and li to the tags ul
-            $collectionHolder.append($newLinkLi);
+            $collectionHolder.append($newLinkTr);
 
             // count the current form inputs we have (e.g. 2), use that as the new
             // index when inserting a new item (e.g. 2)
@@ -62,18 +82,22 @@
                 e.preventDefault();
 
                 // add a new tag form (see next code block)
-                addForm($collectionHolder, $newLinkLi);
+                addForm($collectionHolder, $newLinkTr);
             });
 
             // add a delete link to all of the existing tag form li elements
-//            $collectionHolder.find('li').each(function() {
-//                addFormDeleteLink($(this));
-//            });
+            $collectionHolder.find('tr').each(function() {
+                if (!$(this).hasClass('for-adding')) {
+                    addFormDeleteLink($(this));
+                }
+            });
         });
 
-        function addForm($collectionHolder, $newLinkLi) {
+        function addForm($collectionHolder, $newLinkTr) {
             // Get the data-prototype explained earlier
             var prototype = $collectionHolder.data('prototype');
+
+            console.log(prototype);
 
             // get the new index
             var index = $collectionHolder.data('index');
@@ -86,23 +110,24 @@
             $collectionHolder.data('index', index + 1);
 
             // Display the form in the page in an li, before the "Add a tag" link li
-            var $newFormLi = $('<li></li>').append(newForm);
-            $newLinkLi.before($newFormLi);
+            var $newFormTr = $('<tr></tr>').append(newForm);
+            $newLinkTr.before($newFormTr);
 
             // add a delete link to the new form
-            addFormDeleteLink($newFormLi);
+            addFormDeleteLink($newFormTr);
         }
 
-        function addFormDeleteLink($formLi) {
-            var $removeFormA = $('<a class="btn" style="display: inline-block; margin: 15px 0;" href="#">Удалить</a>');
-            $formLi.append($removeFormA);
+        function addFormDeleteLink($formTr) {
+            var $removeFormA = $('<a class="btn" style="display: inline-block; margin-top: 30px;" href="#"><i class="fa fa-trash fa-lg"></i></a>');
+            var $removeFormTd = $('<td></td>').append($removeFormA);
+            $formTr.append($removeFormTd);
 
             $removeFormA.on('click', function(e) {
                 // prevent the link from creating a "#" on the URL
                 e.preventDefault();
 
                 // remove the li for the tag form
-                $formLi.remove();
+                $formTr.remove();
             });
         }
     </script>

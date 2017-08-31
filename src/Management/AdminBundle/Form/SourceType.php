@@ -45,12 +45,10 @@ class SourceType extends AbstractType
 //        ));
         $builder->add('sourceLinks', CollectionType::class, array(
             'entry_type' => SourceLinkType::class,
+            'label' => false,
             'allow_add'  => true,
             'allow_delete' => true,
             'prototype' => true,
-            'attr' => array(
-                'class' => 'my-selector',
-            ),
             'by_reference' => false
         ));
     }

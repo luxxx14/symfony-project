@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a58464f01812d939ce223c335e800890",
+    "content-hash": "c191efd5ea7ba968084e1528f0316420",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1716,39 +1716,6 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
-            "name": "ninsuo/symfony-collection",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ninsuo/symfony-collection.git",
-                "reference": "94b30e69e501f85791bb786163e5bcf1241fe5e3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ninsuo/symfony-collection/zipball/94b30e69e501f85791bb786163e5bcf1241fe5e3",
-                "reference": "94b30e69e501f85791bb786163e5bcf1241fe5e3",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "ScriptHandler.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alain Tiemblo",
-                    "email": "ninsuo@gmail.com"
-                }
-            ],
-            "description": "A jQuery plugin that manages adding, deleting and moving elements from a Symfony collection",
-            "time": "2017-08-23 04:51:35"
-        },
-        {
             "name": "paragonie/random_compat",
             "version": "v2.0.10",
             "source": {
@@ -2087,16 +2054,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.20",
+            "version": "v5.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "4b019d4c0bd64438c42e4b6b0726085b409be8d9"
+                "reference": "eb6266b3b472e4002538610b28a0a04bcf94891a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/4b019d4c0bd64438c42e4b6b0726085b409be8d9",
-                "reference": "4b019d4c0bd64438c42e4b6b0726085b409be8d9",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/eb6266b3b472e4002538610b28a0a04bcf94891a",
+                "reference": "eb6266b3b472e4002538610b28a0a04bcf94891a",
                 "shasum": ""
             },
             "require": {
@@ -2135,7 +2102,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2017-05-11T16:21:03+00:00"
+            "time": "2017-08-25T16:55:44+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -3188,8 +3155,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "vich/uploader-bundle": 20,
-        "ninsuo/symfony-collection": 20
+        "vich/uploader-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

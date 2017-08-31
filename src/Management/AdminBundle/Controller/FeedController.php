@@ -5,7 +5,9 @@ namespace Management\AdminBundle\Controller;
 use Management\AdminBundle\Entity\Feed;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Feed controller.
@@ -143,7 +145,7 @@ class FeedController extends Controller
      *
      * @Route("/{id}/{action}", name="admin_feed_change",
      *     requirements={"action" = "(publish|reject)"})
-     * @Method("GET")
+     * @Method("POST")
      *
      * @param Feed $feed
      * @param string $action
@@ -166,8 +168,19 @@ class FeedController extends Controller
         $em->persist($feed);
         $em->flush();
 
-        return $this->redirectToRoute('admin_feed_source_show_feed', [
-            'id' => $feed->getFeedSource()->getId()
+//        return $this->redirectToRoute('admin_feed_source_show_feed', [
+//            'id' => $feed->getFeedSource()->getId()
+//        ]);
+
+        $response = new JsonResponse();
+        $response->setData([
+            'success' => TRUE,
+            'status' => (string)$feed->getStatus(),
+            'text' => $feed->getStatus() == 'Опубликована' ? 'Отклонить' : 'Опубликовать',
+            'action' => $feed->getStatus() == 'Опубликована' ? 'reject' : 'publish',
+            'errors' => NULL
         ]);
+
+        return $response;
     }
 }

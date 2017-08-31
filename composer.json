@@ -25,6 +25,8 @@
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "incenteev/composer-parameter-handler": "^2.0",
+        "knplabs/knp-menu-bundle": "^2.0",
+        "knplabs/knp-paginator-bundle": "^2.5.4",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/monolog-bundle": "^3.1.0",
@@ -32,10 +34,7 @@
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
         "twig/twig": "^1.0||^2.0",
-        "vich/uploader-bundle": "dev-master",
-        "knplabs/knp-menu-bundle": "^2.0",
-        "knplabs/knp-paginator-bundle": "^2.5.4",
-        "ninsuo/symfony-collection": "dev-master"
+        "vich/uploader-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -51,12 +50,10 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
-            "@symfony-scripts",
-            "Fuz\\Symfony\\Collection\\ScriptHandler::postInstall"
+            "@symfony-scripts"
         ],
         "post-update-cmd": [
-            "@symfony-scripts",
-            "Fuz\\Symfony\\Collection\\ScriptHandler::postUpdate"
+            "@symfony-scripts"
         ]
     },
     "config": {

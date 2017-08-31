@@ -43,19 +43,33 @@
 </section>
 <section id="info" class="info">
     <h1>Компоненты платформы</h1>
+    {#<div class="row">#}
+    {#{% set serialNumber = 0 %}#}
+    {#{% for component in components %}#}
+        {#{% set serialNumber = serialNumber + 1 %}#}
+        {#<div class="col-xs-{{ serialNumber <= 3 ? 4 : 3 }}">#}
+            {#<h2><a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">{{ component.name }}</a></h2>#}
+            {#<p>{{ component.description }}</p>#}
+        {#</div>#}
+    {#{% if serialNumber == 3 %}#}
+    {#</div>#}
+    {#<div class="row">#}
+    {#{% endif %}#}
+    {#{% endfor %}#}
+    {#</div>#}
     <div class="row">
-    {% set serialNumber = 0 %}
-    {% for component in components %}
+        {% set serialNumber = 0 %}
+        {% for component in components %}
         {% set serialNumber = serialNumber + 1 %}
-        <div class="col-xs-{{ serialNumber <= 3 ? 4 : 3 }}">
+        <div class="col-xs-4{{ serialNumber == 4 ? ' col-xs-offset-2' : '' }}">
             <h2><a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">{{ component.name }}</a></h2>
             <p>{{ component.description }}</p>
         </div>
-    {% if serialNumber == 3 %}
+        {% if serialNumber == 3 %}
     </div>
     <div class="row">
-    {% endif %}
-    {% endfor %}
+        {% endif %}
+        {% endfor %}
     </div>
 </section>
 <section id="advantages" class="advantages">
@@ -64,13 +78,13 @@
         {% set serialNumber = 0 %}
         {% for advantage in advantages %}
         {% set serialNumber = serialNumber + 1 %}
-        <div class="col-xs-3">
+        <div class="col-xs-4">
 			<div>
 				<img src="{{ asset('uploads/images/advantage/' ~ advantage.imageName) }}" alt="icon" />
 			</div>
             <p>{{ advantage.description }}</p>
         </div>
-    {% if serialNumber == 4 %}
+    {% if serialNumber == 3 %}
     </div>
     <div class="row">
     {% endif %}
@@ -89,7 +103,7 @@
             </div>
 			<p>{{ client.title }}</p>
         </div>
-        {% if serialNumber % 3 == 0 %}
+        {% if serialNumber % 3 == 0 and serialNumber != clients|length %}
     </div>
     <div class="row">
         {% endif %}
@@ -110,64 +124,47 @@
         <div class="row">
             <p>Рекомендовано для установки на рабочих проектах</p>
             <div class="download-link">
-                <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}">
-                    Дистрибутив последней стабильной версии 6.0-build519 2017-08-19 (ZIP)</a>
+                <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}" target="_blank">
+                    {{ 'Дистрибутив последней стабильной версии платформы ' ~
+                    builds.stable.0.name ~ ' ' ~ builds.stable.0.date|date('Y-m-d') ~ ' (ZIP)' }}
+                </a>
             </div>
             <div class="col-xs-4">
                 <span class="show-components">Показать компоненты сборки</span>
                 <ul class="components">
-                    <li><a href="">lalalalaalalalal</a></li>
-                    <li><a href="">lalalalaalalalal</a></li>
-                    <li><a href="">lalalalaalalalal</a></li>
-                    <li><a href="">lalalalaalalalal</a></li>
-                    <li><a href="">lalalalaalalalal</a></li>
+                    {% for component in builds.stable.0.components %}
+                    <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                    {% endfor %}
                 </ul>
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div>
-                        <textarea class="frame" readonly>
+                        <textarea class="frame" id="stable-code" readonly>
 <dependency>
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
 &nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.stable.version }}</version>
 </dependency></textarea>
-                        <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
+                        <button class="copy" onclick="copyToClipboard('#stable-code')">copy</button>
                     </div>
                 </div>
             </div>
             <div class="col-xs-8">
                 <div>
-                    <h3>История версий</h3><a class="history-link" href="">Полная история версий</a>
+                    <h3>История версий</h3><a class="history-link" href="http://staging.corchestra.ru/download/builds/stable/" target="_blank">Полная история версий</a>
                     <ul class="list">
+                        {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
+                        {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
+                        {% for key, value in builds.stable if key != 0 %}
                         <li class="in-list">
-                            <span class="show-components">6.0-build519 2017-08-19</span>
+                            <span class="show-components">{{ value.name ~ ' ' ~ value.date|date('Y-m-d') }}</span>
                             <ul class="components">
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
+                                {% for component in value.components %}
+                                <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
-                        <li class="in-list">
-                            <span class="show-components">6.0-build519 2017-08-19</span>
-                            <ul class="components">
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                            </ul>
-                        </li>
-                        <li class="in-list">
-                            <span class="show-components">6.0-build519 2017-08-19</span>
-                            <ul class="components">
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                            </ul>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -177,62 +174,47 @@
         <div class="row">
             <p>Рекомендовано для установки на рабочих проектах</p>
             <div class="download-link">
-                <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}">
-                    Дистрибутив последней новейшей версии 6.0-build519 2017-08-19 (ZIP)
+                <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}" target="_blank">
+                    {{ 'Дистрибутив последней новейшей версии платформы ' ~
+                    builds.newest.0.name ~ ' ' ~ builds.newest.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
             </div>
             <div class="col-xs-4">
                 <span class="show-components">Показать компоненты сборки</span>
                 <ul class="components">
-                    <li><a href="">lalalalaalalalal</a></li>
-                    <li><a href="">lalalalaalalalal</a></li>
-                    <li><a href="">lalalalaalalalal</a></li>
+                    {% for component in builds.newest.0.components %}
+                    <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                    {% endfor %}
                 </ul>
                 <div class="code-example">
                     <h3>Maven dependency</h3>
                     <div>
-                        <textarea class="frame" readonly>
+                        <textarea class="frame" id="newest-code" readonly>
 <dependency>
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
 &nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.newest.version }}</version>
 </dependency></textarea>
-                        <button class="copy" onclick="copyToClipboard('.frame')">copy</button>
+                        <button class="copy" onclick="copyToClipboard('#newest-code')">copy</button>
                     </div>
                 </div>
             </div>
             <div class="col-xs-8">
                 <div>
-                    <h3>История версий</h3><a class="history-link" href="">Полная история версий</a>
+                    <h3>История версий</h3><a class="history-link" href="http://staging.corchestra.ru/download/builds/trunk/" target="_blank">Полная история версий</a>
                     <ul class="list">
+                        {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
+                        {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
+                        {% for key, value in builds.newest if key != 0 %}
                         <li class="in-list">
-                            <span class="show-components">6.0-build519 2017-08-19</span>
+                            <span class="show-components">{{ value.name ~ ' ' ~ value.date|date('Y-m-d') }}</span>
                             <ul class="components">
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
+                                {% for component in value.components %}
+                                <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
-                        <li class="in-list">
-                            <span class="show-components">6.0-build519 2017-08-19</span>
-                            <ul class="components">
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                            </ul>
-                        </li>
-                        <li class="in-list">
-                            <span class="show-components">6.0-build519 2017-08-19</span>
-                            <ul class="components">
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                                <li><a href="">lalalalaalalalal</a></li>
-                            </ul>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -252,123 +234,6 @@
         </ul>
     </div>
 </section>
-    {#<div id="stable" class="stable-version">#}
-        {#<div class="row">#}
-            {#<div class="col-xs-8">#}
-                {#<div class="border-div">#}
-                    {#<div class="download-link">#}
-                        {#<a href="{{ builds.stable != null ? builds.stable.0.path : '' }}">Дистрибутив самой последней стабильной версии платформы</a>#}
-                        {#<span>{{ builds.stable != null ? '(' ~ builds.stable.0.name ~ ')' : '' }}</span>#}
-                        {#<p>{{ versions.stable.description }}</p>#}
-                        {#<p>Рекомендовано для установки на рабочих проектах</p>#}
-                    {#</div>#}
-                    {#<h3>История версий</h3>#}
-                    {#<ul>#}
-                    {#{% for key, value in builds.stable if key != 0 %}#}
-                        {#<li>#}
-                            {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
-                                {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
-                            {#</a>#}
-                        {#</li>#}
-                    {#{% endfor %}#}
-                        {#<li><a href="">Последняя сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
-                        {#<li><a href="">Последняя стабильная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
-                        {#<li><a href="">Последняя успешная сборка (5.1-build518), <span>17 дней назад</span></a></li>#}
-                    {#</ul>#}
-                    {#<a class="button" href="">Полная история версий</a>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-xs-4">#}
-                {#<div class="code-example">#}
-                    {#<h3>Maven dependency</h3>#}
-                    {#<div>#}
-                        {#<textarea class="frame" readonly>#}
-{#<dependency>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.stable.version }}</version>#}
-{#</dependency>#}
-                            {#{{ versions.stable.mavenDependency | raw }}#}
-                        {#</textarea>#}
-                        {#<button class="copy" onclick="copyToClipboard('.frame')">copy</button>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-	{#<div id="newest-version" class="stable-version newest-version">#}
-        {#<div class="row">#}
-            {#<div class="col-xs-8">#}
-                {#<div class="border-div">#}
-                    {#<div class="download-link">#}
-                        {#<a href="{{ builds.newest != null ? builds.newest.0.path : '' }}">Дистрибутив новейшей версии платформы</a>#}
-                        {#<span>{{ builds.newest != null ? '(' ~ builds.newest.0.name ~ ')' : '' }}</span>#}
-                        {#<p>{{ versions.newest.description }}</p>#}
-                        {#<p>Рекомендовано для установки на рабочих проектах</p>#}
-                    {#</div>#}
-                    {#<h3>История версий</h3>#}
-                    {#<ul>#}
-                    {#{% for key, value in builds.newest if key != 0 %}#}
-                        {#<li>#}
-                            {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
-                                {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
-                            {#</a>#}
-                        {#</li>#}
-                    {#{% endfor %}#}
-                        {#<li><a href="">Последняя сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
-						{#<li><a href="">Последняя стабильная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
-						{#<li><a href="">Последняя успешная сборка (5.1-build518),</a><span> 17 дней назад</span></li>#}
-                    {#</ul>#}
-                    {#<a class="button" href="">Полная история версий</a>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-xs-4">#}
-                {#<div class="code-example">#}
-                    {#<h3>Maven dependency</h3>#}
-                    {#<div>#}
-                        {#<textarea class="frame" readonly>#}
-{#<dependency>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>#}
-{#&nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.newest.version }}</version>#}
-{#</dependency>#}
-                            {#{{ versions.newest.mavenDependency | raw }}#}
-                        {#</textarea>#}
-                        {#<button class="copy" onclick="copyToClipboard('.frame')">copy</button>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-    {#<div id="source-code" class="source-code">#}
-        {#<p>Есть много источников, откуда вы можете скачать наши исходные коды. <br/>Свяжитесь с нами, если хотите участвовать в разработке: мы дадим вам доступ на запись</p>#}
-        {#<ul>#}
-            {#<li>#}
-                {#<h3>С сайта компании КУРС<span>Master SVN | user: reader | pwd: reader</span></h3>#}
-                {#<a href="">Сelesta</a>#}
-                {#<a href="">flute (включая XML2Spreadsheet)</a>#}
-                {#<a href="">grains (системная библиотека Celesta)</a>#}
-                {#<a href="">mellophone</a>#}
-                {#<a href="">showcase</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<h3>Lancelot-it.ru<span>Primary read-only copy | user: reader | pwd: platform</span></h3>#}
-                {#<a href="">Сelesta</a>#}
-                {#<a href="">flute (включая XML2Spreadsheet)</a>#}
-                {#<a href="">grains (системная библиотека Celesta)</a>#}
-                {#<a href="">mellophone</a>#}
-                {#<a href="">showcase</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<h3>code.sf.net<span>Secondary read-only copy (sourceforge.net, anonymous access)</span></h3>#}
-                {#<a href="">Сelesta</a>#}
-                {#<a href="">flute (включая XML2Spreadsheet)</a>#}
-                {#<a href="">grains (системная библиотека Celesta)</a>#}
-                {#<a href="">mellophone</a>#}
-            {#</li>#}
-        {#</ul>#}
-    {#</div>#}
-{#</section>#}
 <section id="news" class="news">
     <div class="row">
         <div class="col-xs-7">

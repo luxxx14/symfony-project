@@ -75,7 +75,8 @@
     padding: 0; }
 
 body {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  min-width: 1280px; }
   body h1 {
     font-family: 'Merriweather', serif; }
   body a {
@@ -140,23 +141,27 @@ body {
             border-bottom: 1px solid #9558d1;
             padding-bottom: 6px; }
     body header #select-locale {
-      position: absolute;
-      top: 34px;
-      right: 50px;
+      float: right;
+      line-height: 86px;
+      margin-right: 50px;
       display: inline-block;
       cursor: pointer;
       text-align: center;
-      width: 50px; }
+      width: 50px;
+      position: relative; }
       body header #select-locale span:after {
         margin-left: 3px;
         content: '\25BE'; }
       body header #select-locale ul {
+        position: absolute;
+        top: 60px;
         display: none;
         background: white;
         border: 1px solid #9558d1;
         border-radius: 2px;
         padding: 0;
-        margin: 0; }
+        margin: 0;
+        line-height: 24px; }
         body header #select-locale ul li {
           padding: 10px; }
           body header #select-locale ul li:hover {
@@ -179,15 +184,20 @@ body {
       color: #ffffff;
       text-shadow: 0 1px 2px rgba(31, 30, 56, 0.8); }
     body .main p {
-      width: 769px;
+      width: 780px;
       margin: 0 auto;
       padding-top: 16px;
       padding-bottom: 24px;
+      font-family: Roboto;
       font-size: 16px;
-      line-height: 1.69;
+      line-height: 2;
       letter-spacing: 0.2px;
       text-align: center;
+      color: rgba(255, 255, 255, 0.8);
       text-shadow: 0 1px 2px rgba(31, 30, 56, 0.8); }
+      body .main p a {
+        color: white;
+        border-bottom: 1px solid white; }
   body .info {
     margin: 0 160px; }
     body .info h1 {
@@ -204,7 +214,8 @@ body {
       border-bottom: 1px solid #d8dbe2; }
     body .info .row div {
       text-align: center;
-      border-left: 1px solid #d8dbe2; }
+      border-left: 1px solid #d8dbe2;
+      height: 186px; }
       body .info .row div:first-of-type {
         border-left: none; }
       body .info .row div h2 {
@@ -228,8 +239,11 @@ body {
         font-size: 16px;
         line-height: 1.5;
         letter-spacing: 0.2px;
+        text-align: center;
         color: #333333;
-        padding-bottom: 20px; }
+        padding: 0 24px;
+        padding-bottom: 20px;
+        max-width: 352px; }
       body .info .row div a:hover {
         border: none; }
     body .info .row:nth-of-type(2) h2 {
@@ -251,14 +265,14 @@ body {
       color: #1f1f37; }
     body .advantages .row {
       padding-bottom: 25px; }
-      body .advantages .row .col-xs-3 {
+      body .advantages .row .col-xs-4 {
         text-align: center; }
-        body .advantages .row .col-xs-3 div {
+        body .advantages .row .col-xs-4 div {
           height: 70px;
           width: 70px;
           margin: 0 auto;
           position: relative; }
-          body .advantages .row .col-xs-3 div img {
+          body .advantages .row .col-xs-4 div img {
             position: absolute;
             margin: auto;
             top: 0;
@@ -267,7 +281,7 @@ body {
             bottom: 0;
             max-height: 70px;
             max-width: 70px; }
-        body .advantages .row .col-xs-3 p {
+        body .advantages .row .col-xs-4 p {
           margin-top: 40px;
           font-size: 16px;
           line-height: 1.5;
@@ -508,7 +522,7 @@ body {
           color: #592e83; }
           body .download .stable-version .components a:hover {
             background: url("../img/ic-link-hover.png") left 0px no-repeat;
-            padding-bottom: 5px; }
+            padding-bottom: 2px; }
       body .download .stable-version .col-xs-4 {
         position: relative; }
         body .download .stable-version .col-xs-4 .show-components {
@@ -582,7 +596,8 @@ body {
             color: #b5bbc8;
             font-weight: normal;
             margin-left: 16px;
-            border: none; }
+            border: none;
+            cursor: default; }
             body .download .source-code li h3 span:before {
               content: '';
               margin: 0; }
@@ -744,12 +759,5 @@ body {
         body footer p:last-of-type span:hover {
           color: #9558d1;
           border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
-
-/* small screens */
-@media (max-width: 1120px) {
-  body .download, body .news, body .users, body .advantages {
-    padding: 0 40px; }
-  body .info {
-    margin: 0 40px; } }
 
 /*# sourceMappingURL=main.css.map */

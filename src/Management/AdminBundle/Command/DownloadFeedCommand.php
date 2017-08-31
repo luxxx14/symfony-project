@@ -35,7 +35,7 @@ class DownloadFeedCommand extends ContainerAwareCommand {
         foreach ($feed as $item) {
             $loadedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['link' => $item->getLink()]);
 
-            if (!$loadedItem) {
+            if (!$loadedItem and !($this->startsWith($item->getTitle(), 'Re: ['))) {
                 $feed = new Feed(
                     $item->getPublicId(),
                     $item->getTitle(),
@@ -53,5 +53,16 @@ class DownloadFeedCommand extends ContainerAwareCommand {
         }
 
         $output->writeln('Task completed!');
+    }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @return bool
+     */
+    public function startsWith($haystack, $needle)
+    {
+        $length = strlen($needle);
+        return (substr($haystack, 0, $length) === $needle);
     }
 }
