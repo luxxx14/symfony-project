@@ -1,0 +1,57 @@
+- name: install required packages
+  apt: 
+    name: [git, zip]
+    update_cache: yes
+
+- name: Copy corchestra database dump file
+  copy:
+    src: files/dump.sql
+    dest: /tmp
+  register: copy_file
+  
+- name: Restore database
+  sudo_user: postgres
+  shell: psql corchestra < /tmp/dump.sql
+  when: copy_file.changed
+
+- name: Git Clone Repo
+  git: 
+    repo: https://{{ gituser }}:{{ gitpwd }}@git.axeta.ru/curs/c-orchestra.git
+    dest: /var/www/corchestra
+    force: yes
+  register: frontgit
+
+- name: symphony config template
+  template:
+    src: templates/parameters.yml.j2
+    dest: /var/www/corchestra/app/config/parameters.yml
+    mode: "0644"
+  notify: restart nginx
+
+- name: site config template
+  template:
+    src: templates/corchestra.conf.j2
+    dest: /etc/nginx/sites-available/corchestra.conf
+    mode: "0644"
+  notify: restart nginx
+
+- name: composer install
+  composer:
+   command: install
+   no_plugins: True
+   no_scripts: True
+   working_dir: /var/www/corchestra
+
+- file:
+    path: /var/www/corchestra/var
+    owner: "{{ nginx_user }}"
+    mode: "0755"
+    state: directory
+    recurse: yes
+   
+- name:  create symlink to site conf
+  file:
+    src: /etc/nginx/sites-available/corchestra.conf
+    dest: /etc/nginx/sites-enabled/corchestra.conf
+    state: link
+  notify: restart nginx
