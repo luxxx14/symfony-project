@@ -118,7 +118,7 @@ body {
     body header nav {
       display: inline-block;
       line-height: 86px;
-      margin-left: 100px; }
+      margin-left: 160px; }
       body header nav ul li {
         display: inline-block;
         font-size: 16px;
@@ -171,7 +171,7 @@ body {
     background-size: cover;
     text-align: center;
     color: white;
-    height: 520px; }
+    height: 560px; }
     body .main h1 {
       width: 720px;
       margin: 0 auto;
@@ -184,7 +184,6 @@ body {
       color: #ffffff;
       text-shadow: 0 1px 2px rgba(31, 30, 56, 0.8); }
     body .main p {
-      width: 780px;
       margin: 0 auto;
       padding-top: 16px;
       padding-bottom: 24px;
@@ -242,8 +241,7 @@ body {
         text-align: center;
         color: #333333;
         padding: 0 24px;
-        padding-bottom: 20px;
-        max-width: 352px; }
+        padding-bottom: 20px; }
       body .info .row div a:hover {
         border: none; }
     body .info .row:nth-of-type(2) h2 {
@@ -339,8 +337,6 @@ body {
         opacity: 1; }
       body .users .row .col-xs-4:nth-child(3) {
         border-right: none; }
-    body .users .row:not(:first-of-type) {
-      border-top: 1px solid #d8dbe2; }
     body .users .row:not(:first-of-type) {
       border-top: 1px solid #d8dbe2; }
   body .download {

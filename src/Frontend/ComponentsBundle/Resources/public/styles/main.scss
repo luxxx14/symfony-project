@@ -145,7 +145,7 @@ body {
 		nav {
 			display: inline-block;
 			line-height: 86px;
-			margin-left: 100px;
+			margin-left: 160px;
 			ul {								
 				li {
 					display: inline-block;
@@ -217,7 +217,7 @@ body {
 		background-size: cover;
 		text-align: center;
 		color: white;
-		height: 520px;
+		height: 560px;
 		h1 {
 			width: 720px;
 			margin: 0 auto;
@@ -230,8 +230,7 @@ body {
 			color: #ffffff;
 			text-shadow: 0 1px 2px rgba(31, 30, 56, 0.8);
 		}
-		p {
-			width: 780px;
+		p {			
 			margin: 0 auto;
 			padding-top: 16px;
 			padding-bottom: 24px;
@@ -293,8 +292,7 @@ body {
 						text-align: center;
 						color: #333333;
 						padding: 0 24px;
-						padding-bottom: 20px;
-						max-width: 352px;
+						padding-bottom: 20px;						
 					}
 					a {
 						&:hover {
@@ -411,10 +409,7 @@ body {
 			}	
 			&:not(:first-of-type) {
 				border-top: 1px solid #d8dbe2;
-			}	
-			&:not(:first-of-type) {
-				border-top: 1px solid #d8dbe2;
-			}
+			}			
 		}
 		
 	}
