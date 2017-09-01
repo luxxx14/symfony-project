@@ -135,3 +135,4 @@ wfLoadSkin( 'Vector' );
 $wgShowExceptionDetails = true;
 require_once "$IP/extensions/Collection/Collection.php";
 $wgAllowSiteCSSOnRestrictedPages = true;
+$wgFavicon = "./images/site/favicon.png";
