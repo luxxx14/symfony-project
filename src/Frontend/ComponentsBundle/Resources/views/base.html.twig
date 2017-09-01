@@ -26,7 +26,7 @@
             <li><a href="#download">Загрузить</a></li>
             <li><a href="#news">Новости</a></li>
             <li>
-                <a href="https://corchestra.ru/wiki" target="_blank" data-hostname="{{ app.request.schemeAndHttpHost }}">Документация</a>
+                <a href="https://corchestra.ru/wiki" target="_blank">Документация</a>
                 {#{% if app.request.schemeAndHttpHost == 'https://staging.corchestra.ru' %}#}
                 {#<a href="http://wiki.staging.corchestra.ru/index.php?title=Заглавная_страница" target="_blank">Документация</a>#}
                 {#{% elseif app.request.schemeAndHttpHost == 'https://corchestra.ru' %}#}
@@ -160,7 +160,7 @@
             </div>
             <div class="col-xs-8">
                 <div>
-                    <h3>История версий</h3><a class="history-link" href="http://staging.corchestra.ru/download/builds/stable/" target="_blank">Полная история версий</a>
+                    <h3>История версий</h3><a class="history-link" href="http://corchestra.ru/download/builds/stable/" target="_blank">Полная история версий</a>
                     <ul class="list">
                         {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
                         {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
@@ -210,7 +210,7 @@
             </div>
             <div class="col-xs-8">
                 <div>
-                    <h3>История версий</h3><a class="history-link" href="http://staging.corchestra.ru/download/builds/trunk/" target="_blank">Полная история версий</a>
+                    <h3>История версий</h3><a class="history-link" href="http://corchestra.ru/download/builds/trunk/" target="_blank">Полная история версий</a>
                     <ul class="list">
                         {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
                         {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
