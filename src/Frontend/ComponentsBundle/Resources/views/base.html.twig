@@ -25,7 +25,16 @@
             <li><a href="#users">Кто использует</a></li>
             <li><a href="#download">Загрузить</a></li>
             <li><a href="#news">Новости</a></li>
-            <li><a href="http://wiki.staging.corchestra.ru/index.php?title=Заглавная_страница" target="_blank">Документация</a></li>
+            <li>
+                <a href="https://corchestra.ru/wiki" target="_blank" data-hostname="{{ app.request.schemeAndHttpHost }}">Документация</a>
+                {#{% if app.request.schemeAndHttpHost == 'https://staging.corchestra.ru' %}#}
+                {#<a href="http://wiki.staging.corchestra.ru/index.php?title=Заглавная_страница" target="_blank">Документация</a>#}
+                {#{% elseif app.request.schemeAndHttpHost == 'https://corchestra.ru' %}#}
+                {#<a href="https://corchestra.ru/wiki" target="_blank">Документация</a>#}
+                {#{% else %}#}
+                {#<a href="">Документация</a>#}
+                {#{% endif %}#}
+            </li>
         </ul>
     </nav>
     {#<div id="select-locale">#}

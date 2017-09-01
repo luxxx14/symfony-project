@@ -446,12 +446,12 @@ ALTER TABLE version_id_seq OWNER TO corchestra_db_user;
 --
 
 COPY advantage (id, image_name, description, date_of_creation, date_of_change) FROM stdin;
-6	ic-06.png	Эффективный механизм аутентификации и распределения прав доступа	2017-08-09 14:45:46	2017-08-15 19:03:05
-7	ic-07.png	Поддержка сервис-ориентированной архитектуры	2017-08-09 14:46:38	2017-08-15 19:03:16
-1	59a6902b1d762208341108.png	CelestaSQL: код бизнес-логики не зависит от типа базы данных	2017-08-09 14:40:10	2017-08-30 13:15:07
-2	59a6903648a27128261527.png	Мы поддерживаем SQL Server, Oracle, PostgreSQL и H2	2017-08-09 14:41:19	2017-08-30 13:15:18
-3	59a69047b95da303782237.png	Автоматическое обновление структуры базы данных через идемпотентный DDL	2017-08-09 14:42:01	2017-08-30 13:15:35
-4	59a69055d046f234619671.png	CelestaUnit: быстрое и лёгкое модульное тестирование процедур обработки данных	2017-08-09 14:42:54	2017-08-30 13:15:49
+1	59a7da72018a4255401936.png	CelestaSQL: код бизнес-логики не зависит от типа базы данных	2017-08-09 14:40:10	2017-08-31 12:44:18
+2	59a7da7ae91d3206469355.png	Мы поддерживаем SQL Server, Oracle, PostgreSQL и H2	2017-08-09 14:41:19	2017-08-31 12:44:26
+3	59a7da8424013950497815.png	Автоматическое обновление структуры базы данных через идемпотентный DDL	2017-08-09 14:42:01	2017-08-31 12:44:36
+4	59a7da8cbbfd6742400517.png	CelestaUnit: быстрое и лёгкое модульное тестирование процедур обработки данных	2017-08-09 14:42:54	2017-08-31 12:44:44
+6	59a7da954c94d978699082.png	Эффективный механизм аутентификации и распределения прав доступа	2017-08-09 14:45:46	2017-08-31 12:44:53
+7	59a7da9cb0513054172930.png	Поддержка сервис-ориентированной архитектуры	2017-08-09 14:46:38	2017-08-31 12:45:00
 \.
 
 
@@ -467,12 +467,12 @@ SELECT pg_catalog.setval('advantage_id_seq', 9, true);
 --
 
 COPY client (id, gray_scale_image_name, color_image_name, title, date_of_creation, date_of_change) FROM stdin;
-30	\N	59a6907bbe087039642705.png	KELVION	2017-08-28 14:12:13	2017-08-30 13:16:27
-31	\N	59a6908cbee81931134621.png	ОТКРЫТИЕ	2017-08-28 14:12:33	2017-08-30 13:16:44
-33	\N	59a69098f40da582865826.png	ВТБ	2017-08-28 14:13:14	2017-08-30 13:16:56
-34	\N	59a690ac34362850716076.png	РНИМУ	2017-08-28 14:13:39	2017-08-30 13:17:16
-35	\N	59a690c31b8d1149771910.png	РОСТРАНСНАДЗОР	2017-08-28 14:13:52	2017-08-30 13:17:39
-36	\N	59a690e0c2409574114662.png	МИНЗДРАВ	2017-08-28 17:26:47	2017-08-30 13:18:08
+30	\N	59a7da26768bd885479704.png	KELVION	2017-08-28 14:12:13	2017-08-31 12:43:02
+31	\N	59a7da31070d0998372685.png	ОТКРЫТИЕ	2017-08-28 14:12:33	2017-08-31 12:43:13
+33	\N	59a7da3ebdca4326449787.png	ВТБ	2017-08-28 14:13:14	2017-08-31 12:43:26
+34	\N	59a7da4df11c7299589398.png	РНИМУ	2017-08-28 14:13:39	2017-08-31 12:43:41
+35	\N	59a7da589b85d636089654.png	РОСТРАНСНАДЗОР	2017-08-28 14:13:52	2017-08-31 12:43:52
+36	\N	59a7da64a552a549988330.png	МИНЗДРАВ	2017-08-28 17:26:47	2017-08-31 12:44:04
 \.
 
 
@@ -488,7 +488,7 @@ SELECT pg_catalog.setval('client_id_seq', 36, true);
 --
 
 COPY common_information (id, title, description, date_of_creation, date_of_change) FROM stdin;
-1	Открытая платформа для разработки бизнес-приложений с веб-интерфейсом	Разработав бизнес-приложение, запускайте его на той РСУБД, <a href="https://corchestra.ru/wiki/index.php/Особенности_работы_Celesta_с_поддерживаемыми_типами_СУБД" target="_blank">которую предпочитает ваш заказчик</a>.</br>\r\n<a href="https://corchestra.ru/wiki/index.php/Проектирование_базы_данных_Celesta_в_DBSchema"  target="_blank">Визуально проектируйте</a> таблицы базы данных на <a href="https://corchestra.ru/wiki/index.php/Язык_Celesta-SQL" target="_blank">языке CelestaSQL</a>.</br>\r\nБыстро создавайте <a href="https://corchestra.ru/wiki/index.php/Lyra" target="_blank">экранные формы</a>, связанные с данными таблицы.<br/>\r\n<a href="https://corchestra.ru/wiki/index.php/Xylophone" target="_blank">Выводите отчёты</a> в форматах Excel, PDF и напрямую на принтер.	2017-08-10 06:03:10	2017-08-10 06:03:10
+1	Открытая платформа для разработки бизнес-приложений с веб-интерфейсом	Разработав бизнес-приложение, запускайте его на той РСУБД, <a href="https://corchestra.ru/wiki/index.php?title=Особенности_работы_Celesta_с_поддерживаемыми_типами_СУБД" target="_blank">которую предпочитает ваш заказчик</a>.</br>\r\n<a href="https://corchestra.ru/wiki/index.php?title=Проектирование_базы_данных_Celesta_в_DBSchema"  target="_blank">Визуально проектируйте</a> таблицы базы данных на <a href="https://corchestra.ru/wiki/index.php?title=Язык_Celesta-SQL" target="_blank">языке CelestaSQL</a>.</br>\r\nБыстро создавайте <a href="https://corchestra.ru/wiki/index.php?title=Lyra" target="_blank">экранные формы</a>, связанные с данными таблицы.<br/>\r\n<a href="https://corchestra.ru/wiki/index.php?title=Xylophone" target="_blank">Выводите отчёты</a> в форматах Excel, PDF и напрямую на принтер.	2017-08-10 06:03:10	2017-08-10 06:03:10
 \.
 
 
@@ -520,11 +520,11 @@ SELECT pg_catalog.setval('company_information_id_seq', 2, true);
 --
 
 COPY component (id, name, description, date_of_creation, date_of_change, wiki_url) FROM stdin;
-1	Showcase	Конструирование веб-интерфейса бизнес-систем, работающего в Java Servlet Container	2017-08-09 14:49:24	2017-08-09 14:49:24	https://corchestra.ru/wiki/index.php/Showcase
-2	Celesta	Разработка приложений в условиях меняющихся требований бизнеса на языке Jython с использованием реляционной базы данных	2017-08-09 14:49:56	2017-08-09 14:49:56	https://corchestra.ru/wiki/index.php/Celesta
-3	Flute	REST-сервисы, обработчики очередей и периодические задания на базе Celesta-процедур	2017-08-09 14:50:26	2017-08-09 14:50:26	https://corchestra.ru/wiki/index.php/Flute
+1	Showcase	Конструирование веб-интерфейса бизнес-систем, работающего в Java Servlet Container	2017-08-09 14:49:24	2017-08-09 14:49:24	https://corchestra.ru/wiki/index.php?title=Showcase
+2	Celesta	Разработка приложений в условиях меняющихся требований бизнеса на языке Jython с использованием реляционной базы данных	2017-08-09 14:49:56	2017-08-09 14:49:56	https://corchestra.ru/wiki/index.php?title=Celesta
+3	Flute	REST-сервисы, обработчики очередей и периодические задания на базе Celesta-процедур	2017-08-09 14:50:26	2017-08-09 14:50:26	https://corchestra.ru/wiki/index.php?title=Flute
 5	Mellophone	Модуль аутентификации пользователей	2017-08-09 14:51:04	2017-08-09 14:51:04	https://corchestra.ru/index.php?title=Mellophone
-7	Xylophone	Формирование печатных и форм и документов	2017-08-09 14:51:46	2017-08-09 14:51:46	https://corchestra.ru/wiki/index.php/Xylophone
+7	Xylophone	Формирование печатных и форм и документов	2017-08-09 14:51:46	2017-08-09 14:51:46	https://corchestra.ru/wiki/index.php?title=Xylophone
 \.
 
 
