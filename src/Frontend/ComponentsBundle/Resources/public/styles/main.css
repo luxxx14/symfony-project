@@ -726,6 +726,8 @@ body {
         padding: 0;
         padding-top: 20px;
         margin: 0; }
+      body .news .row .col-xs-5 form .new-policy {
+        font-size: 14px; }
       body .news .row .col-xs-5 form a {
         font-size: 14px;
         line-height: 1.43;
