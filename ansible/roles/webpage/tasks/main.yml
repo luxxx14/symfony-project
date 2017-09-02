@@ -42,6 +42,11 @@
   shell: composer install --no-interaction
   args:
     chdir: /var/www/corchestra
+    
+- name: change admin password
+  shell: ./console change-admin-user-password {{ cmsadminpwd }}
+  args:
+    chdir: /var/www/corchestra/bin
 
 - file:
     path: /var/www/corchestra/var
