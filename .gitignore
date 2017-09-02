@@ -18,3 +18,4 @@
 /web/bundles/
 /web/download/builds/
 /web/uploads/
+/ansible/*.retry
