@@ -44,7 +44,7 @@ class DownloadFeedCommand extends ContainerAwareCommand {
                     $item->getLastModified(),
                     $item->getLink(),
                     $feedSource,
-                    $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'На модерации'])
+                    $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'Опубликована'])
                 );
 
                 $em->persist($feed);
