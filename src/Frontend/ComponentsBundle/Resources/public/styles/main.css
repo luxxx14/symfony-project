@@ -197,6 +197,8 @@ body {
       body .main p a {
         color: white;
         border-bottom: 1px solid white; }
+    body .main a[href^="#info"] {
+      border: none; }
   body .info {
     margin: 0 160px; }
     body .info h1 {
