@@ -1,0 +1,54 @@
+- name: install svn
+  apt: 
+    name: subversion
+    update_cache: yes
+    
+- name: Setup sync to SourceForge
+  cron:
+    name: "{{ item.name }}"
+    minute: "{{ item.minute }}"
+    job: "svnsync sync {{ item.to }} {{ item.from }} --source-username {{ curs_username }} --source-password {{ curs_pass }} --sync-username {{ sf_username }} --sync-password {{ sf_pass }} --non-interactive"
+  with_items:
+    - name: celesta2sf
+      from: https://share.curs.ru/svn/celesta
+      to: https://svn.code.sf.net/p/kurs-celesta/code/
+      minute: 5
+    - name: grains2sf
+      from: https://share.curs.ru/svn/grains
+      to: https://svn.code.sf.net/p/kurs-grains/code/
+      minute: 10
+    - name: flute2sf
+      from: https://share.curs.ru/svn/flute
+      to: https://svn.code.sf.net/p/kurs-flute/code/
+      minute: 15
+    - name: mellophone2sf
+      from: https://share.curs.ru/svn/mellophone
+      to: https://svn.code.sf.net/p/kurs-mellophone/code/
+      minute: 20
+    
+- name: Setup sync to Lancelot
+  cron:
+    name: "{{ item.name }}"
+    minute: "{{ item.minute }}"
+    job: "svnsync sync {{ item.to }} {{ item.from }} --source-username {{ curs_username }} --source-password {{ curs_pass }} --sync-username {{ lancelot_username }} --sync-password {{ lancelot_pass }}"
+  with_items:
+    - name: celesta2lancelot
+      from: https://share.curs.ru/svn/celesta
+      to: https://svn.lancelot-it.ru:8420/svn/celesta/
+      minute: 25
+    - name: grains2lancelot
+      from: https://share.curs.ru/svn/grains
+      to: https://svn.lancelot-it.ru:8420/svn/grains/
+      minute: 30
+    - name: flute2lancelot
+      from: https://share.curs.ru/svn/flute
+      to: https://svn.lancelot-it.ru:8420/svn/flute/
+      minute: 35
+    - name: mellophone2lancelot
+      from: https://share.curs.ru/svn/mellophone
+      to: https://svn.lancelot-it.ru:8420/svn/mellophone/
+      minute: 40
+    - name: showcase2lancelot
+      from: https://share.curs.ru/svn/showcase/
+      to: https://svn.lancelot-it.ru:8420/svn/showcase/
+      minute: 45
