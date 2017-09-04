@@ -11,3 +11,5 @@ postgrespwd: "{{ vault_postgrespwd }}"
 
 mysqluser: "{{ vault_mysqluser }}"
 mysqlpwd: "{{ vault_mysqlpwd }}"
+
+cmsadminpwd: "{{ vault_cmsadminpwd }}"

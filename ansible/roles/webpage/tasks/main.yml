@@ -35,12 +35,18 @@
     mode: "0644"
   notify: restart nginx
 
+- name: symphony cache reset
+  shell: php bin/console cache:clear --no-warmup --env=prod
+
 - name: composer install
-  composer:
-   command: install
-   no_plugins: True
-   no_scripts: True
-   working_dir: /var/www/corchestra
+  shell: composer install --no-interaction
+  args:
+    chdir: /var/www/corchestra
+    
+- name: change admin password
+  shell: ./console change-admin-user-password {{ cmsadminpwd }}
+  args:
+    chdir: /var/www/corchestra/bin
 
 - file:
     path: /var/www/corchestra/var
