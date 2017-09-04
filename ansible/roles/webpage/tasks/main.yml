@@ -48,13 +48,19 @@
   args:
     chdir: /var/www/corchestra/bin
 
+- name: cron job RSS Feed reader
+  cron:
+    name: "rss reader"
+    minute: "*/20"
+    job: "/var/www/corchestra/bin/console download:feed"
+
 - file:
     path: /var/www/corchestra/var
     owner: "{{ nginx_user }}"
     mode: "0755"
     state: directory
     recurse: yes
-   
+    
 - name:  create symlink to site conf
   file:
     src: /etc/nginx/sites-available/corchestra.conf
