@@ -523,7 +523,7 @@ COPY component (id, name, description, date_of_creation, date_of_change, wiki_ur
 1	Showcase	Конструирование веб-интерфейса бизнес-систем, работающего в Java Servlet Container	2017-08-09 14:49:24	2017-08-09 14:49:24	https://corchestra.ru/wiki/index.php?title=Showcase
 2	Celesta	Разработка приложений в условиях меняющихся требований бизнеса на языке Jython с использованием реляционной базы данных	2017-08-09 14:49:56	2017-08-09 14:49:56	https://corchestra.ru/wiki/index.php?title=Celesta
 3	Flute	REST-сервисы, обработчики очередей и периодические задания на базе Celesta-процедур	2017-08-09 14:50:26	2017-08-09 14:50:26	https://corchestra.ru/wiki/index.php?title=Flute
-5	Mellophone	Модуль аутентификации пользователей	2017-08-09 14:51:04	2017-08-09 14:51:04	https://corchestra.ru/index.php?title=Mellophone
+5	Mellophone	Модуль аутентификации пользователей	2017-08-09 14:51:04	2017-08-09 14:51:04	https://corchestra.ru/wiki/index.php?title=Mellophone
 7	Xylophone	Формирование печатных и форм и документов	2017-08-09 14:51:46	2017-08-09 14:51:46	https://corchestra.ru/wiki/index.php?title=Xylophone
 \.
 
@@ -615,20 +615,20 @@ SELECT pg_catalog.setval('source_id_seq', 4, true);
 --
 
 COPY source_link (id, source_id, name, url, date_of_creation, date_of_change) FROM stdin;
-1	1	Celesta	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:15:00	2017-08-25 14:15:00
-2	1	flute (включая XML2Spreadsheet)	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:15:00	2017-08-25 14:15:00
-3	1	grains (системная библиотека Celesta)	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:15:00	2017-08-25 14:15:00
-5	2	Celesta	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:17:12	2017-08-25 14:17:12
-6	2	flute (включая XML2Spreadsheet)	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:17:12	2017-08-25 14:17:12
-7	2	grains (системная библиотека Celesta)	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:17:12	2017-08-25 14:17:12
-8	2	mellophone	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:17:12	2017-08-25 14:17:12
-9	2	showcase	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:17:12	2017-08-25 14:17:12
-10	3	Celesta	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:21:04	2017-08-25 14:21:04
-11	3	flute (включая XML2Spreadsheet)	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:21:04	2017-08-25 14:21:04
-12	3	grains (системная библиотека Celesta)	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:21:04	2017-08-25 14:21:04
-13	3	mellophone	http://symfony.com/doc/2.0/cookbook/doctrine/file_uploads.html	2017-08-25 14:21:04	2017-08-25 14:21:04
-16	1	Test link	http://yandex.ru	2017-08-27 15:58:29	2017-08-27 15:58:29
-4	1	mellophone	http://google.com	2017-08-25 14:15:00	2017-08-25 14:15:00
+1	1	Celesta	https://share.curs.ru/svn/celesta/	2017-08-25 14:15:00	2017-08-25 14:15:00
+2	1	Flute (включая XML2Spreadsheet)	https://share.curs.ru/svn/flute/	2017-08-25 14:15:00	2017-08-25 14:15:00
+3	1	grains (системная библиотека Celesta)	https://share.curs.ru/svn/grains/	2017-08-25 14:15:00	2017-08-25 14:15:00
+16	1	Mellophone	https://share.curs.ru/svn/mellophone/	2017-08-27 15:58:29	2017-08-27 15:58:29
+4	1	Showcase	https://share.curs.ru/svn/showcase/	2017-08-25 14:15:00	2017-08-25 14:15:00
+5	2	Celesta	https://svn.lancelot-it.ru:8420/svn/celesta/	2017-08-25 14:17:12	2017-08-25 14:17:12
+6	2	Flute (включая XML2Spreadsheet)	https://svn.lancelot-it.ru:8420/svn/flute/	2017-08-25 14:17:12	2017-08-25 14:17:12
+7	2	grains (системная библиотека Celesta)	https://svn.lancelot-it.ru:8420/svn/grains/	2017-08-25 14:17:12	2017-08-25 14:17:12
+8	2	Mellophone	https://svn.lancelot-it.ru:8420/svn/mellophone/	2017-08-25 14:17:12	2017-08-25 14:17:12
+9	2	Showcase	https://svn.lancelot-it.ru:8420/svn/showcase/	2017-08-25 14:17:12	2017-08-25 14:17:12
+10	3	Celesta	https://svn.code.sf.net/p/kurs-celesta/code/	2017-08-25 14:21:04	2017-08-25 14:21:04
+11	3	Flute (включая XML2Spreadsheet)	https://svn.code.sf.net/p/kurs-flute/code/	2017-08-25 14:21:04	2017-08-25 14:21:04
+12	3	grains (системная библиотека Celesta)	https://svn.code.sf.net/p/kurs-grains/code/	2017-08-25 14:21:04	2017-08-25 14:21:04
+13	3	Mellophone	https://svn.code.sf.net/p/kurs-mellophone/code/	2017-08-25 14:21:04	2017-08-25 14:21:04
 \.
 
 
