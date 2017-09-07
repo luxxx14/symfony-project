@@ -6,6 +6,15 @@
     <div class="margin-bottom-lg border-bottom">
         <div class="row">
             <div class="col-lg-8 col-md-8">
+                <ul class="tabs">
+                    {% for item in locales %}
+                        <li class="{{ item == locale ? 'active' : '' }}">
+                            <a href="{{ path('admin_client_translation_edit', { id: client.id, locale: item.shortname }) }}">
+                                {{ item.shortname }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul><br>
                 {{ form_start(edit_form) }}
                 {#<div class="form-group">#}
                     {#{{ form_label(edit_form.grayScaleImageFile) }}#}
