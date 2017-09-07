@@ -67,11 +67,12 @@
         </ul>
     </nav>
     <div id="select-locale">
-		<span>Ru</span>
+		<span>{{ locale.shortname }}</span>
 		<ul>
-            <li><a href="{{ path('switch_to_locale', { locale: 'RU' }) }}">Ru</a></li>
-            <li><a href="{{ path('switch_to_locale', { locale: 'EN' }) }}">Eng</a></li>
-		</ul>
+            {% for locale in locales %}
+            <li><a href="{{ path('switch_to_locale', { 'locale': locale.shortname }) }}">{{ locale.shortname }}</a></li>
+		    {% endfor %}
+        </ul>
 	</div>
 </header>
 <section id="main" class="main">

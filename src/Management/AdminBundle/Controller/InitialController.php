@@ -59,6 +59,8 @@ class InitialController extends Controller {
         $locale = $em->getRepository('TranslationLocaleBundle:Locale')
             ->findOneBy(['shortname' => $locale]);
 
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
+
         $fs = new Filesystem();
 
         $finder = new Finder();
@@ -242,6 +244,7 @@ class InitialController extends Controller {
 
         return $this->render('@FrontendComponents/base.html.twig', [
             'locale' => $locale,
+            'locales' => $locales,
             'commonInformation' => $commonInformation,
             'companyInformation' => $companyInformation,
             'components' => $components,
