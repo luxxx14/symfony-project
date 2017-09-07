@@ -1,0 +1,192 @@
+<?php
+
+namespace Management\AdminBundle\Entity;
+
+/**
+ * Source
+ */
+class Source
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $subtitle;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateOfCreation;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateOfChange;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $sourceLinks;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sourceLinks = new \Doctrine\Common\Collections\ArrayCollection();
+        $currentDate = new \DateTime('NOW');
+        $this->dateOfCreation = $currentDate;
+        $this->dateOfChange = $currentDate;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Source
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set subtitle
+     *
+     * @param string $subtitle
+     *
+     * @return Source
+     */
+    public function setSubtitle($subtitle)
+    {
+        $this->subtitle = $subtitle;
+
+        return $this;
+    }
+
+    /**
+     * Get subtitle
+     *
+     * @return string
+     */
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * Set dateOfCreation
+     *
+     * @param \DateTime $dateOfCreation
+     *
+     * @return Source
+     */
+    public function setDateOfCreation($dateOfCreation)
+    {
+        $this->dateOfCreation = $dateOfCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateOfCreation
+     *
+     * @return \DateTime
+     */
+    public function getDateOfCreation()
+    {
+        return $this->dateOfCreation;
+    }
+
+    /**
+     * Set dateOfChange
+     *
+     * @param \DateTime $dateOfChange
+     *
+     * @return Source
+     */
+    public function setDateOfChange($dateOfChange)
+    {
+        $this->dateOfChange = $dateOfChange;
+
+        return $this;
+    }
+
+    /**
+     * Get dateOfChange
+     *
+     * @return \DateTime
+     */
+    public function getDateOfChange()
+    {
+        return $this->dateOfChange;
+    }
+
+    /**
+     * Add sourceLink
+     *
+     * @param \Management\AdminBundle\Entity\SourceLink $sourceLink
+     *
+     * @return Source
+     */
+    public function addSourceLink(\Management\AdminBundle\Entity\SourceLink $sourceLink)
+    {
+        $this->sourceLinks[] = $sourceLink;
+
+        $sourceLink->setSource($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove sourceLink
+     *
+     * @param \Management\AdminBundle\Entity\SourceLink $sourceLink
+     */
+    public function removeSourceLink(\Management\AdminBundle\Entity\SourceLink $sourceLink)
+    {
+        $this->sourceLinks->removeElement($sourceLink);
+    }
+
+    /**
+     * Get sourceLinks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSourceLinks()
+    {
+        return $this->sourceLinks;
+    }
+}

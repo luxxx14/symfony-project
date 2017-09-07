@@ -6,7 +6,16 @@
     <div class="margin-bottom-lg border-bottom">
         <div class="row">
             <div class="col-lg-8 col-md-8">
-            {{ form_start(edit_form) }}
+                <ul class="tabs">
+                    {% for item in locales %}
+                        <li class="{{ item == locale ? 'active' : '' }}">
+                            <a href="{{ path('admin_component_translation_edit', { id: component.id, locale: item.shortname }) }}">
+                                {{ item.shortname }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul><br>
+                {{ form_start(edit_form) }}
                 <div class="form-group">
                     {{ form_label(edit_form.name) }}
                     {{ form_widget(edit_form.name) }}
@@ -26,14 +35,10 @@
                 </div>
 
                 <input class="btn" type="submit" value="Сохранить" />
-            {{ form_end(edit_form) }}
+                {{ form_end(edit_form) }}
             </div>
         </div>
     </div>
 
-    {#{{ form_start(delete_form) }}#}
-        {#<input class="btn" type="submit" value="Удалить">#}
-    {#{{ form_end(delete_form) }}#}
-
-    <br><a class="btn" href="{{ path('admin_component_index') }}">Отмена</a>
+    <br><a class="btn" href="{{ path('admin_component_translation_index', { locale: locale.shortname }) }}">Отмена</a>
 {% endblock %}

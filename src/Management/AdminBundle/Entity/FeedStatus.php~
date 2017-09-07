@@ -126,4 +126,33 @@ class FeedStatus
     {
         return $this->getName();
     }
+    /**
+     * @var \Translation\LocaleBundle\Entity\Locale
+     */
+    private $locale;
+
+
+    /**
+     * Set locale
+     *
+     * @param \Translation\LocaleBundle\Entity\Locale $locale
+     *
+     * @return FeedStatus
+     */
+    public function setLocale(\Translation\LocaleBundle\Entity\Locale $locale = null)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return \Translation\LocaleBundle\Entity\Locale
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
 }

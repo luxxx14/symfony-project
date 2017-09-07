@@ -55,6 +55,11 @@ class Client
     private $dateOfChange;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $translations;
+
+    /**
      * Client constructor
      */
     public function __construct()
@@ -240,5 +245,39 @@ class Client
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * Add translation
+     *
+     * @param \Management\AdminBundle\Entity\ClientTranslation $translation
+     *
+     * @return Client
+     */
+    public function addTranslation(\Management\AdminBundle\Entity\ClientTranslation $translation)
+    {
+        $this->translations[] = $translation;
+
+        return $this;
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param \Management\AdminBundle\Entity\ClientTranslation $translation
+     */
+    public function removeTranslation(\Management\AdminBundle\Entity\ClientTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+    }
+
+    /**
+     * Get translations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 }

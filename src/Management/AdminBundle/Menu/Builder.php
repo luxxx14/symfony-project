@@ -15,11 +15,26 @@ class Builder implements ContainerAwareInterface
         $menu = $factory->createItem('root', ['childrenAttributes' => ['class' => 'sidebar-menu']]);
 
         $menu->addChild('Статичные блоки', ['attributes' => ['class' => 'header']]);
-        $menu->addChild('Общая информация', ['route' => 'admin_common_information_index']);
-        $menu->addChild('Компоненты платформы', ['route' => 'admin_component_index']);
-        $menu->addChild('Основные преимущества', ['route' => 'admin_advantage_index']);
-        $menu->addChild('Кто использует', ['route' => 'admin_client_index']);
-        $menu->addChild('О компании', ['route' => 'admin_company_information_index']);
+        $menu->addChild('Общая информация', [
+            'route' => 'admin_common_information_redirect',
+            'routeParameters' => ['action' => 'index']
+        ]);
+        $menu->addChild('Компоненты платформы', [
+            'route' => 'admin_component_redirect',
+            'routeParameters' => ['action' => 'index']
+        ]);
+        $menu->addChild('Основные преимущества', [
+            'route' => 'admin_advantage_redirect',
+            'routeParameters' => ['action' => 'index']
+        ]);
+        $menu->addChild('Кто использует', [
+            'route' => 'admin_client_redirect',
+            'routeParameters' => ['action' => 'index']
+        ]);
+        $menu->addChild('О компании', [
+            'route' => 'admin_company_information_redirect',
+            'routeParameters' => ['action' => 'index']
+        ]);
 
         $menu->addChild('Загрузки', ['attributes' => ['class' => 'header']]);
         $menu->addChild('Коды для Maven', ['route' => 'admin_version_index']);

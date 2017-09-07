@@ -19,7 +19,12 @@ Management\AdminBundle\Entity\FeedStatus:
         dateOfCreation: { type: datetime, nullable: false }
         dateOfChange:   { type: datetime, nullable: false }
 
-    manyToOne: { }
+    manyToOne:
+        locale:
+            targetEntity: Translation\LocaleBundle\Entity\Locale
+            joinColumn:
+                name: locale_id
+                referencedColumnName: id
 
     oneToOne: { }
 

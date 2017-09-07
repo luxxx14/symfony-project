@@ -1,0 +1,41 @@
+Management\AdminBundle\Entity\ClientTranslation:
+
+    type: entity
+
+    table: client_translation
+
+    repositoryClass: Management\AdminBundle\Repository\ClientTranslationRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        title:              { type: text, nullable: true }
+
+        dateOfCreation:     { type: datetime, nullable: false }
+        dateOfChange:       { type: datetime, nullable: false }
+
+    manyToOne:
+        source:
+            targetEntity: Management\AdminBundle\Entity\Client
+            inversedBy: translations
+            joinColumn:
+                name: source_id
+                referencedColumnName: id
+
+    oneToOne:
+        locale:
+            targetEntity: Translation\LocaleBundle\Entity\Locale
+            joinColumn:
+                name: locale_id
+                referencedColumnName: id
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

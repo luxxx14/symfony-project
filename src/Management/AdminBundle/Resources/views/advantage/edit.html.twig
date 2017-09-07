@@ -41,7 +41,7 @@
         {#<input class="btn" type="submit" value="Удалить">#}
     {#{{ form_end(delete_form) }}#}
 
-    <br><a class="btn" href="{{ path('admin_advantage_index') }}">Отмена</a>
+    <br><a class="btn" href="{{ path('admin_advantage_translation_index', {locale: locale.shortname}) }}">Отмена</a>
 {% endblock %}
 
 {% block javascripts %}
@@ -49,7 +49,7 @@
     <script>
         $(document).ready(
             function() {
-                document.getElementById("management_adminbundle_advantage_imageFile_file").onchange = function () {
+                document.getElementById("management_adminbundle_advantagetranslation_imageFile_file").onchange = function () {
                     var reader = new FileReader();
 
                     reader.onload = function (e) {
@@ -64,7 +64,7 @@
         $(document).ready(
             function() {
                 $('#open-filesystem').click( function () {
-                    $('#management_adminbundle_advantage_imageFile_file').click();
+                    $('#management_adminbundle_advantagetranslation_imageFile_file').click();
                 })
             });
     </script>

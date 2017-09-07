@@ -1,0 +1,42 @@
+Management\AdminBundle\Entity\CommonInformationTranslation:
+
+    type: entity
+
+    table: common_information_translation
+
+    repositoryClass: Management\AdminBundle\Repository\CommonInformationTranslationRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        title:            { type: string, length: 1024, nullable: true }
+        description:      { type: text, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne:
+        source:
+            targetEntity: Management\AdminBundle\Entity\CommonInformation
+            inversedBy: translations
+            joinColumn:
+                name: source_id
+                referencedColumnName: id
+
+    oneToOne:
+        locale:
+            targetEntity: Translation\LocaleBundle\Entity\Locale
+            joinColumn:
+                name: locale_id
+                referencedColumnName: id
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

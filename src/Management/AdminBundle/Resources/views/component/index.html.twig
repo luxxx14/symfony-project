@@ -3,6 +3,16 @@
 {% block body %}
     <h1>Компоненты платформы</h1>
 
+    <ul class="tabs">
+        {% for item in locales %}
+            <li class="{{ item == locale ? 'active' : '' }}">
+                <a href="{{ path('admin_component_translation_index', { locale: item.shortname }) }}">
+                    {{ item.shortname }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul><br>
+
     <table class="table table-striped table-staff">
         <thead>
             <tr>
@@ -21,8 +31,16 @@
                         {{ component.id }}
                     {#</a>#}
                 </td>
-                <td>{{ component.name }}</td>
-                <td>{{ component.description }}</td>
+                <td>
+                    {% for translation in component.translations if translation.locale == locale %}
+                    {{ translation.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for translation in component.translations if translation.locale == locale %}
+                    {{ translation.description }}
+                    {% endfor %}
+                </td>
                 <td>{{ component.wikiUrl }}</td>
                 <td><nav><ul class="navbar">
                     {#<li>#}
@@ -31,7 +49,7 @@
                         {#</a>#}
                     {#</li>#}
                     <li>
-                        <a href="{{ path('admin_component_edit', { 'id': component.id }) }}">
+                        <a href="{{ path('admin_component_translation_edit', { 'id': component.id, 'locale': locale.shortname }) }}">
                             <i class="fa fa-pencil fa-lg"></i>
                         </a>
                     </li>

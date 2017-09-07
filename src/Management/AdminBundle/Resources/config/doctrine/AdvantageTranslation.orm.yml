@@ -1,0 +1,41 @@
+Management\AdminBundle\Entity\AdvantageTranslation:
+
+    type: entity
+
+    table: advantage_translation
+
+    repositoryClass: Management\AdminBundle\Repository\AdvantageTranslationRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        description:      { type: text, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne:
+        source:
+            targetEntity: Management\AdminBundle\Entity\Advantage
+            inversedBy: translations
+            joinColumn:
+                name: source_id
+                referencedColumnName: id
+
+    oneToOne:
+        locale:
+            targetEntity: Translation\LocaleBundle\Entity\Locale
+            joinColumn:
+                name: locale_id
+                referencedColumnName: id
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

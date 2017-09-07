@@ -17,12 +17,15 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Frontend\ComponentsBundle\FrontendComponentsBundle(),
             new Management\AdminBundle\ManagementAdminBundle(),
+            new Translation\LocaleBundle\TranslationLocaleBundle(),
             /** Uploading of the photos and other features */
             new Vich\UploaderBundle\VichUploaderBundle(),
             /** KNPMenuBundle */
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
             new Debril\RssAtomBundle\DebrilRssAtomBundle(),
+
+//            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

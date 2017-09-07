@@ -15,7 +15,7 @@ Management\AdminBundle\Entity\Advantage:
 
     fields:
         imageName:        { type: string, length: 255, nullable: true }
-        description:      { type: text, nullable: true }
+#        description:      { type: text, nullable: true }
 
         dateOfCreation:   { type: datetime, nullable: false }
         dateOfChange:     { type: datetime, nullable: false }
@@ -24,7 +24,10 @@ Management\AdminBundle\Entity\Advantage:
 
     oneToOne: { }
 
-    oneToMany: { }
+    oneToMany:
+        translations:
+            targetEntity: Management\AdminBundle\Entity\AdvantageTranslation
+            mappedBy: source
 
     manyToMany: { }
 
