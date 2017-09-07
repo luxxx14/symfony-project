@@ -26,13 +26,13 @@ Management\AdminBundle\Entity\AdvantageTranslation:
             joinColumn:
                 name: source_id
                 referencedColumnName: id
-
-    oneToOne:
         locale:
             targetEntity: Translation\LocaleBundle\Entity\Locale
             joinColumn:
                 name: locale_id
                 referencedColumnName: id
+
+    oneToOne: { }
 
     oneToMany: { }
 
