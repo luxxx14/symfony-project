@@ -94,8 +94,18 @@
         {% for component in components %}
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-xs-4{{ serialNumber == 4 ? ' col-xs-offset-2' : '' }}">
-            <h2><a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">{{ component.name }}</a></h2>
-            <p>{{ component.description }}</p>
+            <h2>
+                <a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">
+                    {% for translation in component.translations if translation.locale == locale %}
+                    {{ translation.name }}
+                    {% endfor %}
+                </a>
+            </h2>
+            <p>
+                {% for translation in component.translations if translation.locale == locale %}
+                {{ translation.description }}
+                {% endfor %}
+            </p>
         </div>
         {% if serialNumber == 3 %}
     </div>
