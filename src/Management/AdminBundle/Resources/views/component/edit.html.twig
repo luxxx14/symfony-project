@@ -6,15 +6,17 @@
     <div class="margin-bottom-lg border-bottom">
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                <ul class="tabs">
-                    {% for item in locales %}
-                        <li class="{{ item == locale ? 'active' : '' }}">
-                            <a href="{{ path('admin_component_translation_edit', { id: component.id, locale: item.shortname }) }}">
-                                {{ item.shortname }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul><br>
+                <br><nav>
+                    <ul class="navbar">
+                        {% for item in locales %}
+                            <li class="{{ item == locale ? 'active' : '' }}">
+                                <a class="btn" href="{{ path('admin_component_translation_edit', { id: component.id, locale: item.shortname }) }}">
+                                    {{ item.shortname }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav><br><br>
                 {{ form_start(edit_form) }}
                 <div class="form-group">
                     {{ form_label(edit_form.name) }}

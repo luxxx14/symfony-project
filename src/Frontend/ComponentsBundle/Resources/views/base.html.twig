@@ -83,7 +83,7 @@
     </h1>
     <p>
         {% for translation in commonInformation.translations if translation.locale == locale %}
-        {{ translation.title|raw }}
+        {{ translation.description|raw }}
         {% endfor %}
     </p>
     <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.png') }}" alt="scroll down"/></a>
