@@ -162,10 +162,14 @@ body {
         padding: 0;
         margin: 0;
         line-height: 24px; }
-        body header #select-locale ul li {
+        body header #select-locale ul li:hover {
+          background-color: rgba(31, 30, 56, 0.2); }
+        body header #select-locale ul li a {
+          display: block;
+          width: 100%;
+          text-decoration: none;
+          border: none;
           padding: 10px; }
-          body header #select-locale ul li:hover {
-            background-color: rgba(31, 30, 56, 0.2); }
   body .main {
     background: url(../img/group-10.jpg) center center no-repeat;
     background-size: cover;

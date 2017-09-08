@@ -148,11 +148,11 @@ class AdvantageController extends Controller
         }
 
         $editForm = $this->createForm('Management\AdminBundle\Form\AdvantageTranslationType', $translation);
-        $editForm->get('imageFile')->setData($advantage->getImageFile());
+//        $editForm->get('imageFile')->setData($advantage->getImageFile());
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $advantage->setImageFile($editForm->get('imageFile')->getData());
+//            $advantage->setImageFile($editForm->get('imageFile')->getData());
             $em->flush();
 
             return $this->redirectToRoute('admin_advantage_translation_index', [

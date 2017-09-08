@@ -14,6 +14,7 @@ Management\AdminBundle\Entity\AdvantageTranslation:
                 strategy: AUTO
 
     fields:
+        imageName:        { type: string, length: 255, nullable: true }
         description:      { type: text, nullable: true }
 
         dateOfCreation:   { type: datetime, nullable: false }

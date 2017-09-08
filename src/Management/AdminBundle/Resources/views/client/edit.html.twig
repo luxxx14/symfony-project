@@ -30,11 +30,13 @@
                 <div class="form-group">
                     <label class="label">Рисунок</label>
                     <br>
+                    {% for translation in client.translations if translation.locale == locale %}
                     <img id="color-image-preview"
-                         src="{% if client.colorImageName %}
-                            {{ asset('uploads/images/client_color/' ~ client.colorImageName) }}
+                         src="{% if translation.colorImageName %}
+                            {{ asset('uploads/images/client_color/' ~ translation.colorImageName) }}
                             {% endif %}"
                          width="352px" height="200px">
+                    {% endfor %}
                     <br><br>
                     <a id="open-filesystem" class="btn">Обзор</a>
                 </div>

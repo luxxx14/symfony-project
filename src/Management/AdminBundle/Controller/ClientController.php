@@ -148,11 +148,11 @@ class ClientController extends Controller
 
 //        $deleteForm = $this->createDeleteForm($client);
         $editForm = $this->createForm('Management\AdminBundle\Form\ClientTranslationType', $translation);
-        $editForm->get('colorImageFile')->setData($client->getColorImageFile());
+//        $editForm->get('colorImageFile')->setData($client->getColorImageFile());
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $client->setColorImageFile($editForm->get('colorImageFile')->getData());
+//            $client->setColorImageFile($editForm->get('colorImageFile')->getData());
             $em->flush();
 
             return $this->redirectToRoute('admin_client_translation_index', [

@@ -35,11 +35,15 @@
                     {#</a>#}
                 </td>
                 {#<td><img src="{{ asset('uploads/images/client_gray_scale/' ~ client.grayScaleImageName) }}"></td>#}
-                <td><img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}"
-                    width="352" height="200"></td>
                 <td>
                     {% for translation in client.translations if translation.locale == locale %}
-                        {{ translation.title }}
+                    <img src="{{ asset('uploads/images/client_color/' ~ translation.colorImageName) }}"
+                    width="352" height="200">
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for translation in client.translations if translation.locale == locale %}
+                    {{ translation.title }}
                     {% endfor %}
                     {#{{ client.title }}#}
                 </td>

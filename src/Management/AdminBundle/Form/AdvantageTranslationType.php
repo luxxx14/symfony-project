@@ -21,7 +21,6 @@ class AdvantageTranslationType extends AbstractType
                 'label_attr' => [
                     'class' => 'label'
                 ],
-                'mapped' => false,
 //                'attr' => [
 //                    'class' => 'form-control'
 //                ],

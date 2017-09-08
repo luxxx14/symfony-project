@@ -21,11 +21,13 @@
                 <div class="form-group">
                     <label class="label">Рисунок</label>
                     <br>
+                    {% for translation in advantage.translations if translation.locale == locale %}
                     <img id="image-preview"
-                         src="{% if advantage.imageName %}
-                            {{ asset('uploads/images/advantage/' ~ advantage.imageName) }}
+                         src="{% if translation.imageName %}
+                            {{ asset('uploads/images/advantage/' ~ translation.imageName) }}
                             {% endif %}"
                          width="100px" height="100px">
+                    {% endfor %}
                     <br><br>
                     <a id="open-filesystem" class="btn">Обзор</a>
                 </div>

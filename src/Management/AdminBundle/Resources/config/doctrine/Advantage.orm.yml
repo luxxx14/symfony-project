@@ -14,7 +14,7 @@ Management\AdminBundle\Entity\Advantage:
                 strategy: AUTO
 
     fields:
-        imageName:        { type: string, length: 255, nullable: true }
+#        imageName:        { type: string, length: 255, nullable: true }
 #        description:      { type: text, nullable: true }
 
         dateOfCreation:   { type: datetime, nullable: false }

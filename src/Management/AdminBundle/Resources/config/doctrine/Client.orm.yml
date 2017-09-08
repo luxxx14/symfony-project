@@ -14,7 +14,7 @@ Management\AdminBundle\Entity\Client:
                 strategy: AUTO
 
     fields:
-        colorImageName:     { type: string, length: 255, nullable: true }
+#        colorImageName:     { type: string, length: 255, nullable: true }
 
         dateOfCreation:     { type: datetime, nullable: false }
         dateOfChange:       { type: datetime, nullable: false }
