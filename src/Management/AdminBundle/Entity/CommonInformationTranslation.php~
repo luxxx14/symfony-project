@@ -2,10 +2,12 @@
 
 namespace Management\AdminBundle\Entity;
 
+use Translation\LocaleBundle\Entity\Locale;
+
 /**
- * CommonInformation
+ * CommonInformationTranslation
  */
-class CommonInformation
+class CommonInformationTranslation
 {
     /**
      * @var integer
@@ -33,15 +35,21 @@ class CommonInformation
     private $dateOfChange;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Translation\LocaleBundle\Entity\Locale
      */
-    private $translations;
+    private $locale;
 
     /**
-     * CommonInformation constructor
+     * @var \Management\AdminBundle\Entity\CommonInformation
      */
-    public function __construct()
+    private $source;
+
+    /**
+     * CommonInformationTranslation constructor
+     */
+    public function __construct(Locale $locale = NULL)
     {
+        $this->locale = $locale;
         $currentDate = new \DateTime('NOW');
         $this->dateOfCreation = $currentDate;
         $this->dateOfChange = $currentDate;
@@ -62,7 +70,7 @@ class CommonInformation
      *
      * @param string $title
      *
-     * @return CommonInformation
+     * @return CommonInformationTranslation
      */
     public function setTitle($title)
     {
@@ -86,7 +94,7 @@ class CommonInformation
      *
      * @param string $description
      *
-     * @return CommonInformation
+     * @return CommonInformationTranslation
      */
     public function setDescription($description)
     {
@@ -110,7 +118,7 @@ class CommonInformation
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return CommonInformation
+     * @return CommonInformationTranslation
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -134,7 +142,7 @@ class CommonInformation
      *
      * @param \DateTime $dateOfChange
      *
-     * @return CommonInformation
+     * @return CommonInformationTranslation
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -154,36 +162,50 @@ class CommonInformation
     }
 
     /**
-     * Add translation
+     * Set locale
      *
-     * @param \Management\AdminBundle\Entity\CommonInformationTranslation $translation
+     * @param \Translation\LocaleBundle\Entity\Locale $locale
      *
-     * @return CommonInformation
+     * @return CommonInformationTranslation
      */
-    public function addTranslation(\Management\AdminBundle\Entity\CommonInformationTranslation $translation)
+    public function setLocale(\Translation\LocaleBundle\Entity\Locale $locale = null)
     {
-        $this->translations[] = $translation;
+        $this->locale = $locale;
 
         return $this;
     }
 
     /**
-     * Remove translation
+     * Get locale
      *
-     * @param \Management\AdminBundle\Entity\CommonInformationTranslation $translation
+     * @return \Translation\LocaleBundle\Entity\Locale
      */
-    public function removeTranslation(\Management\AdminBundle\Entity\CommonInformationTranslation $translation)
+    public function getLocale()
     {
-        $this->translations->removeElement($translation);
+        return $this->locale;
     }
 
     /**
-     * Get translations
+     * Set source
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \Management\AdminBundle\Entity\CommonInformation $source
+     *
+     * @return CommonInformationTranslation
      */
-    public function getTranslations()
+    public function setSource(\Management\AdminBundle\Entity\CommonInformation $source = null)
     {
-        return $this->translations;
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @return \Management\AdminBundle\Entity\CommonInformation
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }

@@ -8,6 +8,17 @@
     <div class="margin-bottom-lg border-bottom">
         <div class="row">
             <div class="col-lg-8 col-md-8">
+                <br><nav>
+                    <ul class="navbar">
+                        {% for item in locales %}
+                            <li class="{{ item == locale ? 'active' : '' }}">
+                                <a class="btn" href="{{ path('admin_source_translation_new', { id: translation.id, locale: item.shortname }) }}">
+                                    {{ item.shortname }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav><br><br>
                 {{ form_start(form) }}
 
                 <div class="form-group">
@@ -23,16 +34,10 @@
                 </div>
 
                 <h3>Ссылки</h3>
-                {#<ul class="links" data-prototype="{{ form_widget(form.sourceLinks.vars.prototype)|e('html_attr') }}">#}
-                    {#{% for link in form.sourceLinks %}#}
-                        {#<li style="width: 30% !important;">{{ form_row(link.name) }}</li>#}
-                        {#<li style="width: 30% !important;">{{ form_row(link.url) }}</li>#}
-                    {#{% endfor %}#}
-                {#</ul>#}
 
                 <table>
-                    <tbody class="links" data-prototype="{{ widget_prototype_macro.widget_prototype(form.sourceLinks.vars.prototype)|e }}">
-                    {% for link in form.sourceLinks %}
+                    <tbody class="links" data-prototype="{{ widget_prototype_macro.widget_prototype(form.sourceLinkTranslations.vars.prototype)|e }}">
+                    {% for link in form.sourceLinkTranslations %}
                         <td style="width: 30% !important;">{{ form_row(link.name) }}</td>
                         <td style="width: 30% !important;">{{ form_row(link.url) }}</td>
                     {% endfor %}
@@ -45,7 +50,7 @@
         </div>
     </div>
 
-    <a class="btn" href="{{ path('admin_source_index') }}">Отмена</a>
+    <a class="btn" href="{{ path('admin_source_translation_index', { 'locale': locale.shortname }) }}">Отмена</a>
 {% endblock %}
 
 {% macro widget_prototype(widget) %}

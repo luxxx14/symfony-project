@@ -2,10 +2,12 @@
 
 namespace Management\AdminBundle\Entity;
 
+use Translation\LocaleBundle\Entity\Locale;
+
 /**
- * Source
+ * SourceTranslation
  */
-class Source
+class SourceTranslation
 {
     /**
      * @var integer
@@ -35,14 +37,27 @@ class Source
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $sourceLinks;
+    private $sourceLinkTranslations;
 
     /**
-     * Constructor
+     * @var \Management\AdminBundle\Entity\Source
      */
-    public function __construct()
+    private $source;
+
+    /**
+     * @var \Translation\LocaleBundle\Entity\Locale
+     */
+    private $locale;
+
+    /**
+     * SourceTranslation constructor
+     *
+     * @param Locale|NULL $locale
+     */
+    public function __construct(Locale $locale = NULL)
     {
-        $this->sourceLinks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->locale = $locale;
+        $this->sourceLinkTranslations = new \Doctrine\Common\Collections\ArrayCollection();
         $currentDate = new \DateTime('NOW');
         $this->dateOfCreation = $currentDate;
         $this->dateOfChange = $currentDate;
@@ -63,7 +78,7 @@ class Source
      *
      * @param string $title
      *
-     * @return Source
+     * @return SourceTranslation
      */
     public function setTitle($title)
     {
@@ -87,7 +102,7 @@ class Source
      *
      * @param string $subtitle
      *
-     * @return Source
+     * @return SourceTranslation
      */
     public function setSubtitle($subtitle)
     {
@@ -111,7 +126,7 @@ class Source
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return Source
+     * @return SourceTranslation
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -135,7 +150,7 @@ class Source
      *
      * @param \DateTime $dateOfChange
      *
-     * @return Source
+     * @return SourceTranslation
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -155,77 +170,85 @@ class Source
     }
 
     /**
-     * Add sourceLink
+     * Add sourceLinkTranslation
      *
-     * @param \Management\AdminBundle\Entity\SourceLink $sourceLink
+     * @param \Management\AdminBundle\Entity\SourceLinkTranslation $sourceLinkTranslation
      *
-     * @return Source
+     * @return SourceTranslation
      */
-    public function addSourceLink(\Management\AdminBundle\Entity\SourceLink $sourceLink)
+    public function addSourceLinkTranslation(\Management\AdminBundle\Entity\SourceLinkTranslation $sourceLinkTranslation)
     {
-        $this->sourceLinks[] = $sourceLink;
-
-        $sourceLink->setSource($this);
+        $this->sourceLinkTranslations[] = $sourceLinkTranslation;
 
         return $this;
     }
 
     /**
-     * Remove sourceLink
+     * Remove sourceLinkTranslation
      *
-     * @param \Management\AdminBundle\Entity\SourceLink $sourceLink
+     * @param \Management\AdminBundle\Entity\SourceLinkTranslation $sourceLinkTranslation
      */
-    public function removeSourceLink(\Management\AdminBundle\Entity\SourceLink $sourceLink)
+    public function removeSourceLinkTranslation(\Management\AdminBundle\Entity\SourceLinkTranslation $sourceLinkTranslation)
     {
-        $this->sourceLinks->removeElement($sourceLink);
+        $this->sourceLinkTranslations->removeElement($sourceLinkTranslation);
     }
 
     /**
-     * Get sourceLinks
+     * Get sourceLinkTranslations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSourceLinks()
+    public function getSourceLinkTranslations()
     {
-        return $this->sourceLinks;
+        return $this->sourceLinkTranslations;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $translations;
-
 
     /**
-     * Add translation
+     * Set source
      *
-     * @param \Management\AdminBundle\Entity\SourceTranslation $translation
+     * @param \Management\AdminBundle\Entity\Source $source
      *
-     * @return Source
+     * @return SourceTranslation
      */
-    public function addTranslation(\Management\AdminBundle\Entity\SourceTranslation $translation)
+    public function setSource(\Management\AdminBundle\Entity\Source $source = null)
     {
-        $this->translations[] = $translation;
+        $this->source = $source;
 
         return $this;
     }
 
     /**
-     * Remove translation
+     * Get source
      *
-     * @param \Management\AdminBundle\Entity\SourceTranslation $translation
+     * @return \Management\AdminBundle\Entity\Source
      */
-    public function removeTranslation(\Management\AdminBundle\Entity\SourceTranslation $translation)
+    public function getSource()
     {
-        $this->translations->removeElement($translation);
+        return $this->source;
     }
 
     /**
-     * Get translations
+     * Set locale
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \Translation\LocaleBundle\Entity\Locale $locale
+     *
+     * @return SourceTranslation
      */
-    public function getTranslations()
+    public function setLocale(\Translation\LocaleBundle\Entity\Locale $locale = null)
     {
-        return $this->translations;
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return \Translation\LocaleBundle\Entity\Locale
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }
+

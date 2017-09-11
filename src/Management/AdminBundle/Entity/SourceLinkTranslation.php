@@ -5,9 +5,9 @@ namespace Management\AdminBundle\Entity;
 use Translation\LocaleBundle\Entity\Locale;
 
 /**
- * CompanyInformationTranslation
+ * SourceLinkTranslation
  */
-class CompanyInformationTranslation
+class SourceLinkTranslation
 {
     /**
      * @var integer
@@ -17,12 +17,12 @@ class CompanyInformationTranslation
     /**
      * @var string
      */
-    private $description;
+    private $name;
 
     /**
      * @var string
      */
-    private $address;
+    private $url;
 
     /**
      * @var \DateTime
@@ -35,17 +35,22 @@ class CompanyInformationTranslation
     private $dateOfChange;
 
     /**
+     * @var \Management\AdminBundle\Entity\SourceTranslation
+     */
+    private $sourceTranslation;
+
+    /**
+     * @var \Management\AdminBundle\Entity\SourceLink
+     */
+    private $source;
+
+    /**
      * @var \Translation\LocaleBundle\Entity\Locale
      */
     private $locale;
 
     /**
-     * @var \Management\AdminBundle\Entity\CompanyInformation
-     */
-    private $source;
-
-    /**
-     * CompanyInformationTranslation constructor
+     * SourceLinkTranslation constructor
      *
      * @param Locale|NULL $locale
      */
@@ -68,51 +73,51 @@ class CompanyInformationTranslation
     }
 
     /**
-     * Set description
+     * Set name
      *
-     * @param string $description
+     * @param string $name
      *
-     * @return CompanyInformationTranslation
+     * @return SourceLinkTranslation
      */
-    public function setDescription($description)
+    public function setName($name)
     {
-        $this->description = $description;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get name
      *
      * @return string
      */
-    public function getDescription()
+    public function getName()
     {
-        return $this->description;
+        return $this->name;
     }
 
     /**
-     * Set address
+     * Set url
      *
-     * @param string $address
+     * @param string $url
      *
-     * @return CompanyInformationTranslation
+     * @return SourceLink
      */
-    public function setAddress($address)
+    public function setUrl($url)
     {
-        $this->address = $address;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get address
+     * Get url
      *
      * @return string
      */
-    public function getAddress()
+    public function getUrl()
     {
-        return $this->address;
+        return $this->url;
     }
 
     /**
@@ -120,7 +125,7 @@ class CompanyInformationTranslation
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return CompanyInformationTranslation
+     * @return SourceLinkTranslation
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -144,7 +149,7 @@ class CompanyInformationTranslation
      *
      * @param \DateTime $dateOfChange
      *
-     * @return CompanyInformationTranslation
+     * @return SourceLinkTranslation
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -164,11 +169,59 @@ class CompanyInformationTranslation
     }
 
     /**
+     * Set sourceTranslation
+     *
+     * @param \Management\AdminBundle\Entity\SourceTranslation $sourceTranslation
+     *
+     * @return SourceLinkTranslation
+     */
+    public function setSourceTranslation(\Management\AdminBundle\Entity\SourceTranslation $sourceTranslation = null)
+    {
+        $this->sourceTranslation = $sourceTranslation;
+
+        return $this;
+    }
+
+    /**
+     * Get sourceTranslation
+     *
+     * @return \Management\AdminBundle\Entity\SourceTranslation
+     */
+    public function getSourceTranslation()
+    {
+        return $this->sourceTranslation;
+    }
+
+    /**
+     * Set source
+     *
+     * @param \Management\AdminBundle\Entity\SourceLink $source
+     *
+     * @return SourceLinkTranslation
+     */
+    public function setSource(\Management\AdminBundle\Entity\SourceLink $source = null)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @return \Management\AdminBundle\Entity\SourceLink
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
      * Set locale
      *
      * @param \Translation\LocaleBundle\Entity\Locale $locale
      *
-     * @return CompanyInformationTranslation
+     * @return SourceLinkTranslation
      */
     public function setLocale(\Translation\LocaleBundle\Entity\Locale $locale = null)
     {
@@ -186,28 +239,5 @@ class CompanyInformationTranslation
     {
         return $this->locale;
     }
-
-    /**
-     * Set source
-     *
-     * @param \Management\AdminBundle\Entity\CompanyInformation $source
-     *
-     * @return CompanyInformationTranslation
-     */
-    public function setSource(\Management\AdminBundle\Entity\CompanyInformation $source = null)
-    {
-        $this->source = $source;
-
-        return $this;
-    }
-
-    /**
-     * Get source
-     *
-     * @return \Management\AdminBundle\Entity\CompanyInformation
-     */
-    public function getSource()
-    {
-        return $this->source;
-    }
 }
+
