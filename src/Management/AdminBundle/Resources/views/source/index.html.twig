@@ -57,11 +57,11 @@
                             <i class="fa fa-pencil fa-lg"></i>
                         </a>
                     </li>
-                    {#<li>#}
-                        {#<a href="{{ path('admin_source_delete', { 'id': source.id }) }}">#}
-                            {#<i class="fa fa-trash fa-lg"></i>#}
-                        {#</a>#}
-                    {#</li>#}
+                    <li>
+                        <a href="{{ path('admin_source_delete', { 'id': source.id, 'locale': locale.shortname }) }}">
+                            <i class="fa fa-trash fa-lg"></i>
+                        </a>
+                    </li>
                 </ul></nav></td>
             </tr>
         {% endfor %}

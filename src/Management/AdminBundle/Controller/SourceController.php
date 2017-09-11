@@ -248,13 +248,21 @@ class SourceController extends Controller
     /**
      * Deletes a source entity.
      *
-     * @Route("/{id}/delete", name="admin_source_translation_delete")
+     * @Route("/{id}/{locale}/delete", requirements={"id" = "\d+", "locale" = ".[a-zA-Z]"},
+     *     name="admin_source_delete")
      * Method("DELETE")
      * @Method("GET")
      */
-    public function deleteAction(Request $request, Source $source)
+    public function deleteAction(Request $request, Source $source, string $locale)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')->findOneBy(['shortname' => $locale]);
+
+        $em = $this->getDoctrine()->getManager();
+        foreach ($source->getTranslations() as $translation) {
+            $em->remove($translation);
+        }
         $em->remove($source);
         $em->flush();
 //        $form = $this->createDeleteForm($source);
@@ -266,7 +274,9 @@ class SourceController extends Controller
 //            $em->flush();
 //        }
 
-        return $this->redirectToRoute('admin_source_translation_index');
+        return $this->redirectToRoute('admin_source_translation_index', [
+            'locale' => $locale->getShortname()
+        ]);
     }
 
     /**
