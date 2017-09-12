@@ -3,6 +3,7 @@
 namespace Management\AdminBundle\Controller;
 
 use Management\AdminBundle\Entity\Client;
+use Management\AdminBundle\Entity\ClientTranslation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -15,14 +16,43 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class ClientController extends Controller
 {
     /**
-     * Lists all client entities.
+     * Redirects to required route.
      *
-     * @Route("/", name="admin_client_index")
+     * @Route("/{action}/", requirements={"action" = "(index|new)"},
+     *     name="admin_client_redirect")
      * @Method("GET")
      */
-    public function indexAction()
+    public function redirectAction(string $action) {
+        $em = $this->getDoctrine()->getManager();
+
+        $defaultLocale = $em->getRepository('TranslationLocaleBundle:Locale')
+            ->findOneBy(['selected' => TRUE]);
+
+        if ($action == 'index') {
+            return $this->redirectToRoute('admin_client_translation_index', [
+                'locale' => $defaultLocale->getShortname()
+            ]);
+        }
+        else {
+            return $this->redirectToRoute('admin_client_translation_new', [
+                'locale' => $defaultLocale->getShortname()
+            ]);
+        }
+    }
+
+    /**
+     * Lists all client entities.
+     *
+     * @Route("/{locale}/", name="admin_client_translation_index")
+     * @Method("GET")
+     */
+    public function indexAction(string $locale)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')->findOneBy(['shortname' => $locale]);
+
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
 
         $clients = $em->getRepository('ManagementAdminBundle:Client')
             ->createQueryBuilder('c')
@@ -32,32 +62,48 @@ class ClientController extends Controller
 
         return $this->render('@ManagementAdmin/client/index.html.twig', array(
             'clients' => $clients,
+            'locale' => $locale,
+            'locales' => $locales
         ));
     }
 
     /**
      * Creates a new client entity.
      *
-     * @Route("/new", name="admin_client_new")
+     * @Route("/{locale}/new", requirements={"locale" = ".[a-zA-Z]"}, name="admin_client_translation_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, string $locale)
     {
-        $client = new Client();
-        $form = $this->createForm('Management\AdminBundle\Form\ClientType', $client);
+        $em = $this->getDoctrine()->getManager();
+
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')->findOneBy(['shortname' => $locale]);
+
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
+
+        $translation = new ClientTranslation($locale);
+
+        $form = $this->createForm('Management\AdminBundle\Form\ClientTranslationType', $translation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $client = new Client();
             $em->persist($client);
+
+            $translation->setSource($client);
+            $em->persist($translation);
             $em->flush();
 
-            return $this->redirectToRoute('admin_client_index');
+            return $this->redirectToRoute('admin_client_translation_index', [
+                'locale' => $locale->getShortname()
+            ]);
         }
 
         return $this->render('@ManagementAdmin/client/new.html.twig', array(
-            'client' => $client,
+            'translation' => $translation,
             'form' => $form->createView(),
+            'locale' => $locale,
+            'locales' => $locales
         ));
     }
 
@@ -80,25 +126,47 @@ class ClientController extends Controller
     /**
      * Displays a form to edit an existing client entity.
      *
-     * @Route("/{id}/edit", name="admin_client_edit")
+     * @Route("/{id}/{locale}/edit", requirements={"id" = "\d+", "locale" = ".[a-zA-Z]"},
+     *     name="admin_client_translation_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Client $client)
+    public function editAction(Request $request, Client $client, string $locale)
     {
-        $deleteForm = $this->createDeleteForm($client);
-        $editForm = $this->createForm('Management\AdminBundle\Form\ClientType', $client);
+        $em = $this->getDoctrine()->getManager();
+
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')->findOneBy(['shortname' => $locale]);
+
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
+
+        $translation = $em->getRepository('ManagementAdminBundle:ClientTranslation')
+            ->findOneBy(['source' => $client, 'locale' => $locale]);
+        if (!$translation) {
+            $translation = new ClientTranslation($locale);
+            $translation->setSource($client);
+            $em->persist($translation);
+        }
+
+//        $deleteForm = $this->createDeleteForm($client);
+        $editForm = $this->createForm('Management\AdminBundle\Form\ClientTranslationType', $translation);
+//        $editForm->get('colorImageFile')->setData($client->getColorImageFile());
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+//            $client->setColorImageFile($editForm->get('colorImageFile')->getData());
+            $em->flush();
 
-            return $this->redirectToRoute('admin_client_index');
+            return $this->redirectToRoute('admin_client_translation_index', [
+                'locale' => $locale->getShortname()
+            ]);
         }
 
         return $this->render('@ManagementAdmin/client/edit.html.twig', array(
             'client' => $client,
+            'translation' => $translation,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'locale' => $locale,
+            'locales' => $locales,
+//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -130,13 +198,16 @@ class ClientController extends Controller
     /**
      * Deletes a client entity.
      *
-     * @Route("/{id}/delete", name="admin_client_delete")
+     * @Route("/{id}/{locale}/delete", name="admin_client_delete")
      * Method({"GET", "DELETE"})
      * @Method("GET")
      */
-    public function deleteAction(Request $request, Client $client)
+    public function deleteAction(Request $request, Client $client, string $locale)
     {
         $em = $this->getDoctrine()->getManager();
+        foreach ($client->getTranslations() as $translation) {
+            $em->remove($translation);
+        }
         $em->remove($client);
         $em->flush();
 //        $form = $this->createDeleteForm($client);
@@ -148,7 +219,7 @@ class ClientController extends Controller
 //            $em->flush();
 //        }
 
-        return $this->redirectToRoute('admin_client_index');
+        return $this->redirectToRoute('admin_client_translation_index', ['locale' => $locale]);
     }
 
     /**

@@ -1,0 +1,34 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Редактирование статичного текста</h1>
+
+    <div class="margin-bottom-lg border-bottom">
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
+                <br><nav>
+                    <ul class="navbar">
+                        {% for item in locales %}
+                            <li class="{{ item == locale ? 'active' : '' }}">
+                                <a class="btn" href="{{ path('admin_text_translation_edit', { id: text.id, locale: item.shortname }) }}">
+                                    {{ item.shortname }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav><br><br>
+                {{ form_start(edit_form) }}
+                <div class="form-group">
+                    {{ form_label(edit_form.text) }}
+                    {{ form_widget(edit_form.text) }}
+                    {{ form_errors(edit_form.text) }}
+                </div>
+
+                <input class="btn" type="submit" value="Сохранить" />
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+
+    <br><a class="btn" href="{{ path('admin_text_translation_index', { locale: locale.shortname }) }}">Отмена</a>
+{% endblock %}

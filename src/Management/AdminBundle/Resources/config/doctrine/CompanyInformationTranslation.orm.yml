@@ -1,0 +1,42 @@
+Management\AdminBundle\Entity\CompanyInformationTranslation:
+
+    type: entity
+
+    table: company_information_translation
+
+    repositoryClass: Management\AdminBundle\Repository\CompanyInformationTranslationRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        description:      { type: text, nullable: true }
+        address:          { type: string, length: 512, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne:
+        source:
+            targetEntity: Management\AdminBundle\Entity\CompanyInformation
+            inversedBy: translations
+            joinColumn:
+                name: source_id
+                referencedColumnName: id
+        locale:
+            targetEntity: Translation\LocaleBundle\Entity\Locale
+            joinColumn:
+                name: locale_id
+                referencedColumnName: id
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

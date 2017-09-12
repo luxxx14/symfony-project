@@ -47,15 +47,40 @@
     <a href="/" class="logo" >
         <img src="{{ asset('bundles/frontendcomponents/img/course-orchestra-logo.svg') }}" class="course-orchestra-logo" alt="logo"/>
     </a>
+    {#{{ dump(texts) }}#}
     <nav class="nav">
         <ul>
-            <li><a href="#info">Информация</a></li>
-            <li><a href="#advantages">Преимущества</a></li>
-            <li><a href="#users">Кто использует</a></li>
-            <li><a href="#download">Загрузить</a></li>
-            <li><a href="#news">Новости</a></li>
+            <li><a href="#info">
+                    {% for translation in texts.0.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                </a></li>
+            <li><a href="#advantages">
+                    {% for translation in texts.1.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                </a></li>
+            <li><a href="#users">
+                    {% for translation in texts.2.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                    {% endfor %}
+                </a></li>
+            <li><a href="#download">
+                    {% for translation in texts.3.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                    {% endfor %}
+                </a></li>
+            <li><a href="#news">
+                    {% for translation in texts.4.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                    {% endfor %}
+                </a></li>
             <li>
-                <a href="https://corchestra.ru/wiki" target="_blank">Документация</a>
+                <a href="https://corchestra.ru/wiki" target="_blank">
+                    {% for translation in texts.5.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                    {% endfor %}
+                </a>
                 {#{% if app.request.schemeAndHttpHost == 'https://staging.corchestra.ru' %}#}
                 {#<a href="http://wiki.staging.corchestra.ru/index.php?title=Заглавная_страница" target="_blank">Документация</a>#}
                 {#{% elseif app.request.schemeAndHttpHost == 'https://corchestra.ru' %}#}
@@ -66,42 +91,57 @@
             </li>
         </ul>
     </nav>
-    {#<div id="select-locale">#}
-		{#<span>Ru</span>#}
-		{#<ul>#}
-			{#<li>Ru</li>#}
-		  {#<li>Eng</li>#}
-		{#</ul>#}
-	{#</div>#}
+    <div id="select-locale">
+		<span>{{ locale.shortname }}</span>
+		<ul>
+            {% for locale in locales %}
+            <li><a href="{{ path('switch_to_locale', { 'locale': locale.shortname }) }}">{{ locale.shortname }}</a></li>
+		    {% endfor %}
+        </ul>
+	</div>
 </header>
 <section id="main" class="main">
+<<<<<<< HEAD
     <h1>{{ commonInformation.title|raw}}</h1>
     <p>{{ commonInformation.description|raw }}</p>
     <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.svg') }}" alt="scroll down"/></a>
+=======
+    <h1>
+        {% for translation in commonInformation.translations if translation.locale == locale %}
+        {{ translation.title|raw }}
+        {% endfor %}
+    </h1>
+    <p>
+        {% for translation in commonInformation.translations if translation.locale == locale %}
+        {{ translation.description|raw }}
+        {% endfor %}
+    </p>
+    <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.png') }}" alt="scroll down"/></a>
+>>>>>>> 5f7787b09ff9932c248e99f335b87da87b61cd5c
 </section>
 <section id="info" class="info">
-    <h1>Компоненты платформы</h1>
-    {#<div class="row">#}
-    {#{% set serialNumber = 0 %}#}
-    {#{% for component in components %}#}
-        {#{% set serialNumber = serialNumber + 1 %}#}
-        {#<div class="col-xs-{{ serialNumber <= 3 ? 4 : 3 }}">#}
-            {#<h2><a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">{{ component.name }}</a></h2>#}
-            {#<p>{{ component.description }}</p>#}
-        {#</div>#}
-    {#{% if serialNumber == 3 %}#}
-    {#</div>#}
-    {#<div class="row">#}
-    {#{% endif %}#}
-    {#{% endfor %}#}
-    {#</div>#}
+    <h1>
+        {% for translation in texts.6.translations if translation.locale == locale %}
+        {{ translation.text }}
+        {% endfor %}
+    </h1>
     <div class="row">
         {% set serialNumber = 0 %}
         {% for component in components %}
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-xs-4{{ serialNumber == 4 ? ' col-xs-offset-2' : '' }}">
-            <h2><a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">{{ component.name }}</a></h2>
-            <p>{{ component.description }}</p>
+            <h2>
+                <a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">
+                    {% for translation in component.translations if translation.locale == locale %}
+                    {{ translation.name }}
+                    {% endfor %}
+                </a>
+            </h2>
+            <p>
+                {% for translation in component.translations if translation.locale == locale %}
+                {{ translation.description }}
+                {% endfor %}
+            </p>
         </div>
         {% if serialNumber == 3 %}
     </div>
@@ -111,16 +151,26 @@
     </div>
 </section>
 <section id="advantages" class="advantages">
-    <h1>Основные преимущества</h1>
+    <h1>
+        {% for translation in texts.7.translations if translation.locale == locale %}
+        {{ translation.text }}
+        {% endfor %}
+    </h1>
     <div class="row">
         {% set serialNumber = 0 %}
         {% for advantage in advantages %}
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-xs-4">
 			<div>
-				<img src="{{ asset('uploads/images/advantage/' ~ advantage.imageName) }}" alt="icon" />
+                {% for translation in advantage.translations if translation.locale == locale %}
+				<img src="{{ asset('uploads/images/advantage/' ~ translation.imageName) }}" alt="icon" />
+                {% endfor %}
 			</div>
-            <p>{{ advantage.description }}</p>
+            <p>
+                {% for translation in advantage.translations if translation.locale == locale %}
+                {{ translation.description }}
+                {% endfor %}
+            </p>
         </div>
     {% if serialNumber == 3 %}
     </div>
@@ -130,16 +180,26 @@
     </div>
 </section>
 <section id="users" class="users">
-    <h1>Кто использует</h1>
+    <h1>
+        {% for translation in texts.8.translations if translation.locale == locale %}
+        {{ translation.text }}
+        {% endfor %}
+    </h1>
     <div class="row">
         {% set serialNumber = 0 %}
         {% for client in clients %}
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-xs-4">
 			<div class="img-wrapper">
-				<img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}" alt="icon">
+                {% for translation in client.translations if translation.locale == locale %}
+				<img src="{{ asset('uploads/images/client_color/' ~ translation.colorImageName) }}" alt="icon">
+                {% endfor %}
             </div>
-			<p>{{ client.title }}</p>
+			<p>
+                {% for translation in client.translations if translation.locale == locale %}
+                    {{ translation.title }}
+                {% endfor %}
+            </p>
         </div>
         {% if serialNumber % 3 == 0 and serialNumber != clients|length %}
     </div>
@@ -149,28 +209,60 @@
     </div>
 </section>
 <section id="download" class="download">
-    <h1>Загрузить</h1>
-    <h2>Выберите подходящий вам способ загрузки и версию</h2>
+    <h1>
+        {% for translation in texts.9.translations if translation.locale == locale %}
+        {{ translation.text }}
+        {% endfor %}
+    </h1>
+    <h2>
+        {% for translation in texts.10.translations if translation.locale == locale %}
+        {{ translation.text }}
+        {% endfor %}
+    </h2>
     <nav>
         <ul>
-            <li><a href="#stable" class="active">Стабильная версия</a></li>
-            <li><a href="#newest-version">Новейшая версия</a></li>
-            <li><a href="#source-code">Исходный код</a></li>
+            <li><a href="#stable" class="active">
+                    {% for translation in texts.11.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                </a></li>
+            <li><a href="#newest-version">
+                    {% for translation in texts.12.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                </a></li>
+            <li><a href="#source-code">
+                    {% for translation in texts.13.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                </a></li>
         </ul>
     </nav>
     <div id="stable" class="stable-version">
         <div class="row">
-            <p>Рекомендовано для установки на рабочих проектах</p>
+            <p>
+                {% for translation in texts.14.translations if translation.locale == locale %}
+                {{ translation.text }}
+                {% endfor %}
+            </p>
             <div class="download-link">
+                {% if builds.stable and builds.stable.0 %}
                 <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}" target="_blank">
-                    {{ 'Дистрибутив последней стабильной версии платформы ' ~
-                    builds.stable.0.name ~ ' ' ~ builds.stable.0.date|date('Y-m-d') ~ ' (ZIP)' }}
+                    {% for translation in texts.17.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                    {{ ' ' ~ builds.stable.0.name ~ ' ' ~ builds.stable.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
+                {% endif %}
             </div>
             <div class="col-xs-4">
-                <span class="show-components">Показать компоненты сборки</span>
+                <span class="show-components">
+                    {% for translation in texts.19.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                </span>
                 <ul class="components">
-                    {% for component in builds.stable.0.components %}
+                    {% for component in builds.stable.0.components if (builds.stable and builds.stable.0) %}
                     <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
                     {% endfor %}
                 </ul>
@@ -189,7 +281,16 @@
             </div>
             <div class="col-xs-8">
                 <div>
-                    <h3>История версий</h3><a class="history-link" href="http://corchestra.ru/download/builds/stable/" target="_blank">Полная история версий</a>
+                    <h3>
+                        {% for translation in texts.20.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                        {% endfor %}
+                    </h3>
+                    <a class="history-link" href="http://corchestra.ru/download/builds/stable/" target="_blank">
+                        {% for translation in texts.21.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                        {% endfor %}
+                    </a>
                     <ul class="list">
                         {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
                         {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
@@ -210,17 +311,29 @@
     </div>
     <div id="newest-version" class="stable-version newest-version">
         <div class="row">
-            <p>Рекомендовано для установки на рабочих проектах</p>
+            <p>
+                {% for translation in texts.15.translations if translation.locale == locale %}
+                {{ translation.text }}
+                {% endfor %}
+            </p>
             <div class="download-link">
+                {% if builds.stable and builds.stable.0 %}
                 <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}" target="_blank">
-                    {{ 'Дистрибутив последней новейшей версии платформы ' ~
-                    builds.newest.0.name ~ ' ' ~ builds.newest.0.date|date('Y-m-d') ~ ' (ZIP)' }}
+                    {% for translation in texts.18.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                    {{ ' ' ~ builds.newest.0.name ~ ' ' ~ builds.newest.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
+                {% endif %}
             </div>
             <div class="col-xs-4">
-                <span class="show-components">Показать компоненты сборки</span>
+                <span class="show-components">
+                    {% for translation in texts.19.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                </span>
                 <ul class="components">
-                    {% for component in builds.newest.0.components %}
+                    {% for component in builds.newest.0.components if (builds.newest and builds.newest.0) %}
                     <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
                     {% endfor %}
                 </ul>
@@ -239,7 +352,15 @@
             </div>
             <div class="col-xs-8">
                 <div>
-                    <h3>История версий</h3><a class="history-link" href="http://corchestra.ru/download/builds/trunk/" target="_blank">Полная история версий</a>
+                    <h3>
+                        {% for translation in texts.20.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                        {% endfor %}
+                    </h3><a class="history-link" href="http://corchestra.ru/download/builds/trunk/" target="_blank">
+                        {% for translation in texts.21.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                        {% endfor %}
+                    </a>
                     <ul class="list">
                         {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
                         {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
@@ -259,7 +380,11 @@
         </div>
     </div>
     <div id="source-code" class="source-code">
-        <p>Есть много источников, откуда вы можете скачать наши исходные коды. <br/>Свяжитесь с нами, если хотите участвовать в разработке: мы дадим вам доступ на запись</p>
+        <p>
+            {% for translation in texts.16.translations if translation.locale == locale %}
+            {{ translation.text }}
+            {% endfor %}
+        </p>
         <ul>
             {% for source in sources %}
             <li>
@@ -275,7 +400,11 @@
 <section id="news" class="news">
     <div class="row">
         <div class="col-xs-7">
-            <h1>Последние новости</h1>
+            <h1>
+                {% for translation in texts.22.translations if translation.locale == locale %}
+                {{ translation.text }}
+                {% endfor %}
+            </h1>
             <ul>
             {% for item in feed %}
                 <li>
@@ -284,15 +413,31 @@
                 </li>
             {% endfor %}
             </ul>
-            <a class="button" href="{{ selectedFeedSource.link }}" target="_blank">Перейти в группу новостей</a>
+            <a class="button" href="{{ selectedFeedSource.link }}" target="_blank">
+                {% for translation in texts.27.translations if translation.locale == locale %}
+                {{ translation.text }}
+                {% endfor %}
+            </a>
         </div>
         <div class="col-xs-5">
             <form id="subscribe-form">
-				<h3>Хотите быть в курсе последних событий? </h3>						
+				<h3>
+                    {% for translation in texts.23.translations if translation.locale == locale %}
+                    {{ translation.text }}
+                    {% endfor %}
+                </h3>
 				<div class="input-block">							
-					<p>Подпишитесь на нашу рассылку и получайте уведомления на свой почтовый адрес</p>
+					<p>
+                        {% for translation in texts.24.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                        {% endfor %}
+                    </p>
 					<div>
-						<input placeholder="Ваш email"/>
+                        {% set placeholder = '' %}
+                        {% for translation in texts.25.translations if translation.locale == locale %}
+                        {% set placeholder = placeholder ~ translation.text %}
+                        {% endfor %}
+						<input placeholder="{{ placeholder }}"/>
 						<button></button>
 					</div>
 				</div>
@@ -301,7 +446,13 @@
 					<p>Подписка оформлена!</p>
 				</div>
 				<span class="error"></span>
-				<p class="new-policy"><strong>Мы не будем присылать спам и не передадим ваш email третьим лицам</strong></p>
+				<p class="new-policy">
+                    <strong>
+                        {% for translation in texts.26.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                        {% endfor %}
+                    </strong>
+                </p>
 				{#<p class="policy">Нажимая кнопку вы принимаете условия</p>#}
 				{#<a href="">пользовательского соглашения</a>#}
 			</form>
@@ -316,17 +467,49 @@
     </div>
 </section>
 <footer>
+<<<<<<< HEAD
     <p>Компоненты платформы КУРС являются свободным программным обеспечением<br/>с открытым исходным кодом, распространяемым по лицензии GPL v. 3.</p>
     <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.svg') }}" alt="licence"/>
     <p><span id="address">КУРС</span> © 1998-2017</p>
+=======
+    <p>
+        {% for translation in texts.28.translations if translation.locale == locale %}
+        {{ translation.text }}
+        {% endfor %}
+    </p>
+    <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.png') }}" alt="licence"/>
+    <p>
+        <span id="address">
+            {% for translation in texts.29.translations if translation.locale == locale %}
+                {{ translation.text }}
+            {% endfor %}
+        </span>
+        © 1998-2017
+    </p>
+>>>>>>> 5f7787b09ff9932c248e99f335b87da87b61cd5c
 </footer>
 <a href="#" class="back-to-top"></a>
 <div class="modal">
     <div class="modal-content">
+<<<<<<< HEAD
         <img class="kurs-logo" src="{{ asset('bundles/frontendcomponents/img/kurs-logo.svg') }}" alt="kurs logo" />
         <span class="close"><img src="{{ asset('bundles/frontendcomponents/img/ic-close.svg') }}" alt="close btn" /></span>
         <p>{{ companyInformation.description }}</p>
         <div class="address">{{ companyInformation.address }}</div>
+=======
+        <img class="kurs-logo" src="{{ asset('bundles/frontendcomponents/img/kurs-logo.png') }}" alt="kurs logo" />
+        <span class="close"><img src="{{ asset('bundles/frontendcomponents/img/ic-close.png') }}" alt="close btn" /></span>
+        <p>
+            {% for translation in companyInformation.translations if translation.locale == locale %}
+            {{ translation.description }}
+            {% endfor %}
+        </p>
+        <div class="address">
+            {% for translation in companyInformation.translations if translation.locale == locale %}
+            {{ translation.address }}
+            {% endfor %}
+        </div>
+>>>>>>> 5f7787b09ff9932c248e99f335b87da87b61cd5c
         <div class="mail">{{ companyInformation.email }}</div>
         <div class="phone">{{ companyInformation.phoneNumber }}</div>
         <h3>Как нас найти</h3>

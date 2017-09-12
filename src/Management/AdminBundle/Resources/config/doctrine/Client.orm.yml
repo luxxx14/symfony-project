@@ -14,9 +14,7 @@ Management\AdminBundle\Entity\Client:
                 strategy: AUTO
 
     fields:
-        grayScaleImageName: { type: string, length: 255, nullable: true }
-        colorImageName:     { type: string, length: 255, nullable: true }
-        title:              { type: text, nullable: true }
+#        colorImageName:     { type: string, length: 255, nullable: true }
 
         dateOfCreation:     { type: datetime, nullable: false }
         dateOfChange:       { type: datetime, nullable: false }
@@ -25,7 +23,10 @@ Management\AdminBundle\Entity\Client:
 
     oneToOne: { }
 
-    oneToMany: { }
+    oneToMany:
+        translations:
+            targetEntity: Management\AdminBundle\Entity\ClientTranslation
+            mappedBy: source
 
     manyToMany: { }
 

@@ -38,6 +38,11 @@ class Component
     private $dateOfChange;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $translations;
+
+    /**
      * Component constructor
      */
     public function __construct()
@@ -175,5 +180,39 @@ class Component
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * Add translation
+     *
+     * @param \Management\AdminBundle\Entity\ComponentTranslation $translation
+     *
+     * @return Component
+     */
+    public function addTranslation(\Management\AdminBundle\Entity\ComponentTranslation $translation)
+    {
+        $this->translations[] = $translation;
+
+        return $this;
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param \Management\AdminBundle\Entity\ComponentTranslation $translation
+     */
+    public function removeTranslation(\Management\AdminBundle\Entity\ComponentTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+    }
+
+    /**
+     * Get translations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 }

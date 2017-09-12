@@ -203,10 +203,16 @@ body {
 				padding: 0;
 				margin: 0;				
 				line-height: 24px;
-				li {					
-					padding: 10px;
+				li {
 					&:hover {
-						background-color: rgba(31, 30, 56, 0.2);;
+						background-color: rgba(31, 30, 56, 0.2);
+					}
+					a {
+						display: block;
+						width: 100%;
+						text-decoration: none;
+						border: none;
+						padding: 10px;
 					}
 				}
 			}

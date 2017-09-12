@@ -3,6 +3,18 @@
 {% block body %}
     <h1>Кто использует</h1>
 
+    <br><nav>
+        <ul class="navbar">
+            {% for item in locales %}
+                <li class="{{ item == locale ? 'active' : '' }}">
+                    <a class="btn" href="{{ path('admin_client_translation_index', {locale: item.shortname}) }}">
+                        {{ item.shortname }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav><br><br>
+
     <table class="table table-striped table-staff">
         <thead>
             <tr>
@@ -23,9 +35,18 @@
                     {#</a>#}
                 </td>
                 {#<td><img src="{{ asset('uploads/images/client_gray_scale/' ~ client.grayScaleImageName) }}"></td>#}
-                <td><img src="{{ asset('uploads/images/client_color/' ~ client.colorImageName) }}"
-                    width="352" height="200"></td>
-                <td>{{ client.title }}</td>
+                <td>
+                    {% for translation in client.translations if translation.locale == locale %}
+                    <img src="{{ asset('uploads/images/client_color/' ~ translation.colorImageName) }}"
+                    width="352" height="200">
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for translation in client.translations if translation.locale == locale %}
+                    {{ translation.title }}
+                    {% endfor %}
+                    {#{{ client.title }}#}
+                </td>
                 <td><nav><ul class="navbar">
                     {#<li>#}
                         {#<a href="{{ path('admin_client_show', { 'id': client.id }) }}">#}
@@ -33,12 +54,12 @@
                         {#</a>#}
                     {#</li>#}
                     <li>
-                        <a href="{{ path('admin_client_edit', { 'id': client.id }) }}">
+                        <a href="{{ path('admin_client_translation_edit', { 'id': client.id, 'locale': locale.shortname }) }}">
                             <i class="fa fa-pencil fa-lg"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('admin_client_delete', { 'id': client.id }) }}">
+                        <a href="{{ path('admin_client_delete', { 'id': client.id, 'locale': locale.shortname }) }}">
                             <i class="fa fa-trash fa-lg"></i>
                         </a>
                     </li>
@@ -48,5 +69,5 @@
         </tbody>
     </table>
 
-    <a class="btn" href="{{ path('admin_client_new') }}">Добавить клиента</a>
+    <a class="btn" href="{{ path('admin_client_translation_new', { 'locale': locale.shortname }) }}">Добавить клиента</a>
 {% endblock %}
