@@ -35,6 +35,10 @@ class Builder implements ContainerAwareInterface
             'route' => 'admin_company_information_redirect',
             'routeParameters' => ['action' => 'index']
         ]);
+        $menu->addChild('Статичные тексты', [
+            'route' => 'admin_text_redirect',
+            'routeParameters' => ['action' => 'index']
+        ]);
 
         $menu->addChild('Загрузки', ['attributes' => ['class' => 'header']]);
         $menu->addChild('Коды для Maven', ['route' => 'admin_version_index']);

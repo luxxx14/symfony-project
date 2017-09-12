@@ -1,0 +1,51 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Статичные тексты</h1>
+
+    <br><nav>
+        <ul class="navbar">
+            {% for item in locales %}
+                <li class="{{ item == locale ? 'active' : '' }}">
+                    <a class="btn" href="{{ path('admin_text_translation_index', { locale: item.shortname }) }}">
+                        {{ item.shortname }}
+                    </a>
+                </li>
+            {% endfor %}
+            <li>
+                <a class="btn" href="{{ path('admin_text_translation_new', { locale: locale.shortname }) }}">
+                    <i class="fa fa-plus fa-lg"></i>
+                </a>
+            </li>
+        </ul>
+    </nav><br><br>
+
+    <table class="table table-striped table-staff">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Текст</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for text in texts %}
+            <tr>
+                <td>{{ text.id }}</td>
+                <td>
+                    {% for translation in text.translations if translation.locale == locale %}
+                        {{ translation.text }}
+                    {% endfor %}
+                </td>
+                <td><nav><ul class="navbar">
+                    <li>
+                        <a href="{{ path('admin_text_translation_edit', { 'id': text.id, 'locale': locale.shortname }) }}">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a>
+                    </li>
+                </ul></nav></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

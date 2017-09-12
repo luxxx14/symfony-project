@@ -189,4 +189,43 @@ class Source
     {
         return $this->sourceLinks;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $translations;
+
+
+    /**
+     * Add translation
+     *
+     * @param \Management\AdminBundle\Entity\SourceTranslation $translation
+     *
+     * @return Source
+     */
+    public function addTranslation(\Management\AdminBundle\Entity\SourceTranslation $translation)
+    {
+        $this->translations[] = $translation;
+
+        return $this;
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param \Management\AdminBundle\Entity\SourceTranslation $translation
+     */
+    public function removeTranslation(\Management\AdminBundle\Entity\SourceTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+    }
+
+    /**
+     * Get translations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
 }

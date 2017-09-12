@@ -5,9 +5,9 @@ namespace Management\AdminBundle\Entity;
 use Translation\LocaleBundle\Entity\Locale;
 
 /**
- * SourceLinkTranslation
+ * TextTranslation
  */
-class SourceLinkTranslation
+class TextTranslation
 {
     /**
      * @var integer
@@ -17,12 +17,7 @@ class SourceLinkTranslation
     /**
      * @var string
      */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $url;
+    private $text;
 
     /**
      * @var \DateTime
@@ -35,12 +30,7 @@ class SourceLinkTranslation
     private $dateOfChange;
 
     /**
-     * @var \Management\AdminBundle\Entity\SourceTranslation
-     */
-    private $sourceTranslation;
-
-    /**
-     * @var \Management\AdminBundle\Entity\SourceLink
+     * @var \Management\AdminBundle\Entity\Text
      */
     private $source;
 
@@ -50,7 +40,7 @@ class SourceLinkTranslation
     private $locale;
 
     /**
-     * SourceLinkTranslation constructor
+     * TextTranslation constructor
      *
      * @param Locale|NULL $locale
      */
@@ -73,51 +63,27 @@ class SourceLinkTranslation
     }
 
     /**
-     * Set name
+     * Set text
      *
-     * @param string $name
+     * @param string $text
      *
-     * @return SourceLinkTranslation
+     * @return TextTranslation
      */
-    public function setName($name)
+    public function setText($text)
     {
-        $this->name = $name;
+        $this->text = $text;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get text
      *
      * @return string
      */
-    public function getName()
+    public function getText()
     {
-        return $this->name;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return SourceLink
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
+        return $this->text;
     }
 
     /**
@@ -125,7 +91,7 @@ class SourceLinkTranslation
      *
      * @param \DateTime $dateOfCreation
      *
-     * @return SourceLinkTranslation
+     * @return TextTranslation
      */
     public function setDateOfCreation($dateOfCreation)
     {
@@ -149,7 +115,7 @@ class SourceLinkTranslation
      *
      * @param \DateTime $dateOfChange
      *
-     * @return SourceLinkTranslation
+     * @return TextTranslation
      */
     public function setDateOfChange($dateOfChange)
     {
@@ -169,37 +135,13 @@ class SourceLinkTranslation
     }
 
     /**
-     * Set sourceTranslation
-     *
-     * @param \Management\AdminBundle\Entity\SourceTranslation $sourceTranslation
-     *
-     * @return SourceLinkTranslation
-     */
-    public function setSourceTranslation(\Management\AdminBundle\Entity\SourceTranslation $sourceTranslation = null)
-    {
-        $this->sourceTranslation = $sourceTranslation;
-
-        return $this;
-    }
-
-    /**
-     * Get sourceTranslation
-     *
-     * @return \Management\AdminBundle\Entity\SourceTranslation
-     */
-    public function getSourceTranslation()
-    {
-        return $this->sourceTranslation;
-    }
-
-    /**
      * Set source
      *
-     * @param \Management\AdminBundle\Entity\SourceLink $source
+     * @param \Management\AdminBundle\Entity\Text $source
      *
-     * @return SourceLinkTranslation
+     * @return TextTranslation
      */
-    public function setSource(\Management\AdminBundle\Entity\SourceLink $source = null)
+    public function setSource(\Management\AdminBundle\Entity\Text $source = null)
     {
         $this->source = $source;
 
@@ -209,7 +151,7 @@ class SourceLinkTranslation
     /**
      * Get source
      *
-     * @return \Management\AdminBundle\Entity\SourceLink
+     * @return \Management\AdminBundle\Entity\Text
      */
     public function getSource()
     {
@@ -221,7 +163,7 @@ class SourceLinkTranslation
      *
      * @param \Translation\LocaleBundle\Entity\Locale $locale
      *
-     * @return SourceLinkTranslation
+     * @return TextTranslation
      */
     public function setLocale(\Translation\LocaleBundle\Entity\Locale $locale = null)
     {
@@ -240,3 +182,4 @@ class SourceLinkTranslation
         return $this->locale;
     }
 }
+

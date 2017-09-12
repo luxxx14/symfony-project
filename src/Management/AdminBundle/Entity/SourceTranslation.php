@@ -251,4 +251,3 @@ class SourceTranslation
         return $this->locale;
     }
 }
-

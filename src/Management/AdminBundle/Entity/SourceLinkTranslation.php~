@@ -240,3 +240,4 @@ class SourceLinkTranslation
         return $this->locale;
     }
 }
+

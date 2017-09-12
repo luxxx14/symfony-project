@@ -73,6 +73,12 @@ class InitialController extends Controller {
                 'action' => 'admin/subscriber/subscribe'
             ]);
 
+        $texts = $em->getRepository('ManagementAdminBundle:Text')
+            ->createQueryBuilder('t')
+            ->orderBy('t.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+
         $commonInformation = $em->getRepository('ManagementAdminBundle:CommonInformation')->find(1);
 
         $companyInformation = $em->getRepository('ManagementAdminBundle:CompanyInformation')->find(1);
@@ -245,6 +251,7 @@ class InitialController extends Controller {
         return $this->render('@FrontendComponents/base.html.twig', [
             'locale' => $locale,
             'locales' => $locales,
+            'texts' => $texts,
             'commonInformation' => $commonInformation,
             'companyInformation' => $companyInformation,
             'components' => $components,
