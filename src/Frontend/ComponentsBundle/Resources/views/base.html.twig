@@ -101,11 +101,6 @@
 	</div>
 </header>
 <section id="main" class="main">
-<<<<<<< HEAD
-    <h1>{{ commonInformation.title|raw}}</h1>
-    <p>{{ commonInformation.description|raw }}</p>
-    <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.svg') }}" alt="scroll down"/></a>
-=======
     <h1>
         {% for translation in commonInformation.translations if translation.locale == locale %}
         {{ translation.title|raw }}
@@ -116,8 +111,7 @@
         {{ translation.description|raw }}
         {% endfor %}
     </p>
-    <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.png') }}" alt="scroll down"/></a>
->>>>>>> 5f7787b09ff9932c248e99f335b87da87b61cd5c
+    <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.svg') }}" alt="scroll down"/></a>
 </section>
 <section id="info" class="info">
     <h1>
@@ -467,17 +461,12 @@
     </div>
 </section>
 <footer>
-<<<<<<< HEAD
-    <p>Компоненты платформы КУРС являются свободным программным обеспечением<br/>с открытым исходным кодом, распространяемым по лицензии GPL v. 3.</p>
-    <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.svg') }}" alt="licence"/>
-    <p><span id="address">КУРС</span> © 1998-2017</p>
-=======
     <p>
         {% for translation in texts.28.translations if translation.locale == locale %}
         {{ translation.text }}
         {% endfor %}
     </p>
-    <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.png') }}" alt="licence"/>
+    <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.svg') }}" alt="licence"/>
     <p>
         <span id="address">
             {% for translation in texts.29.translations if translation.locale == locale %}
@@ -486,19 +475,12 @@
         </span>
         © 1998-2017
     </p>
->>>>>>> 5f7787b09ff9932c248e99f335b87da87b61cd5c
 </footer>
 <a href="#" class="back-to-top"></a>
 <div class="modal">
     <div class="modal-content">
-<<<<<<< HEAD
         <img class="kurs-logo" src="{{ asset('bundles/frontendcomponents/img/kurs-logo.svg') }}" alt="kurs logo" />
         <span class="close"><img src="{{ asset('bundles/frontendcomponents/img/ic-close.svg') }}" alt="close btn" /></span>
-        <p>{{ companyInformation.description }}</p>
-        <div class="address">{{ companyInformation.address }}</div>
-=======
-        <img class="kurs-logo" src="{{ asset('bundles/frontendcomponents/img/kurs-logo.png') }}" alt="kurs logo" />
-        <span class="close"><img src="{{ asset('bundles/frontendcomponents/img/ic-close.png') }}" alt="close btn" /></span>
         <p>
             {% for translation in companyInformation.translations if translation.locale == locale %}
             {{ translation.description }}
@@ -509,7 +491,6 @@
             {{ translation.address }}
             {% endfor %}
         </div>
->>>>>>> 5f7787b09ff9932c248e99f335b87da87b61cd5c
         <div class="mail">{{ companyInformation.email }}</div>
         <div class="phone">{{ companyInformation.phoneNumber }}</div>
         <h3>Как нас найти</h3>
