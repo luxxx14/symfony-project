@@ -176,4 +176,43 @@ class SourceLink
     {
         return $this->source;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $translations;
+
+
+    /**
+     * Add translation
+     *
+     * @param \Management\AdminBundle\Entity\SourceLinkTranslation $translation
+     *
+     * @return SourceLink
+     */
+    public function addTranslation(\Management\AdminBundle\Entity\SourceLinkTranslation $translation)
+    {
+        $this->translations[] = $translation;
+
+        return $this;
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param \Management\AdminBundle\Entity\SourceLinkTranslation $translation
+     */
+    public function removeTranslation(\Management\AdminBundle\Entity\SourceLinkTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+    }
+
+    /**
+     * Get translations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
 }
