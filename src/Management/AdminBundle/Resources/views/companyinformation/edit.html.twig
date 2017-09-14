@@ -6,6 +6,17 @@
     <div class="margin-bottom-lg border-bottom">
         <div class="row">
             <div class="col-lg-8 col-md-8">
+                <br><nav>
+                    <ul class="navbar">
+                        {% for item in locales %}
+                            <li class="{{ item == locale ? 'active' : '' }}">
+                                <a class="btn" href="{{ path('admin_company_information_translation_edit', {id: companyInformation.id, locale: item.shortname}) }}">
+                                    {{ item.shortname }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav><br><br>
                 {{ form_start(edit_form) }}
                 <div class="form-group">
                     {{ form_label(edit_form.description) }}
@@ -37,5 +48,5 @@
         </div>
     </div>
 
-    <a class="btn" href="{{ path('admin_company_information_index') }}">Отмена</a>
+    <a class="btn" href="{{ path('admin_company_information_translation_index', { locale: locale.shortname }) }}">Отмена</a>
 {% endblock %}

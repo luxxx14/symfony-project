@@ -1,0 +1,48 @@
+Management\AdminBundle\Entity\SourceLinkTranslation:
+
+    type: entity
+
+    table: source_link_translation
+
+    repositoryClass: Management\AdminBundle\Repository\SourceLinkTranslationRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:             { type: string, length: 64, nullable: true }
+        url:              { type: string, length: 1024, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne:
+        sourceTranslation:
+            targetEntity: Management\AdminBundle\Entity\SourceTranslation
+            inversedBy: sourceLinkTranslations
+            joinColumn:
+                name: source_translation_id
+                referencedColumnName: id
+        source:
+            targetEntity: Management\AdminBundle\Entity\SourceLink
+            inversedBy: translations
+            joinColumn:
+                name: source_id
+                referencedColumnName: id
+        locale:
+            targetEntity: Translation\LocaleBundle\Entity\Locale
+            joinColumn:
+                name: locale_id
+                referencedColumnName: id
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

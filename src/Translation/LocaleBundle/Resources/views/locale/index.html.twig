@@ -1,0 +1,41 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Список языков</h1>
+
+    <table class="table table-striped table-staff">
+        <thead>
+            <tr>
+                <th>Язык</th>
+                <th>Сокращённая форма</th>
+                <th>Установлен по умолчанию?</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for locale in locales %}
+            <tr>
+                <td>{{ locale.language }}</td>
+                <td>{{ locale.shortname }}</td>
+                <td style="text-align: center; color: {{ locale.selected ? 'green;' : 'black;' }}">
+                    {{ locale.selected ? '&#10004;'|raw : '&#10008;'|raw }}
+                </td>
+                <td><nav><ul class="navbar">
+                    <li>
+                        <a href="{{ path('admin_locale_edit', { 'id': locale.id }) }}">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_locale_delete', { 'id': locale.id }) }}">
+                            <i class="fa fa-trash fa-lg"></i>
+                        </a>
+                    </li>
+                </ul></nav></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('admin_locale_new') }}">Добавить язык</a>
+{% endblock %}

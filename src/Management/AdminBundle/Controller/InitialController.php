@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Translation\LocaleBundle\Entity\Locale;
 
 /**
  * InitialController
@@ -20,8 +22,44 @@ class InitialController extends Controller {
     /**
      * @Route("/", name="initial")
      */
-    public function indexAction() {
+    public function indexAction(SessionInterface $session) {
+        $locale = $session->get('locale');
+
+        if (!$locale or !($locale instanceof Locale)) {
+            $em = $this->getDoctrine()->getManager();
+            $locale = $em->getRepository('TranslationLocaleBundle:Locale')->findOneBy(['selected' => TRUE]);
+            $session->set('locale', $locale);
+        }
+
+        return $this->redirectToRoute('content_localize', [
+            'locale' => $locale->getShortname()
+        ]);
+    }
+
+    /**
+     * @Route("/switch_to/{locale}/", name="switch_to_locale")
+     */
+    public function switchToLocaleAction(SessionInterface $session, string $locale) {
         $em = $this->getDoctrine()->getManager();
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')
+            ->findOneBy(['shortname' => $locale]);
+        $session->set('locale', $locale);
+
+        return $this->redirectToRoute('content_localize', [
+            'locale' => $locale->getShortname()
+        ]);
+    }
+
+    /**
+     * @Route("/{locale}/", name="content_localize")
+     */
+    public function localizeAction(string $locale) {
+        $em = $this->getDoctrine()->getManager();
+
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')
+            ->findOneBy(['shortname' => $locale]);
+
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
 
         $fs = new Filesystem();
 
@@ -34,6 +72,12 @@ class InitialController extends Controller {
                 'method' => 'POST',
                 'action' => 'admin/subscriber/subscribe'
             ]);
+
+        $texts = $em->getRepository('ManagementAdminBundle:Text')
+            ->createQueryBuilder('t')
+            ->orderBy('t.id', 'ASC')
+            ->getQuery()
+            ->getResult();
 
         $commonInformation = $em->getRepository('ManagementAdminBundle:CommonInformation')->find(1);
 
@@ -205,6 +249,9 @@ class InitialController extends Controller {
         }
 
         return $this->render('@FrontendComponents/base.html.twig', [
+            'locale' => $locale,
+            'locales' => $locales,
+            'texts' => $texts,
             'commonInformation' => $commonInformation,
             'companyInformation' => $companyInformation,
             'components' => $components,

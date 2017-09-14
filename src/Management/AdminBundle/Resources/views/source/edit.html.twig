@@ -8,6 +8,17 @@
     <div class="margin-bottom-lg border-bottom">
         <div class="row">
             <div class="col-lg-8 col-md-8">
+                <br><nav>
+                    <ul class="navbar">
+                        {% for item in locales %}
+                            <li class="{{ item == locale ? 'active' : '' }}">
+                                <a class="btn" href="{{ path('admin_source_translation_edit', { id: source.id, locale: item.shortname }) }}">
+                                    {{ item.shortname }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav><br><br>
                 {{ form_start(edit_form) }}
 
                 <div class="form-group">
@@ -24,8 +35,8 @@
 
                 <h3>Ссылки</h3>
                 <table>
-                    <tbody class="links" data-prototype="{{ widget_prototype_macro.widget_prototype(edit_form.sourceLinks.vars.prototype)|e }}">
-                    {% for link in edit_form.sourceLinks %}
+                    <tbody class="links" data-prototype="{{ widget_prototype_macro.widget_prototype(edit_form.sourceLinkTranslations.vars.prototype)|e }}">
+                    {% for link in edit_form.sourceLinkTranslations %}
                         <tr>
                             <td style="padding: 10px;">{{ form_row(link.name) }}</td>
                             <td style="padding: 10px;">{{ form_row(link.url) }}</td>
@@ -40,11 +51,11 @@
         </div>
     </div>
 
-    {{ form_start(delete_form) }}
-        <input class="btn" type="submit" value="Удалить">
-    {{ form_end(delete_form) }}
+    {#{{ form_start(delete_form) }}#}
+        {#<input class="btn" type="submit" value="Удалить">#}
+    {#{{ form_end(delete_form) }}#}
 
-    <br><a class="btn" href="{{ path('admin_source_index') }}">Отмена</a>
+    <br><a class="btn" href="{{ path('admin_source_translation_index', { 'locale': locale.shortname }) }}">Отмена</a>
 {% endblock %}
 
 {% macro widget_prototype(widget) %}

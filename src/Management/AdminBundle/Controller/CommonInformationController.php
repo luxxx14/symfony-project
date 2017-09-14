@@ -3,6 +3,7 @@
 namespace Management\AdminBundle\Controller;
 
 use Management\AdminBundle\Entity\CommonInformation;
+use Management\AdminBundle\Entity\CommonInformationTranslation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -15,14 +16,43 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class CommonInformationController extends Controller
 {
     /**
-     * Lists all commonInformation entities.
+     * Redirects to required route.
      *
-     * @Route("/", name="admin_common_information_index")
+     * @Route("/{action}/", requirements={"action" = "(index|new)"},
+     *     name="admin_common_information_redirect")
      * @Method("GET")
      */
-    public function indexAction()
+    public function redirectAction(string $action) {
+        $em = $this->getDoctrine()->getManager();
+
+        $defaultLocale = $em->getRepository('TranslationLocaleBundle:Locale')
+            ->findOneBy(['selected' => TRUE]);
+
+        if ($action == 'index') {
+            return $this->redirectToRoute('admin_common_information_translation_index', [
+                'locale' => $defaultLocale->getShortname()
+            ]);
+        }
+        else {
+            return $this->redirectToRoute('admin_common_information_translation_new', [
+                'locale' => $defaultLocale->getShortname()
+            ]);
+        }
+    }
+
+    /**
+     * Lists all commonInformation entities.
+     *
+     * @Route("/{locale}/", name="admin_common_information_translation_index")
+     * @Method("GET")
+     */
+    public function indexAction(string $locale)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')->findOneBy(['shortname' => $locale]);
+
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
 
         $commonInformation = $em->getRepository('ManagementAdminBundle:CommonInformation')
             ->createQueryBuilder('cI')
@@ -32,32 +62,48 @@ class CommonInformationController extends Controller
 
         return $this->render('@ManagementAdmin/commoninformation/index.html.twig', array(
             'commonInformation' => $commonInformation,
+            'locale' => $locale,
+            'locales' => $locales
         ));
     }
 
     /**
      * Creates a new commonInformation entity.
      *
-     * @Route("/new", name="admin_common_information_new")
+     * @Route("/{locale}/new", requirements={"locale" = ".[a-zA-Z]"}, name="admin_common_information_translation_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, string $locale)
     {
-        $commonInformation = new Commoninformation();
-        $form = $this->createForm('Management\AdminBundle\Form\CommonInformationType', $commonInformation);
+        $em = $this->getDoctrine()->getManager();
+
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')->findOneBy(['shortname' => $locale]);
+
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
+
+        $translation = new CommonInformationTranslation($locale);
+
+        $form = $this->createForm('Management\AdminBundle\Form\CommonInformationTranslationType', $translation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $commonInformation = new Commoninformation();
             $em->persist($commonInformation);
+
+            $translation->setSource($commonInformation);
+            $em->persist($translation);
             $em->flush();
 
-            return $this->redirectToRoute('admin_common_information_show', array('id' => $commonInformation->getId()));
+            return $this->redirectToRoute('admin_common_information_translation_index', [
+                'locale' => $locale->getShortname()
+            ]);
         }
 
         return $this->render('@ManagementAdmin/commoninformation/new.html.twig', array(
-            'commonInformation' => $commonInformation,
+            'translation' => $translation,
             'form' => $form->createView(),
+            'locale' => $locale,
+            'locales' => $locales
         ));
     }
 
@@ -80,25 +126,42 @@ class CommonInformationController extends Controller
     /**
      * Displays a form to edit an existing commonInformation entity.
      *
-     * @Route("/{id}/edit", name="admin_common_information_edit")
+     * @Route("/{id}/{locale}/edit", requirements={"id" = "\d+", "locale" = ".[a-zA-Z]"},
+     *     name="admin_common_information_translation_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, CommonInformation $commonInformation)
+    public function editAction(Request $request, CommonInformation $commonInformation, string $locale)
     {
-        $deleteForm = $this->createDeleteForm($commonInformation);
-        $editForm = $this->createForm('Management\AdminBundle\Form\CommonInformationType', $commonInformation);
+        $em = $this->getDoctrine()->getManager();
+
+        $locale = $em->getRepository('TranslationLocaleBundle:Locale')->findOneBy(['shortname' => $locale]);
+
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
+
+        $translation = $em->getRepository('ManagementAdminBundle:CommonInformationTranslation')
+            ->findOneBy(['source' => $commonInformation, 'locale' => $locale]);
+        if (!$translation) {
+            $translation = new CommonInformationTranslation($locale);
+            $translation->setSource($commonInformation);
+            $em->persist($translation);
+        }
+
+        $editForm = $this->createForm('Management\AdminBundle\Form\CommonInformationTranslationType', $translation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em->flush();
 
-            return $this->redirectToRoute('admin_common_information_index');
+            return $this->redirectToRoute('admin_common_information_translation_index', [
+                'locale' => $locale->getShortname()
+            ]);
         }
 
         return $this->render('@ManagementAdmin/commoninformation/edit.html.twig', array(
             'commonInformation' => $commonInformation,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'locale' => $locale,
+            'locales' => $locales
         ));
     }
 

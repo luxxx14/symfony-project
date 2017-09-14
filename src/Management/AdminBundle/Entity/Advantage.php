@@ -44,6 +44,11 @@ class Advantage
     private $dateOfChange;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $translations;
+
+    /**
      * Advantage constructor
      */
     public function __construct()
@@ -181,5 +186,39 @@ class Advantage
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * Add translation
+     *
+     * @param \Management\AdminBundle\Entity\AdvantageTranslation $translation
+     *
+     * @return Advantage
+     */
+    public function addTranslation(\Management\AdminBundle\Entity\AdvantageTranslation $translation)
+    {
+        $this->translations[] = $translation;
+
+        return $this;
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param \Management\AdminBundle\Entity\AdvantageTranslation $translation
+     */
+    public function removeTranslation(\Management\AdminBundle\Entity\AdvantageTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+    }
+
+    /**
+     * Get translations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 }

@@ -6,6 +6,17 @@
     <div class="margin-bottom-lg border-bottom">
         <div class="row">
             <div class="col-lg-8 col-md-8">
+                <br><nav>
+                    <ul class="navbar">
+                        {% for item in locales %}
+                            <li class="{{ item == locale ? 'active' : '' }}">
+                                <a class="btn" href="{{ path('admin_client_translation_edit', { id: client.id, locale: item.shortname }) }}">
+                                    {{ item.shortname }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav><br><br>
                 {{ form_start(edit_form) }}
                 {#<div class="form-group">#}
                     {#{{ form_label(edit_form.grayScaleImageFile) }}#}
@@ -19,11 +30,13 @@
                 <div class="form-group">
                     <label class="label">Рисунок</label>
                     <br>
+                    {% for translation in client.translations if translation.locale == locale %}
                     <img id="color-image-preview"
-                         src="{% if client.colorImageName %}
-                            {{ asset('uploads/images/client_color/' ~ client.colorImageName) }}
+                         src="{% if translation.colorImageName %}
+                            {{ asset('uploads/images/client_color/' ~ translation.colorImageName) }}
                             {% endif %}"
                          width="352px" height="200px">
+                    {% endfor %}
                     <br><br>
                     <a id="open-filesystem" class="btn">Обзор</a>
                 </div>
@@ -51,11 +64,11 @@
         </div>
     </div>
 
-    {{ form_start(delete_form) }}
-        <input class="btn" type="submit" value="Удалить">
-    {{ form_end(delete_form) }}
+    {#{{ form_start(delete_form) }}#}
+        {#<input class="btn" type="submit" value="Удалить">#}
+    {#{{ form_end(delete_form) }}#}
 
-    <br><a class="btn" href="{{ path('admin_client_index') }}">Отмена</a>
+    <br><a class="btn" href="{{ path('admin_client_translation_index', { 'locale': locale.shortname }) }}">Отмена</a>
 {% endblock %}
 
 {% block javascripts %}
@@ -63,7 +76,7 @@
     <script>
         $(document).ready(
             function() {
-                document.getElementById("management_adminbundle_client_colorImageFile_file").onchange = function () {
+                document.getElementById("management_adminbundle_clienttranslation_colorImageFile_file").onchange = function () {
                     var reader = new FileReader();
 
                     reader.onload = function (e) {
@@ -78,7 +91,7 @@
         $(document).ready(
             function() {
                 $('#open-filesystem').click( function () {
-                    $('#management_adminbundle_client_colorImageFile_file').click();
+                    $('#management_adminbundle_clienttranslation_colorImageFile_file').click();
                 })
             });
     </script>

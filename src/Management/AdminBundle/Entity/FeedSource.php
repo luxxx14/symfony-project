@@ -63,6 +63,11 @@ class FeedSource
     private $feedItems;
 
     /**
+     * @var \Translation\LocaleBundle\Entity\Locale
+     */
+    private $locale;
+
+    /**
      * FeedSource constructor
      */
     public function __construct()
@@ -331,5 +336,29 @@ class FeedSource
     public function getFeedItems()
     {
         return $this->feedItems;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param \Translation\LocaleBundle\Entity\Locale $locale
+     *
+     * @return FeedSource
+     */
+    public function setLocale(\Translation\LocaleBundle\Entity\Locale $locale = null)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return \Translation\LocaleBundle\Entity\Locale
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

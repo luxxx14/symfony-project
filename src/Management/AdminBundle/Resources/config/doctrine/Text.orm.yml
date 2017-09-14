@@ -1,0 +1,31 @@
+Management\AdminBundle\Entity\Text:
+
+    type: entity
+
+    table: text
+
+    repositoryClass: Management\AdminBundle\Repository\TextRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne: { }
+
+    oneToOne: { }
+
+    oneToMany:
+        translations:
+            targetEntity: Management\AdminBundle\Entity\TextTranslation
+            mappedBy: source
+
+    manyToMany: { }
+
+lifecycleCallbacks: { }

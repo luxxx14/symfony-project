@@ -14,8 +14,8 @@ Management\AdminBundle\Entity\CompanyInformation:
                 strategy: AUTO
 
     fields:
-        description:      { type: text, nullable: true }
-        address:          { type: string, length: 512, nullable: true }
+#        description:      { type: text, nullable: true }
+#        address:          { type: string, length: 512, nullable: true }
         email:            { type: string, length: 128, nullable: true }
         phoneNumber:      { type: string, length: 32, nullable: true }
 
@@ -26,7 +26,10 @@ Management\AdminBundle\Entity\CompanyInformation:
 
     oneToOne: { }
 
-    oneToMany: { }
+    oneToMany:
+        translations:
+            targetEntity: Management\AdminBundle\Entity\CompanyInformationTranslation
+            mappedBy: source
 
     manyToMany: { }
 

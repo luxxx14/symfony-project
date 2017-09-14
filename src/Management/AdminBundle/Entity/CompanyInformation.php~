@@ -43,6 +43,11 @@ class CompanyInformation
     private $dateOfChange;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $translations;
+
+    /**
      * CompanyInformation constructor
      */
     public function __construct()
@@ -204,5 +209,39 @@ class CompanyInformation
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * Add translation
+     *
+     * @param \Management\AdminBundle\Entity\CompanyInformationTranslation $translation
+     *
+     * @return CompanyInformation
+     */
+    public function addTranslation(\Management\AdminBundle\Entity\CompanyInformationTranslation $translation)
+    {
+        $this->translations[] = $translation;
+
+        return $this;
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param \Management\AdminBundle\Entity\CompanyInformationTranslation $translation
+     */
+    public function removeTranslation(\Management\AdminBundle\Entity\CompanyInformationTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+    }
+
+    /**
+     * Get translations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 }

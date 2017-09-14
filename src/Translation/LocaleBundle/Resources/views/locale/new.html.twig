@@ -1,0 +1,36 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Добавление языка</h1>
+
+    <div class="margin-bottom-lg border-bottom">
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
+                {{ form_start(form) }}
+
+                <div class="form-group">
+                    {{ form_label(form.language) }}
+                    {{ form_widget(form.language) }}
+                    {{ form_errors(form.language) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.shortname) }}
+                    {{ form_widget(form.shortname) }}
+                    {{ form_errors(form.shortname) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.selected) }}
+                    {{ form_widget(form.selected) }}
+                    {{ form_errors(form.selected) }}
+                </div>
+
+                <input class="btn" type="submit" value="Добавить" />
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <a class="btn" href="{{ path('admin_locale_index') }}">Отмена</a>
+{% endblock %}

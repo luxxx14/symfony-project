@@ -33,6 +33,11 @@ class CommonInformation
     private $dateOfChange;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $translations;
+
+    /**
      * CommonInformation constructor
      */
     public function __construct()
@@ -146,5 +151,39 @@ class CommonInformation
     public function getDateOfChange()
     {
         return $this->dateOfChange;
+    }
+
+    /**
+     * Add translation
+     *
+     * @param \Management\AdminBundle\Entity\CommonInformationTranslation $translation
+     *
+     * @return CommonInformation
+     */
+    public function addTranslation(\Management\AdminBundle\Entity\CommonInformationTranslation $translation)
+    {
+        $this->translations[] = $translation;
+
+        return $this;
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param \Management\AdminBundle\Entity\CommonInformationTranslation $translation
+     */
+    public function removeTranslation(\Management\AdminBundle\Entity\CommonInformationTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+    }
+
+    /**
+     * Get translations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 }
