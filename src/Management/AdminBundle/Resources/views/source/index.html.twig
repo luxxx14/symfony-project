@@ -45,7 +45,7 @@
                 </td>
                 <td>
                     {% for translation in source.translations if translation.locale == locale %}
-                        {% for link in translation.sourceLinkTranslations %}
+                        {% for link in translation.sourceLinkTranslations if link.name %}
                             <p><a href="{{ link.source.url }}" target="_blank"><i class="fa fa-link fa-lg"></i>&nbsp;</a>{{ link.name }}</p>
                             {#<p><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></p>#}
                         {% endfor %}
