@@ -45,7 +45,7 @@
 <body>
 <header>
     <a href="/" class="logo" >
-        <img src="{{ asset('bundles/frontendcomponents/img/course-orchestra-logo.png') }}" class="course-orchestra-logo" alt="logo"/>
+        <img src="{{ asset('bundles/frontendcomponents/img/course-orchestra-logo.svg') }}" class="course-orchestra-logo" alt="logo"/>
     </a>
     {#{{ dump(texts) }}#}
     <nav class="nav">
@@ -111,7 +111,7 @@
         {{ translation.description|raw }}
         {% endfor %}
     </p>
-    <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.png') }}" alt="scroll down"/></a>
+    <a href="#info"><img src="{{ asset('bundles/frontendcomponents/img/ic-scroll-down.svg') }}" alt="scroll down"/></a>
 </section>
 <section id="info" class="info">
     <h1>
@@ -466,7 +466,7 @@
         {{ translation.text }}
         {% endfor %}
     </p>
-    <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.png') }}" alt="licence"/>
+    <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.svg') }}" alt="licence"/>
     <p>
         <span id="address">
             {% for translation in texts.29.translations if translation.locale == locale %}
@@ -479,8 +479,8 @@
 <a href="#" class="back-to-top"></a>
 <div class="modal">
     <div class="modal-content">
-        <img class="kurs-logo" src="{{ asset('bundles/frontendcomponents/img/kurs-logo.png') }}" alt="kurs logo" />
-        <span class="close"><img src="{{ asset('bundles/frontendcomponents/img/ic-close.png') }}" alt="close btn" /></span>
+        <img class="kurs-logo" src="{{ asset('bundles/frontendcomponents/img/kurs-logo.svg') }}" alt="kurs logo" />
+        <span class="close"><img src="{{ asset('bundles/frontendcomponents/img/ic-close.svg') }}" alt="close btn" /></span>
         <p>
             {% for translation in companyInformation.translations if translation.locale == locale %}
             {{ translation.description }}
