@@ -15,26 +15,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: corchestra_db; Type: DATABASE; Schema: -; Owner: postgres
---
-
-CREATE DATABASE corchestra_db WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
-
-
-ALTER DATABASE corchestra_db OWNER TO postgres;
-
-\connect corchestra_db
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -1092,29 +1072,29 @@ COPY source_link_translation (id, source_translation_id, source_id, locale_id, n
 3	1	3	1	grains (системная библиотека Celesta)	https://share.curs.ru/svn/grains/	2017-09-15 19:06:05	2017-09-15 19:06:05
 4	1	4	1	Mellophone	https://share.curs.ru/svn/mellophone/	2017-09-15 19:06:05	2017-09-15 19:06:05
 5	1	5	1	Showcase	https://share.curs.ru/svn/showcase/	2017-09-15 19:06:05	2017-09-15 19:06:05
-6	2	1	2	\N	https://share.curs.ru/svn/celesta/	2017-09-15 19:06:05	2017-09-15 19:06:05
-7	2	2	2	\N	https://share.curs.ru/svn/flute/	2017-09-15 19:06:05	2017-09-15 19:06:05
-8	2	3	2	\N	https://share.curs.ru/svn/grains/	2017-09-15 19:06:05	2017-09-15 19:06:05
-9	2	4	2	\N	https://share.curs.ru/svn/mellophone/	2017-09-15 19:06:05	2017-09-15 19:06:05
-10	2	5	2	\N	https://share.curs.ru/svn/showcase/	2017-09-15 19:06:05	2017-09-15 19:06:05
 16	4	6	1	Celesta	https://svn.lancelot-it.ru:8420/svn/celesta/	2017-09-15 19:09:21	2017-09-15 19:09:21
 17	4	7	1	Flute (включая XML2Spreadsheet)	https://svn.lancelot-it.ru:8420/svn/flute/	2017-09-15 19:09:21	2017-09-15 19:09:21
 18	4	8	1	grains (системная библиотека Celesta)	https://svn.lancelot-it.ru:8420/svn/grains/	2017-09-15 19:09:21	2017-09-15 19:09:21
 19	4	9	1	Mellophone	https://svn.lancelot-it.ru:8420/svn/mellophone/	2017-09-15 19:09:21	2017-09-15 19:09:21
 20	4	10	1	Showcase	https://svn.lancelot-it.ru:8420/svn/showcase/	2017-09-15 19:09:21	2017-09-15 19:09:21
-21	5	6	2	\N	https://svn.lancelot-it.ru:8420/svn/celesta/	2017-09-15 19:09:21	2017-09-15 19:09:21
-22	5	7	2	\N	https://svn.lancelot-it.ru:8420/svn/flute/	2017-09-15 19:09:21	2017-09-15 19:09:21
-23	5	8	2	\N	https://svn.lancelot-it.ru:8420/svn/grains/	2017-09-15 19:09:21	2017-09-15 19:09:21
-24	5	9	2	\N	https://svn.lancelot-it.ru:8420/svn/mellophone/	2017-09-15 19:09:21	2017-09-15 19:09:21
-25	5	10	2	\N	https://svn.lancelot-it.ru:8420/svn/showcase/	2017-09-15 19:09:21	2017-09-15 19:09:21
 31	7	11	1	Celesta	https://svn.code.sf.net/p/kurs-celesta/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
 32	7	12	1	Flute (включая XML2Spreadsheet)	https://svn.code.sf.net/p/kurs-flute/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
 33	7	13	1	grains (системная библиотека Celesta)	https://svn.code.sf.net/p/kurs-grains/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
 34	7	14	1	Mellophone	https://svn.code.sf.net/p/kurs-mellophone/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
-35	8	11	2	\N	https://svn.code.sf.net/p/kurs-celesta/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
-36	8	12	2	\N	https://svn.code.sf.net/p/kurs-flute/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
-37	8	13	2	\N	https://svn.code.sf.net/p/kurs-grains/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
-38	8	14	2	\N	https://svn.code.sf.net/p/kurs-mellophone/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+6	2	1	2	Celesta	https://share.curs.ru/svn/celesta/	2017-09-15 19:06:05	2017-09-15 19:06:05
+25	5	10	2	Showcase	https://svn.lancelot-it.ru:8420/svn/showcase/	2017-09-15 19:09:21	2017-09-15 19:09:21
+24	5	9	2	Mellophone	https://svn.lancelot-it.ru:8420/svn/mellophone/	2017-09-15 19:09:21	2017-09-15 19:09:21
+21	5	6	2	Celesta	https://svn.lancelot-it.ru:8420/svn/celesta/	2017-09-15 19:09:21	2017-09-15 19:09:21
+38	8	14	2	Mellophone	https://svn.code.sf.net/p/kurs-mellophone/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+35	8	11	2	Celesta	https://svn.code.sf.net/p/kurs-celesta/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+22	5	7	2	Flute (including XML2Spreadsheet)	https://svn.lancelot-it.ru:8420/svn/flute/	2017-09-15 19:09:21	2017-09-15 19:09:21
+23	5	8	2	grains (system library Celesta)	https://svn.lancelot-it.ru:8420/svn/grains/	2017-09-15 19:09:21	2017-09-15 19:09:21
+36	8	12	2	Flute (including XML2Spreadsheet)	https://svn.code.sf.net/p/kurs-flute/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+37	8	13	2	grains (system library Celesta)	https://svn.code.sf.net/p/kurs-grains/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+7	2	2	2	Flute (including XML2Spreadsheet)	https://share.curs.ru/svn/flute/	2017-09-15 19:06:05	2017-09-15 19:06:05
+8	2	3	2	grains (system library Celesta)	https://share.curs.ru/svn/grains/	2017-09-15 19:06:05	2017-09-15 19:06:05
+9	2	4	2	Mellophone	https://share.curs.ru/svn/mellophone/	2017-09-15 19:06:05	2017-09-15 19:06:05
+10	2	5	2	Showcase	https://share.curs.ru/svn/showcase/	2017-09-15 19:06:05	2017-09-15 19:06:05
 \.
 
 
@@ -1131,11 +1111,11 @@ SELECT pg_catalog.setval('source_link_translation_id_seq', 39, false);
 
 COPY source_translation (id, source_id, locale_id, title, subtitle, date_of_creation, date_of_change) FROM stdin;
 1	1	1	С сайта компании КУРС	Master SVN | user: reader | pwd: reader	2017-09-15 19:06:05	2017-09-15 19:06:05
-2	1	2	\N	\N	2017-09-15 19:06:05	2017-09-15 19:06:05
 4	2	1	Lancelot-it.ru	Primary read-only copy | user: reader | pwd: platform	2017-09-15 19:09:21	2017-09-15 19:09:21
-5	2	2	\N	\N	2017-09-15 19:09:21	2017-09-15 19:09:21
 7	3	1	code.sf.net	Secondary read-only copy (sourceforge.net, anonymous access)	2017-09-15 19:10:55	2017-09-15 19:10:55
-8	3	2	\N	\N	2017-09-15 19:10:55	2017-09-15 19:10:55
+2	1	2	CURS web-site	Master SVN | user: reader | pwd: reader	2017-09-15 19:06:05	2017-09-15 19:06:05
+5	2	2	Lancelot-it.ru	Primary read-only copy | user: reader | pwd: platform	2017-09-15 19:09:21	2017-09-15 19:09:21
+8	3	2	code.sf.net	Secondary read-only copy (sourceforge.net, anonymous access)	2017-09-15 19:10:55	2017-09-15 19:10:55
 \.
 
 

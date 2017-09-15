@@ -118,8 +118,9 @@ class InitialController extends Controller {
         $sources = $em->getRepository('ManagementAdminBundle:Source')
             ->createQueryBuilder('s')
             ->leftJoin('s.sourceLinks', 'sL')
+            ->leftJoin('sL.translations', 'sLT')
             ->orderBy('s.id', 'ASC')
-            ->orderBy('sL.id', 'ASC')
+            ->orderBy('sLT.id', 'ASC')
             ->getQuery()
             ->getResult();
 
