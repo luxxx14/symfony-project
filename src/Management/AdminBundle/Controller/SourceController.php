@@ -216,6 +216,12 @@ class SourceController extends Controller
                         }
                     }
                 }
+                else {
+                    if ($sourceLinkTranslation->getSource()->getUrl() != $sourceLinkTranslation->getUrl()) {
+                        $sourceLinkTranslation->getSource()->setUrl($sourceLinkTranslation->getUrl());
+                        $em->persist($sourceLinkTranslation->getSource());
+                    }
+                }
             }
 
             foreach ($currentSourceLinkTranslations as $currentSourceLinkTranslation) {
