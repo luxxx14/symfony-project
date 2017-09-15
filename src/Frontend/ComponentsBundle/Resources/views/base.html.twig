@@ -381,12 +381,14 @@
         </p>
         <ul>
             {% for source in sources %}
-            <li>
-                <h3>{{ source.title }}<span>{{ source.subtitle }}</span></h3>
-                {% for link in source.sourceLinks %}
-                    <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
+                {% for translation in source.translations if translation.locale == locale %}
+                <li>
+                    <h3>{{ translation.title }}<span>{{ translation.subtitle }}</span></h3>
+                    {% for link in translation.sourceLinkTranslations %}
+                        <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
+                    {% endfor %}
+                </li>
                 {% endfor %}
-            </li>
             {% endfor %}
         </ul>
     </div>
