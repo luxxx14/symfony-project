@@ -52,33 +52,33 @@
         <ul>
             <li><a href="#info">
                     {% for translation in texts.0.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                 </a></li>
             <li><a href="#advantages">
                     {% for translation in texts.1.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                 </a></li>
             <li><a href="#users">
                     {% for translation in texts.2.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                     {% endfor %}
                 </a></li>
             <li><a href="#download">
                     {% for translation in texts.3.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                     {% endfor %}
                 </a></li>
             <li><a href="#news">
                     {% for translation in texts.4.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                     {% endfor %}
                 </a></li>
             <li>
                 <a href="https://corchestra.ru/wiki" target="_blank">
                     {% for translation in texts.5.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                     {% endfor %}
                 </a>
                 {#{% if app.request.schemeAndHttpHost == 'https://staging.corchestra.ru' %}#}
@@ -116,7 +116,7 @@
 <section id="info" class="info">
     <h1>
         {% for translation in texts.6.translations if translation.locale == locale %}
-        {{ translation.text }}
+        {{ translation.text | raw }}
         {% endfor %}
     </h1>
     <div class="row">
@@ -147,7 +147,7 @@
 <section id="advantages" class="advantages">
     <h1>
         {% for translation in texts.7.translations if translation.locale == locale %}
-        {{ translation.text }}
+        {{ translation.text | raw }}
         {% endfor %}
     </h1>
     <div class="row">
@@ -176,7 +176,7 @@
 <section id="users" class="users">
     <h1>
         {% for translation in texts.8.translations if translation.locale == locale %}
-        {{ translation.text }}
+        {{ translation.text | raw }}
         {% endfor %}
     </h1>
     <div class="row">
@@ -205,29 +205,29 @@
 <section id="download" class="download">
     <h1>
         {% for translation in texts.9.translations if translation.locale == locale %}
-        {{ translation.text }}
+        {{ translation.text | raw }}
         {% endfor %}
     </h1>
     <h2>
         {% for translation in texts.10.translations if translation.locale == locale %}
-        {{ translation.text }}
+        {{ translation.text | raw }}
         {% endfor %}
     </h2>
     <nav>
         <ul>
             <li><a href="#stable" class="active">
                     {% for translation in texts.11.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                 </a></li>
             <li><a href="#newest-version">
                     {% for translation in texts.12.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                 </a></li>
             <li><a href="#source-code">
                     {% for translation in texts.13.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                 </a></li>
         </ul>
@@ -236,14 +236,14 @@
         <div class="row">
             <p>
                 {% for translation in texts.14.translations if translation.locale == locale %}
-                {{ translation.text }}
+                {{ translation.text | raw }}
                 {% endfor %}
             </p>
             <div class="download-link">
                 {% if builds.stable and builds.stable.0 %}
                 <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}" target="_blank">
                     {% for translation in texts.17.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                     {{ ' ' ~ builds.stable.0.name ~ ' ' ~ builds.stable.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
@@ -252,7 +252,7 @@
             <div class="col-xs-4">
                 <span class="show-components">
                     {% for translation in texts.19.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                 </span>
                 <ul class="components">
@@ -277,12 +277,12 @@
                 <div>
                     <h3>
                         {% for translation in texts.20.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                         {% endfor %}
                     </h3>
                     <a class="history-link" href="http://corchestra.ru/download/builds/stable/" target="_blank">
                         {% for translation in texts.21.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                         {% endfor %}
                     </a>
                     <ul class="list">
@@ -307,14 +307,14 @@
         <div class="row">
             <p>
                 {% for translation in texts.15.translations if translation.locale == locale %}
-                {{ translation.text }}
+                {{ translation.text | raw }}
                 {% endfor %}
             </p>
             <div class="download-link">
                 {% if builds.stable and builds.stable.0 %}
                 <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}" target="_blank">
                     {% for translation in texts.18.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                     {{ ' ' ~ builds.newest.0.name ~ ' ' ~ builds.newest.0.date|date('Y-m-d') ~ ' (ZIP)' }}
                 </a>
@@ -323,7 +323,7 @@
             <div class="col-xs-4">
                 <span class="show-components">
                     {% for translation in texts.19.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                 </span>
                 <ul class="components">
@@ -348,11 +348,11 @@
                 <div>
                     <h3>
                         {% for translation in texts.20.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                         {% endfor %}
                     </h3><a class="history-link" href="http://corchestra.ru/download/builds/trunk/" target="_blank">
                         {% for translation in texts.21.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                         {% endfor %}
                     </a>
                     <ul class="list">
@@ -376,7 +376,7 @@
     <div id="source-code" class="source-code">
         <p>
             {% for translation in texts.16.translations if translation.locale == locale %}
-            {{ translation.text }}
+            {{ translation.text | raw }}
             {% endfor %}
         </p>
         <ul>
@@ -398,7 +398,7 @@
         <div class="col-xs-7">
             <h1>
                 {% for translation in texts.22.translations if translation.locale == locale %}
-                {{ translation.text }}
+                {{ translation.text | raw }}
                 {% endfor %}
             </h1>
             <ul>
@@ -411,7 +411,7 @@
             </ul>
             <a class="button" href="{{ selectedFeedSource.link }}" target="_blank">
                 {% for translation in texts.27.translations if translation.locale == locale %}
-                {{ translation.text }}
+                {{ translation.text | raw }}
                 {% endfor %}
             </a>
         </div>
@@ -419,13 +419,13 @@
             <form id="subscribe-form">
 				<h3>
                     {% for translation in texts.23.translations if translation.locale == locale %}
-                    {{ translation.text }}
+                    {{ translation.text | raw }}
                     {% endfor %}
                 </h3>
 				<div class="input-block">							
 					<p>
                         {% for translation in texts.24.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                         {% endfor %}
                     </p>
 					<div>
@@ -433,7 +433,7 @@
                         {% for translation in texts.25.translations if translation.locale == locale %}
                         {% set placeholder = placeholder ~ translation.text %}
                         {% endfor %}
-						<input placeholder="{{ placeholder }}"/>
+						<input placeholder="{{ placeholder | raw }}"/>
 						<button></button>
 					</div>
 				</div>
@@ -445,7 +445,7 @@
 				<p class="new-policy">
                     <strong>
                         {% for translation in texts.26.translations if translation.locale == locale %}
-                        {{ translation.text }}
+                        {{ translation.text | raw }}
                         {% endfor %}
                     </strong>
                 </p>
@@ -465,14 +465,14 @@
 <footer>
     <p>
         {% for translation in texts.28.translations if translation.locale == locale %}
-        {{ translation.text }}
+        {{ translation.text | raw }}
         {% endfor %}
     </p>
     <img src="{{ asset('bundles/frontendcomponents/img/gpl-license-logo.png') }}" alt="licence"/>
     <p>
         <span id="address">
             {% for translation in texts.29.translations if translation.locale == locale %}
-                {{ translation.text }}
+                {{ translation.text | raw }}
             {% endfor %}
         </span>
         © 1998-2017
