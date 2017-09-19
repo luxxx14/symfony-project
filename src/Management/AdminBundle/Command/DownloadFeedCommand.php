@@ -26,29 +26,34 @@ class DownloadFeedCommand extends ContainerAwareCommand {
 
         $feedIo = $this->getContainer()->get('feedio');
 
-        $feedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
-            ->findOneBy(['selected' => TRUE]);
+//        $feedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+//            ->findOneBy(['selected' => TRUE]);
 
-        /** Now fetch its (fresh) content */
-        $feed = $feedIo->readSince($feedSource->getUrl(), $modifiedSince)->getFeed();
+        $feedSources = $em->getRepository('ManagementAdminBundle:FeedSource')->findAll();
 
-        foreach ($feed as $item) {
-            $loadedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['link' => $item->getLink()]);
+        foreach($feedSources as $feedSource) {
 
-            if (!$loadedItem and !($this->startsWith($item->getTitle(), 'Re: ['))) {
-                $feed = new Feed(
-                    $item->getPublicId(),
-                    $item->getTitle(),
-                    $item->getDescription(),
-                    $item->getAuthor()->getName(),
-                    $item->getLastModified(),
-                    $item->getLink(),
-                    $feedSource,
-                    $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'Опубликована'])
-                );
+            /** Now fetch its (fresh) content */
+            $feed = $feedIo->readSince($feedSource->getUrl(), $modifiedSince)->getFeed();
 
-                $em->persist($feed);
-                $em->flush();
+            foreach ($feed as $item) {
+                $loadedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['link' => $item->getLink()]);
+
+                if (!$loadedItem and !($this->startsWith($item->getTitle(), 'Re: ['))) {
+                    $feed = new Feed(
+                        $item->getPublicId(),
+                        $item->getTitle(),
+                        $item->getDescription(),
+                        $item->getAuthor()->getName(),
+                        $item->getLastModified(),
+                        $item->getLink(),
+                        $feedSource,
+                        $em->getRepository('ManagementAdminBundle:FeedStatus')->findOneBy(['name' => 'Опубликована'])
+                    );
+
+                    $em->persist($feed);
+                    $em->flush();
+                }
             }
         }
 

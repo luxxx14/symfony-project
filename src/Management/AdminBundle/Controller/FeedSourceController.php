@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FeedSourceController extends Controller
 {
+
     /**
      * Lists all feedSource entities
      *
@@ -27,6 +28,10 @@ class FeedSourceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
+
+        $em = $this->getDoctrine()->getManager();
+
         $feedSources = $em->getRepository('ManagementAdminBundle:FeedSource')
             ->createQueryBuilder('fS')
             ->orderBy('fS.id', 'ASC')
@@ -35,6 +40,7 @@ class FeedSourceController extends Controller
 
         return $this->render('@ManagementAdmin/feedsource/index.html.twig', array(
             'feedSources' => $feedSources,
+            'locales' => $locales
         ));
     }
 
@@ -115,7 +121,7 @@ class FeedSourceController extends Controller
     public function editAction(Request $request, FeedSource $feedSource)
     {
         $deleteForm = $this->createDeleteForm($feedSource);
-        $editForm = $this->createForm('Management\AdminBundle\Form\FeedSourceType', $feedSource);
+        $editForm = $this->createForm('Management\AdminBundle\Form\FeedSourceEditType', $feedSource);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

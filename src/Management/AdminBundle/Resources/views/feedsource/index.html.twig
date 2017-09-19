@@ -11,8 +11,7 @@
                 <th style="width: 19% !important;">Public ID</th>
                 <th style="width: 10% !important;">Заголовок</th>
                 <th style="width: 24% !important;">Описание</th>
-                {#<th>Последнее обновление</th>#}
-                <th style="width: 10% !important;">Основной?</th>
+                <th style="width: 10% !important;">Язык</th>
                 <th style="width: 10% !important;">Действия</th>
             </tr>
         </thead>
@@ -30,14 +29,9 @@
                 <td>{{ feedSource.description }}</td>
                 {#<td>{% if feedSource.lastModified %}{{ feedSource.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>#}
                 <td style="text-align: center; color: {{ feedSource.selected ? 'green;' : 'black;' }}">
-                    {{ feedSource.selected ? '&#10004;'|raw : '&#10008;'|raw }}
+                    {{ feedSource.locale.shortname }}
                 </td>
                 <td><nav><ul class="navbar">
-                    {#<li>#}
-                        {#<a href="{{ path('admin_feed_source_show', { 'id': feedSource.id }) }}">#}
-                            {#<i class="fa fa-search fa-lg"></i>#}
-                        {#</a>#}
-                    {#</li>#}
                     <li>
                         <a href="{{ path('admin_feed_source_edit', { 'id': feedSource.id }) }}">
                             <i class="fa fa-pencil fa-lg"></i>

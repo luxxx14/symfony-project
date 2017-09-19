@@ -20,7 +20,6 @@ Management\AdminBundle\Entity\FeedSource:
         title:          { type: string, length: 1024, nullable: true }
         description:    { type: text, nullable: true }
         lastModified:   { type: datetime, nullable: true }
-        selected:       { type: boolean, nullable: true }
 
         dateOfCreation: { type: datetime, nullable: false }
         dateOfChange:   { type: datetime, nullable: false }

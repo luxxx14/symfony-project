@@ -2,6 +2,8 @@
 
 namespace Management\AdminBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -66,18 +68,46 @@ class FeedSourceType extends AbstractType
 //                ],
 //                'required' => false
 //            ))
-            ->add('selected', ChoiceType::class, array(
-                'label' => 'Выбран как основной источник?',
+//            ->add('selected', ChoiceType::class, array(
+//                'label' => 'Выбран как основной источник?',
+//                'label_attr' => [
+//                    'class' => 'label'
+//                ],
+//                'attr' => [
+//                    'class' => 'form-control'
+//                ],
+//                'choices'  => array(
+//                    'Нет' => FALSE,
+//                    'Да' => TRUE
+//                ),
+//                'required' => true
+//            ))
+            ->add('locale', EntityType::class, array(
+                'label' => 'Перевод',
                 'label_attr' => [
                     'class' => 'label'
                 ],
-                'attr' => [
+                'attr' => array(
                     'class' => 'form-control'
-                ],
-                'choices'  => array(
-                    'Нет' => FALSE,
-                    'Да' => TRUE
                 ),
+                'class' => 'Translation\LocaleBundle\Entity\Locale',
+                'choice_label' => 'shortname',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('l');
+
+                    $usedLocales = $qb->select('DISTINCT usedLocales.id')
+                        ->from('ManagementAdminBundle:FeedSource', 'fS')
+                        ->join('fS.locale', 'usedLocales')
+                        ->where('usedLocales.id IS NOT NULL')
+                        ->getQuery()
+                        ->getResult();
+
+                    $qb
+                        ->select('l')
+                        ->where('l NOT IN (:usedLocales)')
+                        ->setParameter('usedLocales', $usedLocales);
+                    return $qb;
+                },
                 'required' => true
             ))
         ;

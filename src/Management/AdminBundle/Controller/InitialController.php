@@ -102,7 +102,7 @@ class InitialController extends Controller {
             ->getResult();
 
         $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
-            ->findOneBy(['selected' => TRUE]);
+            ->findOneBy(['locale' => $locale]);
         $feed = $em->getRepository('ManagementAdminBundle:Feed')
             ->createQueryBuilder('f')
             ->where('f.status = :status')
