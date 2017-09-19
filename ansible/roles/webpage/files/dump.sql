@@ -2,12 +2,11 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.4
--- Dumped by pg_dump version 9.6.2
+-- Dumped from database version 9.5.8
+-- Dumped by pg_dump version 9.5.8
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -35,7 +34,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: advantage; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: advantage; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE advantage (
@@ -45,10 +44,10 @@ CREATE TABLE advantage (
 );
 
 
-ALTER TABLE advantage OWNER TO corchestra_db_user;
+ALTER TABLE advantage OWNER TO postgres;
 
 --
--- Name: advantage_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: advantage_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE advantage_id_seq
@@ -59,10 +58,10 @@ CREATE SEQUENCE advantage_id_seq
     CACHE 1;
 
 
-ALTER TABLE advantage_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE advantage_id_seq OWNER TO postgres;
 
 --
--- Name: advantage_translation; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: advantage_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE advantage_translation (
@@ -76,10 +75,10 @@ CREATE TABLE advantage_translation (
 );
 
 
-ALTER TABLE advantage_translation OWNER TO corchestra_db_user;
+ALTER TABLE advantage_translation OWNER TO postgres;
 
 --
--- Name: advantage_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: advantage_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE advantage_translation_id_seq
@@ -90,10 +89,10 @@ CREATE SEQUENCE advantage_translation_id_seq
     CACHE 1;
 
 
-ALTER TABLE advantage_translation_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE advantage_translation_id_seq OWNER TO postgres;
 
 --
--- Name: client; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: client; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE client (
@@ -103,10 +102,10 @@ CREATE TABLE client (
 );
 
 
-ALTER TABLE client OWNER TO corchestra_db_user;
+ALTER TABLE client OWNER TO postgres;
 
 --
--- Name: client_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: client_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE client_id_seq
@@ -117,10 +116,10 @@ CREATE SEQUENCE client_id_seq
     CACHE 1;
 
 
-ALTER TABLE client_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE client_id_seq OWNER TO postgres;
 
 --
--- Name: client_translation; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: client_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE client_translation (
@@ -134,10 +133,10 @@ CREATE TABLE client_translation (
 );
 
 
-ALTER TABLE client_translation OWNER TO corchestra_db_user;
+ALTER TABLE client_translation OWNER TO postgres;
 
 --
--- Name: client_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: client_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE client_translation_id_seq
@@ -148,10 +147,10 @@ CREATE SEQUENCE client_translation_id_seq
     CACHE 1;
 
 
-ALTER TABLE client_translation_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE client_translation_id_seq OWNER TO postgres;
 
 --
--- Name: common_information; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: common_information; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE common_information (
@@ -161,10 +160,10 @@ CREATE TABLE common_information (
 );
 
 
-ALTER TABLE common_information OWNER TO corchestra_db_user;
+ALTER TABLE common_information OWNER TO postgres;
 
 --
--- Name: common_information_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: common_information_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE common_information_id_seq
@@ -175,10 +174,10 @@ CREATE SEQUENCE common_information_id_seq
     CACHE 1;
 
 
-ALTER TABLE common_information_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE common_information_id_seq OWNER TO postgres;
 
 --
--- Name: common_information_translation; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: common_information_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE common_information_translation (
@@ -192,10 +191,10 @@ CREATE TABLE common_information_translation (
 );
 
 
-ALTER TABLE common_information_translation OWNER TO corchestra_db_user;
+ALTER TABLE common_information_translation OWNER TO postgres;
 
 --
--- Name: common_information_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: common_information_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE common_information_translation_id_seq
@@ -206,10 +205,10 @@ CREATE SEQUENCE common_information_translation_id_seq
     CACHE 1;
 
 
-ALTER TABLE common_information_translation_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE common_information_translation_id_seq OWNER TO postgres;
 
 --
--- Name: company_information; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: company_information; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE company_information (
@@ -221,10 +220,10 @@ CREATE TABLE company_information (
 );
 
 
-ALTER TABLE company_information OWNER TO corchestra_db_user;
+ALTER TABLE company_information OWNER TO postgres;
 
 --
--- Name: company_information_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: company_information_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE company_information_id_seq
@@ -235,10 +234,10 @@ CREATE SEQUENCE company_information_id_seq
     CACHE 1;
 
 
-ALTER TABLE company_information_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE company_information_id_seq OWNER TO postgres;
 
 --
--- Name: company_information_translation; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: company_information_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE company_information_translation (
@@ -252,10 +251,10 @@ CREATE TABLE company_information_translation (
 );
 
 
-ALTER TABLE company_information_translation OWNER TO corchestra_db_user;
+ALTER TABLE company_information_translation OWNER TO postgres;
 
 --
--- Name: company_information_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: company_information_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE company_information_translation_id_seq
@@ -266,10 +265,10 @@ CREATE SEQUENCE company_information_translation_id_seq
     CACHE 1;
 
 
-ALTER TABLE company_information_translation_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE company_information_translation_id_seq OWNER TO postgres;
 
 --
--- Name: component; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: component; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE component (
@@ -280,10 +279,10 @@ CREATE TABLE component (
 );
 
 
-ALTER TABLE component OWNER TO corchestra_db_user;
+ALTER TABLE component OWNER TO postgres;
 
 --
--- Name: component_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: component_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE component_id_seq
@@ -294,10 +293,10 @@ CREATE SEQUENCE component_id_seq
     CACHE 1;
 
 
-ALTER TABLE component_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE component_id_seq OWNER TO postgres;
 
 --
--- Name: component_translation; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: component_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE component_translation (
@@ -311,10 +310,10 @@ CREATE TABLE component_translation (
 );
 
 
-ALTER TABLE component_translation OWNER TO corchestra_db_user;
+ALTER TABLE component_translation OWNER TO postgres;
 
 --
--- Name: component_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: component_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE component_translation_id_seq
@@ -325,10 +324,10 @@ CREATE SEQUENCE component_translation_id_seq
     CACHE 1;
 
 
-ALTER TABLE component_translation_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE component_translation_id_seq OWNER TO postgres;
 
 --
--- Name: feed; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: feed; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE feed (
@@ -346,10 +345,10 @@ CREATE TABLE feed (
 );
 
 
-ALTER TABLE feed OWNER TO corchestra_db_user;
+ALTER TABLE feed OWNER TO postgres;
 
 --
--- Name: feed_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: feed_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE feed_id_seq
@@ -360,10 +359,10 @@ CREATE SEQUENCE feed_id_seq
     CACHE 1;
 
 
-ALTER TABLE feed_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE feed_id_seq OWNER TO postgres;
 
 --
--- Name: feed_source; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: feed_source; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE feed_source (
@@ -381,10 +380,10 @@ CREATE TABLE feed_source (
 );
 
 
-ALTER TABLE feed_source OWNER TO corchestra_db_user;
+ALTER TABLE feed_source OWNER TO postgres;
 
 --
--- Name: feed_source_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: feed_source_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE feed_source_id_seq
@@ -395,10 +394,10 @@ CREATE SEQUENCE feed_source_id_seq
     CACHE 1;
 
 
-ALTER TABLE feed_source_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE feed_source_id_seq OWNER TO postgres;
 
 --
--- Name: feed_status; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: feed_status; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE feed_status (
@@ -410,10 +409,10 @@ CREATE TABLE feed_status (
 );
 
 
-ALTER TABLE feed_status OWNER TO corchestra_db_user;
+ALTER TABLE feed_status OWNER TO postgres;
 
 --
--- Name: feed_status_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: feed_status_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE feed_status_id_seq
@@ -424,10 +423,10 @@ CREATE SEQUENCE feed_status_id_seq
     CACHE 1;
 
 
-ALTER TABLE feed_status_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE feed_status_id_seq OWNER TO postgres;
 
 --
--- Name: locale; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: locale; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE locale (
@@ -440,10 +439,10 @@ CREATE TABLE locale (
 );
 
 
-ALTER TABLE locale OWNER TO corchestra_db_user;
+ALTER TABLE locale OWNER TO postgres;
 
 --
--- Name: locale_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: locale_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE locale_id_seq
@@ -454,10 +453,10 @@ CREATE SEQUENCE locale_id_seq
     CACHE 1;
 
 
-ALTER TABLE locale_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE locale_id_seq OWNER TO postgres;
 
 --
--- Name: source; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: source; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE source (
@@ -467,10 +466,10 @@ CREATE TABLE source (
 );
 
 
-ALTER TABLE source OWNER TO corchestra_db_user;
+ALTER TABLE source OWNER TO postgres;
 
 --
--- Name: source_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: source_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE source_id_seq
@@ -481,10 +480,10 @@ CREATE SEQUENCE source_id_seq
     CACHE 1;
 
 
-ALTER TABLE source_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE source_id_seq OWNER TO postgres;
 
 --
--- Name: source_link; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: source_link; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE source_link (
@@ -496,10 +495,10 @@ CREATE TABLE source_link (
 );
 
 
-ALTER TABLE source_link OWNER TO corchestra_db_user;
+ALTER TABLE source_link OWNER TO postgres;
 
 --
--- Name: source_link_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE source_link_id_seq
@@ -510,10 +509,10 @@ CREATE SEQUENCE source_link_id_seq
     CACHE 1;
 
 
-ALTER TABLE source_link_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE source_link_id_seq OWNER TO postgres;
 
 --
--- Name: source_link_translation; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE source_link_translation (
@@ -528,10 +527,10 @@ CREATE TABLE source_link_translation (
 );
 
 
-ALTER TABLE source_link_translation OWNER TO corchestra_db_user;
+ALTER TABLE source_link_translation OWNER TO postgres;
 
 --
--- Name: source_link_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE source_link_translation_id_seq
@@ -542,10 +541,10 @@ CREATE SEQUENCE source_link_translation_id_seq
     CACHE 1;
 
 
-ALTER TABLE source_link_translation_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE source_link_translation_id_seq OWNER TO postgres;
 
 --
--- Name: source_translation; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: source_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE source_translation (
@@ -559,10 +558,10 @@ CREATE TABLE source_translation (
 );
 
 
-ALTER TABLE source_translation OWNER TO corchestra_db_user;
+ALTER TABLE source_translation OWNER TO postgres;
 
 --
--- Name: source_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: source_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE source_translation_id_seq
@@ -573,10 +572,10 @@ CREATE SEQUENCE source_translation_id_seq
     CACHE 1;
 
 
-ALTER TABLE source_translation_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE source_translation_id_seq OWNER TO postgres;
 
 --
--- Name: subscriber; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: subscriber; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE subscriber (
@@ -588,10 +587,10 @@ CREATE TABLE subscriber (
 );
 
 
-ALTER TABLE subscriber OWNER TO corchestra_db_user;
+ALTER TABLE subscriber OWNER TO postgres;
 
 --
--- Name: subscriber_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: subscriber_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE subscriber_id_seq
@@ -602,10 +601,10 @@ CREATE SEQUENCE subscriber_id_seq
     CACHE 1;
 
 
-ALTER TABLE subscriber_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE subscriber_id_seq OWNER TO postgres;
 
 --
--- Name: system_user; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: system_user; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE system_user (
@@ -625,17 +624,17 @@ CREATE TABLE system_user (
 );
 
 
-ALTER TABLE system_user OWNER TO corchestra_db_user;
+ALTER TABLE system_user OWNER TO postgres;
 
 --
--- Name: COLUMN system_user.roles; Type: COMMENT; Schema: public; Owner: corchestra_db_user
+-- Name: COLUMN system_user.roles; Type: COMMENT; Schema: public; Owner: postgres
 --
 
 COMMENT ON COLUMN system_user.roles IS '(DC2Type:array)';
 
 
 --
--- Name: system_user_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: system_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE system_user_id_seq
@@ -646,10 +645,10 @@ CREATE SEQUENCE system_user_id_seq
     CACHE 1;
 
 
-ALTER TABLE system_user_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE system_user_id_seq OWNER TO postgres;
 
 --
--- Name: text; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: text; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE text (
@@ -659,10 +658,10 @@ CREATE TABLE text (
 );
 
 
-ALTER TABLE text OWNER TO corchestra_db_user;
+ALTER TABLE text OWNER TO postgres;
 
 --
--- Name: text_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: text_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE text_id_seq
@@ -673,10 +672,10 @@ CREATE SEQUENCE text_id_seq
     CACHE 1;
 
 
-ALTER TABLE text_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE text_id_seq OWNER TO postgres;
 
 --
--- Name: text_translation; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: text_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE text_translation (
@@ -689,10 +688,10 @@ CREATE TABLE text_translation (
 );
 
 
-ALTER TABLE text_translation OWNER TO corchestra_db_user;
+ALTER TABLE text_translation OWNER TO postgres;
 
 --
--- Name: text_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: text_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE text_translation_id_seq
@@ -703,10 +702,10 @@ CREATE SEQUENCE text_translation_id_seq
     CACHE 1;
 
 
-ALTER TABLE text_translation_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE text_translation_id_seq OWNER TO postgres;
 
 --
--- Name: version; Type: TABLE; Schema: public; Owner: corchestra_db_user
+-- Name: version; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE version (
@@ -718,10 +717,10 @@ CREATE TABLE version (
 );
 
 
-ALTER TABLE version OWNER TO corchestra_db_user;
+ALTER TABLE version OWNER TO postgres;
 
 --
--- Name: version_id_seq; Type: SEQUENCE; Schema: public; Owner: corchestra_db_user
+-- Name: version_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE version_id_seq
@@ -732,10 +731,10 @@ CREATE SEQUENCE version_id_seq
     CACHE 1;
 
 
-ALTER TABLE version_id_seq OWNER TO corchestra_db_user;
+ALTER TABLE version_id_seq OWNER TO postgres;
 
 --
--- Data for Name: advantage; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: advantage; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY advantage (id, date_of_creation, date_of_change) FROM stdin;
@@ -749,14 +748,14 @@ COPY advantage (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
--- Name: advantage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: advantage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('advantage_id_seq', 9, true);
 
 
 --
--- Data for Name: advantage_translation; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: advantage_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY advantage_translation (id, locale_id, source_id, description, date_of_creation, date_of_change, image_name) FROM stdin;
@@ -776,14 +775,14 @@ COPY advantage_translation (id, locale_id, source_id, description, date_of_creat
 
 
 --
--- Name: advantage_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: advantage_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('advantage_translation_id_seq', 35, true);
 
 
 --
--- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY client (id, date_of_creation, date_of_change) FROM stdin;
@@ -797,14 +796,14 @@ COPY client (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
--- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('client_id_seq', 36, true);
 
 
 --
--- Data for Name: client_translation; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: client_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY client_translation (id, locale_id, source_id, title, date_of_creation, date_of_change, color_image_name) FROM stdin;
@@ -824,14 +823,14 @@ COPY client_translation (id, locale_id, source_id, title, date_of_creation, date
 
 
 --
--- Name: client_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: client_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('client_translation_id_seq', 24, true);
 
 
 --
--- Data for Name: common_information; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: common_information; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY common_information (id, date_of_creation, date_of_change) FROM stdin;
@@ -840,14 +839,14 @@ COPY common_information (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
--- Name: common_information_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: common_information_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('common_information_id_seq', 1, true);
 
 
 --
--- Data for Name: common_information_translation; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: common_information_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY common_information_translation (id, locale_id, source_id, title, description, date_of_creation, date_of_change) FROM stdin;
@@ -857,14 +856,14 @@ COPY common_information_translation (id, locale_id, source_id, title, descriptio
 
 
 --
--- Name: common_information_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: common_information_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('common_information_translation_id_seq', 4, true);
 
 
 --
--- Data for Name: company_information; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: company_information; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY company_information (id, email, phone_number, date_of_creation, date_of_change) FROM stdin;
@@ -873,14 +872,14 @@ COPY company_information (id, email, phone_number, date_of_creation, date_of_cha
 
 
 --
--- Name: company_information_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: company_information_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('company_information_id_seq', 2, true);
 
 
 --
--- Data for Name: company_information_translation; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: company_information_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY company_information_translation (id, locale_id, source_id, description, address, date_of_creation, date_of_change) FROM stdin;
@@ -890,14 +889,14 @@ COPY company_information_translation (id, locale_id, source_id, description, add
 
 
 --
--- Name: company_information_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: company_information_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('company_information_translation_id_seq', 4, true);
 
 
 --
--- Data for Name: component; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: component; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY component (id, date_of_creation, date_of_change, wiki_url) FROM stdin;
@@ -910,14 +909,14 @@ COPY component (id, date_of_creation, date_of_change, wiki_url) FROM stdin;
 
 
 --
--- Name: component_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: component_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('component_id_seq', 8, true);
 
 
 --
--- Data for Name: component_translation; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: component_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY component_translation (id, locale_id, source_id, name, description, date_of_creation, date_of_change) FROM stdin;
@@ -935,14 +934,14 @@ COPY component_translation (id, locale_id, source_id, name, description, date_of
 
 
 --
--- Name: component_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: component_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('component_translation_id_seq', 25, true);
 
 
 --
--- Data for Name: feed; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: feed; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY feed (id, link, public_id, title, text, author, last_modified, status, date_of_creation, date_of_change, feed_source_id) FROM stdin;
@@ -951,20 +950,25 @@ COPY feed (id, link, public_id, title, text, author, last_modified, status, date
 15	https://groups.google.com/d/msg/curs-group/E9uXjlDlaw8/D6BeaR75AwAJ	https://groups.google.com/d/topic/curs-group/E9uXjlDlaw8	В Celesta-SQL добавлены агрегатные функции	В Celesta-SQL были добавлены следующие конструкции: 1. COUNT(*) 2. SUM 3. MIN 4. MAX 5. GROUP BY Эти конструкции можно использовать при создании View, например: - CREATE VIEW testView1 AS select sum (f1 * 2 + f2) as sumv, f3 from testTable group by f3; - CREATE VIEW	\nioanngolovko	2017-05-30 11:51:59	Опубликована	2017-08-11 20:06:43	2017-08-11 20:06:43	1
 14	https://groups.google.com/d/msg/curs-group/-r0ut7yjlgw/6CdCQ2GCBgAJ	https://groups.google.com/d/topic/curs-group/-r0ut7yjlgw	Celesta теперь поддерживает триггеры для системных курсоров	Всем доброго времени суток. В Celesta добавлена возможность регистрировать триггеры для системных курсоров. Регистрация триггеров на системные курсоры отличается от курсоров, сгенерированных в Jython модули. В каждый системный курсор добавлены статические методы для регистрации триггеров	\nioanngolovko	2017-05-31 20:23:15	Отклонена	2017-08-11 20:06:43	2017-08-11 20:06:43	1
 13	https://groups.google.com/d/msg/curs-group/B9lUYCxEAoU/ogz9dajQBgAJ	https://groups.google.com/d/topic/curs-group/B9lUYCxEAoU	Опрос: что из этих двух фич вы хотели бы видеть во Flute/Celesta?	Уважаемые коллеги! Некоторое время назад вашим решением была оставлена поддержка SQL Server2008, и вот снова нам важно ваше мнение. Какую из двух перечисленных доработок платформы вы считаете более нужной/перспективной? Поясню ситуацию. Для решения некоторой задачи на проекте М. без доработок	\nIvan Ponomarev	2017-06-01 20:17:42	На модерации	2017-08-11 20:06:43	2017-08-11 20:06:43	1
-2	https://groups.google.com/d/msg/curs-group/nkU5aZlHTO0/NXDGNfDoAAAJ	https://groups.google.com/d/topic/curs-group/nkU5aZlHTO0	Новости платформы Курс: реализована поддержка материализованных представлений (Materialized View) в celesta	Уважаемые пользователи платформы Курс. С 25 июля синтаксис CelestaSQL поддерживает материализованные представления - Materialized View. Материализованное представление - физический объект базы данных, содержащий результат выполнения запроса. Материализованные представления позволяют существенно	\nioanngolovko	2017-07-26 12:22:11	Отклонена	2017-08-11 20:06:43	2017-08-11 20:06:43	1
 1	https://groups.google.com/d/msg/curs-group/w9-WlUP5fLE/KLt_UfUhBQAJ	https://groups.google.com/d/topic/curs-group/w9-WlUP5fLE	Новости платформы Курс. Добавлена возможность задания списка столбцов для курсоров celesta	Уважаемые пользователи платформы Курс. Теперь в trunk релизе платформы Курс Celesta поддерживает возможность задания списка столбцов при выборке записей через курсоры celesta. Данный функционал позволит снизить нагрузку на базу данных решения (БД) и сеть, так как из базы будут выбираться данные	\nioanngolovko	2017-08-03 08:46:41	Опубликована	2017-08-11 20:06:43	2017-08-11 20:06:43	1
+2	https://groups.google.com/d/msg/curs-group/nkU5aZlHTO0/NXDGNfDoAAAJ	https://groups.google.com/d/topic/curs-group/nkU5aZlHTO0	Новости платформы Курс: реализована поддержка материализованных представлений (Materialized View) в celesta	Уважаемые пользователи платформы Курс. С 25 июля синтаксис CelestaSQL поддерживает материализованные представления - Materialized View. Материализованное представление - физический объект базы данных, содержащий результат выполнения запроса. Материализованные представления позволяют существенно	\nioanngolovko	2017-07-26 12:22:11	Опубликована	2017-08-11 20:06:43	2017-08-11 20:06:43	1
+17	https://groups.google.com/d/msg/curs-group/GHHtElD3Zl8/TYjWQgB0AgAJ	https://groups.google.com/d/topic/curs-group/GHHtElD3Zl8	Обновление сайта платформы и wiki	Уважаемые коллеги, официально объявляю о состоявшемся запуске 1. новой версии сайта платформы КУРС (https://corchestra.ru/) 2. новой версии wiki (https://corchestra.ru/wiki), которая теперь является полноценной частью сайта платформы. Добро пожаловать! Старая wiki переведена в	\nIvan Ponomarev	2017-09-02 16:27:03	На модерации	2017-09-04 10:00:03	2017-09-04 10:00:03	1
+16	https://groups.google.com/d/msg/curs-group/Oe3TfGji4qI/0UG6WcC9CQAJ	https://groups.google.com/d/topic/curs-group/Oe3TfGji4qI	Регистрация в едином реестре российских программ	Платформа Курс включена в единый реестр российских программ для электронных вычислительных машин и баз данных под номером 3926 (приказ Минкомсвязи России от 15.08.2017 №421, приложение 2, пп.29)	\nNickolay Potashnikoff	2017-09-03 09:04:25	Опубликована	2017-09-04 10:00:03	2017-09-04 10:00:03	1
+18	https://groups.google.com/d/msg/curs-group/9Akg7gyvzYE/GBmH7GX8AgAJ	https://groups.google.com/d/topic/curs-group/9Akg7gyvzYE	Статья на habrahabr	Уважаемые коллеги, о Celesta и Flute опубликована большая статья на Habrahabr: https://habrahabr.ru/post/335966/	\nIvan Ponomarev	2017-09-04 10:06:33	Опубликована	2017-09-04 10:20:03	2017-09-04 10:20:03	1
+19	https://groups.google.com/d/msg/curs-group/RRTL-SCdXrw/NfhcZZIRAgAJ	https://groups.google.com/d/topic/curs-group/RRTL-SCdXrw	Встреча JUG.MSK 21 сентября	Коллеги, приглашаем на встречу московской Java User Group, которая пройдёт 21 сентября и будет целиком посвящена нашим технологиям. Анонс встречи: https://jugmsk.timepad.ru/event/569994/ Будут прочитаны доклады про устройство Lyra Grid, использование Celesta и Flute. Встреча открытая,	\nIvan Ponomarev	2017-09-08 11:55:15	Опубликована	2017-09-08 12:00:02	2017-09-08 12:00:02	1
+20	https://groups.google.com/d/msg/curs-group/c-6Vd8bsjQE/pL8VDxIkAgAJ	https://groups.google.com/d/topic/curs-group/c-6Vd8bsjQE	Изменение API и функциональности SetIn-фильтров	Коллеги, In-фильтры в Celesta, в их первоначальной реализации, продемонстрировали ограниченность применения на практике и не очень удачный API. 1. Hеоптимальность API: мы сначала создавали lookup = FieldsLookup(a, b).add...add, а затем вызывали a.setIn(lookup). Для этого приходило	\nIvan Ponomarev	2017-09-08 17:34:15	На модерации	2017-09-08 17:40:02	2017-09-08 17:40:02	1
 \.
 
 
 --
--- Name: feed_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: feed_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('feed_id_seq', 15, true);
+SELECT pg_catalog.setval('feed_id_seq', 20, true);
 
 
 --
--- Data for Name: feed_source; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: feed_source; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY feed_source (id, url, public_id, title, description, last_modified, date_of_creation, date_of_change, link, selected, locale_id) FROM stdin;
@@ -974,14 +978,14 @@ COPY feed_source (id, url, public_id, title, description, last_modified, date_of
 
 
 --
--- Name: feed_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: feed_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('feed_source_id_seq', 3, true);
 
 
 --
--- Data for Name: feed_status; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: feed_status; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY feed_status (id, name, date_of_creation, date_of_change, locale_id) FROM stdin;
@@ -992,14 +996,14 @@ COPY feed_status (id, name, date_of_creation, date_of_change, locale_id) FROM st
 
 
 --
--- Name: feed_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: feed_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('feed_status_id_seq', 3, true);
 
 
 --
--- Data for Name: locale; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: locale; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY locale (id, language, shortname, selected, date_of_creation, date_of_change) FROM stdin;
@@ -1009,14 +1013,14 @@ COPY locale (id, language, shortname, selected, date_of_creation, date_of_change
 
 
 --
--- Name: locale_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: locale_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('locale_id_seq', 2, true);
 
 
 --
--- Data for Name: source; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: source; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY source (id, date_of_creation, date_of_change) FROM stdin;
@@ -1027,14 +1031,14 @@ COPY source (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
--- Name: source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('source_id_seq', 4, false);
 
 
 --
--- Data for Name: source_link; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: source_link; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY source_link (id, source_id, url, date_of_creation, date_of_change) FROM stdin;
@@ -1056,14 +1060,14 @@ COPY source_link (id, source_id, url, date_of_creation, date_of_change) FROM std
 
 
 --
--- Name: source_link_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('source_link_id_seq', 15, false);
 
 
 --
--- Data for Name: source_link_translation; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: source_link_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY source_link_translation (id, source_translation_id, source_id, locale_id, name, url, date_of_creation, date_of_change) FROM stdin;
@@ -1072,62 +1076,62 @@ COPY source_link_translation (id, source_translation_id, source_id, locale_id, n
 3	1	3	1	grains (системная библиотека Celesta)	https://share.curs.ru/svn/grains/	2017-09-15 19:06:05	2017-09-15 19:06:05
 4	1	4	1	Mellophone	https://share.curs.ru/svn/mellophone/	2017-09-15 19:06:05	2017-09-15 19:06:05
 5	1	5	1	Showcase	https://share.curs.ru/svn/showcase/	2017-09-15 19:06:05	2017-09-15 19:06:05
-6	2	1	2	\N	https://share.curs.ru/svn/celesta/	2017-09-15 19:06:05	2017-09-15 19:06:05
-7	2	2	2	\N	https://share.curs.ru/svn/flute/	2017-09-15 19:06:05	2017-09-15 19:06:05
-8	2	3	2	\N	https://share.curs.ru/svn/grains/	2017-09-15 19:06:05	2017-09-15 19:06:05
-9	2	4	2	\N	https://share.curs.ru/svn/mellophone/	2017-09-15 19:06:05	2017-09-15 19:06:05
-10	2	5	2	\N	https://share.curs.ru/svn/showcase/	2017-09-15 19:06:05	2017-09-15 19:06:05
 16	4	6	1	Celesta	https://svn.lancelot-it.ru:8420/svn/celesta/	2017-09-15 19:09:21	2017-09-15 19:09:21
 17	4	7	1	Flute (включая XML2Spreadsheet)	https://svn.lancelot-it.ru:8420/svn/flute/	2017-09-15 19:09:21	2017-09-15 19:09:21
 18	4	8	1	grains (системная библиотека Celesta)	https://svn.lancelot-it.ru:8420/svn/grains/	2017-09-15 19:09:21	2017-09-15 19:09:21
 19	4	9	1	Mellophone	https://svn.lancelot-it.ru:8420/svn/mellophone/	2017-09-15 19:09:21	2017-09-15 19:09:21
 20	4	10	1	Showcase	https://svn.lancelot-it.ru:8420/svn/showcase/	2017-09-15 19:09:21	2017-09-15 19:09:21
-21	5	6	2	\N	https://svn.lancelot-it.ru:8420/svn/celesta/	2017-09-15 19:09:21	2017-09-15 19:09:21
-22	5	7	2	\N	https://svn.lancelot-it.ru:8420/svn/flute/	2017-09-15 19:09:21	2017-09-15 19:09:21
-23	5	8	2	\N	https://svn.lancelot-it.ru:8420/svn/grains/	2017-09-15 19:09:21	2017-09-15 19:09:21
-24	5	9	2	\N	https://svn.lancelot-it.ru:8420/svn/mellophone/	2017-09-15 19:09:21	2017-09-15 19:09:21
-25	5	10	2	\N	https://svn.lancelot-it.ru:8420/svn/showcase/	2017-09-15 19:09:21	2017-09-15 19:09:21
 31	7	11	1	Celesta	https://svn.code.sf.net/p/kurs-celesta/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
 32	7	12	1	Flute (включая XML2Spreadsheet)	https://svn.code.sf.net/p/kurs-flute/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
 33	7	13	1	grains (системная библиотека Celesta)	https://svn.code.sf.net/p/kurs-grains/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
 34	7	14	1	Mellophone	https://svn.code.sf.net/p/kurs-mellophone/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
-35	8	11	2	\N	https://svn.code.sf.net/p/kurs-celesta/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
-36	8	12	2	\N	https://svn.code.sf.net/p/kurs-flute/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
-37	8	13	2	\N	https://svn.code.sf.net/p/kurs-grains/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
-38	8	14	2	\N	https://svn.code.sf.net/p/kurs-mellophone/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+6	2	1	2	Celesta	https://share.curs.ru/svn/celesta/	2017-09-15 19:06:05	2017-09-15 19:06:05
+25	5	10	2	Showcase	https://svn.lancelot-it.ru:8420/svn/showcase/	2017-09-15 19:09:21	2017-09-15 19:09:21
+24	5	9	2	Mellophone	https://svn.lancelot-it.ru:8420/svn/mellophone/	2017-09-15 19:09:21	2017-09-15 19:09:21
+21	5	6	2	Celesta	https://svn.lancelot-it.ru:8420/svn/celesta/	2017-09-15 19:09:21	2017-09-15 19:09:21
+38	8	14	2	Mellophone	https://svn.code.sf.net/p/kurs-mellophone/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+35	8	11	2	Celesta	https://svn.code.sf.net/p/kurs-celesta/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+22	5	7	2	Flute (including XML2Spreadsheet)	https://svn.lancelot-it.ru:8420/svn/flute/	2017-09-15 19:09:21	2017-09-15 19:09:21
+23	5	8	2	grains (system library Celesta)	https://svn.lancelot-it.ru:8420/svn/grains/	2017-09-15 19:09:21	2017-09-15 19:09:21
+36	8	12	2	Flute (including XML2Spreadsheet)	https://svn.code.sf.net/p/kurs-flute/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+37	8	13	2	grains (system library Celesta)	https://svn.code.sf.net/p/kurs-grains/code/	2017-09-15 19:10:55	2017-09-15 19:10:55
+7	2	2	2	Flute (including XML2Spreadsheet)	https://share.curs.ru/svn/flute/	2017-09-15 19:06:05	2017-09-15 19:06:05
+8	2	3	2	grains (system library Celesta)	https://share.curs.ru/svn/grains/	2017-09-15 19:06:05	2017-09-15 19:06:05
+9	2	4	2	Mellophone	https://share.curs.ru/svn/mellophone/	2017-09-15 19:06:05	2017-09-15 19:06:05
+10	2	5	2	Showcase	https://share.curs.ru/svn/showcase/	2017-09-15 19:06:05	2017-09-15 19:06:05
 \.
 
 
 --
--- Name: source_link_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('source_link_translation_id_seq', 39, false);
 
 
 --
--- Data for Name: source_translation; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: source_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY source_translation (id, source_id, locale_id, title, subtitle, date_of_creation, date_of_change) FROM stdin;
 1	1	1	С сайта компании КУРС	Master SVN | user: reader | pwd: reader	2017-09-15 19:06:05	2017-09-15 19:06:05
-2	1	2	\N	\N	2017-09-15 19:06:05	2017-09-15 19:06:05
 4	2	1	Lancelot-it.ru	Primary read-only copy | user: reader | pwd: platform	2017-09-15 19:09:21	2017-09-15 19:09:21
-5	2	2	\N	\N	2017-09-15 19:09:21	2017-09-15 19:09:21
 7	3	1	code.sf.net	Secondary read-only copy (sourceforge.net, anonymous access)	2017-09-15 19:10:55	2017-09-15 19:10:55
-8	3	2	\N	\N	2017-09-15 19:10:55	2017-09-15 19:10:55
+2	1	2	CURS web-site	Master SVN | user: reader | pwd: reader	2017-09-15 19:06:05	2017-09-15 19:06:05
+5	2	2	Lancelot-it.ru	Primary read-only copy | user: reader | pwd: platform	2017-09-15 19:09:21	2017-09-15 19:09:21
+8	3	2	code.sf.net	Secondary read-only copy (sourceforge.net, anonymous access)	2017-09-15 19:10:55	2017-09-15 19:10:55
 \.
 
 
 --
--- Name: source_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: source_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('source_translation_id_seq', 9, false);
 
 
 --
--- Data for Name: subscriber; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: subscriber; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY subscriber (id, email, subscribed_to_feed, date_of_creation, date_of_change) FROM stdin;
@@ -1144,14 +1148,14 @@ COPY subscriber (id, email, subscribed_to_feed, date_of_creation, date_of_change
 
 
 --
--- Name: subscriber_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: subscriber_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('subscriber_id_seq', 9, true);
 
 
 --
--- Data for Name: system_user; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: system_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY system_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, roles, date_of_creation, date_of_change, subscribed_to_feed) FROM stdin;
@@ -1176,14 +1180,14 @@ COPY system_user (id, username, username_canonical, email, email_canonical, enab
 
 
 --
--- Name: system_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: system_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('system_user_id_seq', 17, true);
 
 
 --
--- Data for Name: text; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: text; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY text (id, date_of_creation, date_of_change) FROM stdin;
@@ -1221,14 +1225,14 @@ COPY text (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
--- Name: text_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: text_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('text_id_seq', 30, false);
 
 
 --
--- Data for Name: text_translation; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: text_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY text_translation (id, source_id, locale_id, text, date_of_creation, date_of_change) FROM stdin;
@@ -1296,31 +1300,31 @@ COPY text_translation (id, source_id, locale_id, text, date_of_creation, date_of
 
 
 --
--- Name: text_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: text_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('text_translation_id_seq', 90, true);
 
 
 --
--- Data for Name: version; Type: TABLE DATA; Schema: public; Owner: corchestra_db_user
+-- Data for Name: version; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY version (id, type, date_of_creation, date_of_change, version) FROM stdin;
-1	Стабильная	2017-08-15 11:50:19	2017-08-15 11:50:19	2.0
-2	Новейшая	2017-08-15 11:53:32	2017-08-15 11:53:32	8.1
+1	Стабильная	2017-08-15 11:50:19	2017-08-15 11:50:19	6.0RC3
+2	Новейшая	2017-08-15 11:53:32	2017-08-15 11:53:32	6.0RC3
 \.
 
 
 --
--- Name: version_id_seq; Type: SEQUENCE SET; Schema: public; Owner: corchestra_db_user
+-- Name: version_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('version_id_seq', 3, true);
 
 
 --
--- Name: advantage advantage_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: advantage advantage_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY advantage
@@ -1328,7 +1332,7 @@ ALTER TABLE ONLY advantage
 
 
 --
--- Name: advantage_translation advantage_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: advantage_translation advantage_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY advantage_translation
@@ -1336,7 +1340,7 @@ ALTER TABLE ONLY advantage_translation
 
 
 --
--- Name: client client_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: client client_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY client
@@ -1344,7 +1348,7 @@ ALTER TABLE ONLY client
 
 
 --
--- Name: client_translation client_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: client_translation client_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY client_translation
@@ -1352,7 +1356,7 @@ ALTER TABLE ONLY client_translation
 
 
 --
--- Name: common_information common_information_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: common_information common_information_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY common_information
@@ -1360,7 +1364,7 @@ ALTER TABLE ONLY common_information
 
 
 --
--- Name: common_information_translation common_information_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: common_information_translation common_information_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY common_information_translation
@@ -1368,7 +1372,7 @@ ALTER TABLE ONLY common_information_translation
 
 
 --
--- Name: company_information company_information_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: company_information company_information_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY company_information
@@ -1376,7 +1380,7 @@ ALTER TABLE ONLY company_information
 
 
 --
--- Name: company_information_translation company_information_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: company_information_translation company_information_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY company_information_translation
@@ -1384,7 +1388,7 @@ ALTER TABLE ONLY company_information_translation
 
 
 --
--- Name: component component_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: component component_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY component
@@ -1392,7 +1396,7 @@ ALTER TABLE ONLY component
 
 
 --
--- Name: component_translation component_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: component_translation component_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY component_translation
@@ -1400,7 +1404,7 @@ ALTER TABLE ONLY component_translation
 
 
 --
--- Name: feed feed_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: feed feed_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY feed
@@ -1408,7 +1412,7 @@ ALTER TABLE ONLY feed
 
 
 --
--- Name: feed_source feed_source_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: feed_source feed_source_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY feed_source
@@ -1416,7 +1420,7 @@ ALTER TABLE ONLY feed_source
 
 
 --
--- Name: feed_status feed_status_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: feed_status feed_status_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY feed_status
@@ -1424,7 +1428,7 @@ ALTER TABLE ONLY feed_status
 
 
 --
--- Name: locale locale_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: locale locale_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY locale
@@ -1432,7 +1436,7 @@ ALTER TABLE ONLY locale
 
 
 --
--- Name: source_link source_link_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_link source_link_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_link
@@ -1440,7 +1444,7 @@ ALTER TABLE ONLY source_link
 
 
 --
--- Name: source_link_translation source_link_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_translation source_link_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_link_translation
@@ -1448,7 +1452,7 @@ ALTER TABLE ONLY source_link_translation
 
 
 --
--- Name: source source_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source source_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source
@@ -1456,7 +1460,7 @@ ALTER TABLE ONLY source
 
 
 --
--- Name: source_translation source_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_translation source_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_translation
@@ -1464,7 +1468,7 @@ ALTER TABLE ONLY source_translation
 
 
 --
--- Name: subscriber subscriber_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: subscriber subscriber_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY subscriber
@@ -1472,7 +1476,7 @@ ALTER TABLE ONLY subscriber
 
 
 --
--- Name: system_user system_user_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: system_user system_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY system_user
@@ -1480,7 +1484,7 @@ ALTER TABLE ONLY system_user
 
 
 --
--- Name: text text_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: text text_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY text
@@ -1488,7 +1492,7 @@ ALTER TABLE ONLY text
 
 
 --
--- Name: text_translation text_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: text_translation text_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY text_translation
@@ -1496,7 +1500,7 @@ ALTER TABLE ONLY text_translation
 
 
 --
--- Name: version version_pkey; Type: CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: version version_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY version
@@ -1504,154 +1508,154 @@ ALTER TABLE ONLY version
 
 
 --
--- Name: idx_234044abddaeffbd; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_234044abddaeffbd; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_234044abddaeffbd ON feed USING btree (feed_source_id);
 
 
 --
--- Name: idx_37261cf2953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_37261cf2953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_37261cf2953c1c61 ON source_link USING btree (source_id);
 
 
 --
--- Name: idx_4cddd1af953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_4cddd1af953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_4cddd1af953c1c61 ON common_information_translation USING btree (source_id);
 
 
 --
--- Name: idx_4cddd1afe559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_4cddd1afe559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_4cddd1afe559dfd1 ON common_information_translation USING btree (locale_id);
 
 
 --
--- Name: idx_881615cf953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_881615cf953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_881615cf953c1c61 ON source_translation USING btree (source_id);
 
 
 --
--- Name: idx_881615cfe559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_881615cfe559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_881615cfe559dfd1 ON source_translation USING btree (locale_id);
 
 
 --
--- Name: idx_980b52bb953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_980b52bb953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_980b52bb953c1c61 ON advantage_translation USING btree (source_id);
 
 
 --
--- Name: idx_980b52bbe559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_980b52bbe559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_980b52bbe559dfd1 ON advantage_translation USING btree (locale_id);
 
 
 --
--- Name: idx_9da80f87e559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_9da80f87e559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_9da80f87e559dfd1 ON feed_source USING btree (locale_id);
 
 
 --
--- Name: idx_a42fc53c953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_a42fc53c953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_a42fc53c953c1c61 ON text_translation USING btree (source_id);
 
 
 --
--- Name: idx_a42fc53ce559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_a42fc53ce559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_a42fc53ce559dfd1 ON text_translation USING btree (locale_id);
 
 
 --
--- Name: idx_b5226054953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_b5226054953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_b5226054953c1c61 ON client_translation USING btree (source_id);
 
 
 --
--- Name: idx_b5226054e559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_b5226054e559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_b5226054e559dfd1 ON client_translation USING btree (locale_id);
 
 
 --
--- Name: idx_b92215e8e559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_b92215e8e559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_b92215e8e559dfd1 ON feed_status USING btree (locale_id);
 
 
 --
--- Name: idx_ee7028ec953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_ee7028ec953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_ee7028ec953c1c61 ON component_translation USING btree (source_id);
 
 
 --
--- Name: idx_ee7028ece559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_ee7028ece559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_ee7028ece559dfd1 ON component_translation USING btree (locale_id);
 
 
 --
--- Name: idx_ee9d0f9a3fd34780; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_ee9d0f9a3fd34780; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_ee9d0f9a3fd34780 ON source_link_translation USING btree (source_translation_id);
 
 
 --
--- Name: idx_ee9d0f9a953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_ee9d0f9a953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_ee9d0f9a953c1c61 ON source_link_translation USING btree (source_id);
 
 
 --
--- Name: idx_ee9d0f9ae559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_ee9d0f9ae559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_ee9d0f9ae559dfd1 ON source_link_translation USING btree (locale_id);
 
 
 --
--- Name: idx_f29d8edc953c1c61; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_f29d8edc953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_f29d8edc953c1c61 ON company_information_translation USING btree (source_id);
 
 
 --
--- Name: idx_f29d8edce559dfd1; Type: INDEX; Schema: public; Owner: corchestra_db_user
+-- Name: idx_f29d8edce559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_f29d8edce559dfd1 ON company_information_translation USING btree (locale_id);
 
 
 --
--- Name: feed fk_234044abddaeffbd; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: feed fk_234044abddaeffbd; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY feed
@@ -1659,7 +1663,7 @@ ALTER TABLE ONLY feed
 
 
 --
--- Name: source_link fk_37261cf2953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_link fk_37261cf2953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_link
@@ -1667,7 +1671,7 @@ ALTER TABLE ONLY source_link
 
 
 --
--- Name: common_information_translation fk_4cddd1af953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: common_information_translation fk_4cddd1af953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY common_information_translation
@@ -1675,7 +1679,7 @@ ALTER TABLE ONLY common_information_translation
 
 
 --
--- Name: common_information_translation fk_4cddd1afe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: common_information_translation fk_4cddd1afe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY common_information_translation
@@ -1683,7 +1687,7 @@ ALTER TABLE ONLY common_information_translation
 
 
 --
--- Name: source_translation fk_881615cf953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_translation fk_881615cf953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_translation
@@ -1691,7 +1695,7 @@ ALTER TABLE ONLY source_translation
 
 
 --
--- Name: source_translation fk_881615cfe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_translation fk_881615cfe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_translation
@@ -1699,7 +1703,7 @@ ALTER TABLE ONLY source_translation
 
 
 --
--- Name: advantage_translation fk_980b52bb953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: advantage_translation fk_980b52bb953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY advantage_translation
@@ -1707,7 +1711,7 @@ ALTER TABLE ONLY advantage_translation
 
 
 --
--- Name: advantage_translation fk_980b52bbe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: advantage_translation fk_980b52bbe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY advantage_translation
@@ -1715,7 +1719,7 @@ ALTER TABLE ONLY advantage_translation
 
 
 --
--- Name: feed_source fk_9da80f87e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: feed_source fk_9da80f87e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY feed_source
@@ -1723,7 +1727,7 @@ ALTER TABLE ONLY feed_source
 
 
 --
--- Name: text_translation fk_a42fc53c953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: text_translation fk_a42fc53c953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY text_translation
@@ -1731,7 +1735,7 @@ ALTER TABLE ONLY text_translation
 
 
 --
--- Name: text_translation fk_a42fc53ce559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: text_translation fk_a42fc53ce559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY text_translation
@@ -1739,7 +1743,7 @@ ALTER TABLE ONLY text_translation
 
 
 --
--- Name: client_translation fk_b5226054953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: client_translation fk_b5226054953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY client_translation
@@ -1747,7 +1751,7 @@ ALTER TABLE ONLY client_translation
 
 
 --
--- Name: client_translation fk_b5226054e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: client_translation fk_b5226054e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY client_translation
@@ -1755,7 +1759,7 @@ ALTER TABLE ONLY client_translation
 
 
 --
--- Name: feed_status fk_b92215e8e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: feed_status fk_b92215e8e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY feed_status
@@ -1763,7 +1767,7 @@ ALTER TABLE ONLY feed_status
 
 
 --
--- Name: component_translation fk_ee7028ec953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: component_translation fk_ee7028ec953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY component_translation
@@ -1771,7 +1775,7 @@ ALTER TABLE ONLY component_translation
 
 
 --
--- Name: component_translation fk_ee7028ece559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: component_translation fk_ee7028ece559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY component_translation
@@ -1779,7 +1783,7 @@ ALTER TABLE ONLY component_translation
 
 
 --
--- Name: source_link_translation fk_ee9d0f9a3fd34780; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_translation fk_ee9d0f9a3fd34780; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_link_translation
@@ -1787,7 +1791,7 @@ ALTER TABLE ONLY source_link_translation
 
 
 --
--- Name: source_link_translation fk_ee9d0f9a953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_translation fk_ee9d0f9a953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_link_translation
@@ -1795,7 +1799,7 @@ ALTER TABLE ONLY source_link_translation
 
 
 --
--- Name: source_link_translation fk_ee9d0f9ae559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: source_link_translation fk_ee9d0f9ae559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY source_link_translation
@@ -1803,7 +1807,7 @@ ALTER TABLE ONLY source_link_translation
 
 
 --
--- Name: company_information_translation fk_f29d8edc953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: company_information_translation fk_f29d8edc953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY company_information_translation
@@ -1811,7 +1815,7 @@ ALTER TABLE ONLY company_information_translation
 
 
 --
--- Name: company_information_translation fk_f29d8edce559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: corchestra_db_user
+-- Name: company_information_translation fk_f29d8edce559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY company_information_translation
