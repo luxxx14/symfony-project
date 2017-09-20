@@ -34,17 +34,49 @@ $(document).ready(function(){
 	var modal = $('.modal');
 	var closeBtn = $('.close');
 	addressBtn.on('click', function(){		
-    modal.show();
+   	showModal();
 	});
 	closeBtn.on('click', function(){
-			modal.hide();
+		hideModal();
 	});	
 	$(window).on('click', function(event) {		
 			if ($(event.target).hasClass('modal')) {				
-					modal.hide();
+				hideModal();
 			}
 	});
 	
+	//open modal window on hash
+	var hash = window.location.hash;
+	if (hash === '#contacts') {
+		 showModal();
+	}	
+	
+	//remove hash
+	function removeHash () { 
+    var scrollV, loc = window.location;
+    if ("pushState" in history)
+        history.pushState("", document.title, loc.pathname + loc.search);
+    else {
+        // Prevent scrolling by storing the page's current scroll offset
+        scrollV = document.documentElement.scrollTop || document.body.scrollTop;        
+        loc.hash = "";			
+        // Restore the scroll offset, should be flicker free
+				document.documentElement.scrollTop = scrollV;
+        document.body.scrollTop = scrollV;       
+			}
+	}
+	
+	function showModal() {
+		modal.show();
+		$("body").css("overflow", "hidden");
+		window.location.hash = "contacts"
+	}
+	
+	function hideModal() {
+		modal.hide();
+		removeHash();
+		$("body").css("overflow", "auto");
+	}
 	//download navigation
 	$('.download nav a').on('click', function(e){		
 		e.preventDefault();
@@ -100,7 +132,8 @@ $(document).ready(function(){
 	}
 	
 	//select locale
-
+	
+	
 	$('#select-locale span').on('click', function() {		
 		$('#select-locale ul').toggle();		
 	});
@@ -109,6 +142,7 @@ $(document).ready(function(){
 		$('#select-locale span').text($(this).text());
 		$('#select-locale ul').toggle();		
 	});
+	
 	
 	//show dropdown lists
 	$('.show-components').on('click', function(){
