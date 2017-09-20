@@ -71,14 +71,24 @@ class FeedSourceController extends Controller
                 $feedSource->setDescription($feed->getDescription());
                 $feedSource->setLastModified($feed->getLastModified());
 
-                if ($feedSource->getSelected()) {
-                    $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
-                        ->findOneBy(['selected' => TRUE]);
-                    if ($selectedFeedSource) {
-                        $selectedFeedSource->setSelected(FALSE);
-                        $em->persist($selectedFeedSource);
+                if ($feedSource->getLocale()) {
+                    $feedSourcesWithSameLocale = $em->getRepository('ManagementAdminBundle:FeedSource')
+                        ->findBy(['locale' => $feedSource->getLocale()]);
+
+                    foreach ($feedSourcesWithSameLocale as $feedSourceWithSameLocale) {
+                        $feedSourceWithSameLocale->setLocale(NULL);
+                        $em->persist($feedSourceWithSameLocale);
                     }
                 }
+
+//                if ($feedSource->getSelected()) {
+//                    $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+//                        ->findOneBy(['selected' => TRUE]);
+//                    if ($selectedFeedSource) {
+//                        $selectedFeedSource->setSelected(FALSE);
+//                        $em->persist($selectedFeedSource);
+//                    }
+//                }
 
                 $em->persist($feedSource);
                 $em->flush();
@@ -125,6 +135,8 @@ class FeedSourceController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            var_dump($editForm->get('locale')->getData());
+
             $em = $this->getDoctrine()->getManager();
 
             $feedIo = $this->container->get('feedio');
@@ -138,14 +150,24 @@ class FeedSourceController extends Controller
             $feedSource->setDescription($feed->getDescription());
             $feedSource->setLastModified($feed->getLastModified());
 
-            if ($feedSource->getSelected()) {
-                $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
-                    ->findOneBy(['selected' => TRUE]);
-                if ($selectedFeedSource) {
-                    $selectedFeedSource->setSelected(FALSE);
-                    $em->persist($selectedFeedSource);
+            if ($feedSource->getLocale()) {
+                $feedSourcesWithSameLocale = $em->getRepository('ManagementAdminBundle:FeedSource')
+                    ->findBy(['locale' => $feedSource->getLocale()]);
+
+                foreach ($feedSourcesWithSameLocale as $feedSourceWithSameLocale) {
+                    $feedSourceWithSameLocale->setLocale(NULL);
+                    $em->persist($feedSourceWithSameLocale);
                 }
             }
+
+//            if ($feedSource->getSelected()) {
+//                $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+//                    ->findOneBy(['selected' => TRUE]);
+//                if ($selectedFeedSource) {
+//                    $selectedFeedSource->setSelected(FALSE);
+//                    $em->persist($selectedFeedSource);
+//                }
+//            }
 
             $em->persist($feedSource);
             $em->flush();

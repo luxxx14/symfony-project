@@ -28,8 +28,9 @@
                 <td>{{ feedSource.title }}</td>
                 <td>{{ feedSource.description }}</td>
                 {#<td>{% if feedSource.lastModified %}{{ feedSource.lastModified|date('Y-m-d H:i:s') }}{% endif %}</td>#}
-                <td style="text-align: center; color: {{ feedSource.selected ? 'green;' : 'black;' }}">
-                    {{ feedSource.locale.shortname }}
+                {#<td style="text-align: center; color: {{ feedSource.selected ? 'green;' : 'black;' }}">#}
+                <td style="text-align: center;">
+                    {{ feedSource.locale ? feedSource.locale.shortname : null }}
                 </td>
                 <td><nav><ul class="navbar">
                     <li>

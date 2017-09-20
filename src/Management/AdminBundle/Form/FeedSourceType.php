@@ -92,23 +92,23 @@ class FeedSourceType extends AbstractType
                 ),
                 'class' => 'Translation\LocaleBundle\Entity\Locale',
                 'choice_label' => 'shortname',
-                'query_builder' => function (EntityRepository $er) {
-                    $qb = $er->createQueryBuilder('l');
-
-                    $usedLocales = $qb->select('DISTINCT usedLocales.id')
-                        ->from('ManagementAdminBundle:FeedSource', 'fS')
-                        ->join('fS.locale', 'usedLocales')
-                        ->where('usedLocales.id IS NOT NULL')
-                        ->getQuery()
-                        ->getResult();
-
-                    $qb
-                        ->select('l')
-                        ->where('l NOT IN (:usedLocales)')
-                        ->setParameter('usedLocales', $usedLocales);
-                    return $qb;
-                },
-                'required' => true
+//                'query_builder' => function (EntityRepository $er) {
+//                    $qb = $er->createQueryBuilder('l');
+//
+//                    $usedLocales = $qb->select('DISTINCT usedLocales.id')
+//                        ->from('ManagementAdminBundle:FeedSource', 'fS')
+//                        ->join('fS.locale', 'usedLocales')
+//                        ->where('usedLocales.id IS NOT NULL')
+//                        ->getQuery()
+//                        ->getResult();
+//
+//                    $qb
+//                        ->select('l')
+//                        ->where('l NOT IN (:usedLocales)')
+//                        ->setParameter('usedLocales', $usedLocales);
+//                    return $qb;
+//                },
+                'required' => false
             ))
         ;
     }
