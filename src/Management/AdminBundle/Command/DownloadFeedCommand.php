@@ -32,7 +32,6 @@ class DownloadFeedCommand extends ContainerAwareCommand {
         $feedSources = $em->getRepository('ManagementAdminBundle:FeedSource')->findAll();
 
         foreach($feedSources as $feedSource) {
-
             /** Now fetch its (fresh) content */
             $feed = $feedIo->readSince($feedSource->getUrl(), $modifiedSince)->getFeed();
 

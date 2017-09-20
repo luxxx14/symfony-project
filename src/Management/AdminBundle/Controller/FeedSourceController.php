@@ -268,7 +268,10 @@ class FeedSourceController extends Controller
         $filterForm->handleRequest($request);
 
         $qb = $this->getDoctrine()
-            ->getRepository('ManagementAdminBundle:Feed')->createQueryBuilder('f');
+            ->getRepository('ManagementAdminBundle:Feed')->createQueryBuilder('f')
+            ->where('f.feedSource = :feedSource')
+            ->setParameter('feedSource', $feedSource)
+            ;
 
         if ($filterForm->isSubmitted() && $filterForm->isValid()) {
             $feedStatus = $filterForm->get('status')->getData();

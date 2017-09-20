@@ -37,6 +37,7 @@ Management\AdminBundle\Entity\FeedSource:
         feedItems:
             targetEntity: Management\AdminBundle\Entity\Feed
             mappedBy: feedSource
+            cascade: ["remove"]
 
     manyToMany: { }
 
