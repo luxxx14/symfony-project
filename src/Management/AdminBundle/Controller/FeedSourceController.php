@@ -262,6 +262,8 @@ class FeedSourceController extends Controller
      */
     public function showFeedAction(Request $request, FeedSource $feedSource)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $filterForm = $this->createForm('Management\AdminBundle\Form\FeedFilterType', new Feed());
         $filterForm->handleRequest($request);
 
@@ -291,7 +293,7 @@ class FeedSourceController extends Controller
         $query = $qb->getQuery();
         $feed = $query->getResult();
 
-        $usedLocalesIDs = $this->getDoctrine()->getManager()
+        $usedLocalesIDs = $em
             ->createQueryBuilder()
             ->select('DISTINCT usedLocales.id')
             ->from('ManagementAdminBundle:FeedSource', 'fS')
@@ -301,13 +303,15 @@ class FeedSourceController extends Controller
             ->getQuery()
             ->getResult();
 
-        $usedLocales = $this->getDoctrine()->getManager()
+        $usedLocales = $em
             ->getRepository('TranslationLocaleBundle:Locale')
             ->createQueryBuilder('l')
             ->where('l.id IN (:usedLocalesIDs)')
             ->setParameter('usedLocalesIDs', $usedLocalesIDs)
             ->getQuery()
             ->getResult();
+
+        $feedSources = $em->getRepository('ManagementAdminBundle:FeedSource')->findAll();
 
 //        $paginator  = $this->get('knp_paginator');
 //        $feed = $paginator->paginate(/*$pagination = $paginator->paginate(*/
@@ -322,6 +326,7 @@ class FeedSourceController extends Controller
             'filterForm' => $filterForm->createView(),
             'feed' => $feed,
             'feedSource' => $feedSource,
+            'feedSources' => $feedSources,
             'usedLocales' => $usedLocales
 //            'form' => $this->createForm('Management\AdminBundle\Form\FeedDownloadType', $feedSource)
 //            ->createView()

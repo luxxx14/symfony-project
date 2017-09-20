@@ -7,9 +7,11 @@
         <ul class="navbar">
             {% for locale in usedLocales %}
                 <li class="{{ locale.shortname == feedSource.locale.shortname ? 'active' : '' }}">
-                    <a class="btn" href="{{ path('admin_feed_source_show_feed', {id: locale.id}) }}">
+                    {% for item in feedSources if item.locale == locale %}
+                    <a class="btn" href="{{ path('admin_feed_source_show_feed', {id: item.id}) }}">
                         {{ locale.shortname }}
                     </a>
+                    {% endfor %}
                 </li>
             {% endfor %}
         </ul>
