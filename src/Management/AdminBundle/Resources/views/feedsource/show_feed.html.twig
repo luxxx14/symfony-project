@@ -3,6 +3,18 @@
 {% block body %}
     <h1>Модерация новостей</h1>
 
+    <br><nav>
+        <ul class="navbar">
+            {% for locale in usedLocales %}
+                <li class="{{ locale.shortname == feedSource.locale.shortname ? 'active' : '' }}">
+                    <a class="btn" href="{{ path('admin_feed_source_show_feed', {id: locale.id}) }}">
+                        {{ locale.shortname }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav><br><br>
+
     <div class="row">
         {#<div class="col-lg-4 col-md-4">#}
             {#{{ form_start(form) }}#}

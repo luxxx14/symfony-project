@@ -235,8 +235,11 @@ class FeedSourceController extends Controller
     public function redirectForSelectedFeedSourceAction(string $action) {
         $em = $this->getDoctrine()->getManager();
 
-        $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+        $defaultLocale = $em->getRepository('TranslationLocaleBundle:Locale')
             ->findOneBy(['selected' => TRUE]);
+
+        $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
+            ->findOneBy(['locale' => $defaultLocale]);
         $selectedFeedSourceId = $selectedFeedSource->getId();
 
         if ($action == 'show') {
@@ -288,6 +291,24 @@ class FeedSourceController extends Controller
         $query = $qb->getQuery();
         $feed = $query->getResult();
 
+        $usedLocalesIDs = $this->getDoctrine()->getManager()
+            ->createQueryBuilder()
+            ->select('DISTINCT usedLocales.id')
+            ->from('ManagementAdminBundle:FeedSource', 'fS')
+            ->join('fS.locale', 'usedLocales')
+            ->where('usedLocales.id IS NOT NULL')
+            ->orderBy('usedLocales.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        $usedLocales = $this->getDoctrine()->getManager()
+            ->getRepository('TranslationLocaleBundle:Locale')
+            ->createQueryBuilder('l')
+            ->where('l.id IN (:usedLocalesIDs)')
+            ->setParameter('usedLocalesIDs', $usedLocalesIDs)
+            ->getQuery()
+            ->getResult();
+
 //        $paginator  = $this->get('knp_paginator');
 //        $feed = $paginator->paginate(/*$pagination = $paginator->paginate(*/
 //            $query, /* query NOT result */
@@ -300,6 +321,8 @@ class FeedSourceController extends Controller
         return $this->render('@ManagementAdmin/feedsource/show_feed.html.twig', [
             'filterForm' => $filterForm->createView(),
             'feed' => $feed,
+            'feedSource' => $feedSource,
+            'usedLocales' => $usedLocales
 //            'form' => $this->createForm('Management\AdminBundle\Form\FeedDownloadType', $feedSource)
 //            ->createView()
         ]);
