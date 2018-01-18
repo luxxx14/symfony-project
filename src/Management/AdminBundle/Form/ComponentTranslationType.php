@@ -44,7 +44,6 @@ class ComponentTranslationType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'mapped' => false,
                 'required' => false
             ))
         ;

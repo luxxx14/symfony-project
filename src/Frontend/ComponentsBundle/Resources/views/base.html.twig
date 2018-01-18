@@ -125,11 +125,16 @@
         {% set serialNumber = serialNumber + 1 %}
         <div class="col-xs-4{{ serialNumber == 4 ? ' col-xs-offset-2' : '' }}">
             <h2>
-                <a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">
-                    {% for translation in component.translations if translation.locale == locale %}
+                {% for translation in component.translations if translation.locale == locale %}
+                <a href="{{ translation.wikiUrl ? translation.wikiUrl : '' }}" target="_blank">
                     {{ translation.name }}
-                    {% endfor %}
                 </a>
+                {% endfor %}
+                {#<a href="{{ component.wikiUrl ? component.wikiUrl : '' }}" target="_blank">#}
+                    {#{% for translation in component.translations if translation.locale == locale %}#}
+                    {#{{ translation.name }}#}
+                    {#{% endfor %}#}
+                {#</a>#}
             </h2>
             <p>
                 {% for translation in component.translations if translation.locale == locale %}

@@ -25,6 +25,11 @@ class ComponentTranslation
     private $description;
 
     /**
+     * @var string
+     */
+    private $wikiUrl;
+
+    /**
      * @var \DateTime
      */
     private $dateOfCreation;
@@ -113,6 +118,30 @@ class ComponentTranslation
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set wikiUrl
+     *
+     * @param string $wikiUrl
+     *
+     * @return ComponentTranslation
+     */
+    public function setWikiUrl($wikiUrl)
+    {
+        $this->wikiUrl = $wikiUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get wikiUrl
+     *
+     * @return string
+     */
+    public function getWikiUrl()
+    {
+        return $this->wikiUrl;
     }
 
     /**

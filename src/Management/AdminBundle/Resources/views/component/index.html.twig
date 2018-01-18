@@ -43,7 +43,12 @@
                     {{ translation.description }}
                     {% endfor %}
                 </td>
-                <td>{{ component.wikiUrl }}</td>
+                {#<td>{{ component.wikiUrl }}</td>#}
+                <td>
+                    {% for translation in component.translations if translation.locale == locale %}
+                    {{ translation.wikiUrl }}
+                    {% endfor %}
+                </td>
                 <td><nav><ul class="navbar">
                     {#<li>#}
                         {#<a href="{{ path('admin_component_show', { 'id': component.id }) }}">#}

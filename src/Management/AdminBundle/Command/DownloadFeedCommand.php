@@ -36,7 +36,8 @@ class DownloadFeedCommand extends ContainerAwareCommand {
             $feed = $feedIo->readSince($feedSource->getUrl(), $modifiedSince)->getFeed();
 
             foreach ($feed as $item) {
-                $loadedItem = $em->getRepository('ManagementAdminBundle:Feed')->findOneBy(['link' => $item->getLink()]);
+                $loadedItem = $em->getRepository('ManagementAdminBundle:Feed')
+                    ->findOneBy(['link' => $item->getLink(), 'feedSource' => $feedSource]);
 
                 if (!$loadedItem and !($this->startsWith($item->getTitle(), 'Re: ['))) {
                     $feed = new Feed(

@@ -60,10 +60,12 @@ class FeedSourceController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             try {
+                $modifiedSince = new \DateTime('2015-01-01');
+
                 $feedIo = $this->container->get('feedio');
 
                 /** Now fetch its (fresh) content */
-                $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('NOW'))->getFeed();
+                $feed = $feedIo->readSince($feedSource->getUrl(), $modifiedSince)->getFeed();
 
                 $feedSource->setPublicId($feed->getPublicId());
                 $feedSource->setLink($feed->getLink());
@@ -92,6 +94,29 @@ class FeedSourceController extends Controller
 
                 $em->persist($feedSource);
                 $em->flush();
+
+                foreach ($feed as $item) {
+                    $loadedItem = $em->getRepository('ManagementAdminBundle:Feed')
+                        ->findOneBy(['link' => $item->getLink()]);
+
+                    if (/*!$loadedItem and */!($this->startsWith($item->getTitle(), 'Re: ['))) {
+                        $feed = new Feed(
+                            $item->getPublicId(),
+                            $item->getTitle(),
+                            $item->getDescription(),
+                            $item->getAuthor()->getName(),
+                            $item->getLastModified(),
+                            $item->getLink(),
+                            $feedSource,
+                            $em->getRepository('ManagementAdminBundle:FeedStatus')
+                                ->findOneBy(['name' => 'Опубликована'])
+                        );
+
+                        $em->persist($feed);
+                    }
+                }
+
+                $em->flush();
             }
             catch (ReadErrorException $exception) {
                 return $this->render('@ManagementAdmin/feedsource/error.html.twig');
@@ -104,6 +129,17 @@ class FeedSourceController extends Controller
             'feedSource' => $feedSource,
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @return bool
+     */
+    public function startsWith($haystack, $needle)
+    {
+        $length = strlen($needle);
+        return (substr($haystack, 0, $length) === $needle);
     }
 
     /**
@@ -135,14 +171,15 @@ class FeedSourceController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            var_dump($editForm->get('locale')->getData());
-
             $em = $this->getDoctrine()->getManager();
+
+            $modifiedSince = new \DateTime('2015-01-01');
 
             $feedIo = $this->container->get('feedio');
 
             /** Now fetch its (fresh) content */
-            $feed = $feedIo->readSince($feedSource->getUrl(), new \DateTime('NOW'))->getFeed();
+            $feed = $feedIo->readSince($feedSource->getUrl(), $modifiedSince)
+                ->getFeed();
 
             $feedSource->setPublicId($feed->getPublicId());
             $feedSource->setLink($feed->getLink());

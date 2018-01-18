@@ -88,7 +88,7 @@ class ComponentController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $component = new Component();
-            $component->setWikiUrl($form->get('wikiUrl')->getData());
+//            $component->setWikiUrl($form->get('wikiUrl')->getData());
             $em->persist($component);
 
             $translation->setSource($component);
@@ -148,10 +148,12 @@ class ComponentController extends Controller
         }
 
         $editForm = $this->createForm('Management\AdminBundle\Form\ComponentTranslationType', $translation);
-        $editForm->get('wikiUrl')->setData($component->getWikiUrl());
+//        $editForm->get('wikiUrl')->setData($component->getWikiUrl());
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            $component->setWikiUrl($editForm->get('wikiUrl')->getData());
+//            $em->persist($component);
             $em->flush();
 
             return $this->redirectToRoute('admin_component_translation_index', [
