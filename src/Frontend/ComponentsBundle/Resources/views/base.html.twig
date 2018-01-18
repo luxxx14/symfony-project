@@ -37,8 +37,8 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/45822612" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-    
-	<!--[if IE]>		  
+
+	<!--[if IE]>
 		<script src="https://cdn.jsdelivr.net/g/html5shiv@3.7.3,respond@1.4.2"></script>
 	<![endif]-->
 </head>
@@ -218,185 +218,64 @@
         {{ translation.text | raw }}
         {% endfor %}
     </h2>
-    <nav>
-        <ul>
-            <li><a href="#stable" class="active">
-                    {% for translation in texts.11.translations if translation.locale == locale %}
-                    {{ translation.text | raw }}
-                    {% endfor %}
-                </a></li>
-            <li><a href="#newest-version">
-                    {% for translation in texts.12.translations if translation.locale == locale %}
-                    {{ translation.text | raw }}
-                    {% endfor %}
-                </a></li>
-            <li><a href="#source-code">
-                    {% for translation in texts.13.translations if translation.locale == locale %}
-                    {{ translation.text | raw }}
-                    {% endfor %}
-                </a></li>
-        </ul>
-    </nav>
-    <div id="stable" class="stable-version">
-        <div class="row">
-            <p>
-                {% for translation in texts.14.translations if translation.locale == locale %}
-                {{ translation.text | raw }}
-                {% endfor %}
-            </p>
-            <div class="download-link">
-                {% if builds.stable and builds.stable.0 %}
-                <a href="{{ builds.stable != null ? builds.stable.0.path : '' }}" target="_blank">
-                    {% for translation in texts.17.translations if translation.locale == locale %}
-                    {{ translation.text | raw }}
-                    {% endfor %}
-                    {{ ' ' ~ builds.stable.0.name ~ ' ' ~ builds.stable.0.date|date('Y-m-d') ~ ' (ZIP)' }}
-                </a>
-                {% endif %}
-            </div>
-            <div class="col-xs-4">
-                <span class="show-components">
-                    {% for translation in texts.19.translations if translation.locale == locale %}
-                    {{ translation.text | raw }}
-                    {% endfor %}
-                </span>
-                <ul class="components">
-                    {% for component in builds.stable.0.components if (builds.stable and builds.stable.0) %}
-                    <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
-                    {% endfor %}
-                </ul>
-                <div class="code-example">
-                    <h3>Maven dependency</h3>
-                    <div>
-                        <textarea class="frame" id="stable-code" readonly>
+
+    <div class="download-versions stable-version">
+      <div class="download-versions__item">
+        <span class="show-components">
+            <img src="{{ asset('static/img/ic-download.png') }}" class="download-versions__item-icon" alt="">
+            <span class="show-components__toggle">
+              <span class="show-components__text">
+                2018-01-12 build 22
+              </span>
+              <ul class="components">
+                  {% for component in builds.stable.0.components if (builds.stable and builds.stable.0) %}
+                  <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                  {% endfor %}
+              </ul>
+            </span>
+        </span>
+      </div>
+      <div class="download-versions__item">
+        <span class="show-components">
+            <img src="{{ asset('static/img/ic-download.png') }}" class="download-versions__item-icon" alt="">
+            <span class="show-components__toggle">
+              <span class="show-components__text">
+                2018-01-08 build 22
+              </span>
+              <ul class="components">
+                  {% for component in builds.stable.0.components if (builds.stable and builds.stable.0) %}
+                  <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
+                  {% endfor %}
+              </ul>
+            </span>
+        </span>
+      </div>
+      <div class="download-versions__item">
+        <span class="show-components">
+            <img src="{{ asset('static/img/github-logo.png') }}" class="download-versions__item-icon" alt="">
+            <a href="https://github.com/" target="_blank" class="download-versions__item-link">Репозиторий на Github</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="code-example">
+        <h3>Maven dependency</h3>
+        <div>
+            <textarea class="frame" id="stable-code" readonly>
 <dependency>
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
 &nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.stable.version }}</version>
 </dependency></textarea>
-                        <button class="copy" onclick="copyToClipboard('#stable-code')">copy</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-8">
-                <div>
-                    <h3>
-                        {% for translation in texts.20.translations if translation.locale == locale %}
-                        {{ translation.text | raw }}
-                        {% endfor %}
-                    </h3>
-                    <a class="history-link" href="http://corchestra.ru/download/builds/stable/" target="_blank">
-                        {% for translation in texts.21.translations if translation.locale == locale %}
-                        {{ translation.text | raw }}
-                        {% endfor %}
-                    </a>
-                    <ul class="list">
-                        {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
-                        {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
-                        {% for key, value in builds.stable if key != 0 %}
-                        <li class="in-list">
-                            <span class="show-components">{{ value.name ~ ' ' ~ value.date|date('Y-m-d') }}</span>
-                            <ul class="components">
-                                {% for component in value.components %}
-                                <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+            <button class="copy" onclick="copyToClipboard('#stable-code')">copy</button>
         </div>
     </div>
-    <div id="newest-version" class="stable-version newest-version">
-        <div class="row">
-            <p>
-                {% for translation in texts.15.translations if translation.locale == locale %}
-                {{ translation.text | raw }}
-                {% endfor %}
-            </p>
-            <div class="download-link">
-                {% if builds.stable and builds.stable.0 %}
-                <a href="{{ builds.newest != null ? builds.newest.0.path : '' }}" target="_blank">
-                    {% for translation in texts.18.translations if translation.locale == locale %}
-                    {{ translation.text | raw }}
-                    {% endfor %}
-                    {{ ' ' ~ builds.newest.0.name ~ ' ' ~ builds.newest.0.date|date('Y-m-d') ~ ' (ZIP)' }}
-                </a>
-                {% endif %}
-            </div>
-            <div class="col-xs-4">
-                <span class="show-components">
-                    {% for translation in texts.19.translations if translation.locale == locale %}
-                    {{ translation.text | raw }}
-                    {% endfor %}
-                </span>
-                <ul class="components">
-                    {% for component in builds.newest.0.components if (builds.newest and builds.newest.0) %}
-                    <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
-                    {% endfor %}
-                </ul>
-                <div class="code-example">
-                    <h3>Maven dependency</h3>
-                    <div>
-                        <textarea class="frame" id="newest-code" readonly>
-<dependency>
-&nbsp;&nbsp;&nbsp;&nbsp;<groupId>ru.curs</groupId>
-&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>celesta</artifactId>
-&nbsp;&nbsp;&nbsp;&nbsp;<version>{{ versions.newest.version }}</version>
-</dependency></textarea>
-                        <button class="copy" onclick="copyToClipboard('#newest-code')">copy</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-8">
-                <div>
-                    <h3>
-                        {% for translation in texts.20.translations if translation.locale == locale %}
-                        {{ translation.text | raw }}
-                        {% endfor %}
-                    </h3><a class="history-link" href="http://corchestra.ru/download/builds/trunk/" target="_blank">
-                        {% for translation in texts.21.translations if translation.locale == locale %}
-                        {{ translation.text | raw }}
-                        {% endfor %}
-                    </a>
-                    <ul class="list">
-                        {#<a href="{{ value.path }}">{{ '(' ~ value.name ~ '), ' }}#}
-                        {#<span>{{ date('NOW').diff(value.date).days ~ ' дней назад' }}</span>#}
-                        {% for key, value in builds.newest if key != 0 %}
-                        <li class="in-list">
-                            <span class="show-components">{{ value.name ~ ' ' ~ value.date|date('Y-m-d') }}</span>
-                            <ul class="components">
-                                {% for component in value.components %}
-                                <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div style="text-align: center;">
+      <a class="button full-history" href="#">
+          Полная история версий
+      </a>
     </div>
-    <div id="source-code" class="source-code">
-        <p>
-            {% for translation in texts.16.translations if translation.locale == locale %}
-            {{ translation.text | raw }}
-            {% endfor %}
-        </p>
-        <ul>
-            {% for source in sources %}
-                {% for translation in source.translations if translation.locale == locale %}
-                <li>
-                    <h3>{{ translation.title }}<span>{{ translation.subtitle }}</span></h3>
-                    {% for link in translation.sourceLinkTranslations %}
-                        <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
-                    {% endfor %}
-                </li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-    </div>
+
 </section>
 <section id="news" class="news">
     <div class="row">
@@ -427,7 +306,7 @@
                     {{ translation.text | raw }}
                     {% endfor %}
                 </h3>
-				<div class="input-block">							
+				<div class="input-block">
 					<p>
                         {% for translation in texts.24.translations if translation.locale == locale %}
                         {{ translation.text | raw }}
@@ -480,7 +359,6 @@
                 {{ translation.text | raw }}
             {% endfor %}
         </span>
-        © 1998-2017
     </p>
 </footer>
 <a href="#" class="back-to-top"></a>
