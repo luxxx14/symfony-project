@@ -27,6 +27,7 @@ class VersionController extends Controller
         $versions = $em->getRepository('ManagementAdminBundle:Version')
             ->createQueryBuilder('v')
             ->orderBy('v.id', 'ASC')
+            ->setMaxResults(1)
             ->getQuery()
             ->getResult();
 
