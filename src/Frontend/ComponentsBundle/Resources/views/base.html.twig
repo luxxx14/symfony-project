@@ -225,7 +225,7 @@
             <img src="{{ asset('static/img/ic-download.png') }}" class="download-versions__item-icon" alt="">
             <span class="show-components__toggle">
               <span class="show-components__text">
-                2018-01-12 build 22
+                {{ builds.stable.0.date }} build {{ builds.stable.0.name }}
               </span>
               <ul class="components">
                   {% for component in builds.stable.0.components if (builds.stable and builds.stable.0) %}
@@ -240,10 +240,10 @@
             <img src="{{ asset('static/img/ic-download.png') }}" class="download-versions__item-icon" alt="">
             <span class="show-components__toggle">
               <span class="show-components__text">
-                2018-01-08 build 22
+                {{ builds.newest.0.date }} build {{ builds.newest.0.name }}
               </span>
               <ul class="components">
-                  {% for component in builds.stable.0.components if (builds.stable and builds.stable.0) %}
+                  {% for component in builds.newest.0.components if (builds.newest and builds.newest.0) %}
                   <li><a href="{{ component.path }}" target="_blank">{{ component.name }}</a></li>
                   {% endfor %}
               </ul>
@@ -253,7 +253,7 @@
       <div class="download-versions__item">
         <span class="show-components">
             <img src="{{ asset('static/img/github-logo.png') }}" class="download-versions__item-icon" alt="">
-            <a href="https://github.com/" target="_blank" class="download-versions__item-link">Репозиторий на Github</a>
+            <a href="https://github.com/CourseOrchestra/corchestra" target="_blank" class="download-versions__item-link">Репозиторий на Github</a>
         </span>
       </div>
     </div>
@@ -271,7 +271,7 @@
         </div>
     </div>
     <div style="text-align: center;">
-      <a class="button full-history" href="#">
+      <a class="button full-history" href="https://artifactory.corchestra.ru/artifactory/list/corchestra-dev/">
           Полная история версий
       </a>
     </div>

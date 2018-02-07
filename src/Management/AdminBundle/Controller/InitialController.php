@@ -61,10 +61,22 @@ class InitialController extends Controller {
 
         $locales = $em->getRepository('TranslationLocaleBundle:Locale')->findAll();
 
-        $fs = new Filesystem();
+        //$fs = new Filesystem();
+        //$finder = new Finder();
 
-        $finder = new Finder();
-        $buildsPath = $this->get('kernel')->getRootDir() . '/../web/download/builds/';
+        $componentsPath = "https://artifactory.corchestra.ru/artifactory/list/corchestra-dev";
+        $buildsPath = 'https://artifactory.corchestra.ru/artifactory/api/storage/corchestra-dev';
+
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get($buildsPath);
+        $buildsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
+
+        $buildsCount = count($buildsList->children);
+        $newestBuildVersion = substr(strval($buildsList->children[intval($buildsCount - 1)]->uri), 1);
+        $stableBuildVersion = substr(strval($buildsList->children[intval($buildsCount - 2)]->uri), 1);
+        $newestBuildPath = strval($buildsPath . $buildsList->children[intval($buildsCount - 1)]->uri);
+        $stableBuildPath = strval($buildsPath . $buildsList->children[intval($buildsCount - 2)]->uri);
+
         $builds = ['stable' => NULL, 'newest' => NULL];
 
         $subscriberForm = $this
@@ -103,6 +115,7 @@ class InitialController extends Controller {
 
         $selectedFeedSource = $em->getRepository('ManagementAdminBundle:FeedSource')
             ->findOneBy(['locale' => $locale]);
+
         $feed = $em->getRepository('ManagementAdminBundle:Feed')
             ->createQueryBuilder('f')
             ->where('f.status = :status')
@@ -125,129 +138,51 @@ class InitialController extends Controller {
             ->getResult();
 
         $stable = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Стабильная']);
-        $newest = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Новейшая']);
-        $source = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Исходный код']);
+        $versions = compact('stable');
 
-        $versions = compact('stable', 'newest', 'source');
+        /** Stable builds */
+        $response = $client->get($stableBuildPath);
+        $stableBuildsComponentsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
+        $createTs = strtotime(strval(substr($stableBuildsComponentsList->created, 0, strpos($stableBuildsComponentsList->created, '.'))));
 
-        if ($fs->exists($buildsPath . 'stable')) {
-            /** Stable builds */
-            $finder->files()->in($buildsPath . 'stable');
-            $finder->sortByName();
-
-            $count = $finder->count();
-            $current = 0;
-            foreach ($finder as $file) {
-                $current++;
-
-                if ($count - $current <= 3) {
-                    $buildComponents = [];
-
-                    $buildName = '';
-
-                    $componentsFinder = new Finder();
-
-                    $componentsPath = substr($file->getFilename(), 33, strlen($file->getFilename()) - 33 - 4);
-//                    $componentsPath = str_replace('-', '_', $componentsPath);
-                    if ($fs->exists($buildsPath . 'stable/' . $componentsPath)) {
-                        $componentsFinder->files()->in($buildsPath . 'stable/' . $componentsPath);
-                        $componentsFinder->sortByName();
-
-                        foreach ($componentsFinder as $componentFile) {
-                            $buildComponents[] = [
-                                'name' => $componentFile->getFilename(),
-                                'path' => '/download/builds/stable/' . $componentsPath . '/' . $componentFile->getFilename(),
-                                'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
-                            ];
-
-                            if ($componentFile->getFilename() == 'platformversion.info') {
-                                $platformVersionInfo = explode(PHP_EOL, $componentFile->getContents());
-//                                $platformVersionInfo = file_get_contents($componentFile);
-//                                $platformVersionInfo = preg_replace('/\s+/', '', $platformVersionInfo);
-//                                $arr = json_decode($platformVersionInfo, true);
-
-                                $versionNumber = substr($platformVersionInfo[2], 9, strlen($platformVersionInfo[2]) - 9);
-                                $buildNumber = substr($platformVersionInfo[4], 14, strlen($platformVersionInfo[4]) - 14);
-
-                                $buildName = 'Course Orchestra v' . $versionNumber . ' Build ' . $buildNumber;
-                            }
-                        }
-                    }
-
-                    unset($componentsFinder);
-
-                    $builds['stable'][] = [
-                        'name' => $buildName,
-                        'path' => '/download/builds/stable/' . $file->getFilename(),
-                        'date' => (new \DateTime())->setTimestamp($file->getATime()),
-                        'components' => $buildComponents
-                    ];
-
-                    unset($buildComponents);
-                }
-            }
-            if (array_key_exists('stable', $builds) and $builds['stable']) {
-                rsort($builds['stable']);
-            }
+        foreach ($stableBuildsComponentsList->children as $key => $dataObj) {
+            $buildComponents[$key] = [
+                'name' => substr(strval($dataObj->uri), 1),
+                'path' => $componentsPath . '/' . $stableBuildVersion . $dataObj->uri,
+                'date' => (new \DateTime())->setTimestamp($createTs)
+            ];
         }
-        if ($fs->exists($buildsPath . 'trunk')) {
-            /** Newest builds */
-            $finder->files()->in($buildsPath . 'trunk');
-            $finder->sortByName();
 
-            $count = $finder->count();
-            $current = 0;
-            foreach ($finder as $file) {
-                $current++;
+        $builds['stable'][] = [
+            'name' => $stableBuildVersion,
+            'path' => $componentsPath . $stableBuildsComponentsList->uri,
+            'date' => substr($stableBuildsComponentsList->created, 0, 10),
+            //'date' => (new \DateTime())->setTimestamp($createTs),
+            'components' => $buildComponents
+        ];
 
-                if ($count - $current <= 3) {
-                    $buildComponents = [];
 
-                    $buildName = '';
+        /** Newest builds */
+        $response = $client->get($newestBuildPath);
+        $newestBuildsComponentsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
+        $createTs = strtotime(strval(substr($newestBuildsComponentsList->created, 0, strpos($newestBuildsComponentsList->created, '.'))));
 
-                    $componentsFinder = new Finder();
-
-                    $componentsPath = substr($file->getFilename(), 32, strlen($file->getFilename()) - 32 - 4);
-//                    $componentsPath = str_replace('-', '_', $componentsPath);
-                    if ($fs->exists($buildsPath . 'trunk/' . $componentsPath)) {
-                        $componentsFinder->files()->in($buildsPath . 'trunk/' . $componentsPath);
-                        $componentsFinder->sortByName();
-
-                        foreach ($componentsFinder as $componentFile) {
-                            $buildComponents[] = [
-                                'name' => $componentFile->getFilename(),
-                                'path' => '/download/builds/trunk/' . $componentsPath . '/' . $componentFile->getFilename(),
-                                'date' => (new \DateTime())->setTimestamp($componentFile->getATime())
-                            ];
-
-                            if ($componentFile->getFilename() == 'platformversion.info') {
-                                $platformVersionInfo = explode(PHP_EOL, $componentFile->getContents());
-//                                $platformVersionInfo = file_get_contents($componentFile);
-//                                $platformVersionInfo = preg_replace('/\s+/', '', $platformVersionInfo);
-//                                $arr = json_decode($platformVersionInfo, true);
-
-                                $versionNumber = substr($platformVersionInfo[2], 9, strlen($platformVersionInfo[2]) - 9);
-                                $buildNumber = substr($platformVersionInfo[4], 14, strlen($platformVersionInfo[4]) - 14);
-
-                                $buildName = 'Course Orchestra v' . $versionNumber . ' Build ' . $buildNumber;
-                            }
-                        }
-                    }
-
-                    unset($componentsFinder);
-
-                    $builds['newest'][] = [
-                        'name' => $buildName,
-                        'path' => '/download/builds/trunk/' . $file->getFilename(),
-                        'date' => (new \DateTime())->setTimestamp($file->getATime()),
-                        'components' => $buildComponents
-                    ];
-                }
-            }
-            if (array_key_exists('newest', $builds) and $builds['newest']) {
-                rsort($builds['newest']);
-            }
+        foreach ($newestBuildsComponentsList->children as $key => $dataObj) {
+            $buildComponents[$key] = [
+                'name' => substr(strval($dataObj->uri), 1),
+                'path' => $componentsPath . '/' . $newestBuildVersion . $dataObj->uri,
+                'date' => (new \DateTime())->setTimestamp($createTs)
+            ];
         }
+
+        $builds['newest'][] = [
+            'name' => $newestBuildVersion,
+            'path' => $componentsPath . $newestBuildsComponentsList->uri,
+            'date' => substr($newestBuildsComponentsList->created, 0, 10),
+            //'date' => (new \DateTime())->setTimestamp($createTs),
+            'components' => $buildComponents
+        ];
+
 
         return $this->render('@FrontendComponents/base.html.twig', [
             'locale' => $locale,
