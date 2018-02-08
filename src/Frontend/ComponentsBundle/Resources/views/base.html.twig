@@ -253,7 +253,7 @@
       <div class="download-versions__item">
         <span class="show-components">
             <img src="{{ asset('static/img/github-logo.png') }}" class="download-versions__item-icon" alt="">
-            <a href="https://github.com/CourseOrchestra/corchestra" target="_blank" class="download-versions__item-link">Репозиторий на Github</a>
+            <a href="{{ versionsLinks.repo.linkUrl }}" target="_blank" class="download-versions__item-link">Репозиторий на Github</a>
         </span>
       </div>
     </div>
@@ -272,7 +272,7 @@
         </div>
     </div>
     <div style="text-align: center;">
-      <a class="button full-history" href="https://artifactory.corchestra.ru/artifactory/list/corchestra-dev/">
+      <a class="button full-history" href="{{ versionsLinks.history.linkUrl }}">
           Полная история версий
       </a>
     </div>

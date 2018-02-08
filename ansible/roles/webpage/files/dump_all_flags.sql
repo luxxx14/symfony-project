@@ -1839,6 +1839,24 @@ ALTER TABLE ONLY company_information_translation
     ADD CONSTRAINT fk_f29d8edce559dfd1 FOREIGN KEY (locale_id) REFERENCES locale(id);
 
 
+--------------- SQL ---------------
+
+CREATE TABLE public.version_links (
+  id SERIAL,
+  link_type VARCHAR(128) NOT NULL,
+  link_url VARCHAR(256) NOT NULL,
+  CONSTRAINT version_links_pkey PRIMARY KEY(id)
+)
+WITH (oids = false);
+
+/* Data for the 'public.version_links' table  (Records 1 - 2) */
+
+INSERT INTO public.version_links ("id", "link_type", "link_url")
+VALUES
+  (2, E'Репозиторий на Github', E'https://github.com/CourseOrchestra/corchestra'),
+  (1, E'Полная история версий', E'https://artifactory.corchestra.ru/artifactory/list/corchestra-dev/');
+
+
 --
 -- PostgreSQL database dump complete
 --

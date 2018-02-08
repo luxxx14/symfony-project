@@ -1,0 +1,30 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Ссылки</h1>
+
+    <table class="table table-striped table-staff">
+        <thead>
+            <tr>
+                <th>Тип</th>
+                <th style="min-width: 300px !important;">URL адрес ссылки</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for versionLinks in versionLinks %}
+            <tr>
+                <td>{{ versionLinks.linkType }}</td>
+                <td>{{ versionLinks.linkUrl }}</td>
+                <td><nav><ul class="navbar">
+                    <li>
+                        <a href="{{ path('admin_versionlinks_edit', { 'id': versionLinks.id }) }}">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a>
+                    </li>
+                </ul></nav></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

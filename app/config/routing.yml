@@ -1,3 +1,4 @@
+
 management_admin_text:
     resource: "@ManagementAdminBundle/Controller/TextController.php"
     type:     annotation
@@ -7,8 +8,12 @@ translation_locale:
     type:     annotation
     prefix:   /
 
-management_admin_source:
-    resource: "@ManagementAdminBundle/Controller/SourceController.php"
+
+#management_admin_source:
+#    resource: "@ManagementAdminBundle/Controller/SourceController.php"
+#    type:     annotation
+admin_version_links:
+    resource: "@ManagementAdminBundle/Controller/VersionLinksController.php"
     type:     annotation
 
 management_admin_subscriber:

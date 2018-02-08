@@ -140,6 +140,10 @@ class InitialController extends Controller {
         $stable = $em->getRepository('ManagementAdminBundle:Version')->findOneBy(['type' => 'Стабильная']);
         $versions = compact('stable');
 
+        $history = $em->getRepository('ManagementAdminBundle:VersionLinks')->findOneBy(['linkType' => 'Полная история версий']);
+        $repo = $em->getRepository('ManagementAdminBundle:VersionLinks')->findOneBy(['linkType' => 'Репозиторий на Github']);
+        $versionsLinks = compact('history', 'repo');
+
         /** Stable builds */
         $response = $client->get($stableBuildPath);
         $stableBuildsComponentsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
@@ -196,6 +200,7 @@ class InitialController extends Controller {
             'selectedFeedSource' => $selectedFeedSource,
             'feed' => $feed,
             'versions' => $versions,
+            'versionsLinks' => $versionsLinks,
             'builds' => $builds,
             'sources' => $sources,
             'subscriberForm' => $subscriberForm->createView()

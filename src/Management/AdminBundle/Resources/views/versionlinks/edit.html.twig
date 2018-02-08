@@ -1,0 +1,25 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h1>Редактирование ссылки</h1>
+
+    <div class="margin-bottom-lg border-bottom">
+        <div class="row">
+            <div class="col-lg-5 col-md-8">
+                {{ form_start(edit_form) }}
+
+                <div class="form-group">
+                    {{ form_label(edit_form.linkUrl) }}
+                    {{ form_widget(edit_form.linkUrl) }}
+                    {{ form_errors(edit_form.linkUrl) }}
+                </div>
+
+                <input class="btn" type="submit" value="Сохранить" />
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+
+
+    <br><a class="btn" href="{{ path('admin_versionlinks_index') }}">Отмена</a>
+{% endblock %}
