@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Translation\LocaleBundle\Entity\Locale;
+use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * InitialController
@@ -63,21 +64,6 @@ class InitialController extends Controller {
 
         //$fs = new Filesystem();
         //$finder = new Finder();
-
-        $componentsPath = "https://artifactory.corchestra.ru/artifactory/list/corchestra-dev";
-        $buildsPath = 'https://artifactory.corchestra.ru/artifactory/api/storage/corchestra-dev';
-
-        $client = new \GuzzleHttp\Client();
-        $response = $client->get($buildsPath);
-        $buildsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
-
-        $buildsCount = count($buildsList->children);
-        $newestBuildVersion = substr(strval($buildsList->children[intval($buildsCount - 1)]->uri), 1);
-        $stableBuildVersion = substr(strval($buildsList->children[intval($buildsCount - 2)]->uri), 1);
-        $newestBuildPath = strval($buildsPath . $buildsList->children[intval($buildsCount - 1)]->uri);
-        $stableBuildPath = strval($buildsPath . $buildsList->children[intval($buildsCount - 2)]->uri);
-
-        $builds = ['stable' => NULL, 'newest' => NULL];
 
         $subscriberForm = $this
             ->createForm('Management\AdminBundle\Form\SubscriberType', new Subscriber(), [
@@ -144,48 +130,64 @@ class InitialController extends Controller {
         $repo = $em->getRepository('ManagementAdminBundle:VersionLinks')->findOneBy(['linkType' => 'Репозиторий на Github']);
         $versionsLinks = compact('history', 'repo');
 
-        /** Stable builds */
-        $response = $client->get($stableBuildPath);
-        $stableBuildsComponentsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
-        $createTs = strtotime(strval(substr($stableBuildsComponentsList->created, 0, strpos($stableBuildsComponentsList->created, '.'))));
+        $componentsPath = "https://artifactory.corchestra.ru/artifactory/list/corchestra-dev";
+        $buildsPath = 'https://artifactory.corchestra.ru/artifactory/api/storage/corchestra-dev';
 
-        foreach ($stableBuildsComponentsList->children as $key => $dataObj) {
-            $buildComponents[$key] = [
-                'name' => substr(strval($dataObj->uri), 1),
-                'path' => $componentsPath . '/' . $stableBuildVersion . $dataObj->uri,
-                'date' => (new \DateTime())->setTimestamp($createTs)
+        $builds = ['stable' => NULL, 'newest' => NULL];
+        $cache = new FilesystemCache();
+        if (!$cache->has('builds')) {
+            $client = new \GuzzleHttp\Client();
+            $response = $client->get($buildsPath);
+            $buildsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
+
+            $buildsCount = count($buildsList->children);
+            $newestBuildVersion = substr(strval($buildsList->children[intval($buildsCount - 1)]->uri), 1);
+            $stableBuildVersion = substr(strval($buildsList->children[intval($buildsCount - 2)]->uri), 1);
+            $newestBuildPath = strval($buildsPath . $buildsList->children[intval($buildsCount - 1)]->uri);
+            $stableBuildPath = strval($buildsPath . $buildsList->children[intval($buildsCount - 2)]->uri);
+
+            /** Stable builds */
+            $response = $client->get($stableBuildPath);
+            $stableBuildsComponentsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
+            $createTs = strtotime(strval(substr($stableBuildsComponentsList->created, 0, strpos($stableBuildsComponentsList->created, '.'))));
+            foreach ($stableBuildsComponentsList->children as $key => $dataObj) {
+                $buildComponents[$key] = [
+                    'name' => substr(strval($dataObj->uri), 1),
+                    'path' => $componentsPath . '/' . $stableBuildVersion . $dataObj->uri,
+                    'date' => (new \DateTime())->setTimestamp($createTs)
+                ];
+            }
+            $builds['stable'][] = [
+                'name' => $stableBuildVersion,
+                'path' => $componentsPath . $stableBuildsComponentsList->uri,
+                'date' => substr($stableBuildsComponentsList->created, 0, 10),
+                //'date' => (new \DateTime())->setTimestamp($createTs),
+                'components' => $buildComponents
             ];
-        }
 
-        $builds['stable'][] = [
-            'name' => $stableBuildVersion,
-            'path' => $componentsPath . $stableBuildsComponentsList->uri,
-            'date' => substr($stableBuildsComponentsList->created, 0, 10),
-            //'date' => (new \DateTime())->setTimestamp($createTs),
-            'components' => $buildComponents
-        ];
-
-
-        /** Newest builds */
-        $response = $client->get($newestBuildPath);
-        $newestBuildsComponentsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
-        $createTs = strtotime(strval(substr($newestBuildsComponentsList->created, 0, strpos($newestBuildsComponentsList->created, '.'))));
-
-        foreach ($newestBuildsComponentsList->children as $key => $dataObj) {
-            $buildComponents[$key] = [
-                'name' => substr(strval($dataObj->uri), 1),
-                'path' => $componentsPath . '/' . $newestBuildVersion . $dataObj->uri,
-                'date' => (new \DateTime())->setTimestamp($createTs)
+            /** Newest builds */
+            $response = $client->get($newestBuildPath);
+            $newestBuildsComponentsList = \GuzzleHttp\json_decode(strval($response->getBody()->getContents()));
+            $createTs = strtotime(strval(substr($newestBuildsComponentsList->created, 0, strpos($newestBuildsComponentsList->created, '.'))));
+            foreach ($newestBuildsComponentsList->children as $key => $dataObj) {
+                $buildComponents[$key] = [
+                    'name' => substr(strval($dataObj->uri), 1),
+                    'path' => $componentsPath . '/' . $newestBuildVersion . $dataObj->uri,
+                    'date' => (new \DateTime())->setTimestamp($createTs)
+                ];
+            }
+            $builds['newest'][] = [
+                'name' => $newestBuildVersion,
+                'path' => $componentsPath . $newestBuildsComponentsList->uri,
+                'date' => substr($newestBuildsComponentsList->created, 0, 10),
+                //'date' => (new \DateTime())->setTimestamp($createTs),
+                'components' => $buildComponents
             ];
-        }
 
-        $builds['newest'][] = [
-            'name' => $newestBuildVersion,
-            'path' => $componentsPath . $newestBuildsComponentsList->uri,
-            'date' => substr($newestBuildsComponentsList->created, 0, 10),
-            //'date' => (new \DateTime())->setTimestamp($createTs),
-            'components' => $buildComponents
-        ];
+            $cache->set('builds', $builds, 900);
+        } else {
+            $builds = $cache->get('builds');
+        }
 
 
         return $this->render('@FrontendComponents/base.html.twig', [
