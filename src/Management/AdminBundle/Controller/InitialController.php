@@ -184,7 +184,7 @@ class InitialController extends Controller {
                 'components' => $buildComponents
             ];
 
-            $cache->set('builds', $builds, 900);
+            $cache->set('builds', $builds, intval($this->container->getParameter('caching_time')));
         } else {
             $builds = $cache->get('builds');
         }
