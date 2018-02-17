@@ -566,8 +566,23 @@ body {
       cursor: pointer;
       border-bottom: 1px dashed #9558d1;
 
+      &:hover {
+        color: #9558d1;
+        border-bottom: 1px solid rgba(89, 46, 131, 0.6);
+      }
+
       &:before {
         content: '\25BE';
+        display: inline-block;
+        transition: 0.3s;
+        -moz-transition: 0.3s;
+        -webkit-transition: 0.3s;
+      }
+
+      &.active:before {
+        transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
       }
     }
 

@@ -409,8 +409,19 @@ body {
       letter-spacing: 0.2px;
       cursor: pointer;
       border-bottom: 1px dashed #9558d1; }
+      body .download span.show-components__text:hover {
+        color: #9558d1;
+        border-bottom: 1px solid rgba(89, 46, 131, 0.6); }
       body .download span.show-components__text:before {
-        content: '\25BE'; }
+        content: '\25BE';
+        display: inline-block;
+        transition: 0.3s;
+        -moz-transition: 0.3s;
+        -webkit-transition: 0.3s; }
+      body .download span.show-components__text.active:before {
+        transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg); }
     body .download nav {
       text-align: center; }
       body .download nav ul {
