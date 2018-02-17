@@ -2,8 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.4
--- Dumped by pg_dump version 9.6.2
+-- Dumped from database version 9.6.6
+-- Dumped by pg_dump version 9.6.0
+
+-- Started on 2018-02-17 12:35:19
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,8 +16,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE IF EXISTS corchestra_db;
 --
+-- TOC entry 2457 (class 1262 OID 18506)
 -- Name: corchestra_db; Type: DATABASE; Schema: -; Owner: postgres
 --
 
@@ -36,6 +38,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- TOC entry 1 (class 3079 OID 12387)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -43,6 +46,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
+-- TOC entry 2459 (class 0 OID 0)
+-- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -56,6 +61,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- TOC entry 185 (class 1259 OID 18507)
 -- Name: advantage; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -69,6 +75,7 @@ CREATE TABLE advantage (
 ALTER TABLE advantage OWNER TO postgres;
 
 --
+-- TOC entry 186 (class 1259 OID 18510)
 -- Name: advantage_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -83,6 +90,7 @@ CREATE SEQUENCE advantage_id_seq
 ALTER TABLE advantage_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 187 (class 1259 OID 18512)
 -- Name: advantage_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -100,6 +108,7 @@ CREATE TABLE advantage_translation (
 ALTER TABLE advantage_translation OWNER TO postgres;
 
 --
+-- TOC entry 188 (class 1259 OID 18519)
 -- Name: advantage_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -114,6 +123,7 @@ CREATE SEQUENCE advantage_translation_id_seq
 ALTER TABLE advantage_translation_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 189 (class 1259 OID 18521)
 -- Name: client; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -127,6 +137,7 @@ CREATE TABLE client (
 ALTER TABLE client OWNER TO postgres;
 
 --
+-- TOC entry 190 (class 1259 OID 18524)
 -- Name: client_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -141,6 +152,7 @@ CREATE SEQUENCE client_id_seq
 ALTER TABLE client_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 191 (class 1259 OID 18526)
 -- Name: client_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -158,6 +170,7 @@ CREATE TABLE client_translation (
 ALTER TABLE client_translation OWNER TO postgres;
 
 --
+-- TOC entry 192 (class 1259 OID 18533)
 -- Name: client_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -172,6 +185,7 @@ CREATE SEQUENCE client_translation_id_seq
 ALTER TABLE client_translation_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 193 (class 1259 OID 18535)
 -- Name: common_information; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -185,6 +199,7 @@ CREATE TABLE common_information (
 ALTER TABLE common_information OWNER TO postgres;
 
 --
+-- TOC entry 194 (class 1259 OID 18538)
 -- Name: common_information_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -199,6 +214,7 @@ CREATE SEQUENCE common_information_id_seq
 ALTER TABLE common_information_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 195 (class 1259 OID 18540)
 -- Name: common_information_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -216,6 +232,7 @@ CREATE TABLE common_information_translation (
 ALTER TABLE common_information_translation OWNER TO postgres;
 
 --
+-- TOC entry 196 (class 1259 OID 18547)
 -- Name: common_information_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -230,6 +247,7 @@ CREATE SEQUENCE common_information_translation_id_seq
 ALTER TABLE common_information_translation_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 197 (class 1259 OID 18549)
 -- Name: company_information; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -245,6 +263,7 @@ CREATE TABLE company_information (
 ALTER TABLE company_information OWNER TO postgres;
 
 --
+-- TOC entry 198 (class 1259 OID 18554)
 -- Name: company_information_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -259,6 +278,7 @@ CREATE SEQUENCE company_information_id_seq
 ALTER TABLE company_information_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 199 (class 1259 OID 18556)
 -- Name: company_information_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -276,6 +296,7 @@ CREATE TABLE company_information_translation (
 ALTER TABLE company_information_translation OWNER TO postgres;
 
 --
+-- TOC entry 200 (class 1259 OID 18563)
 -- Name: company_information_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -290,20 +311,21 @@ CREATE SEQUENCE company_information_translation_id_seq
 ALTER TABLE company_information_translation_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 201 (class 1259 OID 18565)
 -- Name: component; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE component (
     id integer NOT NULL,
     date_of_creation timestamp(0) without time zone NOT NULL,
-    date_of_change timestamp(0) without time zone NOT NULL,
-    wiki_url character varying(1024) DEFAULT NULL::character varying
+    date_of_change timestamp(0) without time zone NOT NULL
 );
 
 
 ALTER TABLE component OWNER TO postgres;
 
 --
+-- TOC entry 202 (class 1259 OID 18572)
 -- Name: component_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -318,6 +340,7 @@ CREATE SEQUENCE component_id_seq
 ALTER TABLE component_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 203 (class 1259 OID 18574)
 -- Name: component_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -328,13 +351,15 @@ CREATE TABLE component_translation (
     name character varying(128) DEFAULT NULL::character varying,
     description pg_catalog.text,
     date_of_creation timestamp(0) without time zone NOT NULL,
-    date_of_change timestamp(0) without time zone NOT NULL
+    date_of_change timestamp(0) without time zone NOT NULL,
+    wiki_url character varying(1024) DEFAULT NULL::character varying
 );
 
 
 ALTER TABLE component_translation OWNER TO postgres;
 
 --
+-- TOC entry 204 (class 1259 OID 18581)
 -- Name: component_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -349,6 +374,7 @@ CREATE SEQUENCE component_translation_id_seq
 ALTER TABLE component_translation_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 205 (class 1259 OID 18583)
 -- Name: feed; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -370,6 +396,7 @@ CREATE TABLE feed (
 ALTER TABLE feed OWNER TO postgres;
 
 --
+-- TOC entry 206 (class 1259 OID 18595)
 -- Name: feed_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -384,6 +411,7 @@ CREATE SEQUENCE feed_id_seq
 ALTER TABLE feed_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 207 (class 1259 OID 18597)
 -- Name: feed_source; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -397,7 +425,6 @@ CREATE TABLE feed_source (
     date_of_creation timestamp(0) without time zone NOT NULL,
     date_of_change timestamp(0) without time zone NOT NULL,
     link character varying(256) DEFAULT NULL::character varying,
-    selected boolean,
     locale_id integer
 );
 
@@ -405,6 +432,7 @@ CREATE TABLE feed_source (
 ALTER TABLE feed_source OWNER TO postgres;
 
 --
+-- TOC entry 208 (class 1259 OID 18608)
 -- Name: feed_source_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -419,6 +447,7 @@ CREATE SEQUENCE feed_source_id_seq
 ALTER TABLE feed_source_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 209 (class 1259 OID 18610)
 -- Name: feed_status; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -434,6 +463,7 @@ CREATE TABLE feed_status (
 ALTER TABLE feed_status OWNER TO postgres;
 
 --
+-- TOC entry 210 (class 1259 OID 18614)
 -- Name: feed_status_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -448,6 +478,7 @@ CREATE SEQUENCE feed_status_id_seq
 ALTER TABLE feed_status_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 211 (class 1259 OID 18616)
 -- Name: locale; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -464,6 +495,7 @@ CREATE TABLE locale (
 ALTER TABLE locale OWNER TO postgres;
 
 --
+-- TOC entry 212 (class 1259 OID 18621)
 -- Name: locale_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -478,6 +510,23 @@ CREATE SEQUENCE locale_id_seq
 ALTER TABLE locale_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 231 (class 1259 OID 18920)
+-- Name: phinxlog; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE phinxlog (
+    version bigint NOT NULL,
+    migration_name character varying(100),
+    start_time timestamp without time zone,
+    end_time timestamp without time zone,
+    breakpoint boolean DEFAULT false NOT NULL
+);
+
+
+ALTER TABLE phinxlog OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 18623)
 -- Name: source; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -491,6 +540,7 @@ CREATE TABLE source (
 ALTER TABLE source OWNER TO postgres;
 
 --
+-- TOC entry 214 (class 1259 OID 18626)
 -- Name: source_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -505,6 +555,7 @@ CREATE SEQUENCE source_id_seq
 ALTER TABLE source_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 215 (class 1259 OID 18628)
 -- Name: source_link; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -520,6 +571,7 @@ CREATE TABLE source_link (
 ALTER TABLE source_link OWNER TO postgres;
 
 --
+-- TOC entry 216 (class 1259 OID 18635)
 -- Name: source_link_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -534,6 +586,7 @@ CREATE SEQUENCE source_link_id_seq
 ALTER TABLE source_link_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 217 (class 1259 OID 18637)
 -- Name: source_link_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -552,6 +605,7 @@ CREATE TABLE source_link_translation (
 ALTER TABLE source_link_translation OWNER TO postgres;
 
 --
+-- TOC entry 218 (class 1259 OID 18645)
 -- Name: source_link_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -566,6 +620,7 @@ CREATE SEQUENCE source_link_translation_id_seq
 ALTER TABLE source_link_translation_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 219 (class 1259 OID 18647)
 -- Name: source_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -583,6 +638,7 @@ CREATE TABLE source_translation (
 ALTER TABLE source_translation OWNER TO postgres;
 
 --
+-- TOC entry 220 (class 1259 OID 18652)
 -- Name: source_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -597,6 +653,7 @@ CREATE SEQUENCE source_translation_id_seq
 ALTER TABLE source_translation_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 221 (class 1259 OID 18654)
 -- Name: subscriber; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -612,6 +669,7 @@ CREATE TABLE subscriber (
 ALTER TABLE subscriber OWNER TO postgres;
 
 --
+-- TOC entry 222 (class 1259 OID 18658)
 -- Name: subscriber_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -626,6 +684,7 @@ CREATE SEQUENCE subscriber_id_seq
 ALTER TABLE subscriber_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 223 (class 1259 OID 18660)
 -- Name: system_user; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -649,6 +708,8 @@ CREATE TABLE system_user (
 ALTER TABLE system_user OWNER TO postgres;
 
 --
+-- TOC entry 2460 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: COLUMN system_user.roles; Type: COMMENT; Schema: public; Owner: postgres
 --
 
@@ -656,6 +717,7 @@ COMMENT ON COLUMN system_user.roles IS '(DC2Type:array)';
 
 
 --
+-- TOC entry 224 (class 1259 OID 18673)
 -- Name: system_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -670,6 +732,7 @@ CREATE SEQUENCE system_user_id_seq
 ALTER TABLE system_user_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 225 (class 1259 OID 18675)
 -- Name: text; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -683,6 +746,7 @@ CREATE TABLE text (
 ALTER TABLE text OWNER TO postgres;
 
 --
+-- TOC entry 226 (class 1259 OID 18678)
 -- Name: text_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -697,6 +761,7 @@ CREATE SEQUENCE text_id_seq
 ALTER TABLE text_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 227 (class 1259 OID 18680)
 -- Name: text_translation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -713,6 +778,7 @@ CREATE TABLE text_translation (
 ALTER TABLE text_translation OWNER TO postgres;
 
 --
+-- TOC entry 228 (class 1259 OID 18687)
 -- Name: text_translation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -727,6 +793,7 @@ CREATE SEQUENCE text_translation_id_seq
 ALTER TABLE text_translation_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 229 (class 1259 OID 18689)
 -- Name: version; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -742,6 +809,7 @@ CREATE TABLE version (
 ALTER TABLE version OWNER TO postgres;
 
 --
+-- TOC entry 230 (class 1259 OID 18694)
 -- Name: version_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -755,7 +823,11 @@ CREATE SEQUENCE version_id_seq
 
 ALTER TABLE version_id_seq OWNER TO postgres;
 
+
+
 --
+-- TOC entry 2404 (class 0 OID 18507)
+-- Dependencies: 185
 -- Data for Name: advantage; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -770,6 +842,8 @@ COPY advantage (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
+-- TOC entry 2462 (class 0 OID 0)
+-- Dependencies: 186
 -- Name: advantage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -777,6 +851,8 @@ SELECT pg_catalog.setval('advantage_id_seq', 9, true);
 
 
 --
+-- TOC entry 2406 (class 0 OID 18512)
+-- Dependencies: 187
 -- Data for Name: advantage_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -797,6 +873,8 @@ COPY advantage_translation (id, locale_id, source_id, description, date_of_creat
 
 
 --
+-- TOC entry 2463 (class 0 OID 0)
+-- Dependencies: 188
 -- Name: advantage_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -804,6 +882,8 @@ SELECT pg_catalog.setval('advantage_translation_id_seq', 35, true);
 
 
 --
+-- TOC entry 2408 (class 0 OID 18521)
+-- Dependencies: 189
 -- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -818,6 +898,8 @@ COPY client (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
+-- TOC entry 2464 (class 0 OID 0)
+-- Dependencies: 190
 -- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -825,6 +907,8 @@ SELECT pg_catalog.setval('client_id_seq', 36, true);
 
 
 --
+-- TOC entry 2410 (class 0 OID 18526)
+-- Dependencies: 191
 -- Data for Name: client_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -845,6 +929,8 @@ COPY client_translation (id, locale_id, source_id, title, date_of_creation, date
 
 
 --
+-- TOC entry 2465 (class 0 OID 0)
+-- Dependencies: 192
 -- Name: client_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -852,6 +938,8 @@ SELECT pg_catalog.setval('client_translation_id_seq', 24, true);
 
 
 --
+-- TOC entry 2412 (class 0 OID 18535)
+-- Dependencies: 193
 -- Data for Name: common_information; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -861,6 +949,8 @@ COPY common_information (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
+-- TOC entry 2466 (class 0 OID 0)
+-- Dependencies: 194
 -- Name: common_information_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -868,6 +958,8 @@ SELECT pg_catalog.setval('common_information_id_seq', 1, true);
 
 
 --
+-- TOC entry 2414 (class 0 OID 18540)
+-- Dependencies: 195
 -- Data for Name: common_information_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -878,6 +970,8 @@ COPY common_information_translation (id, locale_id, source_id, title, descriptio
 
 
 --
+-- TOC entry 2467 (class 0 OID 0)
+-- Dependencies: 196
 -- Name: common_information_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -885,6 +979,8 @@ SELECT pg_catalog.setval('common_information_translation_id_seq', 4, true);
 
 
 --
+-- TOC entry 2416 (class 0 OID 18549)
+-- Dependencies: 197
 -- Data for Name: company_information; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -894,6 +990,8 @@ COPY company_information (id, email, phone_number, date_of_creation, date_of_cha
 
 
 --
+-- TOC entry 2468 (class 0 OID 0)
+-- Dependencies: 198
 -- Name: company_information_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -901,6 +999,8 @@ SELECT pg_catalog.setval('company_information_id_seq', 2, true);
 
 
 --
+-- TOC entry 2418 (class 0 OID 18556)
+-- Dependencies: 199
 -- Data for Name: company_information_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -911,6 +1011,8 @@ COPY company_information_translation (id, locale_id, source_id, description, add
 
 
 --
+-- TOC entry 2469 (class 0 OID 0)
+-- Dependencies: 200
 -- Name: company_information_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -918,19 +1020,23 @@ SELECT pg_catalog.setval('company_information_translation_id_seq', 4, true);
 
 
 --
+-- TOC entry 2420 (class 0 OID 18565)
+-- Dependencies: 201
 -- Data for Name: component; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY component (id, date_of_creation, date_of_change, wiki_url) FROM stdin;
-1	2017-08-09 14:49:24	2017-08-09 14:49:24	http://wiki.staging.corchestra.ru/wiki/index.php/Showcase
-2	2017-08-09 14:49:56	2017-08-09 14:49:56	http://wiki.staging.corchestra.ru/wiki/index.php/Celesta
-3	2017-08-09 14:50:26	2017-08-09 14:50:26	http://wiki.staging.corchestra.ru/wiki/index.php/Flute
-5	2017-08-09 14:51:04	2017-08-09 14:51:04	http://wiki.staging.corchestra.ru/index.php?title=Mellophone
-7	2017-08-09 14:51:46	2017-08-09 14:51:46	http://wiki.staging.corchestra.ru/wiki/index.php/Xylophone
+COPY component (id, date_of_creation, date_of_change) FROM stdin;
+1	2017-08-09 14:49:24	2017-08-09 14:49:24
+2	2017-08-09 14:49:56	2017-08-09 14:49:56
+3	2017-08-09 14:50:26	2017-08-09 14:50:26
+5	2017-08-09 14:51:04	2017-08-09 14:51:04
+7	2017-08-09 14:51:46	2017-08-09 14:51:46
 \.
 
 
 --
+-- TOC entry 2470 (class 0 OID 0)
+-- Dependencies: 202
 -- Name: component_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -938,24 +1044,28 @@ SELECT pg_catalog.setval('component_id_seq', 8, true);
 
 
 --
+-- TOC entry 2422 (class 0 OID 18574)
+-- Dependencies: 203
 -- Data for Name: component_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY component_translation (id, locale_id, source_id, name, description, date_of_creation, date_of_change) FROM stdin;
-2	1	1	Showcase	Конструирование веб-интерфейса бизнес-систем, работающего в Java Servlet Container	2017-09-07 05:58:01	2017-09-07 05:58:01
-11	1	2	Celesta	Разработка приложений в условиях меняющихся требований бизнеса на языке Jython с использованием реляционной базы данных	2017-09-07 07:16:46	2017-09-07 07:16:46
-15	1	3	Flute	REST-сервисы, обработчики очередей и периодические задания на базе Celesta-процедур	2017-09-07 07:18:56	2017-09-07 07:18:56
-21	1	5	Mellophone	Модуль аутентификации пользователей	2017-09-07 07:21:09	2017-09-07 07:21:09
-7	2	1	Showcase	Create web interfaces for your business application, running in Java Servlet Container	2017-09-07 05:59:34	2017-09-07 05:59:34
-13	2	2	Celesta	Develop your application for constantly changing business requirements using Jython language and relational DBMS	2017-09-07 07:18:22	2017-09-07 07:18:22
-17	2	3	Flute	Convert your Celesta routines to RESTful services, queue processors, scheduled tasks or looped tasks	2017-09-07 07:19:28	2017-09-07 07:19:28
-19	2	5	Mellophone	User authentication	2017-09-07 07:20:38	2017-09-07 07:20:38
-25	2	7	Xylophone	Generate PDF/Excel print reports	2017-09-07 07:23:21	2017-09-07 07:23:21
-23	1	7	Xylophone	Формирование печатных и форм и документов	2017-09-07 07:22:36	2017-09-07 07:22:36
+COPY component_translation (id, locale_id, source_id, name, description, date_of_creation, date_of_change, wiki_url) FROM stdin;
+2	1	1	Showcase	Конструирование веб-интерфейса бизнес-систем, работающего в Java Servlet Container	2017-09-07 05:58:01	2017-09-07 05:58:01	\N
+11	1	2	Celesta	Разработка приложений в условиях меняющихся требований бизнеса на языке Jython с использованием реляционной базы данных	2017-09-07 07:16:46	2017-09-07 07:16:46	\N
+15	1	3	Flute	REST-сервисы, обработчики очередей и периодические задания на базе Celesta-процедур	2017-09-07 07:18:56	2017-09-07 07:18:56	\N
+21	1	5	Mellophone	Модуль аутентификации пользователей	2017-09-07 07:21:09	2017-09-07 07:21:09	\N
+7	2	1	Showcase	Create web interfaces for your business application, running in Java Servlet Container	2017-09-07 05:59:34	2017-09-07 05:59:34	\N
+13	2	2	Celesta	Develop your application for constantly changing business requirements using Jython language and relational DBMS	2017-09-07 07:18:22	2017-09-07 07:18:22	\N
+17	2	3	Flute	Convert your Celesta routines to RESTful services, queue processors, scheduled tasks or looped tasks	2017-09-07 07:19:28	2017-09-07 07:19:28	\N
+19	2	5	Mellophone	User authentication	2017-09-07 07:20:38	2017-09-07 07:20:38	\N
+25	2	7	Xylophone	Generate PDF/Excel print reports	2017-09-07 07:23:21	2017-09-07 07:23:21	\N
+23	1	7	Xylophone	Формирование печатных и форм и документов	2017-09-07 07:22:36	2017-09-07 07:22:36	\N
 \.
 
 
 --
+-- TOC entry 2471 (class 0 OID 0)
+-- Dependencies: 204
 -- Name: component_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -963,6 +1073,8 @@ SELECT pg_catalog.setval('component_translation_id_seq', 25, true);
 
 
 --
+-- TOC entry 2424 (class 0 OID 18583)
+-- Dependencies: 205
 -- Data for Name: feed; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -974,10 +1086,13 @@ COPY feed (id, link, public_id, title, text, author, last_modified, status, date
 13	https://groups.google.com/d/msg/curs-group/B9lUYCxEAoU/ogz9dajQBgAJ	https://groups.google.com/d/topic/curs-group/B9lUYCxEAoU	Опрос: что из этих двух фич вы хотели бы видеть во Flute/Celesta?	Уважаемые коллеги! Некоторое время назад вашим решением была оставлена поддержка SQL Server2008, и вот снова нам важно ваше мнение. Какую из двух перечисленных доработок платформы вы считаете более нужной/перспективной? Поясню ситуацию. Для решения некоторой задачи на проекте М. без доработок	\nIvan Ponomarev	2017-06-01 20:17:42	На модерации	2017-08-11 20:06:43	2017-08-11 20:06:43	1
 2	https://groups.google.com/d/msg/curs-group/nkU5aZlHTO0/NXDGNfDoAAAJ	https://groups.google.com/d/topic/curs-group/nkU5aZlHTO0	Новости платформы Курс: реализована поддержка материализованных представлений (Materialized View) в celesta	Уважаемые пользователи платформы Курс. С 25 июля синтаксис CelestaSQL поддерживает материализованные представления - Materialized View. Материализованное представление - физический объект базы данных, содержащий результат выполнения запроса. Материализованные представления позволяют существенно	\nioanngolovko	2017-07-26 12:22:11	Отклонена	2017-08-11 20:06:43	2017-08-11 20:06:43	1
 1	https://groups.google.com/d/msg/curs-group/w9-WlUP5fLE/KLt_UfUhBQAJ	https://groups.google.com/d/topic/curs-group/w9-WlUP5fLE	Новости платформы Курс. Добавлена возможность задания списка столбцов для курсоров celesta	Уважаемые пользователи платформы Курс. Теперь в trunk релизе платформы Курс Celesta поддерживает возможность задания списка столбцов при выборке записей через курсоры celesta. Данный функционал позволит снизить нагрузку на базу данных решения (БД) и сеть, так как из базы будут выбираться данные	\nioanngolovko	2017-08-03 08:46:41	Опубликована	2017-08-11 20:06:43	2017-08-11 20:06:43	1
+16	https://groups.google.com/d/msg/curs-group/E9uXjlDlaw8/D6BeaR75AwAJ	https://groups.google.com/d/topic/curs-group/E9uXjlDlaw8	В Celesta-SQL добавлены агрегатные функции	В Celesta-SQL были добавлены следующие конструкции: 1. COUNT(*) 2. SUM 3. MIN 4. MAX 5. GROUP BY Эти конструкции можно использовать при создании View, например: - CREATE VIEW testView1 AS select sum (f1 * 2 + f2) as sumv, f3 from testTable group by f3; - CREATE VIEW	\nioanngolovko	2017-05-30 11:51:59	Опубликована	2017-08-11 20:06:43	2017-08-11 20:06:43	2
 \.
 
 
 --
+-- TOC entry 2472 (class 0 OID 0)
+-- Dependencies: 206
 -- Name: feed_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -985,16 +1100,20 @@ SELECT pg_catalog.setval('feed_id_seq', 15, true);
 
 
 --
+-- TOC entry 2426 (class 0 OID 18597)
+-- Dependencies: 207
 -- Data for Name: feed_source; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY feed_source (id, url, public_id, title, description, last_modified, date_of_creation, date_of_change, link, selected, locale_id) FROM stdin;
-1	https://groups.google.com/forum/feed/curs-group/msgs/rss.xml	https://groups.google.com/d/forum/curs-group	curs-group	Новости и техническая поддержка платформы КУРС<br><a href="https://share.curs.ru/wiki/">https://share.curs.ru/wiki/</a>	1970-01-01 00:00:00	2017-08-11 13:55:13	2017-08-11 13:55:13	https://groups.google.com/d/forum/curs-group	t	\N
-2	https://groups.google.com/forum/feed/curs-group/msgs/atom.xml	https://groups.google.com/d/forum/curs-group	curs-group	\N	2017-08-27 16:39:38	2017-08-24 21:50:06	2017-08-24 21:50:06	https://groups.google.com/forum/feed/curs-group/msgs/atom_v1_0.xml	f	\N
+COPY feed_source (id, url, public_id, title, description, last_modified, date_of_creation, date_of_change, link, locale_id) FROM stdin;
+1	https://groups.google.com/forum/feed/curs-group/msgs/rss.xml	https://groups.google.com/d/forum/curs-group	curs-group	Новости и техническая поддержка платформы КУРС<br><a href="https://share.curs.ru/wiki/">https://share.curs.ru/wiki/</a>	1970-01-01 00:00:00	2017-08-11 13:55:13	2017-08-11 13:55:13	https://groups.google.com/d/forum/curs-group	1
+2	https://groups.google.com/forum/feed/curs-group/msgs/atom.xml	https://groups.google.com/d/forum/curs-group	curs-group	\N	2017-08-27 16:39:38	2017-08-24 21:50:06	2017-08-24 21:50:06	https://groups.google.com/forum/feed/curs-group/msgs/atom_v1_0.xml	2
 \.
 
 
 --
+-- TOC entry 2473 (class 0 OID 0)
+-- Dependencies: 208
 -- Name: feed_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1002,6 +1121,8 @@ SELECT pg_catalog.setval('feed_source_id_seq', 3, true);
 
 
 --
+-- TOC entry 2428 (class 0 OID 18610)
+-- Dependencies: 209
 -- Data for Name: feed_status; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1013,6 +1134,8 @@ COPY feed_status (id, name, date_of_creation, date_of_change, locale_id) FROM st
 
 
 --
+-- TOC entry 2474 (class 0 OID 0)
+-- Dependencies: 210
 -- Name: feed_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1020,6 +1143,8 @@ SELECT pg_catalog.setval('feed_status_id_seq', 3, true);
 
 
 --
+-- TOC entry 2430 (class 0 OID 18616)
+-- Dependencies: 211
 -- Data for Name: locale; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1030,6 +1155,8 @@ COPY locale (id, language, shortname, selected, date_of_creation, date_of_change
 
 
 --
+-- TOC entry 2475 (class 0 OID 0)
+-- Dependencies: 212
 -- Name: locale_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1037,6 +1164,19 @@ SELECT pg_catalog.setval('locale_id_seq', 2, true);
 
 
 --
+-- TOC entry 2450 (class 0 OID 18920)
+-- Dependencies: 231
+-- Data for Name: phinxlog; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY phinxlog (version, migration_name, start_time, end_time, breakpoint) FROM stdin;
+20180211020316	CreateTableVersionLinks	2018-02-11 05:43:38	2018-02-11 05:43:39	f
+\.
+
+
+--
+-- TOC entry 2432 (class 0 OID 18623)
+-- Dependencies: 213
 -- Data for Name: source; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1048,6 +1188,8 @@ COPY source (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
+-- TOC entry 2476 (class 0 OID 0)
+-- Dependencies: 214
 -- Name: source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1055,6 +1197,8 @@ SELECT pg_catalog.setval('source_id_seq', 4, false);
 
 
 --
+-- TOC entry 2434 (class 0 OID 18628)
+-- Dependencies: 215
 -- Data for Name: source_link; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1077,6 +1221,8 @@ COPY source_link (id, source_id, url, date_of_creation, date_of_change) FROM std
 
 
 --
+-- TOC entry 2477 (class 0 OID 0)
+-- Dependencies: 216
 -- Name: source_link_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1084,6 +1230,8 @@ SELECT pg_catalog.setval('source_link_id_seq', 15, false);
 
 
 --
+-- TOC entry 2436 (class 0 OID 18637)
+-- Dependencies: 217
 -- Data for Name: source_link_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1120,6 +1268,8 @@ COPY source_link_translation (id, source_translation_id, source_id, locale_id, n
 
 
 --
+-- TOC entry 2478 (class 0 OID 0)
+-- Dependencies: 218
 -- Name: source_link_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1127,6 +1277,8 @@ SELECT pg_catalog.setval('source_link_translation_id_seq', 39, false);
 
 
 --
+-- TOC entry 2438 (class 0 OID 18647)
+-- Dependencies: 219
 -- Data for Name: source_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1141,6 +1293,8 @@ COPY source_translation (id, source_id, locale_id, title, subtitle, date_of_crea
 
 
 --
+-- TOC entry 2479 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: source_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1148,6 +1302,8 @@ SELECT pg_catalog.setval('source_translation_id_seq', 9, false);
 
 
 --
+-- TOC entry 2440 (class 0 OID 18654)
+-- Dependencies: 221
 -- Data for Name: subscriber; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1165,6 +1321,8 @@ COPY subscriber (id, email, subscribed_to_feed, date_of_creation, date_of_change
 
 
 --
+-- TOC entry 2480 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: subscriber_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1172,6 +1330,8 @@ SELECT pg_catalog.setval('subscriber_id_seq', 9, true);
 
 
 --
+-- TOC entry 2442 (class 0 OID 18660)
+-- Dependencies: 223
 -- Data for Name: system_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1197,6 +1357,8 @@ COPY system_user (id, username, username_canonical, email, email_canonical, enab
 
 
 --
+-- TOC entry 2481 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: system_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1204,6 +1366,8 @@ SELECT pg_catalog.setval('system_user_id_seq', 17, true);
 
 
 --
+-- TOC entry 2444 (class 0 OID 18675)
+-- Dependencies: 225
 -- Data for Name: text; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1242,6 +1406,8 @@ COPY text (id, date_of_creation, date_of_change) FROM stdin;
 
 
 --
+-- TOC entry 2482 (class 0 OID 0)
+-- Dependencies: 226
 -- Name: text_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1249,6 +1415,8 @@ SELECT pg_catalog.setval('text_id_seq', 30, false);
 
 
 --
+-- TOC entry 2446 (class 0 OID 18680)
+-- Dependencies: 227
 -- Data for Name: text_translation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1317,6 +1485,8 @@ COPY text_translation (id, source_id, locale_id, text, date_of_creation, date_of
 
 
 --
+-- TOC entry 2483 (class 0 OID 0)
+-- Dependencies: 228
 -- Name: text_translation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1324,6 +1494,8 @@ SELECT pg_catalog.setval('text_translation_id_seq', 90, true);
 
 
 --
+-- TOC entry 2448 (class 0 OID 18689)
+-- Dependencies: 229
 -- Data for Name: version; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1334,13 +1506,17 @@ COPY version (id, type, date_of_creation, date_of_change, version) FROM stdin;
 
 
 --
+-- TOC entry 2484 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: version_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('version_id_seq', 3, true);
 
 
+
 --
+-- TOC entry 2196 (class 2606 OID 18697)
 -- Name: advantage advantage_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1349,6 +1525,7 @@ ALTER TABLE ONLY advantage
 
 
 --
+-- TOC entry 2198 (class 2606 OID 18699)
 -- Name: advantage_translation advantage_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1357,6 +1534,7 @@ ALTER TABLE ONLY advantage_translation
 
 
 --
+-- TOC entry 2202 (class 2606 OID 18701)
 -- Name: client client_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1365,6 +1543,7 @@ ALTER TABLE ONLY client
 
 
 --
+-- TOC entry 2204 (class 2606 OID 18703)
 -- Name: client_translation client_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1373,6 +1552,7 @@ ALTER TABLE ONLY client_translation
 
 
 --
+-- TOC entry 2208 (class 2606 OID 18705)
 -- Name: common_information common_information_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1381,6 +1561,7 @@ ALTER TABLE ONLY common_information
 
 
 --
+-- TOC entry 2210 (class 2606 OID 18707)
 -- Name: common_information_translation common_information_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1389,6 +1570,7 @@ ALTER TABLE ONLY common_information_translation
 
 
 --
+-- TOC entry 2214 (class 2606 OID 18709)
 -- Name: company_information company_information_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1397,6 +1579,7 @@ ALTER TABLE ONLY company_information
 
 
 --
+-- TOC entry 2216 (class 2606 OID 18711)
 -- Name: company_information_translation company_information_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1405,6 +1588,7 @@ ALTER TABLE ONLY company_information_translation
 
 
 --
+-- TOC entry 2220 (class 2606 OID 18713)
 -- Name: component component_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1413,6 +1597,7 @@ ALTER TABLE ONLY component
 
 
 --
+-- TOC entry 2222 (class 2606 OID 18715)
 -- Name: component_translation component_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1421,6 +1606,7 @@ ALTER TABLE ONLY component_translation
 
 
 --
+-- TOC entry 2226 (class 2606 OID 18717)
 -- Name: feed feed_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1429,6 +1615,7 @@ ALTER TABLE ONLY feed
 
 
 --
+-- TOC entry 2229 (class 2606 OID 18719)
 -- Name: feed_source feed_source_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1437,6 +1624,7 @@ ALTER TABLE ONLY feed_source
 
 
 --
+-- TOC entry 2232 (class 2606 OID 18721)
 -- Name: feed_status feed_status_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1445,6 +1633,7 @@ ALTER TABLE ONLY feed_status
 
 
 --
+-- TOC entry 2235 (class 2606 OID 18723)
 -- Name: locale locale_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1453,6 +1642,16 @@ ALTER TABLE ONLY locale
 
 
 --
+-- TOC entry 2263 (class 2606 OID 18925)
+-- Name: phinxlog phinxlog_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY phinxlog
+    ADD CONSTRAINT phinxlog_pkey PRIMARY KEY (version);
+
+
+--
+-- TOC entry 2240 (class 2606 OID 18725)
 -- Name: source_link source_link_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1461,6 +1660,7 @@ ALTER TABLE ONLY source_link
 
 
 --
+-- TOC entry 2245 (class 2606 OID 18727)
 -- Name: source_link_translation source_link_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1469,6 +1669,7 @@ ALTER TABLE ONLY source_link_translation
 
 
 --
+-- TOC entry 2237 (class 2606 OID 18729)
 -- Name: source source_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1477,6 +1678,7 @@ ALTER TABLE ONLY source
 
 
 --
+-- TOC entry 2249 (class 2606 OID 18731)
 -- Name: source_translation source_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1485,6 +1687,7 @@ ALTER TABLE ONLY source_translation
 
 
 --
+-- TOC entry 2251 (class 2606 OID 18733)
 -- Name: subscriber subscriber_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1493,6 +1696,7 @@ ALTER TABLE ONLY subscriber
 
 
 --
+-- TOC entry 2253 (class 2606 OID 18735)
 -- Name: system_user system_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1501,6 +1705,7 @@ ALTER TABLE ONLY system_user
 
 
 --
+-- TOC entry 2255 (class 2606 OID 18737)
 -- Name: text text_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1509,6 +1714,7 @@ ALTER TABLE ONLY text
 
 
 --
+-- TOC entry 2259 (class 2606 OID 18739)
 -- Name: text_translation text_translation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1516,7 +1722,10 @@ ALTER TABLE ONLY text_translation
     ADD CONSTRAINT text_translation_pkey PRIMARY KEY (id);
 
 
+
+
 --
+-- TOC entry 2261 (class 2606 OID 18741)
 -- Name: version version_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1525,6 +1734,7 @@ ALTER TABLE ONLY version
 
 
 --
+-- TOC entry 2227 (class 1259 OID 18742)
 -- Name: idx_234044abddaeffbd; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1532,6 +1742,7 @@ CREATE INDEX idx_234044abddaeffbd ON feed USING btree (feed_source_id);
 
 
 --
+-- TOC entry 2238 (class 1259 OID 18743)
 -- Name: idx_37261cf2953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1539,6 +1750,7 @@ CREATE INDEX idx_37261cf2953c1c61 ON source_link USING btree (source_id);
 
 
 --
+-- TOC entry 2211 (class 1259 OID 18744)
 -- Name: idx_4cddd1af953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1546,6 +1758,7 @@ CREATE INDEX idx_4cddd1af953c1c61 ON common_information_translation USING btree 
 
 
 --
+-- TOC entry 2212 (class 1259 OID 18745)
 -- Name: idx_4cddd1afe559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1553,6 +1766,7 @@ CREATE INDEX idx_4cddd1afe559dfd1 ON common_information_translation USING btree 
 
 
 --
+-- TOC entry 2246 (class 1259 OID 18746)
 -- Name: idx_881615cf953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1560,6 +1774,7 @@ CREATE INDEX idx_881615cf953c1c61 ON source_translation USING btree (source_id);
 
 
 --
+-- TOC entry 2247 (class 1259 OID 18747)
 -- Name: idx_881615cfe559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1567,6 +1782,7 @@ CREATE INDEX idx_881615cfe559dfd1 ON source_translation USING btree (locale_id);
 
 
 --
+-- TOC entry 2199 (class 1259 OID 18748)
 -- Name: idx_980b52bb953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1574,6 +1790,7 @@ CREATE INDEX idx_980b52bb953c1c61 ON advantage_translation USING btree (source_i
 
 
 --
+-- TOC entry 2200 (class 1259 OID 18749)
 -- Name: idx_980b52bbe559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1581,6 +1798,7 @@ CREATE INDEX idx_980b52bbe559dfd1 ON advantage_translation USING btree (locale_i
 
 
 --
+-- TOC entry 2230 (class 1259 OID 18750)
 -- Name: idx_9da80f87e559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1588,6 +1806,7 @@ CREATE INDEX idx_9da80f87e559dfd1 ON feed_source USING btree (locale_id);
 
 
 --
+-- TOC entry 2256 (class 1259 OID 18751)
 -- Name: idx_a42fc53c953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1595,6 +1814,7 @@ CREATE INDEX idx_a42fc53c953c1c61 ON text_translation USING btree (source_id);
 
 
 --
+-- TOC entry 2257 (class 1259 OID 18752)
 -- Name: idx_a42fc53ce559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1602,6 +1822,7 @@ CREATE INDEX idx_a42fc53ce559dfd1 ON text_translation USING btree (locale_id);
 
 
 --
+-- TOC entry 2205 (class 1259 OID 18753)
 -- Name: idx_b5226054953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1609,6 +1830,7 @@ CREATE INDEX idx_b5226054953c1c61 ON client_translation USING btree (source_id);
 
 
 --
+-- TOC entry 2206 (class 1259 OID 18754)
 -- Name: idx_b5226054e559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1616,6 +1838,7 @@ CREATE INDEX idx_b5226054e559dfd1 ON client_translation USING btree (locale_id);
 
 
 --
+-- TOC entry 2233 (class 1259 OID 18755)
 -- Name: idx_b92215e8e559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1623,6 +1846,7 @@ CREATE INDEX idx_b92215e8e559dfd1 ON feed_status USING btree (locale_id);
 
 
 --
+-- TOC entry 2223 (class 1259 OID 18756)
 -- Name: idx_ee7028ec953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1630,6 +1854,7 @@ CREATE INDEX idx_ee7028ec953c1c61 ON component_translation USING btree (source_i
 
 
 --
+-- TOC entry 2224 (class 1259 OID 18757)
 -- Name: idx_ee7028ece559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1637,6 +1862,7 @@ CREATE INDEX idx_ee7028ece559dfd1 ON component_translation USING btree (locale_i
 
 
 --
+-- TOC entry 2241 (class 1259 OID 18758)
 -- Name: idx_ee9d0f9a3fd34780; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1644,6 +1870,7 @@ CREATE INDEX idx_ee9d0f9a3fd34780 ON source_link_translation USING btree (source
 
 
 --
+-- TOC entry 2242 (class 1259 OID 18759)
 -- Name: idx_ee9d0f9a953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1651,6 +1878,7 @@ CREATE INDEX idx_ee9d0f9a953c1c61 ON source_link_translation USING btree (source
 
 
 --
+-- TOC entry 2243 (class 1259 OID 18760)
 -- Name: idx_ee9d0f9ae559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1658,6 +1886,7 @@ CREATE INDEX idx_ee9d0f9ae559dfd1 ON source_link_translation USING btree (locale
 
 
 --
+-- TOC entry 2217 (class 1259 OID 18761)
 -- Name: idx_f29d8edc953c1c61; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1665,6 +1894,7 @@ CREATE INDEX idx_f29d8edc953c1c61 ON company_information_translation USING btree
 
 
 --
+-- TOC entry 2218 (class 1259 OID 18762)
 -- Name: idx_f29d8edce559dfd1; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1672,6 +1902,7 @@ CREATE INDEX idx_f29d8edce559dfd1 ON company_information_translation USING btree
 
 
 --
+-- TOC entry 2276 (class 2606 OID 18763)
 -- Name: feed fk_234044abddaeffbd; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1680,6 +1911,7 @@ ALTER TABLE ONLY feed
 
 
 --
+-- TOC entry 2279 (class 2606 OID 18768)
 -- Name: source_link fk_37261cf2953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1688,6 +1920,7 @@ ALTER TABLE ONLY source_link
 
 
 --
+-- TOC entry 2270 (class 2606 OID 18773)
 -- Name: common_information_translation fk_4cddd1af953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1696,6 +1929,7 @@ ALTER TABLE ONLY common_information_translation
 
 
 --
+-- TOC entry 2271 (class 2606 OID 18778)
 -- Name: common_information_translation fk_4cddd1afe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1704,6 +1938,7 @@ ALTER TABLE ONLY common_information_translation
 
 
 --
+-- TOC entry 2283 (class 2606 OID 18783)
 -- Name: source_translation fk_881615cf953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1712,6 +1947,7 @@ ALTER TABLE ONLY source_translation
 
 
 --
+-- TOC entry 2284 (class 2606 OID 18788)
 -- Name: source_translation fk_881615cfe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1720,6 +1956,7 @@ ALTER TABLE ONLY source_translation
 
 
 --
+-- TOC entry 2266 (class 2606 OID 18793)
 -- Name: advantage_translation fk_980b52bb953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1728,6 +1965,7 @@ ALTER TABLE ONLY advantage_translation
 
 
 --
+-- TOC entry 2267 (class 2606 OID 18798)
 -- Name: advantage_translation fk_980b52bbe559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1736,6 +1974,7 @@ ALTER TABLE ONLY advantage_translation
 
 
 --
+-- TOC entry 2277 (class 2606 OID 18803)
 -- Name: feed_source fk_9da80f87e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1744,6 +1983,7 @@ ALTER TABLE ONLY feed_source
 
 
 --
+-- TOC entry 2285 (class 2606 OID 18808)
 -- Name: text_translation fk_a42fc53c953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1752,6 +1992,7 @@ ALTER TABLE ONLY text_translation
 
 
 --
+-- TOC entry 2286 (class 2606 OID 18813)
 -- Name: text_translation fk_a42fc53ce559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1760,6 +2001,7 @@ ALTER TABLE ONLY text_translation
 
 
 --
+-- TOC entry 2268 (class 2606 OID 18818)
 -- Name: client_translation fk_b5226054953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1768,6 +2010,7 @@ ALTER TABLE ONLY client_translation
 
 
 --
+-- TOC entry 2269 (class 2606 OID 18823)
 -- Name: client_translation fk_b5226054e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1776,6 +2019,7 @@ ALTER TABLE ONLY client_translation
 
 
 --
+-- TOC entry 2278 (class 2606 OID 18828)
 -- Name: feed_status fk_b92215e8e559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1784,6 +2028,7 @@ ALTER TABLE ONLY feed_status
 
 
 --
+-- TOC entry 2274 (class 2606 OID 18833)
 -- Name: component_translation fk_ee7028ec953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1792,6 +2037,7 @@ ALTER TABLE ONLY component_translation
 
 
 --
+-- TOC entry 2275 (class 2606 OID 18838)
 -- Name: component_translation fk_ee7028ece559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1800,6 +2046,7 @@ ALTER TABLE ONLY component_translation
 
 
 --
+-- TOC entry 2280 (class 2606 OID 18843)
 -- Name: source_link_translation fk_ee9d0f9a3fd34780; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1808,6 +2055,7 @@ ALTER TABLE ONLY source_link_translation
 
 
 --
+-- TOC entry 2281 (class 2606 OID 18848)
 -- Name: source_link_translation fk_ee9d0f9a953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1816,6 +2064,7 @@ ALTER TABLE ONLY source_link_translation
 
 
 --
+-- TOC entry 2282 (class 2606 OID 18853)
 -- Name: source_link_translation fk_ee9d0f9ae559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1824,6 +2073,7 @@ ALTER TABLE ONLY source_link_translation
 
 
 --
+-- TOC entry 2272 (class 2606 OID 18858)
 -- Name: company_information_translation fk_f29d8edc953c1c61; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1832,12 +2082,17 @@ ALTER TABLE ONLY company_information_translation
 
 
 --
+-- TOC entry 2273 (class 2606 OID 18863)
 -- Name: company_information_translation fk_f29d8edce559dfd1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY company_information_translation
     ADD CONSTRAINT fk_f29d8edce559dfd1 FOREIGN KEY (locale_id) REFERENCES locale(id);
 
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO corchestra_db_user;
+
+-- Completed on 2018-02-17 12:35:23
 
 --
 -- PostgreSQL database dump complete
